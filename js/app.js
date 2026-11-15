@@ -91,15 +91,13 @@
 
     const isCalm = !!window.__panicCalmMode;
     document.body.classList.toggle("calm-motion", isCalm);
-    ["calmModeToggleBtn", "modalCalmModeBtn"].forEach((id) => {
-      const btn = document.getElementById(id);
-      if (btn) {
-        btn.classList.toggle("active", isCalm);
-        btn.textContent = isCalm
-          ? en ? "🧘 Calm Mode: ON" : "🧘 Mod Tenang: AKTIF"
-          : en ? "🧘 Pause Animations" : "🧘 Jeda Animasi";
-      }
-    });
+    const graphBtn = document.getElementById("graphMotionToggleBtn");
+    if (graphBtn) {
+      graphBtn.classList.toggle("active", isCalm);
+      graphBtn.textContent = isCalm
+        ? en ? "▶️ Resume Graph Motion" : "▶️ Gerakkan Semula Graf"
+        : en ? "⏸️ Freeze Graph Motion" : "⏸️ Henti Gerakan Graf";
+    }
   }
 
   function renderAudienceLensUI() {
@@ -178,16 +176,15 @@
       });
     }
 
-    // Calm motion buttons
-    ["calmModeToggleBtn", "modalCalmModeBtn"].forEach((id) => {
-      const btn = document.getElementById(id);
-      if (btn) {
-        btn.addEventListener("click", function () {
-          window.__panicCalmMode = !window.__panicCalmMode;
-          syncThemeAndCalmLabels();
-        });
-      }
-    });
+    // Graph motion freeze button (right beside Bab 1 live canvas)
+    const graphBtn = document.getElementById("graphMotionToggleBtn");
+    if (graphBtn) {
+      graphBtn.addEventListener("click", function () {
+        window.__panicCalmMode = !window.__panicCalmMode;
+        syncThemeAndCalmLabels();
+        if (window.refreshPanicSimulators) window.refreshPanicSimulators();
+      });
+    }
   }
 
   // --------------------------------------------------------------------------

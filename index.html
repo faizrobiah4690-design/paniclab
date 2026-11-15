@@ -71,9 +71,6 @@
         <button type="button" class="chip-btn" data-open-quickhelp="step5" data-en="📋 Doctor / MENTARI Note">
           📋 Nota Untuk Doktor
         </button>
-        <button type="button" id="calmModeToggleBtn" class="chip-btn">
-          🧘 Jeda Animasi
-        </button>
       </div>
     </div>
   </div>
@@ -99,9 +96,6 @@
             <button type="button" data-lang-switch="ms" class="active">🇲🇾 BM</button>
             <button type="button" data-lang-switch="en">🇬🇧 EN</button>
           </div>
-          <button type="button" id="modalCalmModeBtn" class="btn-secondary" style="font-size:0.75rem; padding:6px 10px;">
-            🧘 Jeda Animasi
-          </button>
           <button type="button" data-close-quickhelp class="btn-secondary" style="padding:6px 12px;" data-en="✕ Close">
             ✕ Tutup
           </button>
@@ -434,7 +428,12 @@
       <!-- Interactive Simulators: Wave Curve + Body Hotspot Map -->
       <div class="two-col">
         <div class="panel-card">
-          <h3 data-en="📈 Live Simulator: Adrenaline Wave, CO₂ Drop &amp; Clark's Loop">📈 Simulator Langsung: Gelombang Adrenalin, CO₂ &amp; Kitaran Clark</h3>
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px;">
+            <h3 style="margin:0;" data-en="📈 Live Simulator: Adrenaline Wave, CO₂ Drop &amp; Clark's Loop">📈 Simulator Langsung: Gelombang Adrenalin, CO₂ &amp; Kitaran Clark</h3>
+            <button type="button" id="graphMotionToggleBtn" class="chip-btn" style="font-size:0.74rem; padding:5px 10px;">
+              ⏸️ Henti Gerakan Graf
+            </button>
+          </div>
           <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Click the 4 physiological states below to watch how over-breathing drops blood CO₂ (causing harmless tingling/dizziness) and how 4-2-6 breathing restores balance:">
             Klik 4 fasa di bawah untuk melihat bagaimana nafas tercungap menurunkan CO₂ darah (punca kebas/melayang) dan bagaimana nafas 4-2-6 memulihkannya:
           </p>
