@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PanicLab — Playbook Pintar, Interaktif &amp; Panduan Serangan Panik</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="mode-layman">
+  <!-- ======================= STICKY TOP NAVIGATION ======================= -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="#top" class="brand">
+        <div class="brand-mark" aria-hidden="true">🫁</div>
+        <div>
+          <span class="brand-title">PanicLab</span>
+          <span class="brand-sub" data-en="Trusted Guided Playbook • Panic Attack &amp; Panic Disorder">Playbook Pintar &amp; Sahih • Serangan Panik &amp; Kecelaruan Panik</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#sec-fisiologi" data-en="1. Body &amp; Brain">1. Badan &amp; Otak</a>
+        <a href="#sec-saringan" class="nav-emergency" data-en="2. Panic vs Heart (999)">2. Panik lwn Jantung (999)</a>
+        <a href="#sec-pencetus" data-en="3. Caffeine &amp; Myths">3. Kafein &amp; Mitos</a>
+        <a href="#sec-cbt" data-en="4. CBT &amp; Exposure Lab">4. Makmal CBT</a>
+        <a href="#sec-ubat" data-en="5. Meds &amp; Guidelines">5. Ubat &amp; Garis Panduan</a>
+        <a href="#sec-analogi" data-en="6. Analogies">6. Analogi</a>
+        <a href="#sec-kuiz" data-en="7. Quiz &amp; Help">7. Kuiz &amp; Rujukan</a>
+      </nav>
+
+      <div class="top-actions">
+        <div class="segmented-toggle" role="group" aria-label="Language / Bahasa">
+          <button type="button" data-lang-switch="ms" class="active" title="Bahasa Melayu">🇲🇾 BM</button>
+          <button type="button" data-lang-switch="en" title="English">🇬🇧 EN</button>
+        </div>
+        <div class="segmented-toggle" role="group" aria-label="Explanation Mode">
+          <button type="button" data-audience-mode="layman" class="active" data-en="🗣️ Friendly Guide">🗣️ Mudah Faham</button>
+          <button type="button" data-audience-mode="clinical" data-en="🩺 Clinical Mode">🩺 Mod Klinikal</button>
+        </div>
+        <button type="button" id="themeToggleBtn" class="btn-secondary" style="padding:6px 11px; font-size:0.76rem;">
+          ☀️ Mod Cerah
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============== BAR BANTUAN PANTAS SEMASA SERANGAN PANIK ============== -->
+  <div class="quick-sos-bar" role="region" aria-label="Quick Panic First-Aid">
+    <div class="quick-sos-inner">
+      <div class="quick-sos-label">
+        <span data-en="👋 &lt;strong&gt;Heart racing, breathless, or feeling panicky right now?&lt;/strong&gt; Use 1-tap guided tools:">👋 <strong>Jantung sedang berdebar, sesak nafas, atau rasa cemas sekarang?</strong> Gunakan alat bantuan segera:</span>
+      </div>
+      <div class="quick-sos-links">
+        <button type="button" class="btn-sos-primary" data-open-quickhelp="step1" data-en="🆘 Calm Me Now (4-2-6)">
+          🆘 Tenangkan Saya Sekarang (4-2-6)
+        </button>
+        <button type="button" class="chip-btn" data-open-quickhelp="step2" data-en="🖐️ 5-4-3-2-1 &amp; Cold Reflex">
+          🖐️ Pembumian 5-4-3-2-1 &amp; Pek Sejuk
+        </button>
+        <button type="button" class="chip-btn" data-open-quickhelp="step3" data-en="🚨 30s Cardiac Check (999)">
+          🚨 Saringan Jantung 30s (999)
+        </button>
+        <button type="button" class="chip-btn" data-open-quickhelp="step4" data-en="🤝 Helping Someone Else">
+          🤝 Bantu Orang Lain
+        </button>
+        <button type="button" class="chip-btn" data-open-quickhelp="step5" data-en="📋 Doctor / MENTARI Note">
+          📋 Nota Untuk Doktor
+        </button>
+        <button type="button" id="calmModeToggleBtn" class="chip-btn">
+          🧘 Jeda Animasi
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== FLOATING SOS BUTTON ============== -->
+  <button type="button" class="floating-sos-btn" data-open-quickhelp="step1" data-en="🫁 Panicking Now? Tap Here">
+    🫁 Sedang Panik? Klik Sini
+  </button>
+
+  <!-- ==================== MODAL SOS PERTOLONGAN CEMAS PANIK ==================== -->
+  <div id="quickHelpModal" class="qh-modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="qhModalTitle">
+    <div class="qh-modal-card">
+      <div class="qh-modal-header">
+        <div>
+          <span class="pill-badge pill-safe" data-en="Step-by-Step Acute Panic SOP • Safe &amp; Evidence-Based">SOP Pertolongan Segera Serangan Panik • Selamat &amp; Berasaskan Bukti</span>
+          <h2 id="qhModalTitle" style="margin:6px 0 2px; font-size:1.35rem;" data-en="You Are Safe — Let's Ride Out This Adrenaline Wave Together">Anda Selamat — Mari Redakan Gelombang Adrenalin Ini Bersama</h2>
+          <p style="margin:0; font-size:0.85rem; color:var(--text-muted);" data-en="A panic surge peaks within 10 minutes and ALWAYS comes down on its own. Follow the calm tabs below.">
+            Lonjakan panik memuncak dalam ~10 minit dan PASTI surut dengan sendirinya. Ikuti langkah tenang di bawah.
+          </p>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+          <div class="segmented-toggle" role="group" aria-label="Modal Language">
+            <button type="button" data-lang-switch="ms" class="active">🇲🇾 BM</button>
+            <button type="button" data-lang-switch="en">🇬🇧 EN</button>
+          </div>
+          <button type="button" id="modalCalmModeBtn" class="btn-secondary" style="font-size:0.75rem; padding:6px 10px;">
+            🧘 Jeda Animasi
+          </button>
+          <button type="button" data-close-quickhelp class="btn-secondary" style="padding:6px 12px;" data-en="✕ Close">
+            ✕ Tutup
+          </button>
+        </div>
+      </div>
+
+      <div class="qh-tabs" role="tablist">
+        <button type="button" class="qh-tab-btn active" data-qh-tab="step1" data-en="1. Accept &amp; 4-2-6 Breath">1. 'Accept' &amp; Nafas 4-2-6</button>
+        <button type="button" class="qh-tab-btn" data-qh-tab="step2" data-en="2. 5-4-3-2-1 &amp; Dive Reflex">2. 5-4-3-2-1 &amp; Pek Sejuk</button>
+        <button type="button" class="qh-tab-btn" data-qh-tab="step3" data-en="3. 30s Medical Red Flags">3. Saringan 999 (30s)</button>
+        <button type="button" class="qh-tab-btn" data-qh-tab="step4" data-en="4. Helping Someone Else">4. Bantu Orang Lain</button>
+        <button type="button" class="qh-tab-btn" data-qh-tab="step5" data-en="5. Doctor Summary Note">5. Nota Doktor / MENTARI</button>
+      </div>
+
+      <!-- PANE 1: ACCEPT & FLOAT + 4-2-6 DIAPHRAGMATIC BREATHER -->
+      <div data-qh-pane="step1">
+        <div class="first-aid-grid">
+          <div>
+            <div class="alert-banner alert-safe" style="margin-bottom:12px;">
+              <strong data-en="First 60 Seconds — Stop Fighting Your Brain ('Accept &amp; Float'):">60 Saat Pertama — Hentikan Perlawanan Mental ('Accept &amp; Float'):</strong>
+            </div>
+            <ol style="margin:0; padding-left:20px; font-size:0.9rem; display:grid; gap:9px;">
+              <li data-en="&lt;strong&gt;Don't shout 'Stop panicking!' at yourself:&lt;/strong&gt; Fighting increases amygdala threat signals. Say gently: &lt;em&gt;'This is a harmless false alarm of adrenaline. It feels uncomfortable, NOT dangerous.'&lt;/em&gt;"><strong>Jangan paksa otak 'jangan panik!':</strong> Penolakan menguatkan amaran amigdala. Katakan dengan tenang: <em>"Ini cuma penggera palsu adrenalin. Ia tidak selesa, tetapi TIDAK berbahaya."</em></li>
+              <li data-en="&lt;strong&gt;Stay safely where you are (don't flee in terror):&lt;/strong&gt; Drop your shoulders, plant both feet flat on the floor, and soften your jaw. (If driving, pull over safely first.)"><strong>Kekal di tempat selamat (jangan lari tergesa-gesa):</strong> Jatuhkan bahu, letakkan kedua-dua tapak kaki rata di lantai, dan lembutkan rahang. (Jika sedang memandu, berhenti di tempat selamat dahulu.)</li>
+              <li data-en="&lt;strong&gt;Follow the 4-2-6 Belly Breather beside this box:&lt;/strong&gt; Making your exhale longer (6s) than your inhale (4s) stimulates your &lt;strong&gt;vagus nerve&lt;/strong&gt; and restores blood CO₂ so tingling and dizziness fade."><strong>Ikut bulatan Nafas Perut 4-2-6 di sebelah:</strong> Hembusan lebih panjang (6 saat) merangsang <strong>saraf vagus</strong> dan memulihkan keseimbangan CO₂ supaya rasa kebas dan melayang beransur hilang.</li>
+            </ol>
+            <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;">
+              <button type="button" class="btn-primary" data-qh-goto="step2" data-en="Next: 5-4-3-2-1 Sensory Grounding ➡️">
+                Seterusnya: Pembumian Deria 5-4-3-2-1 ➡️
+              </button>
+              <button type="button" class="btn-secondary" data-qh-goto="step3" data-en="🚨 Unsure if Heart / First Attack?">
+                🚨 Kali Pertama / Sakit Dada? Semak Sini
+              </button>
+            </div>
+          </div>
+
+          <div class="breathing-box">
+            <small style="text-transform:uppercase; font-weight:800; color:var(--accent-teal);" data-en="Diaphragmatic Vagal Breather (4-2-6)">
+              Pemasa Nafas Diafragma Vagus (4-2-6)
+            </small>
+            <div class="breathing-orb-wrap">
+              <div class="breathing-ring-guide" aria-hidden="true"></div>
+              <div id="sosBreathingOrb" class="breathing-orb">
+                <span id="sosBreathingSec" style="font-size:1.55rem;">4s</span>
+              </div>
+            </div>
+            <div id="sosBreathingPhase" style="font-weight:800; font-size:0.95rem; margin-bottom:4px;">
+              Sedia: 4s Tarik • 2s Tahan • 6s Hembus
+            </div>
+            <div id="sosCycleCounter" style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px;">
+              Kitaran nafas tenang selesai: 0
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
+              <button type="button" id="sosBreathToggleBtn" class="btn-primary">▶️ Mula Panduan Nafas 4-2-6</button>
+              <button type="button" id="sosAudioToggleBtn" class="btn-secondary">🔕 Nada Lembut: MATI</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANE 2: 5-4-3-2-1 SENSORY GROUNDING & MAMMALIAN DIVE REFLEX -->
+      <div data-qh-pane="step2" hidden>
+        <p style="margin:0 0 8px; font-size:0.9rem;" data-en="Tap each card below as you name items around you—this shifts brain activity out of the &lt;strong&gt;amygdala&lt;/strong&gt; back to your &lt;strong&gt;logical prefrontal cortex&lt;/strong&gt;:">
+          Klik setiap kad di bawah sebaik anda menamakan objek di sekeliling—teknik ini memindahkan aktiviti otak daripada <strong>amigdala</strong> kembali ke <strong>korteks logik</strong>:
+        </p>
+        <div id="sosGroundingGrid" class="grounding-step-grid"></div>
+
+        <div class="reasoning-box" style="margin-top:14px; display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;">
+          <div style="flex:1 1 380px;">
+            <strong data-en="🧊 Heart Pounding Very Fast? Use the Mammalian Dive Reflex (15–30s):">🧊 Jantung Berdebar Terlalu Laju? Gunakan Refleks Selaman Mamalia (15–30s):</strong>
+            <p style="margin:4px 0 0; font-size:0.85rem; color:var(--text-secondary);" data-en="Press a cool gel pack, cold wet towel, or splash iced water gently across your &lt;strong&gt;cheeks and closed eyes&lt;/strong&gt; while holding a normal breath briefly for 15–20 seconds. Trigeminal facial receptors reflexively slow heart rate via the vagus nerve!">
+              Tekapkan pek sejuk, tuala basah berais, atau basuh muka dengan air sejuk pada bahagian <strong>pipi dan mata tertutup</strong> selama 15–20 saat. Saraf muka trigeminal akan mengaktifkan brek semula jadi jantung secara refleks fisiologi!
+            </p>
+          </div>
+          <button type="button" id="diveReflexBtn" class="btn-primary">🧊 Mula Pemasa 20s Pek Sejuk (Dive Reflex)</button>
+        </div>
+      </div>
+
+      <!-- PANE 3: 30-SECOND MEDICAL / 999 RED FLAG CHECK -->
+      <div data-qh-pane="step3" hidden>
+        <p style="margin:0 0 12px; font-size:0.9rem;" data-en="Tick any box below &lt;strong&gt;IF EXPERIENCED RIGHT NOW&lt;/strong&gt; to verify whether emergency medical care (&lt;strong&gt;999&lt;/strong&gt;) is needed:">
+          Tandakan mana-mana kotak di bawah <strong>JIKA DIALAMI SEKARANG</strong> untuk mengesahkan sama ada rawatan kecemasan (<strong>999</strong>) diperlukan segera:
+        </p>
+        <div class="redflag-grid" style="margin-bottom:14px;">
+          <label class="check-tile">
+            <input type="checkbox" class="sos-redflag-cb" />
+            <span data-en="&lt;strong&gt;Crushing / squeezing central chest pressure&lt;/strong&gt; radiating to the left arm, jaw, neck, or back"><strong>Sakit dada berat menghimpit di tengah dada</strong> dan menjalar ke lengan kiri, rahang, leher, atau belakang</span>
+          </label>
+          <label class="check-tile">
+            <input type="checkbox" class="sos-redflag-cb" />
+            <span data-en="&lt;strong&gt;First-ever episode&lt;/strong&gt; of acute chest pain or severe shortness of breath (especially &lt;strong&gt;age &gt;45&lt;/strong&gt;)"><strong>Kali pertama seumur hidup</strong> mengalami sakit dada atau sesak nafas mendadak (terutamanya <strong>umur &gt;45 tahun</strong>)</span>
+          </label>
+          <label class="check-tile">
+            <input type="checkbox" class="sos-redflag-cb" />
+            <span data-en="&lt;strong&gt;True fainting / blackout (syncope)&lt;/strong&gt; — actual loss of consciousness (not just feeling lightheaded)"><strong>Pitam atau pengsan sebenar (sinkop)</strong> — benar-benar tidak sedarkan diri (bukan sekadar rasa melayang)</span>
+          </label>
+          <label class="check-tile">
+            <input type="checkbox" class="sos-redflag-cb" />
+            <span data-en="&lt;strong&gt;Breathing does NOT improve after 20 minutes&lt;/strong&gt;, bluish lips, or known acute &lt;strong&gt;asthma&lt;/strong&gt; wheezing"><strong>Nafas langsung tidak pulih selepas 20 minit</strong>, bibir kebiruan, atau bunyi semput <strong>asma akut</strong></span>
+          </label>
+          <label class="check-tile">
+            <input type="checkbox" class="sos-redflag-cb" />
+            <span data-en="&lt;strong&gt;One-sided weakness/drooping face&lt;/strong&gt;, slurred speech, or sudden double vision"><strong>Lemah/kebas sebelah badan sahaja</strong>, muka herot, cakap pelat, atau penglihatan berganda</span>
+          </label>
+          <label class="check-tile">
+            <input type="checkbox" class="sos-redflag-cb" />
+            <span data-en="&lt;strong&gt;Thoughts of self-harm&lt;/strong&gt; or feeling completely unsafe alone right now"><strong>Fikiran mencederakan diri</strong> atau berasa langsung tidak selamat bersendirian sekarang</span>
+          </label>
+        </div>
+
+        <div id="sosEmergencyVerdict" class="alert-banner alert-safe"></div>
+
+        <div class="alert-banner" style="margin-top:10px;">
+          <span data-en="📞 &lt;strong&gt;Malaysia Official Helplines:&lt;/strong&gt; Medical Emergency: &lt;strong&gt;999&lt;/strong&gt; • KKM Crisis Helpline &lt;strong&gt;Talian HEAL 15555&lt;/strong&gt; (8:00 AM – 12:00 AM daily) • Befrienders KL: &lt;strong&gt;03-7627 2929&lt;/strong&gt; (24h).">
+            📞 <strong>Talian Bantuan Rasmi Malaysia:</strong> Kecemasan Perubatan: <strong>999</strong> • Talian Krisis KKM <strong>HEAL 15555</strong> (8:00 pagi – 12:00 tengah malam setiap hari) • Befrienders KL: <strong>03-7627 2929</strong> (24 jam).
+          </span>
+        </div>
+      </div>
+
+      <!-- PANE 4: HELPING SOMEONE ELSE (BYSTANDER SOP) -->
+      <div data-qh-pane="step4" hidden>
+        <div class="two-col">
+          <div class="panel-card">
+            <h3 style="color:var(--accent-emerald);" data-en="✅ DO THIS (Evidence-Based First Aid)">✅ LAKUKAN INI (SOP Bantuan Selamat)</h3>
+            <ul style="margin:0; padding-left:18px; font-size:0.88rem; display:grid; gap:8px; color:var(--text-secondary);">
+              <li data-en="&lt;strong&gt;Be their calm anchor:&lt;/strong&gt; Speak slowly using short, clear sentences ('I am right here with you. You are safe.')."><strong>Jadi sauh ketenangan:</strong> Bercakap perlahan dengan ayat pendek dan jelas (<em>"Saya ada di sini. Awak selamat."</em>).</li>
+              <li data-en="&lt;strong&gt;Breathe WITH them, not AT them:&lt;/strong&gt; Say 'Watch my shoulders—inhale 1-2-3-4, exhale slowly 1-2-3-4-5-6.'"><strong>Bernafas BERSAMA mereka:</strong> Pandu rentak perlahan—<em>"Ikut kiraan saya: tarik 4 saat, hembus perlahan 6 saat."</em></li>
+              <li data-en="&lt;strong&gt;Ask permission before touching&lt;/strong&gt; and offer a cold bottle/pack for their cheeks or hands."><strong>Minta izin sebelum menyentuh</strong> dan tawarkan botol sejuk/tuala basah di pipi atau tapak tangan.</li>
+            </ul>
+          </div>
+          <div class="panel-card">
+            <h3 style="color:var(--accent-danger);" data-en="❌ NEVER DO THIS (Dangerous Myths)">❌ JANGAN BUAT INI (Mitos Berbahaya)</h3>
+            <ul style="margin:0; padding-left:18px; font-size:0.88rem; display:grid; gap:8px; color:var(--text-secondary);">
+              <li data-en="&lt;strong&gt;NEVER use a paper bag!&lt;/strong&gt; If their breathlessness is actually acute asthma or a cardiac issue, rebreathing low-oxygen air can be life-threatening."><strong>JANGAN sesekali guna beg kertas!</strong> Jika punca sebenar sesak nafas mereka ialah asma akut atau jantung, kekurangan oksigen dalam beg kertas amat berbahaya!</li>
+              <li data-en="&lt;strong&gt;Don't say 'Just calm down, it's all in your head!'&lt;/strong&gt; Their adrenaline surge and physical symptoms are 100% real biologically."><strong>Jangan cakap "Jangan mengada-ngada, semua ni perasaan kau saja!"</strong> Debaran dan simptom fizikal mereka adalah tindak balas biologi sebenar.</li>
+              <li data-en="&lt;strong&gt;Don't crowd around them&lt;/strong&gt; or bombard them with rapid-fire questions."><strong>Jangan berkerumun ramai-ramai</strong> atau menghujani mereka dengan pelbagai soalan serentak.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANE 5: DOCTOR / MENTARI VISIT NOTE GENERATOR -->
+      <div data-qh-pane="step5" hidden>
+        <p style="margin:0 0 12px; font-size:0.88rem; color:var(--text-secondary);" data-en="Generate a structured, non-diagnostic &lt;strong&gt;Patient Visit Summary&lt;/strong&gt; to show your GP, Klinik Kesihatan, MENTARI team, or psychiatrist:">
+          Jana <strong>Ringkasan Temu Janji Pesakit</strong> yang tersusun untuk ditunjukkan kepada doktor di Klinik Kesihatan, hospital, MENTARI, atau klinik pakar:
+        </p>
+        <div class="two-col">
+          <div>
+            <div class="form-group">
+              <label class="field-title" for="docFreq" data-en="1. How often have episodes happened?">1. Kekerapan episod berlaku?</label>
+              <select id="docFreq" class="form-select">
+                <option data-en="First-ever episode">Baru berlaku sekali (kali pertama)</option>
+                <option data-en="2–4 episodes over the past month">2–4 kali dalam tempoh sebulan lepas</option>
+                <option data-en="Weekly or multiple times per week">Setiap minggu / beberapa kali seminggu</option>
+                <option data-en="Occasional episodes over several months">Berulang secara berkala sejak beberapa bulan</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="field-title" for="docPeak" data-en="2. How fast does it peak &amp; subside?">2. Berapa cepat memuncak &amp; surut?</label>
+              <select id="docPeak" class="form-select">
+                <option data-en="Peaks abruptly within ≤10 mins; settles in 20–30 mins">Memuncak mengejut ≤10 minit; surut dalam 20–30 minit</option>
+                <option data-en="Wakes me abruptly from sleep at night (nocturnal panic)">Mengejutkan saya daripada tidur malam (nocturnal panic)</option>
+                <option data-en="Builds slowly over hours along with daily stress">Meningkat perlahan berjam-jam mengikut stres kerja/harian</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="field-title" for="docTrigger" data-en="3. When does it usually strike?">3. Bila ia selalunya menyerang?</label>
+              <select id="docTrigger" class="form-select">
+                <option data-en="Out of the blue without clear warning (Unexpected)">Secara tiba-tiba tanpa amaran jelas (Unexpected)</option>
+                <option data-en="In crowds, traffic jams, elevators, or supermarkets">Semasa sesak trafik, beratur, lif, atau pasar raya</option>
+                <option data-en="After coffee/caffeine, poor sleep, or cold meds">Selepas minum kopi/kafein, kurang tidur, atau ubat selesema</option>
+                <option data-en="Only before social speeches or specific phobias">Hanya sebelum bercakap di khalayak / fobia tertentu</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="field-title" for="docAvoid" data-en="4. Impact over the past ≥1 month:">4. Kesan dalam tempoh ≥1 bulan lepas:</label>
+              <select id="docAvoid" class="form-select">
+                <option data-en="Constant worry about next attack + avoiding driving/places">Sentiasa bimbang diserang lagi + mula mengelak memandu/tempat luar</option>
+                <option data-en="Worried about heart/health, frequently checking smartwatch">Risau masalah jantung/kesihatan, kerap semak jam pintar</option>
+                <option data-en="Minimal daily avoidance so far">Masih boleh jalani rutin harian seperti biasa</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="field-title" for="docMeds" data-en="5. Daily caffeine, current meds &amp; health conditions:">5. Kafein harian, ubat semasa &amp; sejarah kesihatan:</label>
+              <input
+                type="text"
+                id="docMeds"
+                class="form-input"
+                placeholder="Cth: 2 cawan kopi sehari, tiada asma/darah tinggi..."
+                data-en-placeholder="e.g., 2 coffees/day, no asthma or hypertension..."
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="field-title" for="docNotePreview" data-en="📄 Ready-to-Share Clinical Visit Summary:">📄 Pratonton Ringkasan Untuk Doktor:</label>
+            <textarea id="docNotePreview" class="doc-note-textarea" readonly></textarea>
+            <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">
+              <button type="button" id="copyDocNoteBtn" class="btn-primary" style="flex:1;" data-en="📋 Copy Note for Doctor / WhatsApp">
+                📋 Salin Nota Untuk Doktor / WhatsApp
+              </button>
+              <button type="button" id="printDocNoteBtn" class="btn-secondary" data-en="🖨️ Print / PDF">
+                🖨️ Cetak / PDF
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= MAIN CONTENT ============================= -->
+  <main id="top" class="container">
+    <!-- ========================== HERO SECTION ========================== -->
+    <section class="hero">
+      <div>
+        <div class="hero-eyebrow" data-en="🛡️ Legal, Medically Audited &amp; Empathetic • DSM-5-TR • ICD-11 • NICE • WFSBP • KKM">
+          🛡️ Sahih, Diaudit Garis Panduan Klinikal &amp; Mesra Pesakit • DSM-5-TR • ICD-11 • NICE • KKM
+        </div>
+        <h1 data-en="Understand Panic Attacks, Break the Fear Loop &amp; Reclaim Calm">
+          Fahami Serangan Panik, Putuskan Kitaran Takut &amp; Pulihkan Ketenangan
+        </h1>
+        <p class="hero-lead layman-only" data-en="A &lt;strong&gt;panic attack&lt;/strong&gt; feels terrifying—racing heart, air hunger, tingling hands, and an overwhelming fear of dying or losing control—yet biologically it is a &lt;strong&gt;false alarm of your survival system&lt;/strong&gt;, not a failing heart or losing your mind. Learn the difference between a single &lt;em&gt;panic attack&lt;/em&gt; and &lt;em&gt;panic disorder&lt;/em&gt;, practice live relief tools, and explore gold-standard recovery.">
+          <strong>Serangan panik</strong> memang terasa amat menakutkan—jantung berdebar kencang, rasa tak cukup nafas, jari kebas, dan rasa seolah-olah nyawa di hujung tanduk—sedangkan secara biologi ia hanyalah <strong>penggera keselamatan palsu</strong> di dalam otak, bukannya kerosakan jantung atau hilang akal! Fahami perbezaan <em>serangan panik</em> dengan <em>kecelaruan panik</em>, kuasai teknik kecemasan, dan terokai rawatan terbukti.
+        </p>
+        <p class="hero-lead clinical-only" data-en="&lt;strong&gt;[Clinical Mode]&lt;/strong&gt; Synthesizes pathophysiology (amygdala–vmPFC circuitry, GABA-A/5-HT1A deficits, subclinical 50-min pCO₂ instability &amp; ASIC1a/2 chemoreception), &lt;strong&gt;DSM-5-TR / ICD-11 (MB23.H vs 6B01)&lt;/strong&gt; diagnostic architecture, cardiopulmonary/endocrine triage, &lt;strong&gt;Panic Control Treatment (CBT / B4DT)&lt;/strong&gt;, and stepped pharmacotherapy (&lt;strong&gt;WFSBP v3 2023, NICE CG113, Cochrane NMA 2023&lt;/strong&gt;).">
+          <strong>[Mod Klinikal]</strong> Menggabungkan patofisiologi rangkaian amigdala–vmPFC, kemoreseptor pH/CO₂ (<strong>ASIC1a/ASIC2</strong>), kriteria diagnostik <strong>DSM-5-TR &amp; ICD-11 (MB23.H lwn 6B01)</strong>, saringan perbezaan kardiopulmonari/endokrin, protokol <strong>CBT &amp; Bergen 4-Day Treatment (B4DT)</strong>, serta hierarki farmakoterapi berdasarkan bukti (<strong>WFSBP v3 2023, NICE CG113, Cochrane NMA 2023</strong>).
+        </p>
+
+        <div class="hero-cta-row">
+          <button type="button" class="btn-sos-primary" data-open-quickhelp="step1" style="padding:10px 18px; font-size:0.9rem;" data-en="🆘 Having a Panic Attack Now?">
+            🆘 Sedang Diserang Panik Sekarang?
+          </button>
+          <a href="#sec-saringan" class="btn-primary" data-en="🩺 13-Symptom &amp; Cardiac Check">🩺 Semak 13 Simptom &amp; Jantung</a>
+          <a href="#sec-cbt" class="btn-secondary" data-en="🧠 CBT Exposure Lab">🧠 Makmal Latihan CBT</a>
+        </div>
+      </div>
+
+      <div class="hero-stats-card">
+        <div class="stat-mini-grid">
+          <div class="stat-box">
+            <div class="stat-num">~13% lwn 1–4%</div>
+            <div class="stat-label" data-en="Adults with a Panic Attack (~13%) vs Panic Disorder (1.1–4.7%)">Pernah alami Panic Attack (~13%) lwn Panic Disorder (1–4%)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">≤ 10 Minit</div>
+            <div class="stat-label" data-en="Time to peak surge; adrenaline naturally subsides in 20–30m">Masa memuncak; gelombang adrenalin surut dalam 20–30 min</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">72% – 90%</div>
+            <div class="stat-label" data-en="Long-term remission in focused CBT / B4DT exposure studies">Kadar remisi jangka panjang terapi pendedahan CBT / B4DT</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">HEAL 15555</div>
+            <div class="stat-label" data-en="KKM National Mental Health Crisis Line (8 AM – 12 AM) • 999 Emergency">Talian Krisis KKM (8 pagi – 12 mlm) • Kecemasan Perubatan: 999</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="mastery-bar-head">
+            <span data-en="Playbook Exploration Progress">Kemajuan Penerokaan Playbook</span>
+            <strong id="masteryProgressPct">13%</strong>
+          </div>
+          <div class="progress-track">
+            <div id="masteryProgressFill" class="progress-fill" style="width:13%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== BAB 1: PANIC ATTACK vs PANIC DISORDER & NEUROBIOLOGI ======== -->
+    <section id="sec-fisiologi" class="section-block">
+      <div class="section-head">
+        <div class="section-num" data-en="Chapter 1 • Clear Definitions &amp; Live Physiology Lab">Bab 1 • Perbezaan Tepat &amp; Makmal Fisiologi Interaktif</div>
+        <h2 data-en="Panic Attack vs. Panic Disorder vs. Agoraphobia — &amp; What Happens Inside Your Body">
+          Beza Serangan Panik, Kecelaruan Panik &amp; Agoraphobia — Serta Apa Berlaku Dalam Badan
+        </h2>
+        <p data-en="Knowing why 'Panic Attack' and 'Panic Disorder' are different removes unnecessary stigma—and seeing the exact biology removes fear of the symptoms themselves.">
+          Memahami perbezaan antara satu episod <em>serangan panik</em> dengan diagnosis <em>kecelaruan panik</em> mengelakkan salah faham, manakala melihat mekanisme biologi sebenar memadamkan rasa gerun terhadap simptom badan.
+        </p>
+      </div>
+
+      <!-- 3-Way Spectrum Cards -->
+      <div id="spectrumCardsGrid" class="three-col" style="margin-bottom:20px;"></div>
+
+      <!-- Interactive Simulators: Wave Curve + Body Hotspot Map -->
+      <div class="two-col">
+        <div class="panel-card">
+          <h3 data-en="📈 Live Simulator: Adrenaline Wave, CO₂ Drop &amp; Clark's Loop">📈 Simulator Langsung: Gelombang Adrenalin, CO₂ &amp; Kitaran Clark</h3>
+          <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Click the 4 physiological states below to watch how over-breathing drops blood CO₂ (causing harmless tingling/dizziness) and how 4-2-6 breathing restores balance:">
+            Klik 4 fasa di bawah untuk melihat bagaimana nafas tercungap menurunkan CO₂ darah (punca kebas/melayang) dan bagaimana nafas 4-2-6 memulihkannya:
+          </p>
+
+          <div class="preset-row">
+            <button type="button" class="chip-btn" data-wave-preset="calm">1. Tenang</button>
+            <button type="button" class="chip-btn" data-wave-preset="caffeineLoop">2. Salah Tafsir Clark</button>
+            <button type="button" class="chip-btn active" data-wave-preset="hyperventilation">3. Kemuncak Panik</button>
+            <button type="button" class="chip-btn" data-wave-preset="vagalRecovery">4. Pulih 4-2-6</button>
+          </div>
+
+          <div class="canvas-frame">
+            <canvas id="panicWaveCanvas" width="560" height="265"></canvas>
+          </div>
+
+          <div class="three-col" style="margin-top:10px; gap:8px;">
+            <div class="stat-box">
+              <small style="color:var(--text-muted);" data-en="Heart Rate">Kadar Nadi</small>
+              <div id="simHrVal" style="font-weight:800; color:var(--accent-amber);">136 bpm</div>
+            </div>
+            <div class="stat-box">
+              <small style="color:var(--text-muted);" data-en="Arterial pCO₂">Paras pCO₂ Darah</small>
+              <div id="simCo2Val" style="font-weight:800; color:var(--accent-cyan);">24 mmHg</div>
+            </div>
+            <div class="stat-box">
+              <small style="color:var(--text-muted);" data-en="Logical Cortex">Brek Korteks</small>
+              <div id="simPfcVal" style="font-weight:800; color:var(--accent-teal);">Penggera Aktif</div>
+            </div>
+          </div>
+
+          <div id="simWaveSummary" class="reasoning-box" style="margin-top:10px;"></div>
+        </div>
+
+        <div class="panel-card">
+          <h3 data-en="🧠 Interactive Body &amp; Brain Fear-Network Explorer">🧠 Peta Interaktif Organ &amp; Rangkaian Saraf Simpatetik</h3>
+          <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Click a glowing organ on the map or select from the list to demystify every scary panic sensation:">
+            Klik titik bercahaya pada rajah badan atau senarai di bawah untuk memahami punca sebenar setiap sensasi menakutkan:
+          </p>
+
+          <div class="canvas-frame" style="margin-bottom:10px;">
+            <canvas id="bodyMapCanvas" width="440" height="310"></canvas>
+          </div>
+
+          <div id="neuroDetailBox" class="reasoning-box" style="margin-bottom:10px;"></div>
+          <div id="neuroHotspotList" class="hotspot-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== BAB 2: SARINGAN 13 SIMPTOM DSM-5-TR & PANIK LWN JANTUNG ======== -->
+    <section id="sec-saringan" class="section-block">
+      <div class="section-head">
+        <div class="section-num" data-en="Chapter 2 • Educational Self-Check &amp; Medical Triage (DSM-5-TR &amp; Emergency Rules)">
+          Bab 2 • Semakan Kendiri Berpandu &amp; Perbezaan Kritikal (DSM-5-TR lwn Serangan Jantung)
+        </div>
+        <h2 data-en="Official 13 DSM-5-TR Symptoms &amp; How Doctors Tell Panic Apart from Cardiac Events">
+          13 Simptom Rasmi DSM-5-TR &amp; Cara Membezakan Panik, Keresahan &amp; Serangan Jantung (ACS)
+        </h2>
+        <p data-en="Important legal &amp; medical note: Only a qualified physician can diagnose Panic Disorder after ruling out organic mimics (ECG, thyroid, blood glucose). Use this checker to organize your observations for your clinic visit.">
+          <strong>Nota Keselamatan &amp; Perundangan:</strong> Hanya doktor bertauliah boleh mengesahkan diagnosis Kecelaruan Panik selepas menjalankan saringan perubatan (ECG, fungsi tiroid, glukosa darah). Alat ini membantu anda menyusun maklumat untuk dibawa ke klinik.
+        </p>
+      </div>
+
+      <div class="panel-card" style="margin-bottom:18px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
+          <h3 style="margin:0;" data-en="📋 Step 1: Tick Symptoms Experienced During Your Peak Surge (≥4 of 13 Threshold)">
+            📋 Langkah 1: Tandakan Simptom Semasa Kemuncak Serangan (Ambang ≥4 Daripada 13)
+          </h3>
+          <span id="dsmCountBadge" class="pill-badge pill-safe">4 / 13 Simptom</span>
+        </div>
+
+        <div class="progress-track" style="margin-bottom:14px;">
+          <div id="dsmProgressBar" class="progress-fill" style="width:31%;"></div>
+        </div>
+
+        <div id="dsmSymptomsGrid" class="symptom-grid" style="margin-bottom:14px;"></div>
+
+        <p style="font-size:0.79rem; color:var(--text-muted); margin:0 0 12px;" data-en="*Culture-specific symptoms (e.g., ringing ears/tinnitus, neck soreness, headache, uncontrollable crying) may also occur, and ~25–33% of patients experience nocturnal panic attacks waking from non-REM sleep.">
+          *Simptom khusus budaya (seperti telinga berdesing, sakit tengkuk, sakit kepala, menangis tidak terkawal) boleh berlaku tetapi tidak dikira dalam 4 simptom wajib. Sekitar 25%–33% pesakit juga pernah terjaga daripada tidur malam dalam keadaan berdebar (<em>nocturnal panic attack</em>).
+        </p>
+
+        <h4 style="margin:0 0 8px; font-size:0.92rem;" data-en="📋 Step 2: Timeline &amp; Medical Exclusion Check (Criteria A, B &amp; C)">
+          📋 Langkah 2: Semak Tempoh Masa &amp; Saringan Perubatan (Kriteria A, B &amp; C)
+        </h4>
+        <div class="three-col" style="margin-bottom:14px;">
+          <label class="check-tile">
+            <input type="checkbox" id="dsmUnexpectedCb" />
+            <span data-en="&lt;strong&gt;Recurrent &amp; Unexpected:&lt;/strong&gt; Happened more than once 'out of the blue' without an obvious trigger"><strong>Berulang &amp; Mengejut:</strong> Berlaku lebih daripada sekali secara tiba-tiba tanpa punca jelas</span>
+          </label>
+          <label class="check-tile">
+            <input type="checkbox" id="dsmOneMonthCb" />
+            <span data-en="&lt;strong&gt;≥ 1 Month Impact:&lt;/strong&gt; Followed by ≥1 month of fear of future attacks or avoiding places/exercise"><strong>Kesan ≥ 1 Bulan:</strong> Diikuti sebulan kebimbangan takut diserang lagi atau mula mengelak tempat/senaman</span>
+          </label>
+          <label class="check-tile">
+            <input type="checkbox" id="dsmOrganicCb" />
+            <span data-en="&lt;strong&gt;Medical Check Needed:&lt;/strong&gt; First onset after age 45, true fainting/blackout, thyroid/heart risk, or heavy stimulants"><strong>Perlu Saringan Doktor Segera:</strong> Kali pertama selepas umur 45 tahun, pitam sebenar, atau risiko jantung/tiroid</span>
+          </label>
+        </div>
+
+        <div id="dsmTriageVerdict" class="alert-banner"></div>
+      </div>
+
+      <!-- Differential Comparison Table: Panic vs Anxiety vs Heart Attack (ACS) -->
+      <div class="panel-card">
+        <h3 data-en="⚖️ Clinical Comparison Matrix: Panic Attack vs. Generalised Anxiety vs. Heart Attack (ACS)">
+          ⚖️ Jadual Perbandingan Klinikal: Serangan Panik lwn Keresahan (Anxiety) lwn Serangan Jantung (ACS)
+        </h3>
+        <div class="table-wrap" style="margin-top:10px;">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th data-en="Clinical Feature">Ciri Klinikal</th>
+                <th data-en="⚡ Panic Attack">⚡ Serangan Panik</th>
+                <th data-en="💭 Anxiety (Keresahan)">💭 Keresahan Biasa</th>
+                <th data-en="🚨 Heart Attack (ACS — Call 999)">🚨 Serangan Jantung (ACS — 999)</th>
+              </tr>
+            </thead>
+            <tbody id="diffMatrixBody"></tbody>
+          </table>
+        </div>
+        <div class="alert-banner alert-warn" style="margin-top:12px;">
+          <span data-en="🔬 &lt;strong&gt;Mandatory Medical Rule-Out Tests:&lt;/strong&gt; Before confirming Panic Disorder, doctors screen for organic look-alikes including &lt;strong&gt;cardiac arrhythmias (SVT)&lt;/strong&gt;, &lt;strong&gt;hyperthyroidism&lt;/strong&gt;, &lt;strong&gt;hypoglycemia&lt;/strong&gt;, &lt;strong&gt;acute asthma&lt;/strong&gt;, &lt;strong&gt;inner-ear vestibular disorders&lt;/strong&gt;, and &lt;strong&gt;pheochromocytoma&lt;/strong&gt;.">
+            🔬 <strong>Saringan Wajib Doktor:</strong> Sebelum mengesahkan Kecelaruan Panik, doktor akan menolak penyakit fizikal yang meniru simptom panik seperti <strong>aritmia jantung (SVT)</strong>, <strong>hipertiroidisme</strong>, <strong>hipoglisemia (kurang gula)</strong>, <strong>asma akut</strong>, <strong>masalah telinga dalam (vestibular)</strong>, dan <strong>feokromositoma</strong>.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== BAB 3: KALKULATOR KAFEIN & PERANGKAP SAFETY BEHAVIORS ======== -->
+    <section id="sec-pencetus" class="section-block">
+      <div class="section-head">
+        <div class="section-num" data-en="Chapter 3 • Hidden Triggers, Caffeine Science &amp; Clinical Myth-Busting">
+          Bab 3 • Pencetus Tersembunyi, Sains Kafein &amp; Pembongkaran Mitos Klinikal
+        </div>
+        <h2 data-en="Daily Stimulant Calculator &amp; Why 'Safety Crutches' Keep Panic Alive">
+          Kalkulator Pencetus Kafein Harian &amp; Perangkap 'Safety Behaviors'
+        </h2>
+        <p data-en="Genetics account for up to 40% of vulnerability in first-degree relatives—but everyday chemical triggers and subtle avoidance habits often light the match.">
+          Sejarah keluarga tahap pertama menyumbang sehingga 40% kerentanan biologi—namun bahan perangsang harian dan tabiat keselamatan palsu sering menjadi pencetus utama yang mengekalkan kitaran panik.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <!-- Caffeine Calculator -->
+        <div class="panel-card">
+          <h3 data-en="☕ Caffeine &amp; Stimulant Trigger Calculator (Klevebrant &amp; Frick, 2022)">
+            ☕ Kalkulator Risiko Kafein &amp; Perangsang (Klevebrant &amp; Frick, 2022)
+          </h3>
+          <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Tick what you consumed today. A landmark meta-analysis in &lt;em&gt;General Hospital Psychiatry&lt;/em&gt; confirmed high caffeine doses directly provoke panic attacks in &lt;strong&gt;&gt;51% of panic disorder patients&lt;/strong&gt;:">
+            Tandakan minuman/ubat yang diambil hari ini. Meta-analisis dalam <em>General Hospital Psychiatry</em> mengesahkan dos kafein tinggi mencetuskan serangan panik secara langsung pada <strong>melebihi separuh (&gt;51%) pesakit</strong>:
+          </p>
+
+          <div id="caffeineItemList" class="food-grid" style="margin-bottom:12px;"></div>
+
+          <div class="mastery-bar-head">
+            <span data-en="Estimated Daily Stimulant Load:">Anggaran Beban Kafein / Perangsang Hari Ini:</span>
+            <strong id="caffeineTotalVal" style="color:var(--accent-teal);">205 mg</strong>
+          </div>
+          <div class="progress-track" style="height:10px; margin-bottom:10px;">
+            <div id="caffeineProgressFill" class="progress-fill" style="width:42%;"></div>
+          </div>
+          <div id="caffeineAdviceMsg" class="alert-banner alert-warn"></div>
+        </div>
+
+        <!-- Myths & Safety Behavior Traps -->
+        <div class="panel-card">
+          <h3 data-en="🪤 4 Safety-Behavior Traps &amp; Dangerous Panic Myths">
+            🪤 4 Perangkap 'Safety Behaviors' &amp; Mitos Klinikal
+          </h3>
+          <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Understanding these 4 facts alone saves many people from years of unnecessary emergency visits and fear:">
+            Memahami 4 fakta kritikal ini sahaja sudah mampu menyelamatkan ramai pesakit daripada ketakutan bertahun-tahun:
+          </p>
+          <div id="mythsCardsGrid" style="display:grid; gap:10px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== BAB 4: ENJIN PEMULIHAN CBT & MAKMAL PENDEDAHAN ======== -->
+    <section id="sec-cbt" class="section-block">
+      <div class="section-head">
+        <div class="section-num" data-en="Chapter 4 • Gold-Standard Long-Term Recovery (Panic-Focused CBT &amp; B4DT)">
+          Bab 4 • Rawatan Jangka Panjang Terbaik Berasaskan Bukti (CBT &amp; Latihan Pendedahan)
+        </div>
+        <h2 data-en="Retrain Your Amygdala: Interoceptive Lab &amp; Graded Fear Ladder Builder">
+          Latih Semula Amigdala: Makmal Pendedahan Interoseptif &amp; Tangga Ketakutan
+        </h2>
+        <p data-en="Cognitive Behavioral Therapy (CBT) has the strongest long-term durability because it teaches your brain through lived experience—not just words—that bodily sensations and avoided places are safe.">
+          Terapi Tingkah Laku Kognitif (CBT) terbukti memiliki kesan pemulihan paling kekal selepas tamat rawatan kerana ia melatih otak melalui bukti pengalaman sebenar bahawa sensasi fizikal dan situasi luar adalah selamat.
+        </p>
+      </div>
+
+      <div class="alert-banner alert-warn" style="margin-bottom:18px;">
+        <span data-en="🩺 &lt;strong&gt;Medical Clearance First:&lt;/strong&gt; Interoceptive exercises intentionally trigger mild physical sensations (heart rate, dizziness). Only practice physical provocation exercises after a doctor has cleared cardiac, asthma, or pregnancy conditions.">
+          🩺 <strong>Saringan Kesihatan Dahulu:</strong> Latihan pendedahan interoseptif mencetuskan sensasi fizikal ringan secara sengaja. Pastikan anda telah mendapat pengesahan doktor jika menghidap penyakit jantung, asma tidak terkawal, atau sedang hamil.
+        </span>
+      </div>
+
+      <div class="two-col" style="margin-bottom:18px;">
+        <!-- Left: Escape vs Stay Curve + CBT Formats -->
+        <div class="panel-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
+            <h3 style="margin:0;" data-en="📉 Why Staying Beats Fleeing">📉 Kenapa Kekal &amp; Hadapi Lebih Mujarab Daripada Lari</h3>
+            <div class="preset-row" style="margin:0;">
+              <button type="button" class="chip-btn active" data-cbt-curve="stay" data-en="✅ Stay &amp; Lean In (CBT)">✅ Kekal &amp; Hadapi (CBT)</button>
+              <button type="button" class="chip-btn" data-cbt-curve="escape" data-en="❌ Flee / Use Crutches">❌ Lari / Guna Tongkat</button>
+            </div>
+          </div>
+
+          <div class="canvas-frame" style="margin-bottom:12px;">
+            <canvas id="cbtCurveCanvas" width="520" height="225"></canvas>
+          </div>
+
+          <h4 style="margin:0 0 8px; font-size:0.92rem;" data-en="📚 Evidence Across CBT Formats (Papola et al. 2023 &amp; B4DT 2025)">
+            📚 Bukti Format Penyampaian CBT (Papola et al. 2023 &amp; B4DT 2025)
+          </h4>
+          <div id="cbtFormatsGrid" style="display:grid; gap:8px;"></div>
+        </div>
+
+        <!-- Right: Interactive Interoceptive Timer + Fear Ladder -->
+        <div class="panel-card">
+          <h3 data-en="⏱️ Interactive Interoceptive Exposure Lab">⏱️ Makmal Latihan Pendedahan Interoseptif</h3>
+          <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Choose a safe exercise to teach your brain that bodily sensations fade naturally without catastrophe:">
+            Pilih satu latihan terkawal untuk membuktikan kepada otak bahawa sensasi badan hilang sendiri tanpa bencana:
+          </p>
+
+          <div id="interoPresetButtons" class="preset-row"></div>
+          <div id="interoActiveDetail" class="reasoning-box" style="margin-bottom:16px;"></div>
+
+          <h3 data-en="🪜 Build Your Personal Graded Fear Ladder (SUDS 0–100)">🪜 Bina Tangga Ketakutan Berperingkat Anda (SUDS 0–100)</h3>
+          <div class="two-col" style="gap:8px; margin-bottom:8px;">
+            <input
+              type="text"
+              id="ladderTaskInput"
+              class="form-input"
+              placeholder="Situasi dielak (cth: Memandu 5km sendiri)"
+              data-en-placeholder="Avoided task (e.g., Drive 5km solo)"
+            />
+            <input
+              type="text"
+              id="ladderSafetyInput"
+              class="form-input"
+              placeholder="Tongkat dibuang (cth: Tanpa semak nadi)"
+              data-en-placeholder="Safety crutch to drop (e.g., No pulse check)"
+            />
+          </div>
+          <div style="display:flex; gap:8px; align-items:center; margin-bottom:12px;">
+            <input type="number" id="ladderSudsInput" class="form-input" min="5" max="100" value="60" style="width:95px;" title="SUDS 0-100" />
+            <button type="button" id="addLadderStepBtn" class="btn-primary" style="flex:1;" data-en="➕ Add Step to Ladder">
+              ➕ Tambah Ke Tangga Latihan
+            </button>
+          </div>
+
+          <div class="table-wrap">
+            <table class="clinical-table">
+              <thead>
+                <tr>
+                  <th data-en="Exposure Step &amp; Dropped Crutch">Langkah Latihan &amp; Tongkat Dibuang</th>
+                  <th>SUDS</th>
+                  <th data-en="Outcome">Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="ladderTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== BAB 5: FARMAKOTERAPI & POPULASI KHAS ======== -->
+    <section id="sec-ubat" class="section-block">
+      <div class="section-head">
+        <div class="section-num" data-en="Chapter 5 • Stepped Pharmacotherapy &amp; Special Populations (WFSBP 2023 • NICE CG113 • Cochrane 2023)">
+          Bab 5 • Panduan Ubat Berperingkat &amp; Populasi Khas (WFSBP 2023 • NICE CG113 • Cochrane 2023)
+        </div>
+        <h2 data-en="Medication Decision Navigator, Benzodiazepine Guardrails &amp; Emerging Science">
+          Peta Keputusan Ubat-Ubatan, Prinsip Benzodiazepin &amp; Inovasi Terkini
+        </h2>
+        <p data-en="All prescribing decisions belong strictly between you and a licensed physician. Understanding how medications work prevents fear of early side effects and dangerous abrupt stopping.">
+          Semua preskripsi ubat hanya boleh ditentukan oleh doktor bertauliah. Memahami cara ubat berfungsi membantu mengelakkan panik terhadap kesan awal sementara atau bahaya berhenti ubat secara mengejut.
+        </p>
+      </div>
+
+      <div class="two-col" style="margin-bottom:18px;">
+        <div class="panel-card">
+          <h3 data-en="🧭 Select a Clinical Profile to Inspect Guideline Pathway:">🧭 Pilih Profil Klinikal Untuk Melihat Laluan Garis Panduan:</h3>
+          <div id="pharmScenarioBtns" class="hotspot-list"></div>
+        </div>
+        <div id="pharmScenarioDetail" class="panel-card"></div>
+      </div>
+
+      <div class="panel-card" style="margin-bottom:18px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
+          <h3 style="margin:0;" data-en="💊 Evidence-Based Medication Comparison Matrix">💊 Matriks Perbandingan Kelas Ubat Berasaskan Bukti</h3>
+          <div class="preset-row" style="margin:0;">
+            <button type="button" class="chip-btn active" data-pharm-filter="all" data-en="All Tiers">Semua Barisan</button>
+            <button type="button" class="chip-btn" data-pharm-filter="First-line" data-en="First-Line">Barisan Pertama</button>
+            <button type="button" class="chip-btn" data-pharm-filter="Bridge" data-en="Short Bridge">Jambatan Singkat</button>
+            <button type="button" class="chip-btn" data-pharm-filter="Discouraged" data-en="Not Recommended / Emerging">Tidak Disyorkan / Inovasi</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="clinical-table">
+            <thead>
+              <tr>
+                <th data-en="Guideline Tier">Tahap</th>
+                <th data-en="Medication Class &amp; Compounds">Kelas &amp; Contoh Ubat</th>
+                <th data-en="Clinical Trial Evidence">Bukti Kajian Klinikal</th>
+                <th data-en="Practical &amp; Safety Notes">Nota Keselamatan &amp; Amalan</th>
+              </tr>
+            </thead>
+            <tbody id="pharmMatrixBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Special Populations -->
+      <div class="three-col">
+        <div class="panel-card">
+          <span class="pill-badge pill-info" data-en="Pediatric &amp; Youth">Kanak-Kanak &amp; Remaja</span>
+          <h3 style="margin-top:8px;" data-en="Children &amp; Adolescents">Kanak-Kanak &amp; Remaja</h3>
+          <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);" data-en="Youth often show dramatic crying, screaming, or hyperventilation without adult meta-cognitive words like 'fear of going crazy'—expressing panic instead as &lt;strong&gt;school refusal or clinging&lt;/strong&gt;. First-line care combines adapted CBT and SSRIs.">
+            Kanak-kanak jarang mampu meluahkan ayat abstrak seperti "takut jadi gila", sebaliknya menunjukkan tangisan kuat, menjerit, atau <strong>enggan ke sekolah dan berpaut pada ibu bapa</strong>. Rawatan utama ialah gabungan CBT mesra usia dan SSRI.
+          </p>
+        </div>
+        <div class="panel-card">
+          <span class="pill-badge pill-warn" data-en="Older Adults (&gt;65 yrs)">Warga Emas (&gt;65 Tahun)</span>
+          <h3 style="margin-top:8px;" data-en="Geriatric Care &amp; Fall Safety">Warga Emas &amp; Risiko Jatuh</h3>
+          <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);" data-en="New panic after age 45–65 warrants thorough medical workup first. Avoid TCAs (cardiac/confusion risk) and chronic benzodiazepines (falls, delirium, cognitive decline). Prefer Sertraline/Escitalopram + paced CBT.">
+            Serangan baharu pada usia emas wajib disaring punca perubatan dahulu. Elakkan ubat TCA (risiko kekeliruan/jantung) dan benzodiazepin berpanjangan (risiko jatuh &amp; gangguan ingatan). Utamakan Sertraline/Escitalopram dan CBT.
+          </p>
+        </div>
+        <div class="panel-card">
+          <span class="pill-badge pill-safe" data-en="Work &amp; Driving">Kerjaya &amp; Pemanduan</span>
+          <h3 style="margin-top:8px;" data-en="Restoring Work &amp; Daily Freedom">Pemulihan Kerja &amp; Kebebasan</h3>
+          <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);" data-en="Up to 60% of societal burden comes from workplace absenteeism and fleeing meetings/commutes. Both panic-focused CBT and PFPP (19–24 sessions, SMD −0.61) significantly restore work ability and driving confidence.">
+            Sehingga 60% beban sosial datang daripada gangguan kerja dan ketakutan memandu/mesyuarat. Terapi CBT mahupun Psikodinamik Berfokus Panik (PFPP, SMD −0.61) terbukti memulihkan keyakinan kerjaya dan mobiliti harian.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== BAB 6: 3 ANALOGI VISUAL MUDAH FAHAM ======== -->
+    <section id="sec-analogi" class="section-block">
+      <div class="section-head">
+        <div class="section-num" data-en="Chapter 6 • Friendly Visual Analogies (For Patients, Families &amp; Educators)">
+          Bab 6 • Sudut Analogi Mudah Hadam (Untuk Diri Sendiri, Keluarga &amp; Edukator)
+        </div>
+        <h2 data-en="3 Everyday Metaphors That Explain Panic in 15 Seconds">
+          3 Analogi Harian Supaya Sesiapa Pun Faham Dalam 15 Saat
+        </h2>
+        <p data-en="Share these three analogies with loved ones so they understand what you feel without judgment.">
+          Kongsikan tiga analogi ringkas ini bersama pasangan, ibu bapa, atau rakan supaya mereka memahami keadaan anda dengan penuh empati.
+        </p>
+      </div>
+      <div id="analogiesGrid" class="three-col"></div>
+    </section>
+
+    <!-- ======== BAB 7: KUIZ 5 SENARIO & RUJUKAN SAHIH / KKM ======== -->
+    <section id="sec-kuiz" class="section-block">
+      <div class="section-head" style="display:flex; justify-content:space-between; align-items:flex-end; gap:14px; flex-wrap:wrap;">
+        <div>
+          <div class="section-num" data-en="Chapter 7 • Interactive Knowledge Check &amp; Trusted Helplines">
+            Bab 7 • Uji Kefahaman Interaktif &amp; Saluran Rujukan Rasmi Sahih
+          </div>
+          <h2 data-en="5 Real-World Panic &amp; Triage Scenarios">
+            Kuiz Interaktif: 5 Situasi Sebenar Serangan Panik &amp; Saringan Kecemasan
+          </h2>
+          <p data-en="Test your ability to spot cardiac red flags, physiological facts, safe bystander first-aid, and recovery principles.">
+            Uji kefahaman anda membezakan fakta fisiologi, tanda merah jantung (999), cara membantu orang lain, dan prinsip pemulihan CBT/SSRI.
+          </p>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+          <span id="quizScoreDisplay" class="pill-badge pill-info" style="font-size:0.85rem; padding:7px 14px;">
+            Skor Kefahaman: 0 / 5
+          </span>
+          <button type="button" id="quizResetBtn" class="btn-secondary" data-en="🔄 Reset Quiz">🔄 Cuba Semula Kuiz</button>
+        </div>
+      </div>
+
+      <div id="clinicalQuizContainer" class="quiz-grid" style="margin-bottom:24px;"></div>
+
+      <!-- Trusted Channels & Official Reference Library -->
+      <h3 style="margin:0 0 12px;" data-en="🏛️ Official Malaysian Helplines &amp; Peer-Reviewed Global Reference Library">
+        🏛️ Saluran Klinikal Rasmi Malaysia (KKM) &amp; Senarai Rujukan Perubatan Sahih Dunia
+      </h3>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <span class="pill-badge pill-danger" data-en="Official Malaysia / KKM">Saluran Rasmi KKM Malaysia</span>
+          <p style="margin:8px 0 0;" data-en="&lt;strong&gt;Emergency:&lt;/strong&gt; &lt;strong&gt;999&lt;/strong&gt; (Hospital Emergency Dept)&lt;br/&gt;&lt;strong&gt;NCEMH KKM Crisis Line:&lt;/strong&gt; &lt;strong&gt;Talian HEAL 15555&lt;/strong&gt; (8:00 AM – 12:00 AM daily)&lt;br/&gt;&lt;strong&gt;Community Care:&lt;/strong&gt; Klinik Kesihatan, &lt;strong&gt;MENTARI KKM&lt;/strong&gt;, MyHEALTH, InfoSihat, &lt;strong&gt;Malaysian Psychiatric Association (MPA)&lt;/strong&gt; &amp; MMHA.">
+            <strong>Kecemasan Perubatan:</strong> <strong>999</strong><br/>
+            <strong>NCEMH KKM:</strong> <strong>Talian Krisis HEAL 15555</strong> (Setiap hari 8:00 pagi – 12:00 tengah malam)<br/>
+            <strong>Rawatan Komuniti &amp; Pakar:</strong> Klinik Kesihatan KKM, rangkaian <strong>MENTARI</strong>, Portal MyHEALTH / InfoSihat, <strong>MPA</strong> &amp; <strong>MMHA</strong>.
+          </p>
+        </div>
+        <div class="ref-card">
+          <span class="pill-badge pill-info" data-en="Diagnostic Manuals">Manual Diagnostik Dunia</span>
+          <p style="margin:8px 0 0;" data-en="&lt;strong&gt;DSM-5-TR (APA, 2022):&lt;/strong&gt; Official 13-symptom Panic Attack Specifier (&ge;4 symptoms) &amp; Panic Disorder criteria.&lt;br/&gt;&lt;strong&gt;WHO ICD-11 CDDR (2022–2024):&lt;/strong&gt; Panic Attack (<code>MB23.H</code>) &amp; Panic Disorder (<code>6B01</code>).">
+            <strong>DSM-5-TR (APA, 2022):</strong> Kriteria rasmi <em>Panic Attack Specifier</em> (&ge;4 daripada 13 simptom) &amp; <em>Panic Disorder</em>.<br/>
+            <strong>WHO ICD-11 CDDR (2022–2024):</strong> Kod rasmi serangan panik (<code>MB23.H</code>) &amp; kecelaruan panik (<code>6B01</code>).
+          </p>
+        </div>
+        <div class="ref-card">
+          <span class="pill-badge pill-safe" data-en="Clinical Practice Guidelines">Garis Panduan Amalan Klinikal</span>
+          <p style="margin:8px 0 0;" data-en="&lt;strong&gt;WFSBP Guidelines v3 (Bandelow et al., 2023)&lt;/strong&gt; • &lt;strong&gt;NICE CG113 (UK, updated 2020)&lt;/strong&gt; stepped care &amp; benzodiazepine limits • &lt;strong&gt;CANMAT (Katzman et al.)&lt;/strong&gt;, &lt;strong&gt;APA / NIMH&lt;/strong&gt; &amp; &lt;strong&gt;RANZCP&lt;/strong&gt;.">
+            <strong>WFSBP Versi 3 (Bandelow et al., 2023)</strong> • <strong>NICE CG113 (UK, 2020)</strong> model rawatan berperingkat &amp; had benzodiazepin • <strong>CANMAT</strong>, <strong>APA / NIMH</strong> &amp; <strong>RANZCP</strong>.
+          </p>
+        </div>
+        <div class="ref-card">
+          <span class="pill-badge pill-warn" data-en="Latest Meta-Analyses (2022–2026)">Meta-Analisis Terkini (2022–2026)</span>
+          <p style="margin:8px 0 0;" data-en="&lt;strong&gt;BMJ State of the Art Review (2026;392:e083441)&lt;/strong&gt; • &lt;strong&gt;Cochrane NMA (Guaiana et al., Nov 2023; 70 RCTs, n=12,703)&lt;/strong&gt; • &lt;strong&gt;Papola et al. (2022/2023)&lt;/strong&gt; CBT NMA • &lt;strong&gt;Eide et al. (2025)&lt;/strong&gt; B4DT • &lt;strong&gt;Klevebrant &amp; Frick (2022)&lt;/strong&gt; Caffeine.">
+            <strong>BMJ Review (Mac 2026;392:e083441)</strong> • <strong>Cochrane NMA (Guaiana et al., 2023; 70 RCT)</strong> • <strong>Papola et al. (2022/2023)</strong> CBT • <strong>Eide et al. (2025)</strong> B4DT • <strong>Klevebrant &amp; Frick (2022)</strong> Kafein.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p data-en="&lt;strong&gt;PanicLab — Resourceful, Interactive &amp; Medically Audited Playbook on Panic Attacks &amp; Panic Disorder&lt;/strong&gt;&lt;br/&gt;&lt;strong&gt;Legal &amp; Medical Disclaimer:&lt;/strong&gt; This interactive playbook provides evidence-based health education, acute grounding support, and clinic visit preparation. It does &lt;strong&gt;not&lt;/strong&gt; provide a medical diagnosis, replace an ECG/blood workup, or prescribe medication. Always consult a registered medical practitioner, or call &lt;strong&gt;999&lt;/strong&gt; immediately for any medical red flags.">
+        <strong>PanicLab — Playbook Pintar, Visual &amp; Sahih Mengenai Serangan Panik &amp; Kecelaruan Panik</strong><br />
+        <strong>Penafian Perundangan &amp; Perubatan:</strong> Aplikasi ini disediakan khusus untuk tujuan pendidikan kesihatan awam, sokongan penenang kendiri, dan persediaan temu janji klinik. Ia <strong>bukan</strong> alat diagnosis rasmi, tidak menggantikan pemeriksaan fizikal/ECG doktor, dan bukan preskripsi perubatan. Dapatkan pemeriksaan doktor bertauliah atau hubungi <strong>999</strong> segera jika terdapat sebarang tanda bahaya kecemasan.
+      </p>
+    </footer>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/simulators.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

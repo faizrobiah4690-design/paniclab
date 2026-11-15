@@ -1,0 +1,14 @@
+# Local reference PDFs and earlier draft HTML
+*.pdf
+Interactive_Panic_Disorder_Clinical___Educational_Playbook.html
+
+# Dependencies & build artifacts
+node_modules/
+.wrangler/
+dist/
+
+# Environment & OS files
+.env
+.env.*
+.DS_Store
+Thumbs.db
