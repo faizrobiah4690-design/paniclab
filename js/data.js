@@ -44,7 +44,7 @@ window.PANIC_DATA_BY_LANG = {
         family:
           "👨‍👩‍👧 <strong>Cara Bantu Guna Kad 60s:</strong> Semasa serangan, tunjukkan skrip 60s mereka di telefon dan bacakan perlahan maksimum <strong>2 kali</strong>. Jangan soal punca stres ketika nadi masih laju—tunggu 30 minit selepas reda.",
         clinical:
-          "🩺 <strong>Model Kognitif Clark (1986) &amp; Barlow-Craske:</strong> Pisahkan intervensi fasa akut (<em>Hot Cognition</em>: skrip eksternalisasi dengan had bacaan 2x bagi mengelak ia bertukar menjadi <em>safety behavior</em>) daripada penstrukturan semula Sokratik pasca-serangan (<em>Cold Cognition</em>, sasaran keyakinan &lt;15%)."
+          "🩺 <strong>Model Kognitif Clark (1986) &amp; Barlow-Craske:</strong> Pisahkan intervensi fasa akut (<em>Hot Cognition</em>: skrip fakta siap tulis <em>Coping Card</em> dengan had bacaan 2x bagi mengelak ia bertukar menjadi <em>Safety Behavior</em>) daripada semakan bukti pasca-serangan (<em>Cold Cognition</em>, sasaran keyakinan &lt;15%)."
       },
       ch5: {
         layman:
@@ -210,125 +210,125 @@ window.PANIC_DATA_BY_LANG = {
           "Korteks logik (vmPFC) mengawal amigdala dengan tenang. Pernafasan perut sekata mengekalkan paras CO₂ darah dan pH otak pada tahap optimum."
       },
       caffeineLoop: {
-        label: "2. Kitaran Salah Tafsir Clark (Kopi / Stres)",
+        label: "2. Salah Tafsir Simptom (Kopi / Stres)",
         hr: "118 bpm",
         co2: "31 mmHg (Menurun)",
-        pfc: "Tersekat Cemas",
+        pfc: "Mula Panik",
         adrenaline: 78,
         co2Level: 48,
         summary:
-          "Degupan laju biasa (cth. selepas 2 cawan kopi kuat) ditafsir secara bencana ('Jantung aku nak berhenti!') → Amigdala lepaskan adrenalin → Debaran makin kuat → Mengesahkan ketakutan palsu!"
+          "Degupan laju biasa (cth. selepas 2 cawan kopi kaw) disalah anggap sebagai bahaya ('Jantung aku nak berhenti!') → Otak lepaskan adrenalin → Debaran makin kuat → Rasa takut makin menjadi-jadi!"
       },
       hyperventilation: {
-        label: "3. Kemuncak Serangan & Hiperventilasi",
+        label: "3. Kemuncak Panic Attack & Nafas Laju",
         hr: "136 bpm",
-        co2: "24 mmHg (Hipokapnia)",
-        pfc: "Penggera Maksimum",
+        co2: "24 mmHg (Kurang CO₂)",
+        pfc: "Siren Cemas Aktif",
         adrenaline: 96,
         co2Level: 24,
         summary:
-          "Lonjakan memuncak dalam ~10 minit. Nafas tercungap membuang CO₂ terlalu banyak → alkalosis ringan → kebas jari/bibir & rasa dunia tidak nyata. Walau ngeri, gelombang ini PASTI turun sendiri."
+          "Gelombang memuncak dalam ~10 minit. Nafas tercungap-cungap membuang terlalu banyak gas CO₂ → menyebabkan tangan/bibir kebas & kepala rasa melayang macam mimpi. Walau menakutkan, gelombang ini PASTI turun sendiri."
       },
       vagalRecovery: {
-        label: "4. Pemulihan 'Accept & Float' + Nafas 4-2-6",
+        label: "4. Reda Dengan 'Accept & Float' + Nafas 4-2-6",
         hr: "80 bpm (Menurun)",
         co2: "38 mmHg (Pulih)",
         pfc: "Kembali Tenang",
         adrenaline: 26,
         co2Level: 76,
         summary:
-          "Apabila anda berhenti melawan dan memanjangkan hembusan nafas (6 saat), saraf vagus mengaktifkan brek semula jadi, CO₂ kembali seimbang, dan rasa kebas/pening beransur hilang dalam 15–20 minit."
+          "Apabila anda berhenti melawan dan memanjangkan hembusan nafas (6 saat), saraf penenang badan (saraf vagus) menekan brek semula jadi, gas CO₂ kembali stabil, dan rasa kebas/pening hilang dalam 15–20 minit."
       }
     },
 
     dsmSymptoms: [
-      { id: "s1", group: "cardio", label: "1. Palpitasi, jantung berdebar kencang atau berlumba-lumba" },
+      { id: "s1", group: "cardio", label: "1. Jantung berdebar kencang, laju, atau terasa kuat (palpitations)" },
       { id: "s2", group: "cardio", label: "2. Berpeluh mendadak (peluh sejuk atau panas)" },
-      { id: "s3", group: "cardio", label: "3. Menggeletar atau menggigil pada tangan/badan" },
-      { id: "s4", group: "cardio", label: "4. Sesak nafas atau rasa lemas tidak puas bernafas (air hunger)" },
-      { id: "s5", group: "cardio", label: "5. Rasa tercekik di kerongkong (globus sensation)" },
-      { id: "s6", group: "cardio", label: "6. Sakit atau rasa ketat pada dada" },
-      { id: "s7", group: "neuro", label: "7. Loya, mual, atau perut memulas" },
-      { id: "s8", group: "neuro", label: "8. Pening, kepala ringan melayang, atau rasa nak pitam" },
-      { id: "s9", group: "neuro", label: "9. Seram sejuk (chills) atau gelombang kepanasan (hot flashes)" },
-      { id: "s10", group: "neuro", label: "10. Parestesia (kebas atau semut-semut di jari, kaki, atau bibir)" },
-      { id: "s11", group: "cog", label: "11. Derealisasi (dunia rasa asing/mimpi) atau depersonalisasi" },
-      { id: "s12", group: "cog", label: "12. Takut hilang kawalan atau takut 'menjadi gila'" },
-      { id: "s13", group: "cog", label: "13. Takut mati (yakin nyawa/jantung bakal berhenti ketika itu)" }
+      { id: "s3", group: "cardio", label: "3. Tangan atau badan menggeletar / menggigil" },
+      { id: "s4", group: "cardio", label: "4. Rasa sesak nafas atau tak puas tarik nafas (air hunger)" },
+      { id: "s5", group: "cardio", label: "5. Rasa tercekik atau macam ada benda tersangkut di tekak (globus)" },
+      { id: "s6", group: "cardio", label: "6. Sakit mencucuk atau rasa ketat pada dada" },
+      { id: "s7", group: "neuro", label: "7. Rasa loya, mual, atau perut memulas" },
+      { id: "s8", group: "neuro", label: "8. Pening, kepala rasa ringan melayang, atau rasa nak pitam" },
+      { id: "s9", group: "neuro", label: "9. Seram sejuk tiba-tiba atau badan terasa bahang panas (hot flashes)" },
+      { id: "s10", group: "neuro", label: "10. Rasa kebas atau menyucuk semut-semut di jari, kaki, atau bibir" },
+      { id: "s11", group: "cog", label: "11. Sekeliling rasa pelik macam mimpi (derealization) atau rasa terpisah dari diri sendiri" },
+      { id: "s12", group: "cog", label: "12. Takut hilang kawalan diri atau takut 'jadi gila'" },
+      { id: "s13", group: "cog", label: "13. Takut mati (rasa yakin nyawa atau jantung bakal berhenti ketika itu)" }
     ],
 
     diffRows: [
       {
-        feature: "Corak Bermula",
-        panic: "Mengejut tiba-tiba tanpa amaran (termasuk terjaga tidur / nocturnal panic pada 25–33% kes)",
-        anxiety: "Beransur-ansur meningkat mengikut masalah atau stres harian",
-        acs: "Mengejut, sering tercetus semasa aktiviti fizikal/emosi berat atau ketika rehat"
+        feature: "Cara Bermula",
+        panic: "Datang mengejut tiba-tiba tanpa amaran (termasuk terjaga waktu tidur / nocturnal panic)",
+        anxiety: "Meningkat perlahan-lahan mengikut masalah kerja atau stres harian",
+        acs: "Mengejut, lazimnya tercetus semasa aktiviti fizikal berat atau walaupun ketika rehat"
       },
       {
         feature: "Tempoh Kemuncak",
-        panic: "Memuncak pantas dalam ≤10 minit, lazimnya surut dalam 20–30 minit",
-        anxiety: "Berlarutan berjam-jam, berhari-hari, atau berbulan-bulan",
-        acs: "Berterusan dan lazimnya semakin berat dari minit ke minit (>20 minit)"
+        panic: "Memuncak cepat dalam ≤10 minit, dan lazimnya surut dalam 20–30 minit",
+        anxiety: "Boleh berlarutan berjam-jam, berhari-hari, atau berminggu-minggu",
+        acs: "Berterusan dan selalunya makin teruk dari minit ke minit (>20 minit)"
       },
       {
-        feature: "Sifat Sakit Dada",
-        panic: "Tajam mencucuk setempat di dada depan (otot dinding dada tegang)",
-        anxiety: "Rasa senak ringan atau bahu/dada tegang",
-        acs: "Berat menghimpit, menekan atau rasa terbakar di tengah dada (retrosternal)"
+        feature: "Jenis Sakit Dada",
+        panic: "Tajam mencucuk di satu titik dada depan (kerana otot dada tegang)",
+        anxiety: "Rasa senak ringan atau bahu/dada rasa tegang",
+        acs: "Berat menghimpit, menekan seperti ditindih batu, atau pedih terbakar di tengah dada"
       },
       {
         feature: "Sebaran Sakit",
-        panic: "Kekal sekitar dada depan; disertai kebas kedua-dua belah jari/bibir",
-        anxiety: "Tiada sebaran khusus (sering sakit tengkuk/kepala tegang)",
+        panic: "Kekal di dada depan; kerap disertai kebas pada kedua-dua belah tangan/bibir",
+        anxiety: "Tiada sebaran khusus (selalu rasa lenguh tengkuk atau sakit kepala tegang)",
         acs: "Menjalar ke lengan kiri, bahu, leher, rahang, atau belakang badan"
       },
       {
-        feature: "Kesan Nafas Perlahan",
-        panic: "Beransur reda dalam 15–20 minit bila nafas diperlahankan",
-        anxiety: "Reda sementara bila punca stres selesai atau perhatian dialih",
-        acs: "TIDAK hilang walaupun berehat atau mengawal pernafasan — hubungi 999 segera!"
+        feature: "Bila Cuba Nafas Perlahan",
+        panic: "Beransur lega dalam 15–20 minit apabila hembusan nafas diperlahankan",
+        anxiety: "Lega sekejap apabila punca stres selesai atau fikiran dialihkan",
+        acs: "TIDAK hilang walaupun berehat atau bernafas perlahan — hubungi 999 segera!"
       }
     ],
 
     caffeineItems: [
       { id: "kopi_kaw", name: "Kopi O Kaw / Americano Besar", mg: 150 },
-      { id: "espresso", name: "1 Shot Espresso / Kopi Susu Tin", mg: 85 },
+      { id: "espresso", name: "1 Shot Espresso / Kopi Tin", mg: 85 },
       { id: "teh_tarik", name: "Teh Tarik / Teh Hitam Pekat", mg: 55 },
       { id: "matcha", name: "Matcha Latte / Teh Hijau", mg: 65 },
       { id: "energy", name: "Minuman Tenaga (Energy Drink)", mg: 160 },
-      { id: "preworkout", name: "Serbuk Pre-Workout Sukan", mg: 250 },
-      { id: "cola", name: "Minuman Berkarbonat Kola (330ml)", mg: 35 },
-      { id: "cold_med", name: "Ubat Selesema Dekongestan (Pseudoephedrine)*", mg: 120 }
+      { id: "preworkout", name: "Serbuk Pre-Workout Gym", mg: 250 },
+      { id: "cola", name: "Minuman Gas Kola (1 Tin)", mg: 35 },
+      { id: "cold_med", name: "Ubat Selesema Hidung Tersumbat (Pseudoephedrine — kesan perangsang)", mg: 120 }
     ],
 
     mythsAndTraps: [
       {
-        badge: "Perangkap #1 • Jam Pintar",
+        badge: "Perangkap #1 • Smartwatch",
         badgeClass: "pill-warn",
-        title: "Tabiat Semak Nadi Setiap Jam (Safety Behavior)",
-        myth: "Mitos: 'Kalau saya pantau ECG/nadi di jam pintar setiap masa, saya lebih tenang.'",
-        truth: "Fakta Klinikal: Mengintip nadi secara obsesif melatih amigdala bahawa degupan jantung adalah berbahaya dan menghalang otak belajar bahawa anda selamat tanpa 'tongkat' tersebut."
+        title: "Asyik Check Nadi di Smartwatch (Safety Behavior)",
+        myth: "Salah Anggap: 'Kalau saya check nadi di jam pintar setiap 10 minit, saya akan rasa lebih selamat.'",
+        truth: "Fakta Sebenar: Tabiat 'pelindung palsu' (Safety Behavior) ini sebenarnya melatih otak bahawa degupan jantung itu berbahaya, lalu membuat anda makin cemas setiap kali nadi naik sedikit."
       },
       {
-        badge: "Bahaya Fizikal • Jangan Buat!",
+        badge: "Bahaya • Jangan Buat!",
         badgeClass: "pill-danger",
         title: "Mitos Bernafas Dalam Beg Kertas",
-        myth: "Mitos Filem: 'Suruh orang tengah panik bernafas dalam beg kertas.'",
-        truth: "Fakta Perubatan: ELAKKAN beg kertas! Ia menurunkan oksigen secara berbahaya jika simptom mangsa sebenarnya berpunca daripada serangan asma akut atau masalah jantung (ACS). Gunakan kiraan nafas 4-2-6."
+        myth: "Mitos TV/Filem: 'Suruh orang tengah panik bernafas dalam beg kertas.'",
+        truth: "Fakta Perubatan: JANGAN guna beg kertas! Jika punca sebenar sesak nafas itu ialah serangan asma atau jantung, udara kurang oksigen dalam beg kertas amat membahayakan nyawa. Guna nafas 4-2-6."
       },
       {
         badge: "Mitos Pengsan",
         badgeClass: "pill-safe",
-        title: "'Saya Rasa Pening, Kejap Lagi Pasti Pitam!'",
-        myth: "Mitos: 'Kepala rasa melayang bermaksud saya nak pengsan di khalayak ramai.'",
-        truth: "Fakta Fisiologi: Pengsan sebenar berlaku apabila tekanan darah JATUH mendadak. Semasa serangan panik, adrenalin MENAIKKAN tekanan darah—menjadikan pengsan hampir mustahil (kecuali fobia jarum/darah)."
+        title: "'Kepala Rasa Melayang, Kejap Lagi Mesti Pitam!'",
+        myth: "Salah Anggap: 'Rasa pening melayang bermaksud saya nak rebah pengsan di depan orang ramai.'",
+        truth: "Fakta Badan: Orang pengsan apabila tekanan darah JATUH mendadak. Sebaliknya semasa Panic Attack, adrenalin MENAIKKAN tekanan darah sedikit—jadi anda hampir mustahil pengsan (kecuali fobia jarum/darah)."
       },
       {
-        badge: "Mitos Hilang Akal",
+        badge: "Mitos Jadi Gila",
         badgeClass: "pill-info",
-        title: "'Dunia Rasa Asing, Adakah Saya Sedang Jadi Gila?'",
-        myth: "Mitos: 'Rasa terpisah dari badan (derealization) akan bertukar jadi skizofrenia.'",
-        truth: "Fakta Psikiatri: Derealisasi ialah refleks perlindungan saraf sementara akibat lonjakan adrenalin dan kurang CO₂. Serangan panik TIDAK PERNAH bertukar menjadi psikosis atau skizofrenia."
+        title: "'Sekeliling Rasa Pelik Macam Mimpi, Aku Nak Gila Ke?'",
+        myth: "Salah Anggap: 'Rasa dunia tak nyata (derealization) akan bertukar jadi sakit mental teruk / skizofrenia.'",
+        truth: "Fakta Pakar Psikiatri: Rasa 'blur' atau macam mimpi itu hanyalah reaksi sementara otak bila adrenalin tinggi dan kurang CO₂. Panic Attack TIDAK PERNAH bertukar menjadi gila atau skizofrenia."
       }
     ],
 
@@ -346,13 +346,13 @@ window.PANIC_DATA_BY_LANG = {
       },
       {
         id: "hypervent",
-        title: "2. Hiperventilasi Sengaja (30 Nafas/Min)",
+        title: "2. Nafas Laju Terkawal (30 Nafas/Min)",
         method: "Tarik & hembus nafas dalam dan laju (~1 nafas setiap 2 saat)",
         duration: 60,
-        sensation: "Pening, kebas jari/bibir, derealisasi",
+        sensation: "Pening, kebas jari/bibir, rasa macam mimpi",
         contra: "Pantang Larang: Epilepsi, sedang hamil, asma",
         hypothesis: "Jika jari kebas dan kepala ringan, saya akan kena strok atau hilang akal (Keyakinan 80%)",
-        disconfirms: "Membuktikan kebas & rasa asing hanyalah kesan sementara perubahan CO₂ yang surut sendiri.",
+        disconfirms: "Membuktikan kebas & rasa pelik hanyalah kesan sementara kurang gas CO₂ yang surut sendiri.",
         sudsDefault: 75
       },
       {
@@ -412,13 +412,13 @@ window.PANIC_DATA_BY_LANG = {
       },
       {
         id: "stare",
-        title: "8. Renung Mata Di Cermin / Titik Dinding",
+        title: "8. Tenung Cermin / Titik Dinding",
         method: "Tenung mata sendiri di cermin tanpa alih fokus",
         duration: 90,
-        sensation: "Depersonalisasi, wajah/dunia terasa asing",
+        sensation: "Rasa pelik macam mimpi (derealization)",
         contra: "Pantang Larang: Tiada (selamat untuk semua)",
-        hypothesis: "Rasa terpisah daripada badan bermaksud saya sedang jadi gila/psikosis (Keyakinan 80%)",
-        disconfirms: "Membuktikan derealisasi hanyalah keletihan fokus visual, tidak pernah jadi gila.",
+        hypothesis: "Rasa terpisah daripada badan bermaksud saya sedang jadi gila (Keyakinan 80%)",
+        disconfirms: "Membuktikan rasa pelik itu cuma mata & fokus penat sementara—bukan tanda gila.",
         sudsDefault: 60
       },
       {
@@ -496,34 +496,53 @@ window.PANIC_DATA_BY_LANG = {
       }
     ],
 
+    defaultLadderSteps: [
+      {
+        id: 1,
+        task: "Naik tangga laju sikit sebelum masuk lif 3 tingkat",
+        safety: "Tanpa genggam telefon / tanpa tengok smartwatch",
+        baseSuds: 45,
+        done: true,
+        postSuds: 15
+      },
+      {
+        id: 2,
+        task: "Beratur di kaunter pasar raya waktu ramai orang",
+        safety: "Tanpa bawa botol air 'penyelamat' & tak tunggu tepi pintu",
+        baseSuds: 70,
+        done: false,
+        postSuds: 30
+      }
+    ],
+
     crClusters: [
       {
         id: "c_heart",
         title: "1. Jantung Laju & Dada Mencucuk",
-        distortion: "Salah Tafsir: 'Salur darah tersumbat, saya kena serangan jantung!'",
-        reality: "Fakta Anatomi: Sakit tajam yang berubah ikut tarikan nafas ialah ketegangan otot rusuk/dinding dada akibat adrenalin pada jantung yang sihat (bukan sakit menghimpit ACS).",
-        socratic: "Soalan Sokratik: 'Apakah bukti perubatan objektif (ECG/darah)—bukan perasaan takut—yang menyokong ramalan ini?'"
+        distortion: "Salah Anggap: 'Salur darah tersumbat, aku kena serangan jantung!'",
+        reality: "Fakta Badan: Sakit tajam yang berubah ikut tarikan nafas ialah otot dada tegang akibat adrenalin (bukan sakit menghimpit serangan jantung).",
+        socratic: "Semak Fakta: 'Apa bukti doktor (ECG/darah)—bukan rasa takut—yang menyokong sangkaan ini?'"
       },
       {
         id: "c_faint",
-        title: "2. Pening & Pandangan Berbalam",
-        distortion: "Salah Tafsir: 'Saya bakal rebah pengsan di khalayak ramai!'",
-        reality: "Fakta Fisiologi: Pengsan memerlukan kejatuhan tekanan darah mendadak, sedangkan serangan panik MENAIKKAN tekanan darah dan menghalang pitam.",
-        socratic: "Soalan Sokratik: 'Berapa kali saya yakin 100% bakal pengsan sebelum ini, dan berapa kali ia benar-benar berlaku?'"
+        title: "2. Pening & Pandangan Kabur",
+        distortion: "Salah Anggap: 'Aku mesti pengsan depan orang ramai kejap lagi!'",
+        reality: "Fakta Badan: Pengsan berlaku bila tekanan darah JATUH mendadak, sedangkan Panic Attack MENAIKKAN tekanan darah dan menghalang kita pitam.",
+        socratic: "Semak Fakta: 'Sudah berapa kali saya yakin 100% nak pengsan sebelum ini, dan berapa kali ia betul-betul terjadi?'"
       },
       {
         id: "c_breath",
-        title: "3. Sesak Nafas & Tekak Ketat (Globus)",
-        distortion: "Salah Tafsir: 'Kerongkong saya bakal tertutup rapat dan saya akan lemas!'",
-        reality: "Fakta Fisiologi: Oksigen darah kekal penuh 98–100%; rasa sempit berpunca daripada pengecutan sementara otot krikofaringeus leher (globus).",
-        socratic: "Soalan Sokratik: 'Apakah punca biologi jinak bagi sensasi ini—adrenalin, otot tegang, atau kurang CO₂ akibat nafas cetek?'"
+        title: "3. Sesak Nafas & Tekak Rasa Sempit",
+        distortion: "Salah Anggap: 'Tekak aku nak tertutup rapat, aku tak boleh bernafas!'",
+        reality: "Fakta Badan: Oksigen darah kekal penuh 98–100%; rasa sempit itu cuma otot leher tegang sementara akibat adrenalin (laluan udara terbuka luas).",
+        socratic: "Semak Fakta: 'Adakah ini bahaya sebenar, atau cuma otot tekak tegang + kurang CO₂ sebab nafas laju?'"
       },
       {
         id: "c_mind",
-        title: "4. Derealisasi & Fikiran Berlumba",
-        distortion: "Salah Tafsir: 'Otak saya bakal putus fius, hilang kawalan atau jadi gila!'",
-        reality: "Fakta Psikiatri: Rasa asing seperti mimpi itu hanyalah refleks perlindungan saraf sementara akibat lonjakan adrenalin—ia TIDAK PERNAH bertukar menjadi psikosis.",
-        socratic: "Soalan Sokratik: 'Jika sahabat baik yang disahkan sihat mengalami simptom tepat seperti ini, apa yang akan saya katakan kepadanya?'"
+        title: "4. Dunia Rasa Pelik & Fikiran Laju",
+        distortion: "Salah Anggap: 'Otak aku nak putus fius, hilang kawalan atau jadi gila!'",
+        reality: "Fakta Pakar: Rasa 'blur' macam mimpi (derealization) ialah cara sementara otak berehat bila adrenalin tinggi—ia TIDAK PERNAH bertukar jadi gila.",
+        socratic: "Semak Fakta: 'Kalau kawan baik saya yang sihat rasa macam ini sekarang, apa ayat tenang saya akan beritahu dia?'"
       }
     ],
 
@@ -590,7 +609,7 @@ window.PANIC_DATA_BY_LANG = {
         stat: "72% – 90% Remisi Jangka Panjang",
         badge: "Inovasi Padat 4 Hari",
         badgeClass: "pill-warn",
-        desc: "Terapi pendedahan intensif 4 hari berturut-turut yang mengajar pesakit 'condong masuk' ke arah ketidakselesaan fizikal tanpa tingkah laku keselamatan."
+        desc: "Terapi pendedahan intensif 4 hari berturut-turut yang melatih pesakit berani menghadap terus rasa tidak selesa badan tanpa 'Safety Behaviors'."
       }
     ],
 
@@ -704,16 +723,16 @@ window.PANIC_DATA_BY_LANG = {
       {
         id: "q1",
         scenario:
-          "1. Aina (26 tahun) sedang beratur membeli makanan apabila jantungnya berdebar kencang, nafas tercungap-cungap, jari dan bibirnya rasa kebas mencucuk, serta dia takut akan pengsan. Apakah punca sebenar rasa kebas dan kepala ringan tersebut?",
+          "1. Aina (26 tahun) sedang beratur membeli makanan apabila jantungnya berdebar kencang, nafas tercungap-cungap, jari dan bibirnya rasa kebas semut-semut, serta dia takut akan pengsan. Apakah punca sebenar rasa kebas dan kepala ringan tersebut?",
         options: [
           "Tanda awal strok ringan (TIA) akibat saluran darah tersumbat",
-          "Nafas terlalu laju membuang terlalu banyak CO₂ (hipokapnia), menyebabkan pengecutan ringan sementara salur darah",
+          "Nafas terlalu laju membuang terlalu banyak gas CO₂, menyebabkan salur darah mengecut sedikit secara sementara",
           "Tekanan darah menjunam rendah secara merbahaya",
           "Kekurangan oksigen teruk di dalam paru-paru"
         ],
         correctIndex: 1,
         explanation:
-          "Tepat! Semasa hiperventilasi, oksigen darah sebenarnya tinggi/normal, tetapi CO₂ terbuang berlebihan (hipokapnia & alkalosis respiratori), mencetuskan kebas jari/bibir dan rasa melayang sementara—bukan strok dan tekanan darah sebenarnya meningkat!"
+          "Tepat! Bila nafas terlalu laju, oksigen darah sebenarnya penuh (98–100%), tetapi gas CO₂ terbuang berlebihan—itulah punca jari/bibir kebas dan kepala rasa melayang sementara. Ia bukan strok, malah tekanan darah sebenarnya naik sedikit!"
       },
       {
         id: "q2",
@@ -741,7 +760,7 @@ window.PANIC_DATA_BY_LANG = {
         ],
         correctIndex: 2,
         explanation:
-          "Betul! Ayat pendek yang tenang, memandu hembusan nafas panjang (4-2-6), dan pek sejuk (Refleks Selaman Mamalia) membantu mengaktifkan saraf vagus dengan selamat. Jangan sesekali guna beg kertas!"
+          "Betul! Ayat pendek yang tenang, memandu hembusan nafas panjang (4-2-6), dan tekap air/pek sejuk di muka (Dive Reflex) membantu memperlahankan nadi secara semula jadi. Jangan sesekali guna beg kertas!"
       },
       {
         id: "q4",
@@ -1287,6 +1306,25 @@ window.PANIC_DATA_BY_LANG = {
         title: "Card 5: Jolting Awake at Night (Nocturnal Panic Attack)",
         script:
           "Waking abruptly with a pounding heart is NOT a midnight heart attack—it is a harmless misfire of adrenaline during a non-REM sleep-stage transition. My heart is strong and built to beat fast safely even while resting. Sit propped up or splash cool water on my face for 20 seconds, DO NOT check my smartwatch pulse or Google symptoms, and lie back down once my breathing settles."
+      }
+    ],
+
+    defaultLadderSteps: [
+      {
+        id: 1,
+        task: "Walk briskly up stairs right before riding a 3-floor elevator",
+        safety: "No phone clutching / no smartwatch pulse check",
+        baseSuds: 45,
+        done: true,
+        postSuds: 15
+      },
+      {
+        id: 2,
+        task: "Stand in a busy supermarket checkout queue",
+        safety: "No rescue water bottle & no hovering near the exit",
+        baseSuds: 70,
+        done: false,
+        postSuds: 30
       }
     ],
 

@@ -293,6 +293,7 @@
       document.querySelectorAll("[data-qh-pane]").forEach((pane) => {
         pane.hidden = pane.getAttribute("data-qh-pane") !== tabKey;
       });
+      if (tabKey === "step5") generateDoctorNote();
     }
 
     document.querySelectorAll("[data-open-quickhelp]").forEach((btn) => {
@@ -300,6 +301,7 @@
         const targetTab = btn.getAttribute("data-open-quickhelp") || "step1";
         modal.hidden = false;
         openSosTab(targetTab);
+        generateDoctorNote();
         if (targetTab === "step1" && !breathRunning) startBreather();
         if (window.markModuleExplored) window.markModuleExplored("sos");
       });
@@ -314,6 +316,13 @@
 
     modal.addEventListener("click", function (ev) {
       if (ev.target === modal) {
+        modal.hidden = true;
+        stopBreather();
+      }
+    });
+
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape" && !modal.hidden) {
         modal.hidden = true;
         stopBreather();
       }
@@ -442,7 +451,13 @@
       const preview = document.getElementById("docNotePreview");
       if (!preview) return;
 
-      const dsmChecked = Array.from(document.querySelectorAll(".dsm-sym-cb:checked")).length;
+      const checkedEls = Array.from(document.querySelectorAll(".dsm-sym-cb:checked"));
+      const dsmChecked = checkedEls.length;
+      const symNames = window
+        .getPanicData()
+        .dsmSymptoms.filter((s) => selectedDsmIds.has(s.id))
+        .map((s) => "  • " + s.label)
+        .join("\n");
 
       if (isEn()) {
         preview.value = [
@@ -451,13 +466,14 @@
           `1. Episode Frequency: ${freq}`,
           `2. Time-to-Peak & Duration: ${peak}`,
           `3. Trigger Context: ${trig}`,
-          `4. DSM-5-TR Symptoms Checked in Playbook: ${dsmChecked} / 13 symptoms`,
+          `4. Symptoms Checked (${dsmChecked} / 13):`,
+          symNames || "  • None ticked yet",
           `5. 1-Month Worry / Avoidance Impact: ${avoid}`,
           `6. Caffeine, Meds & Medical History: ${meds}`,
           "",
           "Questions for Doctor:",
-          "- Could we check baseline ECG, thyroid (TSH), and fasting glucose to rule out medical mimics?",
-          "- Would Panic-Focused CBT, guided self-help, or a first-line SSRI be appropriate for me?"
+          "- Could we check baseline ECG, thyroid (TSH), and blood sugar to rule out physical look-alikes?",
+          "- Would Panic-Focused CBT or a first-line SSRI be suitable for me?"
         ].join("\n");
       } else {
         preview.value = [
@@ -465,14 +481,15 @@
           `Tarikh Dijana: ${new Date().toLocaleDateString("ms-MY")}`,
           `1. Kekerapan Episod: ${freq}`,
           `2. Masa Memuncak & Tempoh: ${peak}`,
-          `3. Pencetus Situasi: ${trig}`,
-          `4. Bilangan Simptom DSM-5-TR Ditanda: ${dsmChecked} / 13 simptom`,
-          `5. Kesan Kebimbangan ≥1 Bulan / Pengelakan: ${avoid}`,
+          `3. Situasi Pencetus: ${trig}`,
+          `4. Senarai Simptom Ditanda (${dsmChecked} / 13 simptom):`,
+          symNames || "  • Belum ditanda",
+          `5. Kesan Kebimbangan ≥1 Bulan / Mengelak Tempat: ${avoid}`,
           `6. Kafein, Ubat Semasa & Sejarah Kesihatan: ${meds}`,
           "",
           "Soalan Untuk Doktor:",
-          "- Bolehkah kita buat saringan asas (ECG, fungsi tiroid TSH, glukosa darah) untuk menolak punca organik?",
-          "- Adakah rujukan terapi CBT atau rawatan barisan pertama sesuai untuk keadaan saya?"
+          "- Bolehkah kita buat ujian asas (ECG jantung, ujian tiroid TSH, gula darah) untuk pastikan badan sihat?",
+          "- Adakah terapi CBT atau rawatan ubat barisan pertama sesuai untuk keadaan saya?"
         ].join("\n");
       }
     }
@@ -501,7 +518,24 @@
 
     const printBtn = document.getElementById("printDocNoteBtn");
     if (printBtn) {
-      printBtn.addEventListener("click", () => window.print());
+      printBtn.addEventListener("click", function () {
+        generateDoctorNote();
+        const text = document.getElementById("docNotePreview")?.value || "";
+        const win = window.open("", "_blank", "width=760,height=680");
+        if (!win) {
+          window.print();
+          return;
+        }
+        const escaped = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        win.document.write(
+          `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>PanicLab — Nota Doktor</title>
+          <style>body{font-family:Segoe UI,Arial,sans-serif;padding:32px;color:#0f2230;line-height:1.6}pre{white-space:pre-wrap;font-family:inherit;font-size:14px;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:20px}</style>
+          </head><body><h2 style="margin-top:0;">PanicLab — Ringkasan Temu Janji Klinik / MENTARI</h2><pre>${escaped}</pre></body></html>`
+        );
+        win.document.close();
+        win.focus();
+        setTimeout(() => win.print(), 200);
+      });
     }
 
     langCallbacks.push(function () {
@@ -1000,26 +1034,41 @@
       const box = document.getElementById("trSavedHistoryList");
       if (!box) return;
       if (!savedRecords.length) {
-        box.innerHTML = `<small style="color:var(--text-muted);">${isEn() ? "No saved post-attack audits yet. Load the example or save your own audit above." : "Belum ada rekod audit disimpan. Klik 'Muat Contoh Kerja Penuh' atau simpan audit anda di atas."}</small>`;
+        box.innerHTML = `<small style="color:var(--text-muted);">${isEn() ? "No saved post-attack audits yet. Load the example or save your own audit above." : "Belum ada rekod audit disimpan. Klik 'Muat Contoh Kerja Penuh' atau simpan rekod anda di atas."}</small>`;
         return;
       }
       box.innerHTML = savedRecords
         .slice(0, 5)
         .map(
           (r) => `<div class="stat-box" style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
-            <div>
+            <div style="flex:1 1 200px;">
               <strong style="font-size:0.84rem;">${r.loc}</strong><br/>
               <small style="color:var(--text-muted);">${r.catastrophe}</small>
             </div>
-            <span class="pill-badge pill-safe">${r.initBelief}% → ${r.finalBelief}% • SUDS ${r.initSuds}→${r.finalSuds}</span>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <span class="pill-badge pill-safe">${r.initBelief}% → ${r.finalBelief}% • SUDS ${r.initSuds}→${r.finalSuds}</span>
+              <button type="button" class="chip-btn" data-del-tr="${r.id}" title="${isEn() ? "Delete" : "Padam"}">✕</button>
+            </div>
           </div>`
         )
         .join("");
+
+      box.querySelectorAll("[data-del-tr]").forEach((b) => {
+        b.addEventListener("click", function () {
+          const id = Number(b.getAttribute("data-del-tr"));
+          savedRecords = savedRecords.filter((x) => x.id !== id);
+          try {
+            localStorage.setItem("paniclab_thought_records", JSON.stringify(savedRecords));
+          } catch (_) {}
+          renderSavedTrLogs();
+        });
+      });
     }
 
-    document.getElementById("trSaveBtn")?.addEventListener("click", function () {
+    document.getElementById("trSaveBtn")?.addEventListener("click", function (ev) {
+      const btn = ev.currentTarget;
       const loc = document.getElementById("trLoc")?.value.trim() || new Date().toLocaleString();
-      const cat = document.getElementById("trCatastrophe")?.value.trim() || (isEn() ? "Catastrophe disconfirmed" : "Ramalan bencana disangkal");
+      const cat = document.getElementById("trCatastrophe")?.value.trim() || (isEn() ? "Catastrophe disconfirmed" : "Ramalan bencana dipatahkan");
       savedRecords.unshift({
         id: Date.now(),
         loc: loc,
@@ -1033,6 +1082,11 @@
         localStorage.setItem("paniclab_thought_records", JSON.stringify(savedRecords.slice(0, 15)));
       } catch (_) {}
       renderSavedTrLogs();
+      const orig = btn.textContent;
+      btn.textContent = isEn() ? "✅ Saved to History!" : "✅ Rekod Disimpan!";
+      setTimeout(() => {
+        btn.textContent = orig;
+      }, 2000);
       if (window.markModuleExplored) window.markModuleExplored("cr");
     });
 
@@ -1126,8 +1180,8 @@
           <button type="button" class="btn-primary" id="startInteroTimerBtn">
             ${
               interoMode === "trial"
-                ? isEn() ? "⏹️ Stop Trial" : "⏹️ Henti Pusingan"
-                : isEn() ? `▶️ Start ${cur.duration}s Provocation` : `▶️ Mula Provokasi ${cur.duration}s`
+                ? isEn() ? "⏹️ Stop Round" : "⏹️ Henti Pusingan"
+                : isEn() ? `▶️ Start ${cur.duration}s Exercise` : `▶️ Mula Latihan ${cur.duration}s`
             }
           </button>
           <button type="button" class="btn-secondary" id="interoPlus15Btn">
@@ -1187,15 +1241,26 @@
         runCountdown(60, "rest");
       });
 
-      document.getElementById("sendToLadderBtn")?.addEventListener("click", function () {
-        const taskInput = document.getElementById("ladderTaskInput");
-        const safetyInput = document.getElementById("ladderSafetyInput");
-        const sudsInput = document.getElementById("ladderSudsInput");
-        if (taskInput) taskInput.value = cur.title;
-        if (safetyInput) {
-          safetyInput.value = isEn() ? "No 4-2-6 breathing / no pulse check" : "Tanpa nafas 4-2-6 / tanpa jam pintar";
+      document.getElementById("sendToLadderBtn")?.addEventListener("click", function (ev) {
+        const btn = ev.currentTarget;
+        const safetyTxt = isEn() ? "No 4-2-6 breathing / no smartwatch check" : "Tanpa nafas 4-2-6 / tanpa smartwatch";
+        if (!ladderSteps.some((x) => x.task === cur.title)) {
+          ladderSteps.push({
+            id: Date.now(),
+            task: cur.title,
+            safety: safetyTxt,
+            baseSuds: cur.sudsDefault || 60,
+            done: false,
+            postSuds: 20
+          });
+          saveLadder();
+          renderLadder();
         }
-        if (sudsInput) sudsInput.value = cur.sudsDefault;
+        btn.textContent = isEn() ? "✅ Added to Ladder!" : "✅ Ditambah ke Tangga!";
+        setTimeout(() => {
+          btn.textContent = isEn() ? "➕ Add to Ladder" : "➕ Masuk Tangga";
+        }, 1800);
+        if (window.markModuleExplored) window.markModuleExplored("cbt");
       });
 
       if (mistakesEl && d.ieMistakes) {
@@ -1210,31 +1275,35 @@
       }
     }
 
-    // Graded Fear Ladder State
+    // Graded Fear Ladder State (v2 — clean single-language defaults)
     let ladderSteps = JSON.parse(
-      localStorage.getItem("paniclab_ladder") ||
+      localStorage.getItem("paniclab_ladder_v2") ||
         JSON.stringify([
-          { id: 1, task: "Naik tangga laju sebelum masuk lif 3 tingkat / Brisk stairs + elevator", safety: "Tanpa genggam telefon / No phone clutching", baseSuds: 45, done: true, postSuds: 15 },
-          { id: 2, task: "Beratur di pasar raya waktu puncak / Supermarket checkout queue", safety: "Tanpa botol air & duduk tepi pintu / No exit-hovering", baseSuds: 70, done: false, postSuds: 30 }
+          { id: 1, isDefault: true, baseSuds: 45, done: true, postSuds: 15 },
+          { id: 2, isDefault: true, baseSuds: 70, done: false, postSuds: 30 }
         ])
     );
 
     function saveLadder() {
       try {
-        localStorage.setItem("paniclab_ladder", JSON.stringify(ladderSteps));
+        localStorage.setItem("paniclab_ladder_v2", JSON.stringify(ladderSteps));
       } catch (_) {}
     }
 
     function renderLadder() {
       const tbody = document.getElementById("ladderTableBody");
       if (!tbody) return;
+      const defs = window.getPanicData().defaultLadderSteps || [];
       const sorted = ladderSteps.slice().sort((a, b) => a.baseSuds - b.baseSuds);
       tbody.innerHTML = sorted
-        .map(
-          (st) => `<tr>
+        .map((st) => {
+          const defMatch = st.isDefault ? defs.find((d) => d.id === st.id) : null;
+          const taskTxt = defMatch ? defMatch.task : st.task;
+          const safetyTxt = defMatch ? defMatch.safety : st.safety;
+          return `<tr>
             <td>
-              <strong style="color:var(--text-primary);">${st.task}</strong><br/>
-              <small style="color:var(--text-muted);">${isEn() ? "Drop crutch:" : "Buang tongkat:"} ${st.safety}</small>
+              <strong style="color:var(--text-primary);">${taskTxt}</strong><br/>
+              <small style="color:var(--text-muted);">${isEn() ? "Drop safety behavior:" : "Elak Safety Behavior:"} ${safetyTxt}</small>
             </td>
             <td><span class="pill-badge pill-warn">${st.baseSuds}/100</span></td>
             <td>
@@ -1247,8 +1316,8 @@
             <td>
               <button type="button" class="chip-btn" data-delete-step="${st.id}">✕</button>
             </td>
-          </tr>`
-        )
+          </tr>`;
+        })
         .join("");
 
       tbody.querySelectorAll("[data-complete-step]").forEach((btn) => {

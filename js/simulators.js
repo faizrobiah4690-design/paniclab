@@ -1,6 +1,6 @@
 // ============================================================================
-// PanicLab — Simulator Visual Interaktif (Adrenalin/CO₂, Peta Autonomik & CBT)
-// Menyokong Bahasa Melayu (ms) & English (en), Mod Cerah/Gelap & Mod Mesra Panik
+// PanicLab — Simulator Visual Interaktif (Gelombang Adrenalin/CO₂, Peta Organ & Lengkung CBT)
+// Menyokong Bahasa Melayu Mesra Pengguna (ms) & English (en), Mod Cerah/Gelap
 // ============================================================================
 
 (function () {
@@ -61,12 +61,12 @@
       osc.start();
       osc.stop(ctx.currentTime + (durationMs || 300) / 1000 + 0.02);
     } catch (_) {
-      // Ignore browser autoplay restrictions
+      // Abaikan sekatan autoplay pelayar
     }
   };
 
   // --------------------------------------------------------------------------
-  // 1. SIMULATOR GELOMBANG ADRENALIN, pCO₂ & KITARAN SALAH TAFSIR CLARK
+  // 1. SIMULATOR GELOMBANG ADRENALIN, PARAS CO₂ & KITARAN PANIK
   // --------------------------------------------------------------------------
   function initPanicWaveSimulator() {
     const canvas = document.getElementById("panicWaveCanvas");
@@ -118,29 +118,35 @@
       ctx.fillStyle = light ? "#f8fafc" : "#071320";
       ctx.fillRect(0, 0, W, H);
 
-      const padL = 48;
-      const padR = 20;
-      const padT = 34;
+      const padL = 54;
+      const padR = 18;
+      const padT = 38;
       const padB = 34;
       const plotW = W - padL - padR;
       const plotH = H - padT - padB;
 
-      // Hypocapnia zone (bottom band)
-      ctx.fillStyle = light ? "rgba(168, 85, 247, 0.09)" : "rgba(167, 139, 250, 0.11)";
+      // Zon Kurang CO2 (jalur bawah)
+      ctx.fillStyle = light ? "rgba(168, 85, 247, 0.09)" : "rgba(167, 139, 250, 0.12)";
       ctx.fillRect(padL, padT + plotH * 0.66, plotW, plotH * 0.34);
 
-      // Grid lines
+      // Garisan Grid & Label Paksi-Y
       ctx.strokeStyle = light ? "rgba(15, 35, 52, 0.1)" : "rgba(148, 184, 206, 0.12)";
       ctx.lineWidth = 1;
+      const yLabels = isEn() ? ["High", "", "Normal", "", "Low"] : ["Tinggi", "", "Normal", "", "Rendah"];
+      ctx.font = "600 9.5px Inter, system-ui, sans-serif";
+      ctx.fillStyle = light ? "#5c7485" : "#8da6b8";
       for (let i = 0; i <= 4; i++) {
         const y = padT + (plotH / 4) * i;
         ctx.beginPath();
         ctx.moveTo(padL, y);
         ctx.lineTo(W - padR, y);
         ctx.stroke();
+        if (yLabels[i]) {
+          ctx.fillText(yLabels[i], 8, y + 3);
+        }
       }
 
-      // 10-minute peak marker
+      // Penanda Kemuncak 10 Minit
       const peakX = padL + plotW * 0.38;
       ctx.setLineDash([4, 4]);
       ctx.strokeStyle = light ? "rgba(217, 119, 6, 0.45)" : "rgba(245, 158, 11, 0.45)";
@@ -150,29 +156,44 @@
       ctx.stroke();
       ctx.setLineDash([]);
 
-      // Title & Legend
-      ctx.font = "700 11.5px Inter, system-ui, sans-serif";
+      // Petunjuk Warna (Legend) di bahagian atas
+      ctx.font = "700 11px Inter, system-ui, sans-serif";
+      ctx.fillStyle = "#f59e0b";
+      ctx.beginPath();
+      ctx.arc(20, 18, 5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = light ? "#0f2230" : "#e2f1f8";
+      ctx.fillText(isEn() ? "Adrenaline Wave" : "Gelombang Adrenalin", 30, 22);
+
+      ctx.fillStyle = "#38bdf8";
+      ctx.beginPath();
+      ctx.arc(isEn() ? 148 : 178, 18, 5, 0, Math.PI * 2);
+      ctx.fill();
       ctx.fillStyle = light ? "#0f2230" : "#e2f1f8";
       ctx.fillText(
-        isEn()
-          ? "30-Minute Physiological Curve: Adrenaline Surge (Amber) vs Blood CO₂ (Cyan)"
-          : "Lengkung Fisiologi 30 Minit: Gelombang Adrenalin (Jingga) lwn CO₂ Darah (Biru)",
-        14,
-        20
+        isEn() ? "Blood CO₂ Level (Drops When Over-Breathing)" : "Paras Gas CO₂ Darah (Turun Bila Nafas Laju)",
+        isEn() ? 158 : 188,
+        22
       );
 
       ctx.font = "600 10px Inter, system-ui, sans-serif";
       ctx.fillStyle = light ? "#b45309" : "#fbbf24";
-      ctx.fillText(isEn() ? "Peak ~10 min (Always Subsides)" : "Kemuncak ~10 min (Pasti Surut)", peakX - 62, padT + 13);
+      ctx.fillText(
+        isEn() ? "Peaks ~10 min, ALWAYS comes down" : "Kemuncak ~10 min, PASTI turun sendiri",
+        peakX - 68,
+        padT + 13
+      );
 
       ctx.fillStyle = light ? "#6d28d9" : "#c4b5fd";
       ctx.fillText(
-        isEn() ? "Hypocapnia Zone (Low CO₂ → Tingling & Lightheaded)" : "Zon Hipokapnia (Kurang CO₂ → Kebas & Melayang)",
+        isEn()
+          ? "Low CO₂ Zone → Causes harmless tingling fingers & dizziness"
+          : "Zon Kurang CO₂ → Punca jari kebas & rasa melayang (tidak bahaya)",
         padL + 8,
         padT + plotH - 8
       );
 
-      // Plot Adrenaline Curve
+      // Lengkung Adrenalin (Jingga)
       const adrPeak = preset.adrenaline / 100;
       ctx.beginPath();
       ctx.lineWidth = 3;
@@ -180,7 +201,6 @@
       for (let i = 0; i <= 100; i++) {
         const t = i / 100;
         const x = padL + t * plotW;
-        // Skewed bell curve peaking at t = 0.38 and naturally decaying!
         const bell = Math.exp(-Math.pow((t - 0.38) / (currentPresetKey === "vagalRecovery" ? 0.18 : 0.25), 2));
         const ripple = window.__panicCalmMode ? 0 : Math.sin(t * 18 - phaseOffset) * 0.025 * adrPeak;
         const val = Math.min(0.96, 0.12 + adrPeak * 0.8 * bell + ripple);
@@ -190,7 +210,7 @@
       }
       ctx.stroke();
 
-      // Plot Blood CO2 Curve
+      // Lengkung CO2 Darah (Biru)
       const co2Dip = (85 - preset.co2Level) / 100;
       ctx.beginPath();
       ctx.lineWidth = 2.8;
@@ -207,7 +227,7 @@
       }
       ctx.stroke();
 
-      // X-axis time labels
+      // Label Masa Paksi-X
       ctx.fillStyle = light ? "#5c7485" : "#8da6b8";
       ctx.font = "600 10px Inter, system-ui, sans-serif";
       ctx.fillText("0 min", padL, H - 10);
@@ -227,7 +247,7 @@
   }
 
   // --------------------------------------------------------------------------
-  // 2. SIMULATOR PETA BADAN & RANGKAIAN AUTONOMIK (6 HOTSPOTS)
+  // 2. SIMULATOR PETA ORGAN & SIMPTOM BADAN (6 TITIK ANATOMI BERLABEL JELAS)
   // --------------------------------------------------------------------------
   function initBodyMapSimulator() {
     const canvas = document.getElementById("bodyMapCanvas");
@@ -241,13 +261,14 @@
     let activeId = "amygdala";
     let pulseTick = 0;
 
+    // Koordinat anatomi jelas + kedudukan label kiri/kanan supaya tidak bertindih
     const coords = {
-      amygdala: { x: 220, y: 48, r: 13 },
-      brainVessels: { x: 256, y: 42, r: 11 },
-      throatChest: { x: 220, y: 102, r: 12 },
-      lungs: { x: 188, y: 150, r: 13 },
-      heart: { x: 236, y: 156, r: 13 },
-      gutHangover: { x: 220, y: 218, r: 13 }
+      amygdala: { x: 210, y: 46, r: 11, lx: 16, ly: 42, align: "left", msTag: "1. Penggera Otak", enTag: "1. Brain Alarm" },
+      brainVessels: { x: 234, y: 38, r: 10, lx: 298, ly: 40, align: "left", msTag: "3. Pening & Kebas", enTag: "3. Dizzy & Tingling" },
+      throatChest: { x: 220, y: 96, r: 10, lx: 298, ly: 98, align: "left", msTag: "5. Tekak & Otot Dada", enTag: "5. Throat & Chest" },
+      lungs: { x: 196, y: 148, r: 12, lx: 16, ly: 148, align: "left", msTag: "2. Paru-Paru (CO₂)", enTag: "2. Lungs (CO₂)" },
+      heart: { x: 236, y: 152, r: 12, lx: 298, ly: 154, align: "left", msTag: "4. Jantung Laju", enTag: "4. Racing Heart" },
+      gutHangover: { x: 220, y: 216, r: 12, lx: 16, ly: 218, align: "left", msTag: "6. Perut & Letih", enTag: "6. Gut & Fatigue" }
     };
 
     function renderHotspotControls() {
@@ -291,8 +312,9 @@
       const sy = ((ev.clientY - rect.top) / rect.height) * H;
       Object.keys(coords).forEach((key) => {
         const c = coords[key];
-        const dist = Math.hypot(sx - c.x, sy - c.y);
-        if (dist <= c.r + 12) {
+        const distNode = Math.hypot(sx - c.x, sy - c.y);
+        const inLabel = sx >= c.lx - 4 && sx <= c.lx + 126 && sy >= c.ly - 14 && sy <= c.ly + 10;
+        if (distNode <= c.r + 12 || inLabel) {
           activeId = key;
           renderHotspotControls();
           if (window.markModuleExplored) window.markModuleExplored("neuro");
@@ -307,39 +329,79 @@
       ctx.fillStyle = light ? "#f8fafc" : "#071320";
       ctx.fillRect(0, 0, W, H);
 
-      // Stylized Human Silhouette
-      ctx.strokeStyle = light ? "rgba(13, 148, 136, 0.42)" : "rgba(45, 212, 191, 0.35)";
-      ctx.fillStyle = light ? "rgba(13, 148, 136, 0.06)" : "rgba(45, 212, 191, 0.06)";
+      const silStroke = light ? "rgba(13, 148, 136, 0.44)" : "rgba(45, 212, 191, 0.36)";
+      const silFill = light ? "rgba(13, 148, 136, 0.06)" : "rgba(45, 212, 191, 0.07)";
+      ctx.strokeStyle = silStroke;
+      ctx.fillStyle = silFill;
       ctx.lineWidth = 2;
 
-      // Head
+      // Kepala
       ctx.beginPath();
-      ctx.arc(220, 50, 32, 0, Math.PI * 2);
+      ctx.arc(220, 46, 30, 0, Math.PI * 2);
       ctx.fill();
       ctx.stroke();
 
-      // Torso & Arms
+      // Leher
       ctx.beginPath();
-      ctx.roundRect(160, 92, 120, 168, 28);
+      ctx.roundRect(208, 75, 24, 24, 6);
       ctx.fill();
       ctx.stroke();
 
-      // Sympathetic Spine T1-L2 axis
-      ctx.strokeStyle = light ? "rgba(2, 132, 199, 0.32)" : "rgba(56, 189, 248, 0.3)";
-      ctx.setLineDash([4, 4]);
+      // Bahu, Badan & Lengan Ringkas
       ctx.beginPath();
-      ctx.moveTo(220, 62);
-      ctx.lineTo(220, 236);
+      ctx.roundRect(162, 98, 116, 162, 28);
+      ctx.fill();
+      ctx.stroke();
+
+      // Bayangan Paru-Paru Kiri & Kanan (anatomi jelas)
+      ctx.strokeStyle = light ? "rgba(2, 132, 199, 0.25)" : "rgba(56, 189, 248, 0.22)";
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.ellipse(196, 150, 18, 30, 0.08, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.ellipse(244, 150, 18, 30, -0.08, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Garis Saraf Autonomik Tengah
+      ctx.setLineDash([3, 4]);
+      ctx.beginPath();
+      ctx.moveTo(220, 56);
+      ctx.lineTo(220, 232);
       ctx.stroke();
       ctx.setLineDash([]);
 
-      // Draw Hotspot Nodes
+      // Lukis Garis Penghubung, Label Tepi & Titik Organ
       items.forEach((item) => {
         const c = coords[item.id];
         if (!c) return;
         const isAct = item.id === activeId;
         const pulse = !window.__panicCalmMode && isAct ? Math.sin(pulseTick) * 4 : 0;
 
+        // Garis penunjuk halus dari titik ke label
+        const anchorX = c.lx < 200 ? c.lx + 118 : c.lx - 6;
+        ctx.strokeStyle = isAct ? item.color : light ? "rgba(15,35,52,0.18)" : "rgba(148,184,206,0.22)";
+        ctx.lineWidth = isAct ? 1.8 : 1;
+        ctx.beginPath();
+        ctx.moveTo(c.x, c.y);
+        ctx.lineTo(anchorX, c.ly - 3);
+        ctx.stroke();
+
+        // Kotak pil label
+        ctx.fillStyle = isAct
+          ? light ? "rgba(13, 148, 136, 0.14)" : "rgba(45, 212, 191, 0.16)"
+          : light ? "#ffffff" : "#102132";
+        ctx.strokeStyle = isAct ? item.color : light ? "rgba(15,35,52,0.12)" : "rgba(148,184,206,0.18)";
+        ctx.beginPath();
+        ctx.roundRect(c.lx - 4, c.ly - 15, 124, 22, 6);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.font = (isAct ? "700" : "600") + " 10px Inter, system-ui, sans-serif";
+        ctx.fillStyle = isAct ? (light ? "#0f2230" : "#ffffff") : (light ? "#304758" : "#cbdce7");
+        ctx.fillText(isEn() ? c.enTag : c.msTag, c.lx + 2, c.ly);
+
+        // Gelang denyutan aktif
         if (isAct) {
           ctx.beginPath();
           ctx.arc(c.x, c.y, c.r + 7 + pulse, 0, Math.PI * 2);
@@ -347,6 +409,7 @@
           ctx.fill();
         }
 
+        // Bulatan titik organ
         ctx.beginPath();
         ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
         ctx.fillStyle = isAct ? item.color : light ? "#ffffff" : "#122436";
@@ -356,11 +419,13 @@
         ctx.stroke();
       });
 
-      ctx.font = "700 11px Inter, system-ui, sans-serif";
+      ctx.font = "600 10.5px Inter, system-ui, sans-serif";
       ctx.fillStyle = light ? "#304758" : "#9db8c9";
       ctx.fillText(
-        isEn() ? "Click any glowing organ node to inspect physiology" : "Klik mana-mana titik organ untuk lihat fisiologi",
-        14,
+        isEn()
+          ? "Tap any organ point or label above to see why that symptom is safe"
+          : "Klik mana-mana titik atau label di atas untuk lihat punca sebenar simptom",
+        18,
         294
       );
 
@@ -374,7 +439,7 @@
   }
 
   // --------------------------------------------------------------------------
-  // 3. SIMULATOR LENGKUNG CBT: MELARIKAN DIRI VS KEKAL & HADAPI (HABITUASI)
+  // 3. SIMULATOR LENGKUNG CBT: LARI / SAFETY BEHAVIOR VS KEKAL & HADAPI
   // --------------------------------------------------------------------------
   function initCbtCurveSimulator() {
     const canvas = document.getElementById("cbtCurveCanvas");
@@ -390,9 +455,9 @@
       ctx.fillStyle = light ? "#f8fafc" : "#071320";
       ctx.fillRect(0, 0, W, H);
 
-      const padL = 44;
+      const padL = 52;
       const padR = 18;
-      const padT = 34;
+      const padT = 36;
       const padB = 30;
       const plotW = W - padL - padR;
       const plotH = H - padT - padB;
@@ -405,28 +470,33 @@
       ctx.lineTo(W - padR, padT + plotH);
       ctx.stroke();
 
+      // Label Paksi-Y
+      ctx.font = "600 9.5px Inter, system-ui, sans-serif";
+      ctx.fillStyle = light ? "#5c7485" : "#8da6b8";
+      ctx.fillText(isEn() ? "High" : "Cemas", 8, padT + 8);
+      ctx.fillText(isEn() ? "Calm" : "Tenang", 8, padT + plotH - 2);
+
       ctx.font = "700 11.5px Inter, system-ui, sans-serif";
       ctx.fillStyle = light ? "#0f2230" : "#e2f1f8";
       ctx.fillText(
         mode === "escape"
           ? isEn()
-            ? "Trap Curve: Fleeing / Safety Crutches Reinforce Next Attack"
-            : "Perangkap Lari / 'Safety Behavior': Serangan Berikutnya Makin Tinggi!"
+            ? "❌ Fleeing / Using Safety Crutches Makes Future Panic Stronger"
+            : "❌ Bila Lari / Guna 'Safety Behavior', Panik Seterusnya Makin Kuat!"
           : isEn()
-            ? "CBT Exposure Curve: Staying Without Crutches Rewires the Amygdala"
-            : "Lengkung Pendedahan CBT: Kekal Tanpa Tongkat Memadamkan Penggera Palsu!",
+            ? "✅ Staying Without Crutches Teaches Your Brain You Are Safe"
+            : "✅ Bila Kekal Tanpa Lari, Otak Belajar Situasi Itu Sebenarnya Selamat!",
         14,
-        20
+        21
       );
 
       ctx.lineWidth = 3;
       if (mode === "escape") {
         ctx.strokeStyle = "#ef4444";
         ctx.beginPath();
-        // Three spikes getting taller because person escapes right before peak drops
         const pts = [
-          [0, 0.15], [0.14, 0.72], [0.17, 0.2],
-          [0.34, 0.2], [0.48, 0.84], [0.51, 0.22],
+          [0, 0.15], [0.14, 0.7], [0.17, 0.2],
+          [0.34, 0.2], [0.48, 0.83], [0.51, 0.22],
           [0.68, 0.22], [0.84, 0.95], [0.88, 0.25], [1, 0.25]
         ];
         pts.forEach(([tx, ty], i) => {
@@ -436,6 +506,14 @@
           else ctx.lineTo(x, y);
         });
         ctx.stroke();
+
+        ctx.font = "600 10px Inter, system-ui, sans-serif";
+        ctx.fillStyle = light ? "#dc2626" : "#fca5a5";
+        ctx.fillText(
+          isEn() ? "Fled early → Brain thinks 'I barely survived!'" : "Lari awal → Otak sangka 'Nasib baik aku lari!'",
+          padL + 12,
+          padT + 18
+        );
       } else {
         ctx.strokeStyle = "#10b981";
         ctx.beginPath();
@@ -451,13 +529,21 @@
           else ctx.lineTo(x, y);
         }
         ctx.stroke();
+
+        ctx.font = "600 10px Inter, system-ui, sans-serif";
+        ctx.fillStyle = light ? "#059669" : "#6ee7b7";
+        ctx.fillText(
+          isEn() ? "Stayed 15m → Wave drops on its own → Fear shrinks!" : "Kekal 15 min → Debaran turun sendiri → Takut makin pudar!",
+          padL + 95,
+          padT + 22
+        );
       }
 
       ctx.font = "600 10px Inter, system-ui, sans-serif";
       ctx.fillStyle = light ? "#5c7485" : "#8da6b8";
-      ctx.fillText(isEn() ? "Session / Exposure 1" : "Latihan 1", padL + 18, H - 9);
-      ctx.fillText(isEn() ? "Session 3" : "Latihan 3", padL + plotW * 0.46, H - 9);
-      ctx.fillText(isEn() ? "Session 6 (Remission)" : "Latihan 6 (Pulih)", padL + plotW * 0.74, H - 9);
+      ctx.fillText(isEn() ? "Practice 1" : "Latihan 1", padL + 18, H - 9);
+      ctx.fillText(isEn() ? "Practice 3" : "Latihan 3", padL + plotW * 0.46, H - 9);
+      ctx.fillText(isEn() ? "Practice 6 (Recovered)" : "Latihan 6 (Pulih)", padL + plotW * 0.72, H - 9);
     }
 
     document.querySelectorAll("[data-cbt-curve]").forEach((btn) => {
@@ -467,6 +553,7 @@
           b.classList.toggle("active", b.getAttribute("data-cbt-curve") === mode);
         });
         drawCurve();
+        if (window.markModuleExplored) window.markModuleExplored("cbt");
       });
     });
 
