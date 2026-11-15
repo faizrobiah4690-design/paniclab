@@ -12,106 +12,187 @@ window.PANIC_DATA_BY_LANG = {
   // BAHASA MELAYU (MS)
   // ==========================================================================
   ms: {
+    lensMeta: {
+      layman:
+        "🫂 <strong>Paparan Untuk Saya (Pesakit):</strong> Bahasa ringkas & menenangkan—fokus langkah praktikal tanpa istilah perubatan berat.",
+      family:
+        "👨‍👩‍👧 <strong>Paparan Keluarga & Orang Awam:</strong> Panduan ayat tepat untuk disebut, saringan 999, dan cara menyokong tanpa menjadi 'tongkat pengelakan'.",
+      clinical:
+        "🩺 <strong>Paparan Klinikal (Doktor / Terapis):</strong> Kod DSM-5-TR / ICD-11, kerja makmal saringan, mekanisme reseptor, & bukti meta-analisis penuh."
+    },
+
+    chapterLens: {
+      ch2: {
+        layman:
+          "🫂 <strong>Tip Tenang:</strong> Tandakan simptom di bawah hanya sebagai nota untuk doktor—mempunyai ≥4 simptom panik <em>bukan</em> bermakna jantung anda rosak.",
+        family:
+          "👨‍👩‍👧 <strong>Panduan Keluarga (Saringan 30 Saat):</strong> Tanya dengan suara tenang sama ada sakit dada terasa berat menghimpit ke lengan kiri/rahang, atau ini kali pertama berlaku pada umur &gt;45 tahun. Jika ya, hubungi <strong>999</strong> tanpa berdebat.",
+        clinical:
+          "🩺 <strong>Saringan Makmal Asas (Rule-Out Workup):</strong> 12-lead ECG (tolak ACS/SVT), FBC, fungsi tiroid (TSH/fT4), glukosa puasa, elektrolit/Ca²⁺, dan saringan kafein/simpatomimetik sebelum mengesahkan <code>ICD-11 6B01</code>."
+      },
+      ch3: {
+        layman:
+          "🫂 <strong>Langkah Mudah Hari Ini:</strong> Cuba kurangkan kopi pekat/minuman tenaga secara berperingkat selama 7 hari—ramai pesakit mendapati debaran harian turun mendadak!",
+        family:
+          "👨‍👩‍👧 <strong>Elak Perangkap 'Tolong Lari':</strong> Jangan bantu pasangan/anak keluar tergesa-gesa dari kedai atau sembunyikan semua tugasan luar—bantu mereka kurangkan kafein dan kekal tenang di tempat selamat.",
+        clinical:
+          "🩺 <strong>Bukti Provokasi Adenosin (Klevebrant &amp; Frick, 2022):</strong> Dos ~400–480 mg kafein mencetuskan serangan panik penuh pada <strong>51.1%</strong> pesakit kecelaruan panik lwn 0% plasebo melalui antagonisme reseptor adenosin A1/A2A."
+      },
+      ch4: {
+        layman:
+          "🫂 <strong>Ingat 1 Perkara Sahaja:</strong> Semasa tengah berdebar kuat, baca Kad 60 Saat di bawah cukup <strong>2 kali</strong> sahaja. Borang 10 langkah disimpan tertutup di bawah untuk diisi selepas anda sudah tenang.",
+        family:
+          "👨‍👩‍👧 <strong>Cara Bantu Guna Kad 60s:</strong> Semasa serangan, tunjukkan skrip 60s mereka di telefon dan bacakan perlahan maksimum <strong>2 kali</strong>. Jangan soal punca stres ketika nadi masih laju—tunggu 30 minit selepas reda.",
+        clinical:
+          "🩺 <strong>Model Kognitif Clark (1986) &amp; Barlow-Craske:</strong> Pisahkan intervensi fasa akut (<em>Hot Cognition</em>: skrip eksternalisasi dengan had bacaan 2x bagi mengelak ia bertukar menjadi <em>safety behavior</em>) daripada penstrukturan semula Sokratik pasca-serangan (<em>Cold Cognition</em>, sasaran keyakinan &lt;15%)."
+      },
+      ch5: {
+        layman:
+          "🫂 <strong>Bina Keyakinan Ikut Rentak Sendiri:</strong> Pilih 1 latihan ringan dahulu selepas doktor mengesahkan badan anda sihat. Anda memegang kawalan penuh!",
+        family:
+          "👨‍👩‍👧 <strong>Jadi 'Coach' Semangat, Bukan Penyelamat:</strong> Semasa pasangan membuat latihan pendedahan, <strong>jangan</strong> tanya <em>'Awak okey tak?'</em> berulang kali atau hulur air/kipas. Puji keberanian mereka bertahan hingga tamat masa!",
+        clinical:
+          "🩺 <strong>Paradigma Inhibitory Learning (Craske et al., 2014/2022):</strong> Kejayaan diukur melalui <em>expectancy violation</em> (pembuktian salah hipotesis bencana dengan 0 safety crutches), bukan sekadar penurunan SUDS dalam sesi (<em>within-session habituation</em>)."
+      },
+      ch6: {
+        layman:
+          "🫂 <strong>Jangan Takut Tanya Doktor:</strong> Ubat moden seperti SSRI tidak menyebabkan ketagihan. Jika doktor memulakannya, rasa sedikit gelisah pada minggu pertama adalah normal dan sementara.",
+        family:
+          "👨‍👩‍👧 <strong>Peranan Keluarga Minggu 1–2 Ubat:</strong> Minggu awal ubat SSRI boleh membuat pesakit rasa sedikit mual atau gelisah sebelum kesan pulih muncul pada minggu 3–4. Beri sokongan moral dan pastikan mereka <strong>tidak berhenti ubat mengejut</strong>.",
+        clinical:
+          "🩺 <strong>Titrasi Klinikal (WFSBP v3 2023 • NICE CG113 • Cochrane NMA 2023):</strong> Mula separuh dos bagi mengelak <em>jitteriness syndrome</em> awal (Sertraline 25 mg → 50–150 mg; Escitalopram 5 mg → 10–20 mg). Kekalkan 6–24 bulan pasca-remisi; elakkan benzodiazepin kronik, propranolol &amp; buspirone."
+      },
+      ch8: {
+        layman:
+          "🫂 <strong>Uji Santai Tanpa Tekanan:</strong> Cuba 7 situasi pendek di bawah untuk mengukuhkan keyakinan diri anda.",
+        family:
+          "👨‍👩‍👧 <strong>Latihan Pantas Keluarga:</strong> Soalan #2 dan #3 di bawah direka khusus untuk melatih tindakan tepat ahli keluarga &amp; rakan sekerja semasa kecemasan!",
+        clinical:
+          "🩺 <strong>Semakan Kompetensi Klinikal:</strong> Merangkumi triaj ACS lwn panik, fisiologi hipokapnia, pendidikan titrasi SSRI, serta disiplin <em>anti-safety-behavior</em> dalam PCT."
+      }
+    },
+
     spectrumCards: [
       {
         id: "attack",
-        badge: "Episod Simptom • ICD-11 MB23.H",
+        badge: "Tahap 1 • Episod Simptom",
+        clinicalBadge: "ICD-11 MB23.H • Specifier",
         badgeClass: "pill-info",
-        stat: "~13% Dewasa Pernah Alami",
+        stat: "~1 dalam 8 Dewasa Pernah Alami",
         title: "1. Serangan Panik (Panic Attack)",
         layman:
-          "Lonjakan ketakutan dan ribut fizikal mendadak yang memuncak dalam beberapa minit. Ia <strong>bukan penyakit mental</strong> dengan sendirinya—sesiapa sahaja boleh mengalaminya sekali-sekala akibat kurang tidur, kopi berlebihan, atau stres melampau.",
+          "Gelombang rasa takut dan debaran mendadak yang memuncak dalam beberapa minit. Ia <strong>bukan penyakit mental</strong>—sesiapa pun boleh mengalaminya sekali-sekala apabila terlalu penat, kurang tidur, atau terlebih kafein.",
+        family:
+          "<strong>Untuk Keluarga:</strong> Debaran, menggigil, dan sesak nafas yang dialami insan tersayang adalah lonjakan adrenalin biologi sebenar—<strong>bukan dibuat-buat atau mengada-ngada</strong>, walaupun pemeriksaan doktor menunjukkan jantung mereka sihat.",
         clinical:
           "Penentu klinikal tidak berkod dalam DSM-5-TR (ICD-11: <code>MB23.H</code>). Didefinisikan sebagai lonjakan ketakutan/ketidakselesaan akut yang memuncak dalam beberapa minit bersama <strong>≥4 daripada 13 simptom autonomik/kognitif</strong>; boleh tercetus secara dijangka (<em>cued</em>) atau mengejut (<em>unexpected</em>)."
       },
       {
         id: "disorder",
-        badge: "Diagnosis Klinikal • ICD-11 6B01",
+        badge: "Tahap 2 • Kitaran Berulang",
+        clinicalBadge: "Diagnosis ICD-11 6B01",
         badgeClass: "pill-warn",
-        stat: "Prevalens 1.1% – 4.7% (~10% Klinik Primer)",
+        stat: "Boleh Pulih Dengan Rawatan Tepat",
         title: "2. Kecelaruan Panik (Panic Disorder)",
         layman:
-          "Didiagnosis oleh doktor apabila serangan panik datang <strong>secara mengejut berulang kali</strong> tanpa sebab jelas, diikuti <strong>sekurang-kurangnya 1 bulan</strong> rasa takut diserang lagi ('takut kepada rasa takut') atau perubahan rutin harian.",
+          "Berlaku apabila serangan datang <strong>secara mengejut berulang kali</strong>, lalu membuatkan anda hidup dalam kerisauan sekurang-kurangnya <strong>sebulan</strong> kerana 'takut diserang lagi'. Berita baiknya: kitaran ini sangat responsif terhadap terapi!",
+        family:
+          "<strong>Untuk Keluarga:</strong> Selepas beberapa serangan mengejut, pesakit mula hidup dalam ketakutan menanti serangan seterusnya. Galakkan mereka mendapatkan saringan awal di Klinik Kesihatan / MENTARI tanpa menghakimi.",
         clinical:
-          "Diagnosis paksi kecelaruan keresahan (DSM-5-TR / ICD-11 <code>6B01</code>; nisbah wanita:lelaki ~2:1). Memerlukan serangan <em>unexpected</em> berulang + ≥1 bulan kebimbangan antisipatori atau perubahan tingkah laku maladaptif, selepas menolak punca organik (tiroid, aritmia, bahan)."
+          "Diagnosis paksi kecelaruan keresahan (DSM-5-TR / ICD-11 <code>6B01</code>; prevalens 1.1%–4.7%, nisbah wanita:lelaki ~2:1). Memerlukan serangan <em>unexpected</em> berulang + ≥1 bulan kebimbangan antisipatori atau perubahan tingkah laku maladaptif, selepas menolak punca organik."
       },
       {
         id: "agoraphobia",
-        badge: "Diagnosis Berasingan DSM-5-TR",
+        badge: "Tahap 3 • Perangkap Mengelak",
+        clinicalBadge: "Diagnosis Berasingan DSM-5-TR",
         badgeClass: "pill-danger",
-        stat: "~25% Komplikasi Pesakit Panik",
-        title: "3. Agoraphobia (Perangkap Pengelakan)",
+        stat: "Elakkan Daripada Mula Mengurung Diri",
+        title: "3. Agoraphobia (Takut Keluar / Terperangkap)",
         layman:
-          "Apabila seseorang mula mengelak <strong>2 atau lebih tempat</strong>—seperti memandu jauh, kesesakan trafik, lif, pasar raya, pengangkutan awam, atau keluar seorang diri—kerana takut tiada jalan keluar atau tiada bantuan jika panik menyerang.",
+          "Apabila anda mula mengelak <strong>2 atau lebih situasi</strong>—seperti memandu jauh, jem jalan raya, lif, atau pasar raya—kerana risau sukar keluar jika panik menyerang. Latihan berperingkat mampu membuka semula kebebasan anda!",
+        family:
+          "<strong>Untuk Keluarga:</strong> Jika anda mengambil alih 100% pemanduan dan urusan luar mereka selama-lamanya kerana kasihan, dunia mereka akan menjadi semakin sempit. Bantu mereka berlatih keluar secara berperingkat.",
         clinical:
-          "Dikodkan sebagai diagnosis bebas dalam DSM-5-TR (berbeza daripada DSM-IV). Ditandai ketakutan/pengelakan ketara terhadap ≥2 daripada 5 situasi (pengangkutan awam, ruang terbuka, ruang tertutup, beratur/khalayak ramai, berada di luar rumah sendirian) selama ≥6 bulan."
+          "Dikodkan sebagai diagnosis bebas dalam DSM-5-TR (~25% komorbiditi). Ditandai ketakutan/pengelakan ketara terhadap ≥2 daripada 5 situasi (pengangkutan awam, ruang terbuka, ruang tertutup, beratur/khalayak ramai, berada di luar rumah sendirian) selama ≥6 bulan."
       }
     ],
 
     neuroHotspots: [
       {
         id: "amygdala",
-        title: "1. Amigdala, vmPFC & Penggera Asid Otak",
+        title: "1. Amigdala & Penggera Otak",
         subtitle: "Penggera Kebakaran Terlalu Sensitif",
         badge: "Pusat Pengesan Ancaman",
         color: "#ef4444",
         layman:
-          "Amigdala ialah 'penggera asap' otak. Semasa panik, ia tersalah tafsir perubahan kecil badan (seperti nadi laju selepas naik tangga) sebagai ancaman maut lalu menekan butang kecemasan, manakala 'brek logik' otak hadapan (korteks prefrontal) terhenti seketika.",
+          "Amigdala ialah 'penggera asap' otak. Semasa panik, ia tersalah tafsir perubahan kecil badan sebagai bahaya besar lalu menekan siren kecemasan, manakala 'brek logik' otak terhenti seketika.",
+        family:
+          "<strong>Apa Keluarga Perlu Faham:</strong> Semasa siren amigdala berbunyi, otak logik mereka sukar memproses nasihat panjang. Jangan berleter—gunakan ayat pendek dan tenang seperti <em>'Saya ada di sini, awak selamat.'</em>",
         clinical:
           "Disregulasi rangkaian ketakutan berpusatkan amigdala, BNST, hipokampus dan kemerosotan inhibisi korteks prefrontal ventromedial (vmPFC). Kajian PET menunjukkan pengurangan ikatan reseptor <strong>GABA-A</strong> dan <strong>5-HT1A</strong>, serta kepekaan tinggi saluran ion pengesan asid (<strong>ASIC1a, ASIC2</strong>) terhadap perubahan pH ekstraselular/CO₂."
       },
       {
         id: "lungs",
-        title: "2. Paru-Paru & Hiperventilasi (Hipokapnia CO₂)",
-        subtitle: "Kenapa Dada Rasa 'Tak Cukup Oksigen'",
+        title: "2. Paru-Paru & Gas CO₂",
+        subtitle: "Kenapa Dada Rasa 'Tak Cukup Nafas'",
         badge: "Kunci Fisiologi #1",
         color: "#38bdf8",
         layman:
-          "Walaupun anda rasa 'lemas tak cukup nafas', paras oksigen darah sebenarnya <strong>penuh (98%–100%)</strong>! Masalah sebenar ialah nafas laju & cetek membuang terlalu banyak gas karbon dioksida (CO₂), menyebabkan darah menjadi sedikit beralkali buat sementara waktu.",
+          "Walaupun dada rasa sempit, oksigen darah anda sebenarnya <strong>penuh (98%–100%)</strong>! Nafas laju & cetek cuma membuang terlalu banyak gas CO₂—sebab itu hembusan perlahan 6 saat sangat melegakan.",
+        family:
+          "<strong>Apa Keluarga Perlu Buat:</strong> Jangan sesekali hulur beg kertas atau suruh mereka 'tarik nafas dalam-dalam cepat!'. Ajak mereka ikut gerakan bahu anda menghembus nafas perlahan selama 6 saat.",
         clinical:
           "Ketidakstabilan isi padu tidal dan penurunan <em>end-tidal</em> pCO₂ boleh bermula sehingga <strong>50 minit sebelum</strong> pesakit sedar serangan berlaku (Meuret et al.). Hiperventilasi akut mencetuskan <strong>hipokapnia</strong> dan <strong>alkalosis respiratori</strong> sementara tanpa hipoksemia."
       },
       {
         id: "brainVessels",
-        title: "3. Salur Darah Otak & Hujung Saraf (Kebas / Melayang)",
-        subtitle: "Punca Pening, Dunia Asing & Semut-Semut Jari",
+        title: "3. Salur Darah Otak & Hujung Saraf",
+        subtitle: "Punca Pening, Dunia Asing & Kebas Jari",
         badge: "Bukan Strok / Bukan Gila",
         color: "#a78bfa",
         layman:
-          "Kekurangan CO₂ menyebabkan salur darah ke otak mengecut sedikit secara sementara. Inilah punca kepala rasa ringan melayang, pandangan berbalam, dunia rasa macam mimpi (<em>derealization</em>), serta kebas di jari dan bibir—<strong>bukan tanda strok atau hilang akal!</strong>",
+          "Kurang CO₂ menyebabkan salur darah ke otak mengecut sedikit buat sementara. Inilah punca kepala rasa melayang, dunia macam mimpi, serta kebas di jari dan bibir—<strong>bukan tanda strok atau hilang akal!</strong>",
+        family:
+          "<strong>Apa Keluarga Perlu Tahu:</strong> Bila pesakit mengadu 'tangan kebas' atau 'pandangan rasa pelik macam mimpi', bertenanglah—ia kesan sementara nafas laju (kecuali jika muka herot atau lemah sebelah badan sahaja → hubungi 999).",
         clinical:
           "Alkalosis respiratori menyebabkan vasokonstriksi serebral ringan sementara serta peningkatan ikatan kalsium serum terion pada albumin (hipokalsemia fungsian sementara), menghasilkan parestesia perioral/akral, pening kepala, dan derealisasi/depersonalisasi pelindung."
       },
       {
         id: "heart",
-        title: "4. Jantung & Saraf Simpatetik (T1–L2)",
-        subtitle: "Debaran Laju & Kenapa Anda Hampir Mustahil Pengsan",
+        title: "4. Jantung & Lonjakan Adrenalin",
+        subtitle: "Debaran Laju & Kenapa Hampir Mustahil Pengsan",
         badge: "Paradoks Tekanan Darah",
         color: "#f59e0b",
         layman:
-          "Kelenjar adrenal mengepam adrenalin supaya jantung mengepam darah ke otot untuk 'lari dari harimau'. Ramai takut pengsan—tetapi pengsan biasa berlaku bila tekanan darah <em>jatuh</em>, sedangkan panik <strong>menaikkan tekanan darah</strong>! Jantung sihat mampu berdegup laju dengan selamat.",
+          "Adrenalin melajukan jantung seperti ketika anda berlari. Ramai takut pengsan—tetapi pengsan berlaku bila tekanan darah <em>jatuh</em>, sedangkan serangan panik <strong>menaikkan tekanan darah</strong>! Anda tidak akan rebah kerananya.",
+        family:
+          "<strong>Apa Keluarga Perlu Tahu:</strong> Jika pesakit benar-benar pengsan tidak sedarkan diri (<em>blackout</em>), itu <strong>bukan</strong> serangan panik biasa—bawa ke hospital segera untuk pemeriksaan jantung.",
         clinical:
           "Unjuran hipotalamus ke rantaian simpatetik torakolumbar (T1–L2) dan medula adrenal merembes katekolamin (epinefrin/norepinefrin), meningkatkan kadar nadi dan tekanan darah arteri. Sinkop vasovagal sebenar amat jarang berlaku dalam panik tulen (kecuali fobia darah-suntikan-kecederaan)."
       },
       {
         id: "throatChest",
-        title: "5. Otot Tekak (Globus) & Dinding Dada",
+        title: "5. Otot Tekak & Dinding Dada",
         subtitle: "Ilusi Rasa Tercekik & Dada Mencucuk",
         badge: "Ketegangan Otot",
         color: "#2dd4bf",
         layman:
-          "Adrenalin menegangkan otot leher hingga rasa seperti ada 'bola tersangkut di kerongkong' (walaupun laluan udara terbuka luas). Pernafasan menggunakan dada atas pula membuatkan otot rusuk tegang dan terasa tajam mencucuk di satu titik.",
+          "Adrenalin menegangkan otot leher hingga rasa seperti ada 'ketulan di tekak' walaupun laluan udara terbuka luas. Nafas dada atas pula membuatkan otot rusuk terasa mencucuk.",
+        family:
+          "<strong>Apa Keluarga Perlu Buat:</strong> Minta mereka jatuhkan bahu perlahan-lahan dan telan air liur dengan lembut untuk membuktikan laluan tekak tidak tersumbat.",
         clinical:
           "Hipertonus otot krikofaringeus menghasilkan <em>globus pharyngeus</em> tanpa obstruksi saluran udara. Penggunaan berlebihan otot pernafasan aksesori dan interkostal menghasilkan sakit dada muskuloskeletal setempat yang berbeza daripada iskemia miokardium."
       },
       {
         id: "gutHangover",
-        title: "6. Perut & Fasa 'Adrenaline Hangover'",
-        subtitle: "Loya Semasa Serangan & Lesu Selepas Reda",
-        badge: "Brek Parasimpatetik",
+        title: "6. Perut & Fasa Letih Selepas Serangan",
+        subtitle: "Loya Semasa Puncak & Mengantuk Selepas Reda",
+        badge: "Brek Semula Jadi",
         color: "#10b981",
         layman:
-          "Semasa kecemasan, badan menghentikan pencernaan perut supaya darah pergi ke otot—sebab itu perut rasa mual atau memulas. Selepas 10–20 minit, saraf penenang (parasimpatetik) mengambil alih, meninggalkan rasa mengantuk, sejuk menggigil, dan letih.",
+          "Semasa cemas, perut menghentikan pencernaan seketika lalu terasa mual. Selepas 15–20 minit, saraf penenang mengambil alih dan membuat badan rasa sejuk atau letih—itu tanda ribut sudah berakhir!",
+        family:
+          "<strong>Selepas Serangan Surut:</strong> Pesakit lazimnya berasa sangat lesu dan sejuk menggigil ('adrenaline hangover'). Beri mereka ruang berehat tenang tanpa menghujani soalan.",
         clinical:
           "Vasokonstriksi splanknik dan perencatan peristalsis gastrousus mencetuskan loya/ketidakselesaan epigastrik akut. Sebaik katekolamin dimetabolismekan selepas kemuncak 10–20 minit, lantunan tonus vagal parasimpatetik menghasilkan kelesuan pasca-panik."
       }
@@ -589,7 +670,9 @@ window.PANIC_DATA_BY_LANG = {
         tag: "Analogi 1 • Kenapa Badan Mengamuk Tanpa Bahaya",
         title: "Penggera Asap Berbunyi Kerana Wap Roti Bakar",
         layman:
-          "Bayangkan penggera kebakaran canggih yang berbunyi nyaring dan memancutkan air bomba hanya kerana anda membakar roti di dapur. Penggera itu <strong>tidak rosak</strong>—ia cuma terlalu sensitif! Serangan panik ialah sistem keselamatan badan yang berfungsi terlalu rajin pada waktu yang salah.",
+          "Bayangkan penggera kebakaran canggih yang berbunyi nyaring hanya kerana anda membakar roti di dapur. Penggera itu <strong>tidak rosak</strong>—ia cuma terlalu sensitif! Serangan panik ialah sistem keselamatan badan yang berfungsi terlalu rajin pada waktu yang salah.",
+        family:
+          "<strong>Cara Terangkan Kepada Saudara-Mara:</strong> Jantung pesakit bukannya sakit—ibarat penggera kereta yang berbunyi kuat kerana kucing melompat di atas bonet. Bunyinya bising, tetapi enjin kereta 100% elok!",
         clinical:
           "Menggambarkan hiper-reaktiviti amigdala-insulokortikal dan kemoreseptor ASIC1a/CO₂ terhadap rangsangan interoseptif jinak tanpa patologi kardiopulmonari."
       },
@@ -598,7 +681,9 @@ window.PANIC_DATA_BY_LANG = {
         tag: "Analogi 2 • Rahsia 'Accept & Float'",
         title: "Perangkap Jari Buluh & Ombak Laut 10 Minit",
         layman:
-          "Jika anda ditarik arus atau memakai perangkap jari buluh, makin kuat anda meronta melawan ('Jangan panik! Jangan berdebar!'), makin ketat ia mencengkam. Tetapi bila anda <strong>terima dan terapung tenang</strong> mengikut alunan ombak, adrenalin kehabisan bahan bakar sendiri dalam 10–20 minit.",
+          "Jika anda memakai perangkap jari buluh, makin kuat anda meronta melawan ('Jangan panik!'), makin ketat ia mencengkam. Bila anda <strong>terima dan terapung tenang</strong> mengikut alunan ombak, adrenalin kehabisan bahan bakar sendiri dalam 10–20 minit.",
+        family:
+          "<strong>Kenapa Jangan Paksa Mereka 'Cepat Tenang!':</strong> Menyuruh pesakit melawan panik serta-merta adalah seperti menyuruh perenang meronta melawan arus—temani mereka terapung perlahan sehingga ombak 10 minit surut.",
         clinical:
           "Menjelaskan paradoks penekanan kognitif: perlawanan sekunder mengekalkan pengaktifan simpatetik, manakala penerimaan mengembalikan kawalan perencatan vmPFC dan tonus vagal."
       },
@@ -607,7 +692,9 @@ window.PANIC_DATA_BY_LANG = {
         tag: "Analogi 3 • Kenapa 'Safety Behavior' Merugikan",
         title: "Tangkal Halau Harimau Di Tengah Bandar",
         layman:
-          "Jika seorang kawan menepuk tangan setiap minit di pusat beli-belah sambil berkata 'Tengok, sebab aku tepuk tanganlah tiada harimau datang!', dia takkan pernah tahu bahawa harimau memang tiada di situ. Begitulah tabiat menggenggam botol air, duduk tepi pintu keluar, atau menyemak jam pintar!",
+          "Jika seorang kawan menepuk tangan setiap minit di pusat beli-belah sambil berkata 'Sebab aku tepuk tanganlah tiada harimau datang!', dia takkan pernah tahu harimau memang tiada di situ. Begitulah tabiat menyemak jam pintar atau duduk tepi pintu keluar!",
+        family:
+          "<strong>Kenapa Keluarga Perlu Lepaskan Berperingkat:</strong> Jika pasangan hanya berani keluar apabila anda memegang tangannya 24 jam, otaknya menyangka dunia luar memang penuh 'harimau'. Bantu mereka bina keberanian berdikari sedikit demi sedikit.",
         clinical:
           "Menerangkan model Salkovskis: tingkah laku keselamatan menghalang pembuktian salah (<em>disconfirmation</em>) terhadap ramalan katastrofik semasa pendedahan."
       }
@@ -719,106 +806,187 @@ window.PANIC_DATA_BY_LANG = {
   // ENGLISH (EN)
   // ==========================================================================
   en: {
+    lensMeta: {
+      layman:
+        "🫂 <strong>For Me (Patient View):</strong> Calm, everyday language focused on immediate practical steps—without heavy medical jargon.",
+      family:
+        "👨‍👩‍👧 <strong>Family &amp; Public View:</strong> Exact words to say, 30s 999 red-flag checks, and how to support recovery without feeding avoidance.",
+      clinical:
+        "🩺 <strong>Clinical View (Doctors / Therapists):</strong> DSM-5-TR / ICD-11 codes, baseline workup, receptor mechanisms, &amp; full meta-analytic evidence."
+    },
+
+    chapterLens: {
+      ch2: {
+        layman:
+          "🫂 <strong>Gentle Reminder:</strong> Tick symptoms below simply as notes for your clinic visit—having ≥4 panic symptoms does <em>not</em> mean your heart is damaged.",
+        family:
+          "👨‍👩‍👧 <strong>Family 30s Triage:</strong> Ask calmly if chest pain feels heavy/crushing into the left arm or jaw, or if this is a first-ever attack over age 45. If yes, call <strong>999</strong> immediately.",
+        clinical:
+          "🩺 <strong>Baseline Organic Rule-Out:</strong> 12-lead ECG (exclude ACS/SVT), FBC, TSH/fT4, fasting glucose, electrolytes/Ca²⁺, and caffeine/sympathomimetic review prior to confirming <code>ICD-11 6B01</code>."
+      },
+      ch3: {
+        layman:
+          "🫂 <strong>Easy Win Today:</strong> Gradually cut down strong coffee or energy drinks over 7 days—many people notice daily palpitations drop dramatically!",
+        family:
+          "👨‍👩‍👧 <strong>Avoid 'Rescue Escapes':</strong> Don't rush your loved one out of every queue or take over 100% of errands—support gradual caffeine reduction and calm staying power.",
+        clinical:
+          "🩺 <strong>Adenosine Provocation Data (Klevebrant &amp; Frick, 2022):</strong> ~400–480 mg caffeine provokes full panic attacks in <strong>51.1%</strong> of panic disorder patients vs. 0% placebo via A1/A2A receptor antagonism."
+      },
+      ch4: {
+        layman:
+          "🫂 <strong>Keep It Simple:</strong> During a pounding surge, read your 60-Second Card below at most <strong>twice</strong>. The 10-step audit form stays tucked away below until you feel calm again.",
+        family:
+          "👨‍👩‍👧 <strong>Helping With 60s Scripts:</strong> During an attack, show their saved 60s card and read it slowly at most <strong>twice</strong>. Wait 30 minutes after the storm settles before discussing triggers.",
+        clinical:
+          "🩺 <strong>Clark (1986) &amp; Barlow-Craske Dual-Phase Protocol:</strong> Separate acute <em>Hot Cognition</em> (externalized 60s script capped at 2 reads to prevent mantra-like safety behavior) from post-surge <em>Cold Cognition</em> Socratic disconfirmation (&lt;15% belief target)."
+      },
+      ch5: {
+        layman:
+          "🫂 <strong>Go At Your Own Pace:</strong> Try just 1 gentle exercise once a doctor confirms you are medically clear. You are 100% in control!",
+        family:
+          "👨‍👩‍👧 <strong>Be a Cheerleader, Not a Rescuer:</strong> While your partner practices exposure, do <strong>not</strong> ask <em>'Are you okay?'</em> repeatedly or hand them water/fans. Praise their courage for finishing the timer!",
+        clinical:
+          "🩺 <strong>Inhibitory Learning Paradigm (Craske et al., 2014/2022):</strong> Target <em>expectancy violation</em> (disconfirming written catastrophe predictions with zero safety crutches) rather than relying on within-session SUDS habituation."
+      },
+      ch6: {
+        layman:
+          "🫂 <strong>Safe Questions for Your Doctor:</strong> Modern SSRIs are non-addictive. If prescribed, mild temporary jitteriness in week 1 is normal and fades as calm builds.",
+        family:
+          "👨‍👩‍👧 <strong>Family Support in Weeks 1–2:</strong> Early SSRI days can cause mild transient queasiness or restlessness before benefits appear in weeks 3–4. Encourage patience and <strong>never stopping abruptly</strong>.",
+        clinical:
+          "🩺 <strong>Prescribing Pearls (WFSBP v3 2023 • NICE CG113 • Cochrane NMA 2023):</strong> Initiate at half-dose to blunt early activation (Sertraline 25 mg → 50–150 mg; Escitalopram 5 mg → 10–20 mg). Maintain 6–24 months post-remission; avoid chronic benzodiazepines, propranolol &amp; buspirone."
+      },
+      ch8: {
+        layman:
+          "🫂 <strong>No-Pressure Practice:</strong> Try the 7 quick real-life scenarios below at your own pace to lock in confidence.",
+        family:
+          "👨‍👩‍👧 <strong>Family Quick Check:</strong> Scenarios #2 and #3 below specifically train spouses, parents, and coworkers on emergency vs. panic response!",
+        clinical:
+          "🩺 <strong>Clinical Competency Check:</strong> Covers ACS vs. panic triage, hypocapnic physiology, SSRI onboarding counseling, and PCT anti-crutch discipline."
+      }
+    },
+
     spectrumCards: [
       {
         id: "attack",
-        badge: "Symptom Episode • ICD-11 MB23.H",
+        badge: "Stage 1 • Symptom Episode",
+        clinicalBadge: "ICD-11 MB23.H • Specifier",
         badgeClass: "pill-info",
-        stat: "~13% of Adults Experience One",
+        stat: "~1 in 8 Adults Experience One",
         title: "1. Panic Attack (The Acute Surge)",
         layman:
-          "An abrupt wave of intense fear and dramatic physical sensations that peaks within minutes. By itself, it is <strong>not a mental illness</strong>—anyone can experience one due to heavy caffeine, exhaustion, or acute life stress.",
+          "A sudden wave of intense fear and racing body sensations that peaks within minutes. By itself, it is <strong>not a mental illness</strong>—anyone can have one when exhausted, stressed, or over-caffeinated.",
+        family:
+          "<strong>For Family:</strong> Your loved one's pounding heart, trembling, and air hunger are a 100% real biological adrenaline surge—<strong>never fake or attention-seeking</strong>, even when medical tests are normal.",
         clinical:
           "A non-codable clinical specifier in DSM-5-TR (ICD-11: <code>MB23.H</code>). Defined as an abrupt surge of intense fear or discomfort reaching a peak within minutes with <strong>≥4 of 13 autonomic/cognitive symptoms</strong>; may be expected (<em>cued</em>) or <em>unexpected</em>."
       },
       {
         id: "disorder",
-        badge: "Clinical Diagnosis • ICD-11 6B01",
+        badge: "Stage 2 • Recurrent Cycle",
+        clinicalBadge: "Diagnosis ICD-11 6B01",
         badgeClass: "pill-warn",
-        stat: "1.1% – 4.7% Lifetime (~10% Primary Care)",
-        title: "2. Panic Disorder (Recurrent Cycle)",
+        stat: "Highly Treatable With Right Care",
+        title: "2. Panic Disorder (Fear of Fear)",
         layman:
-          "Diagnosed by a clinician when unexpected 'out-of-the-blue' panic attacks repeat, followed by <strong>at least 1 month</strong> of persistent worry about having another attack ('fear of fear') or changing daily routines to avoid triggers.",
+          "Happens when unexpected surges repeat and leave you worrying for <strong>at least 1 month</strong> about when the next wave might strike. Good news: this loop responds remarkably well to treatment!",
+        family:
+          "<strong>For Family:</strong> After repeated out-of-the-blue surges, patients live in exhausting dread of the next attack. Gently encourage a supportive GP or MENTARI checkup without judgment.",
         clinical:
-          "An anxiety disorder diagnosis (DSM-5-TR / ICD-11 <code>6B01</code>; ~2:1 female-to-male ratio). Requires recurrent unexpected panic attacks + ≥1 month of persistent anticipatory concern or maladaptive behavioral change, after excluding organic/substance causes."
+          "An anxiety disorder diagnosis (DSM-5-TR / ICD-11 <code>6B01</code>; 1.1%–4.7% prevalence, ~2:1 female-to-male ratio). Requires recurrent unexpected panic attacks + ≥1 month of persistent anticipatory concern or maladaptive behavioral change, after excluding organic causes."
       },
       {
         id: "agoraphobia",
-        badge: "Distinct DSM-5-TR Diagnosis",
+        badge: "Stage 3 • Avoidance Trap",
+        clinicalBadge: "Distinct DSM-5-TR Diagnosis",
         badgeClass: "pill-danger",
-        stat: "Affects ~25% in Panic Disorder",
-        title: "3. Agoraphobia (Avoidance Trap)",
+        stat: "Reversible Through Small Steps",
+        title: "3. Agoraphobia (Shrinking Comfort Zone)",
         layman:
-          "When someone begins avoiding <strong>2 or more everyday settings</strong>—such as driving on highways, public transit, elevators, supermarkets, or leaving home alone—for fear that escape would be hard or help unavailable if panic strikes.",
+          "When you start avoiding <strong>2 or more everyday places</strong>—like traffic jams, highways, elevators, or supermarkets—for fear of feeling trapped. Small graded steps reopen your world!",
+        family:
+          "<strong>For Family:</strong> Taking over 100% of driving and shopping forever out of kindness accidentally shrinks their world further. Support small, steady steps back to independence.",
         clinical:
-          "Coded as an independent diagnosis in DSM-5-TR (separated from DSM-IV linkage). Marked fear or avoidance of ≥2 of 5 domains (public transit, open spaces, enclosed places, queues/crowds, outside home alone) lasting ≥6 months."
+          "Coded as an independent diagnosis in DSM-5-TR (~25% comorbidity). Marked fear or avoidance of ≥2 of 5 domains (public transit, open spaces, enclosed places, queues/crowds, outside home alone) lasting ≥6 months."
       }
     ],
 
     neuroHotspots: [
       {
         id: "amygdala",
-        title: "1. Amygdala, vmPFC & Brain Acid Sensors",
+        title: "1. Amygdala & Brain Alarm",
         subtitle: "An Over-Sensitive Smoke Detector",
         badge: "Threat Alarm Hub",
         color: "#ef4444",
         layman:
-          "Your amygdala acts like a smoke alarm. During panic, it misreads a harmless body shift (like a fast pulse from coffee or stairs) as mortal danger and hits the emergency siren, while your logical 'brake pedal' (prefrontal cortex) briefly goes offline.",
+          "Your amygdala acts like a smoke alarm. During panic, it misreads a harmless body shift as danger and hits the siren, while your logical 'brake pedal' briefly pauses.",
+        family:
+          "<strong>For Family:</strong> While the amygdala siren is blaring, their brain cannot process long lectures. Skip complex questions—use warm, short anchors like <em>'I am right here, you are safe.'</em>",
         clinical:
-          "Dysregulation across the amygdala-centered fear network, BNST, hippocampus, and blunted ventromedial prefrontal cortex (vmPFC) inhibition. PET studies show reduced fronto-limbic <strong>GABA-A</strong> and <strong>5-HT1A</strong> binding, alongside hypersensitive <strong>ASIC1a/ASIC2</strong> acid-sensing ion channels triggered by extracellular pH shifts."
+          "Dysregulation across the amygdala-centered fear network, BNST, hippocampus, and blunted ventromedial prefrontal cortex (vmPFC) inhibition. PET studies show reduced fronto-limbic <strong>GABA-A</strong> and <strong>5-HT1A</strong> binding, alongside hypersensitive <strong>ASIC1a/ASIC2</strong> acid-sensing ion channels."
       },
       {
         id: "lungs",
-        title: "2. Lungs & Hyperventilation (Low CO₂ / Hypocapnia)",
+        title: "2. Lungs & Blood CO₂",
         subtitle: "Why You Feel 'Air Hunger' Despite Full Oxygen",
         badge: "Core Physiology #1",
         color: "#38bdf8",
         layman:
-          "Even though you feel like you can't get a deep breath, your blood oxygen is actually <strong>98%–100% full</strong>! Fast, shallow chest breathing blows off too much carbon dioxide (CO₂), making your blood temporarily slightly alkaline.",
+          "Even though your chest feels tight, your blood oxygen is <strong>98%–100% full</strong>! Fast chest breathing simply blows off too much CO₂—which is why a slow 6-second exhale helps so quickly.",
+        family:
+          "<strong>For Family:</strong> Never use a paper bag or shout 'Take a huge deep breath!'. Invite them to watch your shoulders and exhale slowly for 6 seconds together.",
         clinical:
           "Subclinical tidal-volume instability and dropping end-tidal pCO₂ can begin up to <strong>50 minutes prior</strong> to conscious panic onset (Meuret et al.). Acute hyperventilation drives <strong>hypocapnia</strong> and transient <strong>respiratory alkalosis</strong> without hypoxia."
       },
       {
         id: "brainVessels",
-        title: "3. Cerebral Vessels & Nerves (Tingling & Unreality)",
+        title: "3. Brain Vessels & Tingling Nerves",
         subtitle: "Why Fingers Tingle & The Room Feels Like a Dream",
         badge: "Not a Stroke / Not Psychosis",
         color: "#a78bfa",
         layman:
-          "Low blood CO₂ causes blood vessels in the brain to narrow slightly for a few minutes. That exact harmless shift creates lightheadedness, blurry vision, dream-like unreality (<em>derealization</em>), and tingling in your fingers and lips—<strong>not a stroke or 'going crazy'!</strong>",
+          "Low CO₂ narrows brain blood vessels slightly for a few minutes—causing lightheadedness, dream-like unreality, and tingling fingers/lips. <strong>It is NOT a stroke or 'going crazy'!</strong>",
+        family:
+          "<strong>For Family:</strong> When they say 'my hands are numb' or 'everything feels unreal', stay calm—both hands tingling from fast breathing is harmless (whereas one-sided facial droop/weakness means call 999).",
         clinical:
           "Respiratory alkalosis induces transient mild cerebral vasoconstriction and shifts ionized serum calcium binding, directly producing acral/perioral paresthesias, dizziness, and transient protective derealization/depersonalization."
       },
       {
         id: "heart",
-        title: "4. Heart & Sympathetic Chain (T1–L2)",
+        title: "4. Heart & Adrenaline Surge",
         subtitle: "Racing Pulse & Why True Fainting Almost Never Happens",
         badge: "Blood-Pressure Paradox",
         color: "#f59e0b",
         layman:
-          "Adrenaline speeds up your heart to pump fuel to your muscles. People often fear passing out—yet fainting happens when blood pressure <em>drops</em>, whereas a panic attack <strong>raises blood pressure</strong>! A healthy heart handles this surge safely.",
+          "Adrenaline speeds up your heart just like brisk exercise. Fainting requires blood pressure to <em>drop</em>, whereas panic <strong>raises blood pressure</strong>—so you won't collapse from panic!",
+        family:
+          "<strong>For Family:</strong> If someone truly loses consciousness and blacks out completely, do <strong>not</strong> assume panic—seek immediate emergency cardiac evaluation.",
         clinical:
-          "Hypothalamic-sympathetic projections (T1–L2) and adrenal medullary catecholamine release elevate heart rate and arterial blood pressure. True vasovagal syncope is virtually absent in panic disorder (except in blood-injection-injury phobia); actual collapse warrants cardiac/neurologic workup."
+          "Hypothalamic-sympathetic projections (T1–L2) and adrenal medullary catecholamine release elevate heart rate and arterial blood pressure. True vasovagal syncope is virtually absent in panic disorder (except in blood-injection-injury phobia)."
       },
       {
         id: "throatChest",
-        title: "5. Throat Muscle (Globus) & Chest Wall",
-        subtitle: "The Choking Illusion & Localized Sharp Chest Tightness",
+        title: "5. Throat Muscle & Chest Wall",
+        subtitle: "The Choking Illusion & Sharp Chest Tightness",
         badge: "Muscle Tension",
         color: "#2dd4bf",
         layman:
-          "Adrenaline tightens throat muscles, creating the scary illusion of a 'lump in the throat' even though your airway is wide open. Meanwhile, rapid upper-chest breathing strains rib muscles, causing sharp, localized chest soreness.",
+          "Adrenaline tightens neck muscles, creating the illusion of a 'lump in the throat' even though your airway is wide open. Upper-chest breathing also strains rib muscles.",
+        family:
+          "<strong>For Family:</strong> Gently invite them to drop their shoulders, unclench their jaw, and take one small sip or swallow to prove their throat is open.",
         clinical:
           "Cricopharyngeal muscle hypertonicity produces benign <em>globus sensation</em> with normal airway patency. Accessory and intercostal muscle overuse causes localized anterior chest wall discomfort."
       },
       {
         id: "gutHangover",
-        title: "6. Gut Pause & The 'Adrenaline Hangover'",
-        subtitle: "Nausea During the Peak & Exhaustion Afterward",
-        badge: "Parasympathetic Brake",
+        title: "6. Stomach Pause & Post-Surge Fatigue",
+        subtitle: "Nausea During the Peak & Tiredness Afterward",
+        badge: "Natural Recovery Brake",
         color: "#10b981",
         layman:
-          "To prepare you to sprint from danger, your body pauses stomach digestion—causing sudden nausea, butterflies, or urgency. Once the 10–20 minute wave peaks, your parasympathetic 'rest brake' kicks in, leaving you tired, chilly, and sleepy.",
+          "During alarm mode, your stomach pauses digestion (causing butterflies or nausea). After 15–20 minutes, your calming nerve kicks in and leaves you sleepy—proof the storm has passed!",
+        family:
+          "<strong>After It Settles:</strong> Expect your loved one to feel drained, chilly, and sleepy ('adrenaline hangover'). Offer a quiet space to rest without interrogation.",
         clinical:
           "Splanchnic vasoconstriction and halted GI motility trigger acute nausea/abdominal distress. Post-peak catecholamine clearance and parasympathetic vagal rebound account for post-attack exhaustion and chills."
       }
@@ -1296,7 +1464,9 @@ window.PANIC_DATA_BY_LANG = {
         tag: "Analogy 1 • Why Your Body Fires Without Danger",
         title: "A Smoke Detector Triggered by Morning Toast",
         layman:
-          "Imagine a high-tech smoke alarm that blasts sirens and ceiling sprinklers just because you browned a slice of toast. The alarm isn't 'broken' or 'crazy'—its sensitivity dial is simply turned up too high! A panic attack is a healthy survival system firing at a false alarm.",
+          "Imagine a smoke alarm that blasts sirens just because you toasted bread. The alarm isn't 'broken'—its sensitivity dial is simply turned up too high! A panic attack is a healthy survival system firing at a false alarm.",
+        family:
+          "<strong>How to Explain It to Relatives:</strong> Their heart isn't failing—it's like a car alarm blaring loudly because a cat jumped onto the hood. The siren is loud, yet the engine is 100% healthy!",
         clinical:
           "Illustrates fronto-limbic and brainstem ASIC1a/CO₂ chemoreceptor hypersensitivity to benign interoceptive cues in the absence of cardiopulmonary pathology."
       },
@@ -1305,7 +1475,9 @@ window.PANIC_DATA_BY_LANG = {
         tag: "Analogy 2 • Why 'Accept & Float' Works",
         title: "The Bamboo Finger Trap & The 10-Minute Ocean Wave",
         layman:
-          "In a woven finger trap—or a coastal rip current—the harder you thrash and shout 'Stop panicking right now!', the tighter the panic grips. When you drop the fight, soften your shoulders, and <strong>float with the wave</strong>, adrenaline naturally burns out within 10 to 20 minutes.",
+          "In a woven finger trap, the harder you yank and shout 'Stop panicking!', the tighter it grips. When you drop the fight, soften your shoulders, and <strong>float with the wave</strong>, adrenaline burns out naturally in 10–20 minutes.",
+        family:
+          "<strong>Why 'Just Snap Out of It!' Backfires:</strong> Ordering someone to stop panicking immediately is like telling a swimmer to fight a rip current—sit quietly beside them as they float until the 10-minute wave settles.",
         clinical:
           "Captures paradoxical secondary threat appraisal: fighting autonomic arousal sustains sympathetic output, whereas acceptance restores vmPFC inhibition and vagal tone."
       },
@@ -1314,7 +1486,9 @@ window.PANIC_DATA_BY_LANG = {
         tag: "Analogy 3 • Why Safety Behaviors Backfire",
         title: "Clapping Hands to 'Keep Tigers Away' in the Mall",
         layman:
-          "If someone claps every minute inside a shopping mall saying 'See? My clapping keeps tigers away!', their brain never learns there were zero tigers to begin with. Clinging to smartwatches, exit seats, or rescue water bottles tricks your amygdala into believing you barely survived a disaster!",
+          "If someone claps every minute in a mall saying 'My clapping keeps tigers away!', their brain never learns there were zero tigers there. Clinging to smartwatches or exit seats tricks your brain into thinking you barely survived!",
+        family:
+          "<strong>Why Gradual Independence Matters:</strong> If your partner only dares go out while holding your hand 24/7, their brain stays convinced the mall is full of 'tigers'. Support gentle, step-by-step solo wins.",
         clinical:
           "Demonstrates Salkovskis's safety-behavior hypothesis: subtle avoidance blocks threat-belief disconfirmation during situational and interoceptive exposure."
       }

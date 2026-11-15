@@ -102,24 +102,57 @@
     });
   }
 
+  function renderAudienceLensUI() {
+    const m = window.currentAudienceMode || "layman";
+    const data = window.getPanicData();
+    const bannerTxt = document.getElementById("activeLensBannerText");
+    if (bannerTxt && data.lensMeta) {
+      bannerTxt.innerHTML = data.lensMeta[m] || data.lensMeta.layman;
+    }
+    if (data.chapterLens) {
+      ["ch2", "ch3", "ch4", "ch5", "ch6", "ch8"].forEach((chKey) => {
+        const el = document.getElementById("lensCallout-" + chKey);
+        if (el && data.chapterLens[chKey]) {
+          el.innerHTML = data.chapterLens[chKey][m] || data.chapterLens[chKey].layman;
+        }
+      });
+    }
+  }
+
   function initTopControls() {
-    // Audience mode
-    const savedAudience = localStorage.getItem("paniclab_audience") || "layman";
+    // 3-Lens Audience Mode: 'layman' | 'family' | 'clinical'
+    const rawSaved = localStorage.getItem("paniclab_audience") || "layman";
+    const savedAudience = ["layman", "family", "clinical"].includes(rawSaved) ? rawSaved : "layman";
+
     function setAudience(mode) {
-      const m = mode === "clinical" ? "clinical" : "layman";
+      const m = ["layman", "family", "clinical"].includes(mode) ? mode : "layman";
+      window.currentAudienceMode = m;
+      document.body.classList.toggle("mode-layman", m === "layman");
+      document.body.classList.toggle("mode-family", m === "family");
       document.body.classList.toggle("mode-clinical", m === "clinical");
-      document.body.classList.toggle("mode-layman", m !== "clinical");
+
       document.querySelectorAll("[data-audience-mode]").forEach((b) => {
         b.classList.toggle("active", b.getAttribute("data-audience-mode") === m);
       });
+
+      // Keep heavy worksheets/tables tucked neatly in layman/family modes, expanded in clinical
+      document.querySelectorAll("details[data-clinical-open]").forEach((det) => {
+        det.open = m === "clinical";
+      });
+
       try {
         localStorage.setItem("paniclab_audience", m);
       } catch (_) {}
+
+      renderAudienceLensUI();
+      renderSpectrumSection();
     }
+
     document.querySelectorAll("[data-audience-mode]").forEach((btn) => {
       btn.addEventListener("click", () => setAudience(btn.getAttribute("data-audience-mode")));
     });
     setAudience(savedAudience);
+    langCallbacks.push(renderAudienceLensUI);
 
     // Language buttons
     document.querySelectorAll("[data-lang-switch]").forEach((btn) => {
@@ -495,16 +528,18 @@
   function renderSpectrumSection() {
     const container = document.getElementById("spectrumCardsGrid");
     if (!container) return;
+    const isClin = window.currentAudienceMode === "clinical";
     const cards = window.getPanicData().spectrumCards;
     container.innerHTML = cards
       .map(
         (c) => `<article class="panel-card" style="display:flex; flex-direction:column; justify-content:space-between; gap:10px;">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
-              <span class="pill-badge ${c.badgeClass}">${c.badge}</span>
+              <span class="pill-badge ${c.badgeClass}">${isClin && c.clinicalBadge ? c.clinicalBadge : c.badge}</span>
             </div>
             <h3 style="margin:0 0 6px;">${c.title}</h3>
             <div class="layman-only" style="font-size:0.88rem; color:var(--text-secondary);">${c.layman}</div>
+            <div class="family-only" style="font-size:0.88rem; color:var(--text-secondary);">${c.family || c.layman}</div>
             <div class="clinical-only" style="font-size:0.88rem; color:var(--text-secondary);">${c.clinical}</div>
           </div>
           <div style="padding-top:10px; border-top:1px solid var(--border-subtle); font-size:0.8rem; font-weight:700; color:var(--accent-teal);">
@@ -898,6 +933,8 @@
     });
 
     document.getElementById("trLoadSampleBtn")?.addEventListener("click", function () {
+      const trDet = document.getElementById("trDisclosure");
+      if (trDet) trDet.open = true;
       const s = window.getPanicData().thoughtRecordSample;
       const setVal = (id, v) => {
         const el = document.getElementById(id);
@@ -1395,6 +1432,7 @@
               <div style="font-size:0.74rem; font-weight:700; color:var(--accent-teal); text-transform:uppercase; margin-bottom:4px;">${a.tag}</div>
               <h3 style="margin:0 0 8px;">${a.title}</h3>
               <p class="layman-only" style="margin:0; font-size:0.88rem; color:var(--text-secondary);">${a.layman}</p>
+              <p class="family-only" style="margin:0; font-size:0.88rem; color:var(--text-secondary);">${a.family || a.layman}</p>
               <p class="clinical-only" style="margin:0; font-size:0.88rem; color:var(--text-secondary);">${a.clinical}</p>
             </article>`
           )

@@ -35,8 +35,9 @@
           <button type="button" data-lang-switch="en" title="English">🇬🇧 EN</button>
         </div>
         <div class="segmented-toggle" role="group" aria-label="Explanation Mode">
-          <button type="button" data-audience-mode="layman" class="active" data-en="🗣️ Friendly Guide">🗣️ Mudah Faham</button>
-          <button type="button" data-audience-mode="clinical" data-en="🩺 Clinical Mode">🩺 Mod Klinikal</button>
+          <button type="button" data-audience-mode="layman" class="active" data-en="🫂 For Me" title="Untuk Pesakit (Mudah &amp; Tenang)">🫂 Saya</button>
+          <button type="button" data-audience-mode="family" data-en="👨‍👩‍👧 Family" title="Untuk Pasangan, Keluarga &amp; Orang Awam">👨‍👩‍👧 Keluarga</button>
+          <button type="button" data-audience-mode="clinical" data-en="🩺 Clinical" title="Untuk Doktor, Terapis &amp; Rujukan Klinikal">🩺 Klinikal</button>
         </div>
         <button type="button" id="themeToggleBtn" class="btn-secondary" style="padding:6px 11px; font-size:0.76rem;">
           ☀️ Mod Cerah
@@ -329,29 +330,57 @@
 
   <!-- ============================= MAIN CONTENT ============================= -->
   <main id="top" class="container">
+    <!-- ============== SLIM ACTIVE LENS INDICATOR BAR ============== -->
+    <div id="activeLensBanner" class="lens-status-strip" role="status">
+      <div id="activeLensBannerText"></div>
+      <button type="button" class="chip-btn family-only" data-open-quickhelp="step4" data-en="🤝 Open Bystander First-Aid SOP">
+        🤝 Buka SOP Bantu Sekarang
+      </button>
+    </div>
+
     <!-- ========================== HERO SECTION ========================== -->
     <section class="hero">
       <div>
-        <div class="hero-eyebrow" data-en="🛡️ Legal, Medically Audited &amp; Empathetic • DSM-5-TR • ICD-11 • NICE • WFSBP • KKM">
-          🛡️ Sahih, Diaudit Garis Panduan Klinikal &amp; Mesra Pesakit • DSM-5-TR • ICD-11 • NICE • KKM
+        <div class="hero-eyebrow non-clinical" data-en="🛡️ Medically Trusted, Calm &amp; Practical • Official KKM Helplines">
+          🛡️ Sahih, Menenangkan &amp; Praktikal • Saluran Rasmi KKM
         </div>
-        <h1 data-en="Understand Panic Attacks, Break the Fear Loop &amp; Reclaim Calm">
+        <div class="hero-eyebrow clinical-only" data-en="🛡️ Clinical Reference Mode • DSM-5-TR • ICD-11 • NICE CG113 • WFSBP v3 • Cochrane 2023">
+          🛡️ Mod Rujukan Klinikal • DSM-5-TR • ICD-11 • NICE CG113 • WFSBP v3 • Cochrane 2023
+        </div>
+
+        <h1 class="layman-only" data-en="Understand Panic Attacks, Break the Fear Loop &amp; Reclaim Calm">
           Fahami Serangan Panik, Putuskan Kitaran Takut &amp; Pulihkan Ketenangan
         </h1>
-        <p class="hero-lead layman-only" data-en="A &lt;strong&gt;panic attack&lt;/strong&gt; feels terrifying—racing heart, air hunger, tingling hands, and an overwhelming fear of dying or losing control—yet biologically it is a &lt;strong&gt;false alarm of your survival system&lt;/strong&gt;, not a failing heart or losing your mind. Learn the difference between a single &lt;em&gt;panic attack&lt;/em&gt; and &lt;em&gt;panic disorder&lt;/em&gt;, practice live relief tools, and explore gold-standard recovery.">
-          <strong>Serangan panik</strong> memang terasa amat menakutkan—jantung berdebar kencang, rasa tak cukup nafas, jari kebas, dan rasa seolah-olah nyawa di hujung tanduk—sedangkan secara biologi ia hanyalah <strong>penggera keselamatan palsu</strong> di dalam otak, bukannya kerosakan jantung atau hilang akal! Fahami perbezaan <em>serangan panik</em> dengan <em>kecelaruan panik</em>, kuasai teknik kecemasan, dan terokai rawatan terbukti.
+        <h1 class="family-only" data-en="Help Someone You Love Through Panic — Calmly, Safely &amp; Wisely">
+          Bantu Insan Tersayang Menghadapi Serangan Panik — Dengan Tenang &amp; Bijak
+        </h1>
+        <h1 class="clinical-only" data-en="Panic Attack &amp; Panic Disorder — Clinical Triage, PCT Exposure &amp; Stepped Care">
+          Serangan Panik &amp; Kecelaruan Panik — Triaj Klinikal, Protokol PCT &amp; Farmakoterapi
+        </h1>
+
+        <p class="hero-lead layman-only" data-en="A &lt;strong&gt;panic attack&lt;/strong&gt; feels terrifying—racing heart, air hunger, and tingling hands—yet biologically it is a &lt;strong&gt;harmless false alarm of adrenaline&lt;/strong&gt;, not a failing heart or losing your mind. Take one calm step at a time below.">
+          <strong>Serangan panik</strong> memang terasa menakutkan—jantung laju, dada sempit, dan jari kebas—namun secara biologi ia hanyalah <strong>penggera keselamatan palsu</strong> di dalam otak, bukannya kerosakan jantung atau hilang akal. Terokai panduan tenang selangkah demi selangkah di bawah.
         </p>
-        <p class="hero-lead clinical-only" data-en="&lt;strong&gt;[Clinical Mode]&lt;/strong&gt; Synthesizes pathophysiology (amygdala–vmPFC circuitry, GABA-A/5-HT1A deficits, subclinical 50-min pCO₂ instability &amp; ASIC1a/2 chemoreception), &lt;strong&gt;DSM-5-TR / ICD-11 (MB23.H vs 6B01)&lt;/strong&gt; diagnostic architecture, cardiopulmonary/endocrine triage, &lt;strong&gt;Panic Control Treatment (CBT / B4DT)&lt;/strong&gt;, and stepped pharmacotherapy (&lt;strong&gt;WFSBP v3 2023, NICE CG113, Cochrane NMA 2023&lt;/strong&gt;).">
-          <strong>[Mod Klinikal]</strong> Menggabungkan patofisiologi rangkaian amigdala–vmPFC, kemoreseptor pH/CO₂ (<strong>ASIC1a/ASIC2</strong>), kriteria diagnostik <strong>DSM-5-TR &amp; ICD-11 (MB23.H lwn 6B01)</strong>, saringan perbezaan kardiopulmonari/endokrin, protokol <strong>CBT &amp; Bergen 4-Day Treatment (B4DT)</strong>, serta hierarki farmakoterapi berdasarkan bukti (<strong>WFSBP v3 2023, NICE CG113, Cochrane NMA 2023</strong>).
+        <p class="hero-lead family-only" data-en="When a spouse, child, or colleague panics, their racing pulse and breathlessness are &lt;strong&gt;100% real biologically&lt;/strong&gt; (never 'acting up'), yet safe once red flags are ruled out. Use this Family View to learn the exact words to say, when to call &lt;strong&gt;999&lt;/strong&gt;, and how to support recovery without feeding avoidance.">
+          Apabila pasangan, anak, atau rakan diserang panik, debaran dan sesak nafas mereka adalah <strong>tindak balas biologi sebenar</strong> (bukan mengada-ngada), namun tidak membawa maut. Gunakan <strong>Paparan Keluarga</strong> ini untuk mengetahui ayat tepat yang menenangkan, bila perlu hubungi <strong>999</strong>, dan cara menyokong pemulihan tanpa menjadi 'tongkat pengelakan'.
+        </p>
+        <p class="hero-lead clinical-only" data-en="Synthesizes fronto-limbic pathophysiology (amygdala–vmPFC circuitry, GABA-A/5-HT1A binding, subclinical pCO₂ instability &amp; ASIC1a/2 chemoreception), &lt;strong&gt;DSM-5-TR / ICD-11 (MB23.H vs 6B01)&lt;/strong&gt; criteria, cardiopulmonary/endocrine rule-out, &lt;strong&gt;Barlow &amp; Craske PCT / Craske Inhibitory Learning&lt;/strong&gt;, and stepped pharmacotherapy (&lt;strong&gt;WFSBP v3 2023, NICE CG113, Cochrane NMA 2023&lt;/strong&gt;).">
+          Menggabungkan patofisiologi amigdala–vmPFC, kemoreseptor pH/CO₂ (<strong>ASIC1a/ASIC2</strong>), kriteria diagnostik <strong>DSM-5-TR &amp; ICD-11 (MB23.H lwn 6B01)</strong>, saringan kardiopulmonari/endokrin, protokol <strong>Barlow &amp; Craske PCT / Inhibitory Learning</strong>, serta hierarki farmakoterapi (<strong>WFSBP v3 2023, NICE CG113, Cochrane NMA 2023</strong>).
         </p>
 
         <div class="hero-cta-row">
-          <button type="button" class="btn-sos-primary" data-open-quickhelp="step1" style="padding:10px 18px; font-size:0.9rem;" data-en="🆘 Having a Panic Attack Now?">
+          <button type="button" class="btn-sos-primary layman-only" data-open-quickhelp="step1" style="padding:10px 18px; font-size:0.9rem;" data-en="🆘 Having a Panic Attack Now?">
             🆘 Sedang Diserang Panik Sekarang?
           </button>
-          <a href="#sec-kognitif" class="btn-primary" data-en="🃏 60s Cards &amp; Thought Audit">🃏 Kad Taktikal 60s &amp; Audit Bukti</a>
-          <a href="#sec-saringan" class="btn-secondary" data-en="🩺 13-Symptom &amp; Cardiac Check">🩺 Semak 13 Simptom &amp; Jantung</a>
-          <a href="#sec-cbt" class="btn-secondary" data-en="🧠 Inhibitory Exposure Lab">🧠 Makmal Pendedahan CBT</a>
+          <button type="button" class="btn-sos-primary family-only" data-open-quickhelp="step4" style="padding:10px 18px; font-size:0.9rem;" data-en="🤝 Helping Someone Panicking Right Now?">
+            🤝 Sedang Membantu Orang Panik Sekarang?
+          </button>
+          <button type="button" class="btn-sos-primary clinical-only" data-open-quickhelp="step3" style="padding:10px 18px; font-size:0.9rem;" data-en="🚨 Acute 30s Red-Flag Triage">
+            🚨 Triaj Pantas Red-Flag (30s)
+          </button>
+          <a href="#sec-kognitif" class="btn-primary" data-en="🃏 60s Pocket Cards">🃏 Kad Taktikal 60s</a>
+          <a href="#sec-analogi" class="btn-secondary family-only" data-en="👨‍👩‍👧 3 Family Pillars">👨‍👩‍👧 3 Tonggak Keluarga</a>
+          <a href="#sec-saringan" class="btn-secondary" data-en="🩺 Panic vs Heart Check">🩺 Beza Panik lwn Jantung</a>
         </div>
       </div>
 
@@ -458,16 +487,18 @@
     <!-- ======== BAB 2: SARINGAN 13 SIMPTOM DSM-5-TR & PANIK LWN JANTUNG ======== -->
     <section id="sec-saringan" class="section-block">
       <div class="section-head">
-        <div class="section-num" data-en="Chapter 2 • Educational Self-Check &amp; Medical Triage (DSM-5-TR &amp; Emergency Rules)">
-          Bab 2 • Semakan Kendiri Berpandu &amp; Perbezaan Kritikal (DSM-5-TR lwn Serangan Jantung)
+        <div class="section-num" data-en="Chapter 2 • Symptom Check &amp; Heart Safety Triage">
+          Bab 2 • Semakan Simptom &amp; Perbezaan Panik lwn Jantung (999)
         </div>
-        <h2 data-en="Official 13 DSM-5-TR Symptoms &amp; How Doctors Tell Panic Apart from Cardiac Events">
-          13 Simptom Rasmi DSM-5-TR &amp; Cara Membezakan Panik, Keresahan &amp; Serangan Jantung (ACS)
+        <h2 data-en="13 Panic Symptoms &amp; How Doctors Tell Panic Apart from Heart Attacks">
+          13 Simptom Panik &amp; Cara Membezakannya Daripada Serangan Jantung (ACS)
         </h2>
-        <p data-en="Important legal &amp; medical note: Only a qualified physician can diagnose Panic Disorder after ruling out organic mimics (ECG, thyroid, blood glucose). Use this checker to organize your observations for your clinic visit.">
-          <strong>Nota Keselamatan &amp; Perundangan:</strong> Hanya doktor bertauliah boleh mengesahkan diagnosis Kecelaruan Panik selepas menjalankan saringan perubatan (ECG, fungsi tiroid, glukosa darah). Alat ini membantu anda menyusun maklumat untuk dibawa ke klinik.
+        <p data-en="Important safety note: Only a qualified physician can confirm Panic Disorder after ruling out physical look-alikes (ECG, thyroid, blood sugar).">
+          <strong>Nota Keselamatan:</strong> Hanya doktor bertauliah boleh mengesahkan Kecelaruan Panik selepas menjalankan pemeriksaan asas (ECG, tiroid, gula darah).
         </p>
       </div>
+
+      <div id="lensCallout-ch2" class="lens-callout"></div>
 
       <div class="panel-card" style="margin-bottom:18px;">
         <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
@@ -537,22 +568,21 @@
     <!-- ======== BAB 3: KALKULATOR KAFEIN & PERANGKAP SAFETY BEHAVIORS ======== -->
     <section id="sec-pencetus" class="section-block">
       <div class="section-head">
-        <div class="section-num" data-en="Chapter 3 • Hidden Triggers, Caffeine Science &amp; Clinical Myth-Busting">
-          Bab 3 • Pencetus Tersembunyi, Sains Kafein &amp; Pembongkaran Mitos Klinikal
+        <div class="section-num" data-en="Chapter 3 • Everyday Triggers &amp; Safety-Behavior Traps">
+          Bab 3 • Pencetus Harian &amp; Perangkap 'Tongkat Keselamatan'
         </div>
-        <h2 data-en="Daily Stimulant Calculator &amp; Why 'Safety Crutches' Keep Panic Alive">
-          Kalkulator Pencetus Kafein Harian &amp; Perangkap 'Safety Behaviors'
+        <h2 data-en="Daily Caffeine Calculator &amp; Why 'Safety Crutches' Keep Panic Alive">
+          Kalkulator Kafein Harian &amp; Kenapa 'Tongkat Keselamatan' Mengekalkan Panik
         </h2>
-        <p data-en="Genetics account for up to 40% of vulnerability in first-degree relatives—but everyday chemical triggers and subtle avoidance habits often light the match.">
-          Sejarah keluarga tahap pertama menyumbang sehingga 40% kerentanan biologi—namun bahan perangsang harian dan tabiat keselamatan palsu sering menjadi pencetus utama yang mengekalkan kitaran panik.
-        </p>
       </div>
+
+      <div id="lensCallout-ch3" class="lens-callout"></div>
 
       <div class="two-col">
         <!-- Caffeine Calculator -->
         <div class="panel-card">
-          <h3 data-en="☕ Caffeine &amp; Stimulant Trigger Calculator (Klevebrant &amp; Frick, 2022)">
-            ☕ Kalkulator Risiko Kafein &amp; Perangsang (Klevebrant &amp; Frick, 2022)
+          <h3 data-en="☕ Daily Caffeine &amp; Stimulant Calculator">
+            ☕ Kalkulator Kafein &amp; Perangsang Harian
           </h3>
           <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Tick what you consumed today. A landmark meta-analysis in &lt;em&gt;General Hospital Psychiatry&lt;/em&gt; confirmed high caffeine doses directly provoke panic attacks in &lt;strong&gt;&gt;51% of panic disorder patients&lt;/strong&gt;:">
             Tandakan minuman/ubat yang diambil hari ini. Meta-analisis dalam <em>General Hospital Psychiatry</em> mengesahkan dos kafein tinggi mencetuskan serangan panik secara langsung pada <strong>melebihi separuh (&gt;51%) pesakit</strong>:
@@ -586,16 +616,15 @@
     <!-- ======== BAB 4: PENSTRUKTURAN SEMULA KOGNITIF (HOT vs COLD COGNITION & THOUGHT RECORD) ======== -->
     <section id="sec-kognitif" class="section-block">
       <div class="section-head">
-        <div class="section-num" data-en="Chapter 4 • Panic-Specific Cognitive Restructuring (Clark • Barlow &amp; Craske)">
-          Bab 4 • Penstrukturan Semula Kognitif Khusus Panik (Hot lwn Cold Cognition &amp; Audit Bukti)
+        <div class="section-num" data-en="Chapter 4 • Two-Phase Action Plan (During Surge vs. After Surge)">
+          Bab 4 • Pelan Tindakan Dua Fasa (Semasa Serangan lwn Selepas Reda)
         </div>
-        <h2 data-en="60-Second Pocket Scripts (During Surge) &amp; 10-Step Thought Audit (After Surge)">
-          5 Kad Taktikal 60 Saat (Semasa Serangan) &amp; Borang Audit Bukti 10 Langkah (Selepas Reda)
+        <h2 data-en="60-Second Pocket Scripts (During Surge) &amp; Thought Audit (After Surge)">
+          5 Kad Taktikal 60 Saat (Semasa Serangan) &amp; Audit Bukti (Selepas Reda)
         </h2>
-        <p data-en="Generic 'positive thinking' fails during panic because adrenaline temporarily shuts down >50% of logical cortex capacity. Clinical CBT separates action into Two Phases: short externalized truth cards during the surge, and forensic evidence auditing 15–60 minutes after.">
-          Ayat positif kosong ("jangan fikir bukan-bukan") gagal semasa panik kerana adrenalin menurunkan fungsi korteks logik melebihi 50%. Protokol klinikal CBT membahagikan tindakan kepada <strong>Dua Fasa Berbeza</strong> supaya pesakit tidak terperangkap berdebat dengan amigdala sewaktu nadi memuncak.
-        </p>
       </div>
+
+      <div id="lensCallout-ch4" class="lens-callout"></div>
 
       <!-- Hot vs Cold Cognition Phase Comparison -->
       <div class="phase-compare-grid">
@@ -671,19 +700,20 @@
         </div>
       </div>
 
-      <!-- Interactive 10-Step Post-Attack Panic Thought Record Builder -->
-      <div class="panel-card">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px;">
-          <div>
-            <span class="pill-badge pill-info" data-en="🧊 Use 15–60 Minutes AFTER Surge Settles">🧊 Isi 15–60 Minit SELEPAS Gelombang Reda</span>
-            <h3 style="margin:6px 0 2px;" data-en="📝 Interactive 10-Step Panic Thought Record (Forensic Audit)">
-              📝 Borang Interaktif Audit Bukti 10 Langkah (Panic Thought Record)
-            </h3>
+      <!-- Interactive 10-Step Post-Attack Panic Thought Record Builder (Collapsible to prevent clutter) -->
+      <details id="trDisclosure" class="clean-disclosure" data-clinical-open>
+        <summary>
+          <span data-en="📝 Post-Attack 10-Step Thought Audit Form (Use 15–60 Mins After Surge Settles)">
+            📝 Borang Audit Bukti 10 Langkah — Guna 15–60 Minit Selepas Serangan Reda
+          </span>
+        </summary>
+        <div class="clean-disclosure-body">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px;">
+            <span class="pill-badge pill-info" data-en="🧊 Cold Cognition Audit • Target Belief &lt;15%">🧊 Audit Fasa Tenang • Sasaran Keyakinan &lt;15%</span>
+            <button type="button" id="trLoadSampleBtn" class="btn-secondary" data-en="⚡ Load Worked Example (Traffic Jam)">
+              ⚡ Muat Contoh Kerja Penuh (Jem Jalan Raya)
+            </button>
           </div>
-          <button type="button" id="trLoadSampleBtn" class="btn-secondary" data-en="⚡ Load Worked Example (Traffic Jam)">
-            ⚡ Muat Contoh Kerja Penuh (Jem Jalan Raya)
-          </button>
-        </div>
 
         <div class="two-col" style="margin-bottom:12px;">
           <div>
@@ -767,22 +797,22 @@
             <div id="trSavedHistoryList" style="display:grid; gap:6px;"></div>
           </div>
         </div>
-      </div>
+        </div>
+      </details>
     </section>
 
     <!-- ======== BAB 5: ENJIN PEMULIHAN CBT & PENDEDAHAN INTEROSEPTIF (BARLOW & CRASKE) ======== -->
     <section id="sec-cbt" class="section-block">
       <div class="section-head">
-        <div class="section-num" data-en="Chapter 5 • Panic Control Treatment &amp; Inhibitory Learning Lab (Barlow &amp; Craske • B4DT)">
-          Bab 5 • Terapi Kawalan Panik (Barlow &amp; Craske) &amp; Makmal Pendedahan Inhibitory Learning
+        <div class="section-num" data-en="Chapter 5 • Practical Brain Retraining &amp; Exposure Lab">
+          Bab 5 • Latihan Melatih Semula Otak &amp; Makmal Pendedahan
         </div>
-        <h2 data-en="9 Interoceptive Provocation Labs, Anti-Crutch Rules &amp; In Vivo Fear Ladder">
-          9 Latihan Provokasi Interoseptif, Prinsip Tanpa Tongkat &amp; Tangga Ketakutan Sebenar
+        <h2 data-en="9 Safe Exposure Exercises, Zero-Crutch Rule &amp; Graded Fear Ladder">
+          9 Latihan Pendedahan Terkawal, Prinsip Tanpa Tongkat &amp; Tangga Keberanian
         </h2>
-        <p data-en="Modern exposure science (Michelle Craske's Inhibitory Learning model) proves recovery isn't just waiting for fear to drop—it's intentionally testing your feared sensation WITHOUT safety crutches so your prefrontal cortex writes a brand-new safety memory!">
-          Sains pendedahan moden (<em>Inhibitory Learning</em> oleh Michelle Craske &amp; David Barlow) membuktikan pemulihan kekal berlaku apabila kita mencetuskan sensasi yang ditakuti secara terkawal <strong>tanpa sebarang tongkat keselamatan</strong> sehingga korteks otak menulis memori baharu bahawa sensasi itu 100% selamat.
-        </p>
       </div>
+
+      <div id="lensCallout-ch5" class="lens-callout"></div>
 
       <div class="alert-banner alert-warn" style="margin-bottom:18px;">
         <span data-en="🩺 &lt;strong&gt;Medical Screening &amp; Critical Rule:&lt;/strong&gt; Only practice physical provocation after medical clearance (avoid specific exercises in uncontrolled asthma, cardiac arrhythmia, severe hypertension, glaucoma, epilepsy, cervical disc injury, or complicated pregnancy). &lt;strong&gt;CRITICAL:&lt;/strong&gt; Emergency 4-2-6 breathing is for unexpected attacks—&lt;strong&gt;NEVER use 4-2-6 during planned exposure exercises&lt;/strong&gt;, or your brain will credit the breathing trick instead of learning the sensation itself is safe!">
@@ -814,10 +844,12 @@
             </ul>
           </div>
 
-          <h4 style="margin:0 0 8px; font-size:0.92rem;" data-en="📚 Evidence Across CBT Formats (Papola et al. 2023 &amp; B4DT 2025)">
-            📚 Bukti Format Penyampaian CBT (Papola et al. 2023 &amp; B4DT 2025)
-          </h4>
-          <div id="cbtFormatsGrid" style="display:grid; gap:8px;"></div>
+          <div class="clinical-only">
+            <h4 style="margin:0 0 8px; font-size:0.92rem;" data-en="📚 Evidence Across CBT Formats (Papola et al. 2023 &amp; B4DT 2025)">
+              📚 Bukti Format Penyampaian CBT (Papola et al. 2023 &amp; B4DT 2025)
+            </h4>
+            <div id="cbtFormatsGrid" style="display:grid; gap:8px;"></div>
+          </div>
         </div>
 
         <!-- Right: Interactive 9-Exercise Interoceptive Lab + Fear Ladder -->
@@ -882,49 +914,54 @@
     <!-- ======== BAB 6: FARMAKOTERAPI & POPULASI KHAS ======== -->
     <section id="sec-ubat" class="section-block">
       <div class="section-head">
-        <div class="section-num" data-en="Chapter 6 • Stepped Pharmacotherapy &amp; Special Populations (WFSBP 2023 • NICE CG113 • Cochrane 2023)">
-          Bab 6 • Panduan Ubat Berperingkat &amp; Populasi Khas (WFSBP 2023 • NICE CG113 • Cochrane 2023)
+        <div class="section-num" data-en="Chapter 6 • Medication Guide &amp; Special Age Groups">
+          Bab 6 • Panduan Ubat-Ubatan &amp; Peringkat Usia Khas
         </div>
-        <h2 data-en="Medication Decision Navigator, Benzodiazepine Guardrails &amp; Emerging Science">
-          Peta Keputusan Ubat-Ubatan, Prinsip Benzodiazepin &amp; Inovasi Terkini
+        <h2 data-en="How Panic Medications Work, Safe Guardrails &amp; Age-Specific Care">
+          Cara Ubat Panik Berfungsi, Prinsip Keselamatan &amp; Penjagaan Ikut Usia
         </h2>
-        <p data-en="All prescribing decisions belong strictly between you and a licensed physician. Understanding how medications work prevents fear of early side effects and dangerous abrupt stopping.">
-          Semua preskripsi ubat hanya boleh ditentukan oleh doktor bertauliah. Memahami cara ubat berfungsi membantu mengelakkan panik terhadap kesan awal sementara atau bahaya berhenti ubat secara mengejut.
-        </p>
       </div>
+
+      <div id="lensCallout-ch6" class="lens-callout"></div>
 
       <div class="two-col" style="margin-bottom:18px;">
         <div class="panel-card">
-          <h3 data-en="🧭 Select a Clinical Profile to Inspect Guideline Pathway:">🧭 Pilih Profil Klinikal Untuk Melihat Laluan Garis Panduan:</h3>
+          <h3 data-en="🧭 Select a Profile to See Treatment Options:">🧭 Pilih Situasi Untuk Melihat Pilihan Rawatan:</h3>
           <div id="pharmScenarioBtns" class="hotspot-list"></div>
         </div>
         <div id="pharmScenarioDetail" class="panel-card"></div>
       </div>
 
-      <div class="panel-card" style="margin-bottom:18px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
-          <h3 style="margin:0;" data-en="💊 Evidence-Based Medication Comparison Matrix">💊 Matriks Perbandingan Kelas Ubat Berasaskan Bukti</h3>
-          <div class="preset-row" style="margin:0;">
-            <button type="button" class="chip-btn active" data-pharm-filter="all" data-en="All Tiers">Semua Barisan</button>
-            <button type="button" class="chip-btn" data-pharm-filter="First-line" data-en="First-Line">Barisan Pertama</button>
-            <button type="button" class="chip-btn" data-pharm-filter="Bridge" data-en="Short Bridge">Jambatan Singkat</button>
-            <button type="button" class="chip-btn" data-pharm-filter="Discouraged" data-en="Not Recommended / Emerging">Tidak Disyorkan / Inovasi</button>
+      <details id="pharmMatrixDisclosure" class="clean-disclosure" data-clinical-open style="margin-bottom:18px;">
+        <summary>
+          <span data-en="💊 Full Medication Class Comparison Table (SSRIs, Benzodiazepines &amp; Evidence)">
+            💊 Jadual Penuh Perbandingan Kelas Ubat (SSRI, Benzodiazepin &amp; Bukti Kajian)
+          </span>
+        </summary>
+        <div class="clean-disclosure-body">
+          <div style="display:flex; justify-content:flex-end; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
+            <div class="preset-row" style="margin:0;">
+              <button type="button" class="chip-btn active" data-pharm-filter="all" data-en="All Tiers">Semua Barisan</button>
+              <button type="button" class="chip-btn" data-pharm-filter="First-line" data-en="First-Line">Barisan Pertama</button>
+              <button type="button" class="chip-btn" data-pharm-filter="Bridge" data-en="Short Bridge">Jambatan Singkat</button>
+              <button type="button" class="chip-btn" data-pharm-filter="Discouraged" data-en="Not Recommended / Emerging">Tidak Disyorkan / Inovasi</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="clinical-table">
+              <thead>
+                <tr>
+                  <th data-en="Guideline Tier">Tahap</th>
+                  <th data-en="Medication Class &amp; Compounds">Kelas &amp; Contoh Ubat</th>
+                  <th data-en="Clinical Trial Evidence">Bukti Kajian Klinikal</th>
+                  <th data-en="Practical &amp; Safety Notes">Nota Keselamatan &amp; Amalan</th>
+                </tr>
+              </thead>
+              <tbody id="pharmMatrixBody"></tbody>
+            </table>
           </div>
         </div>
-        <div class="table-wrap">
-          <table class="clinical-table">
-            <thead>
-              <tr>
-                <th data-en="Guideline Tier">Tahap</th>
-                <th data-en="Medication Class &amp; Compounds">Kelas &amp; Contoh Ubat</th>
-                <th data-en="Clinical Trial Evidence">Bukti Kajian Klinikal</th>
-                <th data-en="Practical &amp; Safety Notes">Nota Keselamatan &amp; Amalan</th>
-              </tr>
-            </thead>
-            <tbody id="pharmMatrixBody"></tbody>
-          </table>
-        </div>
-      </div>
+      </details>
 
       <!-- Special Populations -->
       <div class="three-col">
@@ -999,40 +1036,47 @@
         </div>
       </div>
 
+      <div id="lensCallout-ch8" class="lens-callout"></div>
+
       <div id="clinicalQuizContainer" class="quiz-grid" style="margin-bottom:24px;"></div>
 
-      <!-- Trusted Channels & Official Reference Library -->
-      <h3 style="margin:0 0 12px;" data-en="🏛️ Official Malaysian Helplines &amp; Peer-Reviewed Global Reference Library">
-        🏛️ Saluran Klinikal Rasmi Malaysia (KKM) &amp; Senarai Rujukan Perubatan Sahih Dunia
-      </h3>
-      <div class="ref-grid">
-        <div class="ref-card">
-          <span class="pill-badge pill-danger" data-en="Official Malaysia / KKM">Saluran Rasmi KKM Malaysia</span>
-          <p style="margin:8px 0 0;" data-en="&lt;strong&gt;Emergency:&lt;/strong&gt; &lt;strong&gt;999&lt;/strong&gt; (Hospital Emergency Dept)&lt;br/&gt;&lt;strong&gt;NCEMH KKM Crisis Line:&lt;/strong&gt; &lt;strong&gt;Talian HEAL 15555&lt;/strong&gt; (8:00 AM – 12:00 AM daily)&lt;br/&gt;&lt;strong&gt;Community Care:&lt;/strong&gt; Klinik Kesihatan, &lt;strong&gt;MENTARI KKM&lt;/strong&gt;, MyHEALTH, InfoSihat, &lt;strong&gt;Malaysian Psychiatric Association (MPA)&lt;/strong&gt; &amp; MMHA.">
-            <strong>Kecemasan Perubatan:</strong> <strong>999</strong><br/>
-            <strong>NCEMH KKM:</strong> <strong>Talian Krisis HEAL 15555</strong> (Setiap hari 8:00 pagi – 12:00 tengah malam)<br/>
-            <strong>Rawatan Komuniti &amp; Pakar:</strong> Klinik Kesihatan KKM, rangkaian <strong>MENTARI</strong>, Portal MyHEALTH / InfoSihat, <strong>MPA</strong> &amp; <strong>MMHA</strong>.
-          </p>
-        </div>
-        <div class="ref-card">
-          <span class="pill-badge pill-info" data-en="Diagnostic &amp; CBT Manuals">Manual Diagnostik &amp; Protokol CBT</span>
-          <p style="margin:8px 0 0;" data-en="&lt;strong&gt;DSM-5-TR (APA, 2022)&lt;/strong&gt; &amp; &lt;strong&gt;WHO ICD-11 (MB23.H / 6B01)&lt;/strong&gt; • &lt;strong&gt;Barlow &amp; Craske:&lt;/strong&gt; &lt;em&gt;Mastery of Your Anxiety and Panic (MAP-5 / PCT)&lt;/em&gt; • &lt;strong&gt;Craske et al. (2014/2022):&lt;/strong&gt; Inhibitory Learning • &lt;strong&gt;David M. Clark (1986):&lt;/strong&gt; Cognitive Model.">
-            <strong>DSM-5-TR (APA, 2022)</strong> &amp; <strong>WHO ICD-11 (<code>MB23.H</code> / <code>6B01</code>)</strong> • <strong>Barlow &amp; Craske:</strong> <em>Panic Control Treatment (MAP-5)</em> • <strong>Michelle Craske:</strong> <em>Inhibitory Learning</em> • <strong>David M. Clark:</strong> Model Kognitif Panik.
-          </p>
-        </div>
-        <div class="ref-card">
-          <span class="pill-badge pill-safe" data-en="Clinical Practice Guidelines">Garis Panduan Amalan Klinikal</span>
-          <p style="margin:8px 0 0;" data-en="&lt;strong&gt;WFSBP Guidelines v3 (Bandelow et al., 2023)&lt;/strong&gt; • &lt;strong&gt;NICE CG113 (UK, updated 2020)&lt;/strong&gt; stepped care &amp; benzodiazepine limits • &lt;strong&gt;CANMAT (Katzman et al.)&lt;/strong&gt;, &lt;strong&gt;APA / NIMH&lt;/strong&gt; &amp; &lt;strong&gt;RANZCP&lt;/strong&gt;.">
-            <strong>WFSBP Versi 3 (Bandelow et al., 2023)</strong> • <strong>NICE CG113 (UK, 2020)</strong> model rawatan berperingkat &amp; had benzodiazepin • <strong>CANMAT</strong>, <strong>APA / NIMH</strong> &amp; <strong>RANZCP</strong>.
-          </p>
-        </div>
-        <div class="ref-card">
-          <span class="pill-badge pill-warn" data-en="Latest Meta-Analyses (2022–2026)">Meta-Analisis Terkini (2022–2026)</span>
-          <p style="margin:8px 0 0;" data-en="&lt;strong&gt;BMJ State of the Art Review (2026;392:e083441)&lt;/strong&gt; • &lt;strong&gt;Cochrane NMA (Guaiana et al., Nov 2023; 70 RCTs, n=12,703)&lt;/strong&gt; • &lt;strong&gt;Papola et al. (2022/2023)&lt;/strong&gt; CBT NMA • &lt;strong&gt;Eide et al. (2025)&lt;/strong&gt; B4DT • &lt;strong&gt;Klevebrant &amp; Frick (2022)&lt;/strong&gt; Caffeine.">
-            <strong>BMJ Review (Mac 2026;392:e083441)</strong> • <strong>Cochrane NMA (Guaiana et al., 2023; 70 RCT)</strong> • <strong>Papola et al. (2022/2023)</strong> CBT • <strong>Eide et al. (2025)</strong> B4DT • <strong>Klevebrant &amp; Frick (2022)</strong> Kafein.
-          </p>
-        </div>
+      <!-- Official KKM Helpline Card (Always Visible) + Collapsible Academic References -->
+      <div class="panel-card" style="margin-bottom:12px;">
+        <span class="pill-badge pill-danger" data-en="Official Malaysia Helplines / KKM">Saluran Bantuan Rasmi Malaysia / KKM</span>
+        <p style="margin:8px 0 0; font-size:0.9rem;" data-en="&lt;strong&gt;Medical Emergency:&lt;/strong&gt; &lt;strong&gt;999&lt;/strong&gt; (Hospital Emergency Dept) • &lt;strong&gt;KKM Crisis Line:&lt;/strong&gt; &lt;strong&gt;Talian HEAL 15555&lt;/strong&gt; (8:00 AM – 12:00 AM daily) • &lt;strong&gt;24h Emotional Support:&lt;/strong&gt; Befrienders KL &lt;strong&gt;03-7627 2929&lt;/strong&gt; • &lt;strong&gt;Community Care:&lt;/strong&gt; Klinik Kesihatan, &lt;strong&gt;MENTARI KKM&lt;/strong&gt;, MyHEALTH, MPA &amp; MMHA.">
+          <strong>Kecemasan Perubatan:</strong> <strong>999</strong> • <strong>Talian Krisis KKM:</strong> <strong>HEAL 15555</strong> (8:00 pagi – 12:00 tengah malam setiap hari) • <strong>Sokongan Emosi 24 Jam:</strong> Befrienders KL <strong>03-7627 2929</strong> • <strong>Rawatan Komuniti:</strong> Klinik Kesihatan KKM, rangkaian <strong>MENTARI</strong>, MyHEALTH, MPA &amp; MMHA.
+        </p>
       </div>
+
+      <details class="clean-disclosure" data-clinical-open>
+        <summary>
+          <span data-en="📚 Peer-Reviewed Clinical Guidelines &amp; Reference Library (DSM-5-TR, NICE, WFSBP, Cochrane)">
+            📚 Senarai Rujukan Perubatan &amp; Garis Panduan Klinikal Dunia (DSM-5-TR, NICE, WFSBP, Cochrane)
+          </span>
+        </summary>
+        <div class="clean-disclosure-body">
+          <div class="ref-grid">
+            <div class="ref-card">
+              <span class="pill-badge pill-info" data-en="Diagnostic &amp; CBT Manuals">Manual Diagnostik &amp; Protokol CBT</span>
+              <p style="margin:8px 0 0;" data-en="&lt;strong&gt;DSM-5-TR (APA, 2022)&lt;/strong&gt; &amp; &lt;strong&gt;WHO ICD-11 (MB23.H / 6B01)&lt;/strong&gt; • &lt;strong&gt;Barlow &amp; Craske:&lt;/strong&gt; &lt;em&gt;Mastery of Your Anxiety and Panic (MAP-5 / PCT)&lt;/em&gt; • &lt;strong&gt;Craske et al. (2014/2022):&lt;/strong&gt; Inhibitory Learning • &lt;strong&gt;David M. Clark (1986):&lt;/strong&gt; Cognitive Model.">
+                <strong>DSM-5-TR (APA, 2022)</strong> &amp; <strong>WHO ICD-11 (<code>MB23.H</code> / <code>6B01</code>)</strong> • <strong>Barlow &amp; Craske:</strong> <em>Panic Control Treatment (MAP-5)</em> • <strong>Michelle Craske:</strong> <em>Inhibitory Learning</em> • <strong>David M. Clark:</strong> Model Kognitif Panik.
+              </p>
+            </div>
+            <div class="ref-card">
+              <span class="pill-badge pill-safe" data-en="Clinical Practice Guidelines">Garis Panduan Amalan Klinikal</span>
+              <p style="margin:8px 0 0;" data-en="&lt;strong&gt;WFSBP Guidelines v3 (Bandelow et al., 2023)&lt;/strong&gt; • &lt;strong&gt;NICE CG113 (UK, updated 2020)&lt;/strong&gt; stepped care &amp; benzodiazepine limits • &lt;strong&gt;CANMAT (Katzman et al.)&lt;/strong&gt;, &lt;strong&gt;APA / NIMH&lt;/strong&gt; &amp; &lt;strong&gt;RANZCP&lt;/strong&gt;.">
+                <strong>WFSBP Versi 3 (Bandelow et al., 2023)</strong> • <strong>NICE CG113 (UK, 2020)</strong> model rawatan berperingkat &amp; had benzodiazepin • <strong>CANMAT</strong>, <strong>APA / NIMH</strong> &amp; <strong>RANZCP</strong>.
+              </p>
+            </div>
+            <div class="ref-card">
+              <span class="pill-badge pill-warn" data-en="Latest Meta-Analyses (2022–2026)">Meta-Analisis Terkini (2022–2026)</span>
+              <p style="margin:8px 0 0;" data-en="&lt;strong&gt;BMJ State of the Art Review (2026;392:e083441)&lt;/strong&gt; • &lt;strong&gt;Cochrane NMA (Guaiana et al., Nov 2023; 70 RCTs, n=12,703)&lt;/strong&gt; • &lt;strong&gt;Papola et al. (2022/2023)&lt;/strong&gt; CBT NMA • &lt;strong&gt;Eide et al. (2025)&lt;/strong&gt; B4DT • &lt;strong&gt;Klevebrant &amp; Frick (2022)&lt;/strong&gt; Caffeine.">
+                <strong>BMJ Review (Mac 2026;392:e083441)</strong> • <strong>Cochrane NMA (Guaiana et al., 2023; 70 RCT)</strong> • <strong>Papola et al. (2022/2023)</strong> CBT • <strong>Eide et al. (2025)</strong> B4DT • <strong>Klevebrant &amp; Frick (2022)</strong> Kafein.
+              </p>
+            </div>
+          </div>
+        </div>
+      </details>
     </section>
 
     <footer class="footer">

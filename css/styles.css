@@ -79,11 +79,18 @@ textarea {
   outline-offset: 2px;
 }
 
-/* Dual Audience Visibility */
+/* 3-Lens Audience Visibility (Saya | Keluarga | Klinikal) */
+body.mode-layman .family-only,
 body.mode-layman .clinical-only {
   display: none !important;
 }
-body.mode-clinical .layman-only {
+body.mode-family .layman-only,
+body.mode-family .clinical-only {
+  display: none !important;
+}
+body.mode-clinical .layman-only,
+body.mode-clinical .family-only,
+body.mode-clinical .non-clinical {
   display: none !important;
 }
 
@@ -1072,6 +1079,114 @@ body.light-theme .canvas-frame {
 .slider-inline input[type="range"] {
   flex: 1;
   accent-color: var(--accent-teal);
+}
+
+/* ======================= 3-LENS STATUS STRIP & CLEAN DISCLOSURE ======================= */
+.lens-status-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  margin-bottom: 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.84rem;
+  border: 1px solid var(--border-subtle);
+  background: rgba(45, 212, 191, 0.08);
+  border-left: 4px solid var(--accent-teal);
+}
+
+body.mode-family .lens-status-strip {
+  background: rgba(167, 139, 250, 0.11);
+  border-color: rgba(167, 139, 250, 0.35);
+  border-left: 4px solid var(--accent-violet);
+}
+
+body.mode-clinical .lens-status-strip {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.36);
+  border-left: 4px solid var(--accent-cyan);
+}
+
+.lens-callout {
+  padding: 11px 15px;
+  margin-bottom: 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--accent-teal);
+  color: var(--text-secondary);
+}
+
+body.mode-family .lens-callout {
+  border-left-color: var(--accent-violet);
+  background: rgba(167, 139, 250, 0.07);
+}
+
+body.mode-clinical .lens-callout {
+  border-left-color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.07);
+}
+
+details.clean-disclosure {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+details.clean-disclosure > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 18px;
+  font-weight: 700;
+  font-size: 0.93rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--bg-surface);
+  transition: background 0.15s;
+}
+
+details.clean-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.clean-disclosure > summary:hover {
+  background: var(--bg-elevated);
+}
+
+details.clean-disclosure > summary::after {
+  content: "▾ Buka";
+  font-size: 0.76rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(45, 212, 191, 0.14);
+  color: var(--accent-teal);
+  white-space: nowrap;
+}
+
+html[lang="en"] details.clean-disclosure > summary::after {
+  content: "▾ Expand";
+}
+
+details.clean-disclosure[open] > summary {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+details.clean-disclosure[open] > summary::after {
+  content: "▴ Tutup";
+}
+
+html[lang="en"] details.clean-disclosure[open] > summary::after {
+  content: "▴ Collapse";
+}
+
+.clean-disclosure-body {
+  padding: 18px;
 }
 
 /* ======================= RESPONSIVE ======================= */

@@ -280,6 +280,7 @@
           <span class="pill-badge pill-safe">${selected.badge}</span>
         </div>
         <div class="layman-only" style="font-size:0.88rem;">${selected.layman}</div>
+        <div class="family-only" style="font-size:0.88rem;">${selected.family || selected.layman}</div>
         <div class="clinical-only" style="font-size:0.88rem;">${selected.clinical}</div>
       `;
     }
