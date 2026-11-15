@@ -254,43 +254,231 @@ window.PANIC_DATA_BY_LANG = {
     interoceptiveLabs: [
       {
         id: "straw",
-        title: "Bernafas Ikut Penyedut Minuman (Straw)",
+        title: "1. Bernafas Ikut Straw Halus",
+        method: "Bernafas ikut mulut guna straw halus sambil hidung dipicit",
         duration: 60,
-        sensation: "Sensasi 'tak cukup udara' / dada ketat",
-        disconfirms: "Membuktikan rasa sempit nafas tidak menutup saluran udara atau menyebabkan lemas.",
+        sensation: "Sesak nafas, rasa lemas (air hunger)",
+        contra: "Pantang Larang: Asma, penyakit paru-paru kronik",
+        hypothesis: "Jika saya bernafas ikut straw 60 saat, saya akan lemas atau pitam (Keyakinan 85%)",
+        disconfirms: "Membuktikan rasa sempit nafas tidak menutup saluran udara atau menjatuhkan oksigen darah.",
         sudsDefault: 70
       },
       {
-        id: "spin",
-        title: "Pusing Perlahan Di Kerusi Beroda",
-        duration: 45,
-        sensation: "Pening melayang & tidak stabil",
-        disconfirms: "Membuktikan rasa pening tidak menyebabkan hilang kawalan atau rebah pengsan.",
-        sudsDefault: 60
-      },
-      {
-        id: "stepups",
-        title: "Lari Setempat / Naik Tangga Pantas",
+        id: "hypervent",
+        title: "2. Hiperventilasi Sengaja (30 Nafas/Min)",
+        method: "Tarik & hembus nafas dalam dan laju (~1 nafas setiap 2 saat)",
         duration: 60,
-        sensation: "Jantung berdebar kencang & berpeluh",
-        disconfirms: "Membuktikan jantung sihat memang direka untuk berdegup laju dengan selamat.",
-        sudsDefault: 65
-      },
-      {
-        id: "briskbreath",
-        title: "Nafas Laju Terkawal (45 Saat)",
-        duration: 45,
-        sensation: "Semut-semut jari, kepala ringan & derealisasi",
-        disconfirms: "Membuktikan kebas & rasa melayang hanyalah kesan sementara perubahan CO₂.",
+        sensation: "Pening, kebas jari/bibir, derealisasi",
+        contra: "Pantang Larang: Epilepsi, sedang hamil, asma",
+        hypothesis: "Jika jari kebas dan kepala ringan, saya akan kena strok atau hilang akal (Keyakinan 80%)",
+        disconfirms: "Membuktikan kebas & rasa asing hanyalah kesan sementara perubahan CO₂ yang surut sendiri.",
         sudsDefault: 75
       },
       {
-        id: "stare",
-        title: "Renung Cermin / Dinding Putih Tanpa Berkelip",
+        id: "spin",
+        title: "3. Pusing Kerusi Pejabat (1 Pusingan / 3s)",
+        method: "Duduk selamat di kerusi beroda & berpusing sederhana",
         duration: 60,
-        sensation: "Persekitaran terasa pelik / asing (derealization)",
-        disconfirms: "Membuktikan ilusi optik/derealisasi adalah normal dan bukan tanda menjadi gila.",
+        sensation: "Pening berpusing & sedikit loya",
+        contra: "Pantang Larang: Masalah telinga dalam (vestibular) teruk",
+        hypothesis: "Jika kepala berpusing, saya pasti hilang kawalan dan rebah (Keyakinan 75%)",
+        disconfirms: "Membuktikan pening berpusing tidak menyebabkan rebah pengsan dan pulih sendiri.",
+        sudsDefault: 60
+      },
+      {
+        id: "headshake",
+        title: "4. Geleng Kepala Pantas (Mata Terbuka)",
+        method: "Geleng kepala kiri ke kanan secara pantas selama 30 saat",
+        duration: 30,
+        sensation: "Kepala ringan melayang & pandangan berbalam",
+        contra: "Pantang Larang: Kecederaan tulang leher / servikal",
+        hypothesis: "Pandangan berbalam bermaksud saya nak pitam sekarang (Keyakinan 70%)",
+        disconfirms: "Membuktikan kabur fokus sementara adalah reaksi deria biasa tanpa bahaya.",
         sudsDefault: 55
+      },
+      {
+        id: "jog",
+        title: "5. Lari Setempat Laju (Angkat Lutut Tinggi)",
+        method: "Lari setempat secara pantas tanpa henti",
+        duration: 60,
+        sensation: "Jantung berdebar kencang & berpeluh",
+        contra: "Pantang Larang: Penyakit jantung aktif, darah tinggi tidak terkawal",
+        hypothesis: "Jantung laju akan mencetuskan serangan jantung mengejut (Keyakinan 85%)",
+        disconfirms: "Membuktikan jantung sihat memang direka mengepam laju dengan selamat.",
+        sudsDefault: 65
+      },
+      {
+        id: "breathhold",
+        title: "6. Tahan Nafas Penuh",
+        method: "Tarik nafas biasa dan tahan sepenuhnya",
+        duration: 35,
+        sensation: "Dada ketat & refleks cemas tercekik",
+        contra: "Pantang Larang: Penyakit jantung, sedang hamil",
+        hypothesis: "Dada ketat bermaksud nafas saya akan terhenti terus (Keyakinan 75%)",
+        disconfirms: "Membuktikan refleks pernafasan automatik badan sentiasa mengambil alih dengan selamat.",
+        sudsDefault: 65
+      },
+      {
+        id: "muscletension",
+        title: "7. Tegangkan Semua Otot Badan Serentak",
+        method: "Keraskan otot tangan, perut, bahu & kaki serentak",
+        duration: 60,
+        sensation: "Menggeletar halus & otot dinding dada ketat",
+        contra: "Pantang Larang: Darah tinggi tidak terkawal",
+        hypothesis: "Badan menggigil bermaksud saya sedang hilang kawalan saraf (Keyakinan 70%)",
+        disconfirms: "Membuktikan menggigil & dada ketat hanyalah keletihan otot rangka yang jinak.",
+        sudsDefault: 55
+      },
+      {
+        id: "stare",
+        title: "8. Renung Mata Di Cermin / Titik Dinding",
+        method: "Tenung mata sendiri di cermin tanpa alih fokus",
+        duration: 90,
+        sensation: "Depersonalisasi, wajah/dunia terasa asing",
+        contra: "Pantang Larang: Tiada (selamat untuk semua)",
+        hypothesis: "Rasa terpisah daripada badan bermaksud saya sedang jadi gila/psikosis (Keyakinan 80%)",
+        disconfirms: "Membuktikan derealisasi hanyalah keletihan fokus visual, tidak pernah jadi gila.",
+        sudsDefault: 60
+      },
+      {
+        id: "globus_hot",
+        title: "9. Bonus: Telan Liur 6x / Jaket Tebal",
+        method: "Telan air liur pantas 5–6x berturut-turut ATAU pakai jaket tebal tanpa kipas",
+        duration: 60,
+        sensation: "Rasa tercekik (globus) atau gelombang kepanasan (hot flashes)",
+        contra: "Pantang Larang: Elak bilik panas melampau jika dehidrasi",
+        hypothesis: "Tekak sempit akan tertutup rapat / badan panas tanda nak pengsan (Keyakinan 75%)",
+        disconfirms: "Membuktikan otot tekak sekadar penat menelan & kepanasan kulit tidak berbahaya.",
+        sudsDefault: 60
+      }
+    ],
+
+    ieMistakes: [
+      {
+        title: "1. Campur Aduk Nafas 4-2-6 Semasa Sesi Latihan IE",
+        desc: "Nafas 4-2-6 adalah untuk kecemasan tidak dijangka. Semasa sesi latihan IE, JANGAN buat 4-2-6, jangan buka kipas, dan jangan semak jam pintar—supaya otak belajar anda selamat TANPA sebarang tongkat."
+      },
+      {
+        title: "2. Berhenti Sebaik Rasa Cemas Memuncak (Saat Ke-15)",
+        desc: "Berhenti awal mengukuhkan ketakutan! Habiskan tempoh penuh (malah lebihkan +15 saat selepas rasa takut muncul) dan ulang 3–5 pusingan."
+      },
+      {
+        title: "3. Makan Ubat Penenang (Alprazolam) Sebelum Berlatih",
+        desc: "Benzodiazepin menumpulkan isyarat saraf semula jadi dan menghalang korteks prefrontal membina memori keselamatan baharu (Inhibitory Learning)."
+      },
+      {
+        title: "4. Hanya Berlatih Ketika Segar Di Bilik Sendiri",
+        desc: "Bila SUDS di rumah turun <2/10, gabungkan terus dengan situasi luar (cth: naik tangga laju sebelum masuk lif, atau minum separuh kopi sebelum beratur di pasar raya)."
+      }
+    ],
+
+    copingCards: [
+      {
+        id: "traffic",
+        icon: "🚗",
+        shortLabel: "1. Jem / Lampu Isyarat",
+        title: "Kad 1: Memandu Dalam Kesesakan Jalan Raya atau Lampu Isyarat",
+        script:
+          "Jantung berdebar dan tangan kebas sekarang ialah kesan lonjakan adrenalin serta cengkaman stereng terlalu kuat, bukan tanda nak pitam. Pengsan memerlukan kejatuhan tekanan darah secara mendadak, sedangkan serangan panik MENAIKKAN tekanan darah dan menajamkan refleks pemanduan saya. Longgarkan bahu serta jari pada stereng, hembus nafas perlahan 6 saat ikut mulut, fokus pada bumper kereta di hadapan, dan teruskan memandu apabila lampu hijau menyala—gelombang ini pasti surut dalam 10 minit."
+      },
+      {
+        id: "highway",
+        icon: "🛣️",
+        shortLabel: "2. Lebuh Raya / Jambatan",
+        title: "Kad 2: Memandu di Lebuh Raya atau Jambatan Jauh Dari Susur Keluar",
+        script:
+          "Rasa terperangkap dan pandangan seolah-olah mengecil (tunnel vision) ini hanyalah tindak balas fokus mata apabila amigdala membunyikan penggera palsu, bukannya tanda bakal hilang kawalan kereta. Otot kaki dan tangan saya masih berfungsi penuh mengawal pedal serta stereng seperti biasa, dan rekod serangan lalu membuktikan saya sentiasa memandu dengan selamat. Kekalkan kelajuan stabil di lorong kiri tanpa berhenti mengejut di bahu jalan, dan biarkan adrenalin ini habis dibakar secara semula jadi."
+      },
+      {
+        id: "crowd",
+        icon: "🛒",
+        shortLabel: "3. Pasar Raya / Beratur",
+        title: "Kad 3: Tempat Sesak Terbuka & Beratur Panjang (Pasar Raya, Bank, Majlis)",
+        script:
+          "Kepala rasa melayang dan persekitaran nampak asing di bawah lampu terang ini ialah derealisasi sementara akibat rangsangan deria berlebihan, bukannya tanda nak rebah atau hilang akal. Orang sekeliling sibuk dengan urusan masing-masing dan tidak nampak perubahan dalaman badan saya. Kekal berdiri di dalam barisan tanpa meninggalkan troli, jejakkan tapak kaki rapat ke lantai, lepaskan nafas panjang, dan buktikan kepada otak bahawa saya selamat tanpa melarikan diri."
+      },
+      {
+        id: "enclosed",
+        icon: "🛗",
+        shortLabel: "4. Lif / LRT / Saf Masjid",
+        title: "Kad 4: Ruang Sesak Tertutup (Lif, Pengangkutan Awam, Saf Tengah Dewan/Masjid)",
+        script:
+          "Sensasi dada ketat dan rasa tidak puas menarik nafas ini ialah air hunger akibat pernafasan dada yang terlalu laju, bukan kerana ruang ini kehabisan oksigen. Paras oksigen darah saya kekal normal antara 98 hingga 100 peratus walaupun tekak terasa sempit. Hentikan cubaan menarik nafas besar secara paksa, hembus udara perlahan-lahan selama 6 saat, kendurkan otot perut, dan kekal di tempat ini sehingga rasa sempit beransur hilang."
+      },
+      {
+        id: "nocturnal",
+        icon: "🌙",
+        shortLabel: "5. Terjaga 3 Pagi",
+        title: "Kad 5: Terjaga Mengejut Tengah Malam (Nocturnal Panic Attack)",
+        script:
+          "Tersentak bangun daripada tidur dengan jantung berdegup kencang bukanlah serangan jantung malam, tetapi pelepasan adrenalin palsu semasa otak beralih fasa kitaran tidur. Jantung saya sihat dan mampu mengepam laju seperti sedang bersenam tanpa sebarang bahaya walaupun badan sedang berehat. Duduk bersandar seketika atau basuh muka dengan air sejuk selama 20 saat, JANGAN periksa nadi pada jam pintar atau mencari simptom di Google, dan baring semula sebaik nafas kembali teratur."
+      }
+    ],
+
+    crClusters: [
+      {
+        id: "c_heart",
+        title: "1. Jantung Laju & Dada Mencucuk",
+        distortion: "Salah Tafsir: 'Salur darah tersumbat, saya kena serangan jantung!'",
+        reality: "Fakta Anatomi: Sakit tajam yang berubah ikut tarikan nafas ialah ketegangan otot rusuk/dinding dada akibat adrenalin pada jantung yang sihat (bukan sakit menghimpit ACS).",
+        socratic: "Soalan Sokratik: 'Apakah bukti perubatan objektif (ECG/darah)—bukan perasaan takut—yang menyokong ramalan ini?'"
+      },
+      {
+        id: "c_faint",
+        title: "2. Pening & Pandangan Berbalam",
+        distortion: "Salah Tafsir: 'Saya bakal rebah pengsan di khalayak ramai!'",
+        reality: "Fakta Fisiologi: Pengsan memerlukan kejatuhan tekanan darah mendadak, sedangkan serangan panik MENAIKKAN tekanan darah dan menghalang pitam.",
+        socratic: "Soalan Sokratik: 'Berapa kali saya yakin 100% bakal pengsan sebelum ini, dan berapa kali ia benar-benar berlaku?'"
+      },
+      {
+        id: "c_breath",
+        title: "3. Sesak Nafas & Tekak Ketat (Globus)",
+        distortion: "Salah Tafsir: 'Kerongkong saya bakal tertutup rapat dan saya akan lemas!'",
+        reality: "Fakta Fisiologi: Oksigen darah kekal penuh 98–100%; rasa sempit berpunca daripada pengecutan sementara otot krikofaringeus leher (globus).",
+        socratic: "Soalan Sokratik: 'Apakah punca biologi jinak bagi sensasi ini—adrenalin, otot tegang, atau kurang CO₂ akibat nafas cetek?'"
+      },
+      {
+        id: "c_mind",
+        title: "4. Derealisasi & Fikiran Berlumba",
+        distortion: "Salah Tafsir: 'Otak saya bakal putus fius, hilang kawalan atau jadi gila!'",
+        reality: "Fakta Psikiatri: Rasa asing seperti mimpi itu hanyalah refleks perlindungan saraf sementara akibat lonjakan adrenalin—ia TIDAK PERNAH bertukar menjadi psikosis.",
+        socratic: "Soalan Sokratik: 'Jika sahabat baik yang disahkan sihat mengalami simptom tepat seperti ini, apa yang akan saya katakan kepadanya?'"
+      }
+    ],
+
+    thoughtRecordSample: {
+      loc: "15 Nov, 5:30 petang — Sangkut kesesakan jalan raya di lampu isyarat",
+      vuln: "Tidur cuma 4 jam semalam, minum kopi pekat jam 3 petang, perut kosong",
+      trigger: "Dada kiri tiba-tiba mencucuk tajam disusuli kebas kedua-dua belah jari tangan",
+      catastrophe: "Salur darah jantung saya tersumbat; saya akan kena serangan jantung dan pengsan di atas stereng sekarang juga",
+      initBelief: 90,
+      initSuds: 9,
+      safety: "Semak nadi di jam pintar 4 kali, buka kipas penyaman udara maksimum, hampir berhenti tepi jalan",
+      evidence: "ECG & ujian darah disahkan normal sepenuhnya. Dalam 25 serangan serupa sebelum ini, 0 kali pengsan atau sakit jantung berlaku (ralat amigdala 100%).",
+      physio: "Kopi + kurang tidur mencetuskan adrenalin; sakit tajam dada depan ialah otot interkostal tegang; kebas jari berpunca daripada hiperventilasi (kurang CO₂).",
+      outcome: "Kekal memandu perlahan di lorong kiri; debaran dan kebas surut sendiri dalam 15 minit tanpa sebarang kerosakan organ.",
+      finalBelief: 5,
+      finalSuds: 3
+    },
+
+    familyGuide: [
+      {
+        icon: "🤝",
+        tag: "Semasa Serangan Berlaku",
+        title: "1. Jadi Sauh Tenang, Bukan Penyiasat Cemas",
+        body: "Elakkan bertanya 10 soalan serentak atau berkata 'Jangan fikir bukan-bukan!'. Gunakan suara perlahan: 'Abang/Sayang/Mak ada di sini. Kita hembus nafas perlahan 6 saat sama-sama ya.' Jangan sesekali hulur beg kertas!"
+      },
+      {
+        icon: "🚫",
+        tag: "Semasa Fasa Pemulihan CBT",
+        title: "2. Sokong Keberanian Tanpa Jadi 'Tongkat Kekal'",
+        body: "Jika pasangan/anak mula mengelak semua pemanduan atau kedai, mengambil alih 100% urusan mereka selamanya akan mengukuhkan Agoraphobia. Raikan langkah kecil berperingkat—contohnya menemani dari jauh dahulu, kemudian biarkan mereka berjaya sendiri."
+      },
+      {
+        icon: "🏆",
+        tag: "Ukur Kejayaan Sebenar",
+        title: "3. Puji Ketahanan, Bukan Ketiadaan Debaran",
+        body: "Jangan tanya 'Dah tak berdebar ke?' setiap 10 minit (itu mengaktifkan imbasan badan!). Sebaliknya ucapkan: 'Hebat awak berjaya habiskan beratur tadi walaupun jantung tengah laju!'—itulah kemenangan sebenar yang memulihkan otak."
       }
     ],
 
@@ -495,6 +683,34 @@ window.PANIC_DATA_BY_LANG = {
         correctIndex: 1,
         explanation:
           "Benar! Dalam CBT, menghapuskan 'Safety Behaviors' secara berperingkat adalah kunci utama supaya otak mendapat bukti nyata bahawa anda kekal selamat walaupun tanpa jam pintar atau peneman."
+      },
+      {
+        id: "q6",
+        scenario:
+          "6. Semasa memandu dalam kesesakan jalan raya dengan nadi 130 bpm (Hot Cognition), apakah cara BETUL menggunakan Skrip Coping Card dan Borang Thought Record?",
+        options: [
+          "Berhenti di tengah jalan untuk mengisi borang jadual 10 langkah dengan panjang lebar",
+          "Ulang baca Coping Card 50 kali seminit seperti mantra terdesak supaya debaran hilang serta-merta",
+          "Baca skrip Coping Card maksimum 2 kali sambil kekal memandu tenang; isi Borang Audit Thought Record hanya 15–60 minit SELEPAS ribut reda",
+          "Ucapkan ayat motivasi kabur 'Semuanya indah dan tenang' tanpa fakta biologi"
+        ],
+        correctIndex: 2,
+        explanation:
+          "Tepat sekali! Semasa kemuncak panik, kapasiti logik korteks prefrontal menurun >50%: guna skrip fakta pendek (maksimum 2x bacaan supaya tidak jadi safety behavior) + kekal memandu. Audit mendalam (Cold Cognition) hanya dibuat 15–60 minit selepas serangan surut."
+      },
+      {
+        id: "q7",
+        scenario:
+          "7. Semasa menjalankan sesi latihan terancang Pendedahan Interoseptif (contohnya bernafas ikut straw halus selama 60 saat di rumah), bilakah anda patut melakukan pernafasan relaksasi 4-2-6?",
+        options: [
+          "Sebaik sahaja rasa cemas mula timbul pada saat ke-15",
+          "JANGAN buat nafas 4-2-6 semasa sesi latihan IE! Habiskan tempoh penuh (+15s) tanpa sebarang tongkat supaya otak membina memori Inhibitory Learning tulen",
+          "Ambil sebiji Alprazolam 30 minit sebelum memulakan latihan straw",
+          "Hentikan latihan serta-merta dan buka kipas maksimum"
+        ],
+        correctIndex: 1,
+        explanation:
+          "Sangat bijak! Nafas 4-2-6 ialah alat kecemasan luar jangka, BUKAN semasa sesi latihan IE. Mencampuradukkan relaksasi atau ubat penenang semasa latihan IE menipu amigdala kononnya anda hanya terselamat kerana sempat mengawal nafas."
       }
     ]
   },
@@ -745,43 +961,231 @@ window.PANIC_DATA_BY_LANG = {
     interoceptiveLabs: [
       {
         id: "straw",
-        title: "Breathe Through a Narrow Straw",
+        title: "1. Narrow Straw Breathing",
+        method: "Breathe through a thin straw by mouth with nostrils pinched",
         duration: 60,
-        sensation: "Mild air hunger / restricted breath sensation",
-        disconfirms: "Proves the sensation of restricted air does not cause suffocation or airway closure.",
+        sensation: "Shortness of breath, smothering / air hunger",
+        contra: "Contraindication: Asthma, chronic lung disease",
+        hypothesis: "If I breathe through a straw for 60s, I will suffocate or pass out (85% belief)",
+        disconfirms: "Proves restricted-breath sensations neither close the airway nor drop blood oxygen.",
         sudsDefault: 70
       },
       {
-        id: "spin",
-        title: "Spin Gently in a Swivel Chair",
-        duration: 45,
-        sensation: "Dizziness & brief unsteadiness",
-        disconfirms: "Proves dizziness settles safely on its own without fainting or losing control.",
-        sudsDefault: 60
-      },
-      {
-        id: "stepups",
-        title: "Jog in Place / Brisk Step-Ups",
+        id: "hypervent",
+        title: "2. Intentional Hyperventilation (30/min)",
+        method: "Deep, rapid breaths in and out (~1 breath every 2 seconds)",
         duration: 60,
-        sensation: "Pounding heart & warm sweat",
-        disconfirms: "Proves a racing heart is a sign of cardiac strength, not an impending heart attack.",
-        sudsDefault: 65
-      },
-      {
-        id: "briskbreath",
-        title: "Controlled Brisk Breathing (45s)",
-        duration: 45,
-        sensation: "Lightheadedness, tingling fingers & mild unreality",
-        disconfirms: "Proves paresthesias and derealization come from benign CO₂ shifts, not stroke.",
+        sensation: "Lightheadedness, finger/lip tingling, derealization",
+        contra: "Contraindication: Epilepsy, pregnancy, asthma",
+        hypothesis: "If my hands tingle and room feels unreal, I'll have a stroke or go crazy (80% belief)",
+        disconfirms: "Proves tingling and unreality are harmless, reversible CO₂ shifts.",
         sudsDefault: 75
       },
       {
-        id: "stare",
-        title: "Unblinking Mirror or Blank-Wall Gaze",
+        id: "spin",
+        title: "3. Office Chair Spin (1 rev / 3s)",
+        method: "Sit safely in a swivel chair and spin steadily",
         duration: 60,
-        sensation: "Dream-like unreality (derealization)",
-        disconfirms: "Proves perceptual strangeness is harmless sensory fatigue, never psychosis.",
+        sensation: "Spinning dizziness & mild nausea",
+        contra: "Contraindication: Severe inner-ear / vestibular disorder",
+        hypothesis: "If I feel dizzy, I will lose control and collapse (75% belief)",
+        disconfirms: "Proves spinning sensations settle naturally without collapsing.",
+        sudsDefault: 60
+      },
+      {
+        id: "headshake",
+        title: "4. Rapid Head Turn (Eyes Open)",
+        method: "Turn head briskly side-to-side for 30 seconds with eyes open",
+        duration: 30,
+        sensation: "Lightheadedness & brief visual blur",
+        contra: "Contraindication: Cervical spine / neck injury",
+        hypothesis: "Blurry vision means I am about to faint right now (70% belief)",
+        disconfirms: "Proves brief visual lag is harmless vestibular adaptation, never syncope.",
         sudsDefault: 55
+      },
+      {
+        id: "jog",
+        title: "5. Brisk High-Knee Jog in Place",
+        method: "Lift knees briskly without stopping",
+        duration: 60,
+        sensation: "Pounding heart & warm sweat",
+        contra: "Contraindication: Active cardiac disease, uncontrolled hypertension",
+        hypothesis: "A racing heart will trigger sudden cardiac arrest (85% belief)",
+        disconfirms: "Proves a healthy heart is built to pump rapidly and recover safely.",
+        sudsDefault: 65
+      },
+      {
+        id: "breathhold",
+        title: "6. Full Breath Hold",
+        method: "Take a normal breath and hold completely",
+        duration: 35,
+        sensation: "Chest tightness & choking reflex",
+        contra: "Contraindication: Cardiac disease, pregnancy",
+        hypothesis: "Chest tightness means my breathing will stop completely (75% belief)",
+        disconfirms: "Proves automatic brainstem respiratory reflexes always resume smoothly.",
+        sudsDefault: 65
+      },
+      {
+        id: "muscletension",
+        title: "7. Full-Body Isometric Tension",
+        method: "Tense arms, abdomen, shoulders & legs simultaneously",
+        duration: 60,
+        sensation: "Trembling & anterior chest-wall tightness",
+        contra: "Contraindication: Uncontrolled hypertension",
+        hypothesis: "Body trembling means I am losing neurological control (70% belief)",
+        disconfirms: "Proves shaking and chest tightness are benign skeletal muscle fatigue.",
+        sudsDefault: 55
+      },
+      {
+        id: "stare",
+        title: "8. Unblinking Mirror / Wall Dot Gaze",
+        method: "Stare steadily into your own eyes in a mirror without shifting focus",
+        duration: 90,
+        sensation: "Depersonalization, unfamiliarity / unreality",
+        contra: "Contraindication: None (safe for everyone)",
+        hypothesis: "Feeling detached means I am losing sanity or developing psychosis (80% belief)",
+        disconfirms: "Proves perceptual strangeness is harmless visual adaptation, never psychosis.",
+        sudsDefault: 60
+      },
+      {
+        id: "globus_hot",
+        title: "9. Bonus: Swallow 6x / Warm Jacket",
+        method: "Swallow dryly 5–6x rapidly OR wear a thick jacket in a fan-off room",
+        duration: 60,
+        sensation: "Throat lump (globus) or sudden heat waves (hot flashes)",
+        contra: "Contraindication: Avoid extreme heat if dehydrated",
+        hypothesis: "My throat is closing shut / heat wave means imminent collapse (75% belief)",
+        disconfirms: "Proves throat muscle fatigue and warmth are benign sensations.",
+        sudsDefault: 60
+      }
+    ],
+
+    ieMistakes: [
+      {
+        title: "1. Mixing 4-2-6 Emergency Breathing Into IE Training",
+        desc: "4-2-6 breathing is for unexpected acute surges. During planned IE trials, DO NOT use 4-2-6, fans, water, or smartwatches—so your brain learns you are safe WITHOUT any crutch."
+      },
+      {
+        title: "2. Stopping Right as Fear Peaks (at 15 Seconds)",
+        desc: "Quitting early reinforces avoidance! Complete the full duration (even push +15s past initial fear) and repeat 3–5 rounds with 60s rest."
+      },
+      {
+        title: "3. Taking Sedatives (Alprazolam) Before Practicing",
+        desc: "Benzodiazepines blunt neural signaling and block the prefrontal cortex from encoding lasting Inhibitory Learning safety memories."
+      },
+      {
+        title: "4. Practicing Only When Rested Alone in Your Bedroom",
+        desc: "Once home SUDS drops <2/10, bridge into real settings (e.g., climb stairs briskly right before taking an elevator, or sip half a coffee before shopping)."
+      }
+    ],
+
+    copingCards: [
+      {
+        id: "traffic",
+        icon: "🚗",
+        shortLabel: "1. Traffic / Red Light",
+        title: "Card 1: Driving in Traffic Jams or Stopped at Red Lights",
+        script:
+          "My racing heart and tingling hands right now come from an adrenaline surge and gripping the steering wheel too tightly—NOT impending fainting. Fainting requires a sudden drop in blood pressure, whereas panic RAISES blood pressure and sharpens my reflexes. Drop my shoulders, loosen my grip, exhale slowly for 6 seconds, focus on the bumper ahead, and drive smoothly when the light turns green—this wave will subside within 10 minutes."
+      },
+      {
+        id: "highway",
+        icon: "🛣️",
+        shortLabel: "2. Highway / Bridge",
+        title: "Card 2: Driving on a Highway or Bridge Far From an Exit",
+        script:
+          "Feeling trapped and noticing 'tunnel vision' is simply my eyes narrowing focus during a false amygdala alarm—NOT a sign I will lose control of the car. My hands and feet still control the wheel and pedals at 100% capacity, and every single past episode proves I drive safely through panic. Hold a steady speed in the left/cruising lane without swerving onto the shoulder, and let this adrenaline burn off naturally."
+      },
+      {
+        id: "crowd",
+        icon: "🛒",
+        shortLabel: "3. Supermarket / Queue",
+        title: "Card 3: Bright Crowded Places & Long Queues (Supermarket, Bank, Event)",
+        script:
+          "Feeling lightheaded and seeing the bright aisle look dream-like is temporary derealization from sensory overload—NOT a sign of collapsing or losing my mind. People around me are busy with their own errands and cannot see my internal adrenaline. Stay in line without abandoning my cart, plant both feet flat on the floor, lengthen my exhale, and let my brain witness that I am safe without fleeing."
+      },
+      {
+        id: "enclosed",
+        icon: "🛗",
+        shortLabel: "4. Lift / Train / Hall",
+        title: "Card 4: Enclosed Spaces (Elevator, Train/Bus, Middle Row of Hall or Mosque)",
+        script:
+          "Chest tightness and 'air hunger' come from rapid upper-chest breathing—NOT because this room is running out of oxygen. My blood oxygen remains 98% to 100% full even when my throat feels tight. Stop forcing giant gulps of air, exhale gently for 6 seconds, soften my belly muscles, and stay right here until the tightness fades."
+      },
+      {
+        id: "nocturnal",
+        icon: "🌙",
+        shortLabel: "5. Waking at 3 AM",
+        title: "Card 5: Jolting Awake at Night (Nocturnal Panic Attack)",
+        script:
+          "Waking abruptly with a pounding heart is NOT a midnight heart attack—it is a harmless misfire of adrenaline during a non-REM sleep-stage transition. My heart is strong and built to beat fast safely even while resting. Sit propped up or splash cool water on my face for 20 seconds, DO NOT check my smartwatch pulse or Google symptoms, and lie back down once my breathing settles."
+      }
+    ],
+
+    crClusters: [
+      {
+        id: "c_heart",
+        title: "1. Racing Heart & Sharp Chest Twinge",
+        distortion: "Misinterpretation: 'My coronary artery is blocked—I'm having a heart attack!'",
+        reality: "Anatomical Fact: Sharp twinges that shift with inhalation come from tight intercostal rib muscles during an adrenaline surge in a healthy heart (unlike crushing, radiating ACS pain).",
+        socratic: "Socratic Check: 'What objective medical evidence (ECG/labs)—not anxious emotion—supports this prediction right now?'"
+      },
+      {
+        id: "c_faint",
+        title: "2. Lightheadedness & Blurred Vision",
+        distortion: "Misinterpretation: 'I am seconds away from blacking out in public!'",
+        reality: "Physiological Fact: Fainting requires a sudden drop in blood pressure; panic attacks RAISE blood pressure and actively prevent syncope.",
+        socratic: "Socratic Check: 'How many times was I 100% convinced I would faint before, and how many times did I actually lose consciousness?'"
+      },
+      {
+        id: "c_breath",
+        title: "3. Air Hunger & Tight Throat (Globus)",
+        distortion: "Misinterpretation: 'My throat is closing up and I will suffocate!'",
+        reality: "Physiological Fact: Blood oxygen stays 98–100% full; throat tightness is temporary cricopharyngeal muscle tension (globus) with a wide-open airway.",
+        socratic: "Socratic Check: 'What benign biological mechanism explains this—adrenaline, tight neck muscle, or low CO₂ from shallow breathing?'"
+      },
+      {
+        id: "c_mind",
+        title: "4. Derealization & Racing Thoughts",
+        distortion: "Misinterpretation: 'My brain is snapping—I'm going crazy or psychotic!'",
+        reality: "Psychiatric Fact: Dream-like detachment is a brief protective neural buffer from adrenaline and hypocapnia—it NEVER turns into psychosis or schizophrenia.",
+        socratic: "Socratic Check: 'If a medically cleared best friend felt this exact sensation right now, what reassuring truth would I tell them?'"
+      }
+    ],
+
+    thoughtRecordSample: {
+      loc: "15 Nov, 5:30 PM — Stuck in rush-hour traffic at a red light",
+      vuln: "Slept only 4 hours last night, drank strong coffee at 3 PM on an empty stomach",
+      trigger: "Sudden sharp twinge in left chest followed by tingling in both hands",
+      catastrophe: "My heart artery is blocked; I will suffer a heart attack and faint over the steering wheel right now",
+      initBelief: 90,
+      initSuds: 9,
+      safety: "Checked smartwatch pulse 4 times, blasted AC fan on max, nearly pulled onto road shoulder",
+      evidence: "Prior ECG and blood tests were 100% normal. Across 25 identical past episodes, 0 heart attacks or fainting ever occurred (100% amygdala error rate).",
+      physio: "Caffeine + sleep debt sparked adrenaline; sharp chest twinge is tight rib muscle; bilateral finger tingling is mild hyperventilation (low CO₂).",
+      outcome: "Kept driving steadily in the left lane; pounding heart and tingling faded naturally within 15 minutes with zero organ harm.",
+      finalBelief: 5,
+      finalSuds: 3
+    },
+
+    familyGuide: [
+      {
+        icon: "🤝",
+        tag: "During an Acute Attack",
+        title: "1. Be a Calm Anchor, Not an Anxious Detective",
+        body: "Avoid firing 10 questions at once or saying 'Stop overthinking!'. Use a warm, slow voice: 'I am right here with you. Let's exhale slowly for 6 seconds together.' Never hand them a paper bag!"
+      },
+      {
+        icon: "🚫",
+        tag: "During CBT Recovery",
+        title: "2. Encourage Bravery Without Becoming a Permanent Crutch",
+        body: "Taking over 100% of driving, shopping, or errands forever accidentally feeds Agoraphobia. Celebrate small graded steps—accompany them halfway at first, then cheer as they complete short solo trips."
+      },
+      {
+        icon: "🏆",
+        tag: "Redefining Victory",
+        title: "3. Praise Endurance, Not Symptom Absence",
+        body: "Avoid asking 'Are you feeling anxious yet?' every 10 minutes (which triggers body-scanning!). Instead say: 'I'm so proud you finished the queue even while your heart was racing!'—that endurance rewires the brain."
       }
     ],
 
@@ -986,6 +1390,34 @@ window.PANIC_DATA_BY_LANG = {
         correctIndex: 1,
         explanation:
           "Correct! Dropping subtle safety behaviors during CBT exposure allows your brain to discover firsthand that racing sensations pass safely on their own."
+      },
+      {
+        id: "q6",
+        scenario:
+          "6. While stuck in traffic with your heart racing at 130 bpm (Hot Cognition), what is the RIGHT way to use Coping Cards and Thought Records?",
+        options: [
+          "Stop in the middle of traffic to write out a long 10-step philosophical worksheet",
+          "Chant your Coping Card 50 times a minute like a desperate mantra to force symptoms away instantly",
+          "Read your factual 60-second Coping Card at most TWICE while continuing to drive calmly; complete the 10-step Thought Record 15–60 minutes AFTER the wave settles",
+          "Repeat vague affirmations like 'Everything is magical and peaceful' with no physiological facts"
+        ],
+        correctIndex: 2,
+        explanation:
+          "Spot on! During peak adrenaline, prefrontal logic drops >50%: use a prepared factual script (max 2 reads so it doesn't become a safety crutch) + stay in the situation. Deep Cold-Cognition auditing happens 15–60 minutes after the storm subsides."
+      },
+      {
+        id: "q7",
+        scenario:
+          "7. During a planned Interoceptive Exposure training session at home (e.g., 60 seconds of narrow straw breathing), when should you use 4-2-6 relaxation breathing?",
+        options: [
+          "Immediately at second 15 as soon as discomfort begins",
+          "DO NOT use 4-2-6 breathing during planned IE training! Complete the full duration (+15s) with zero crutches so your brain encodes pure Inhibitory Learning",
+          "Take an Alprazolam tablet 30 minutes before practicing straw breathing",
+          "Quit the trial immediately and blast a cold fan"
+        ],
+        correctIndex: 1,
+        explanation:
+          "Brilliant! 4-2-6 breathing is an acute SOS stabilizer, NOT for planned IE sessions. Using relaxation breathing or sedatives during IE tricks the amygdala into thinking you 'barely survived because you controlled your breath'."
       }
     ]
   }

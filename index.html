@@ -21,11 +21,12 @@
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="#sec-fisiologi" data-en="1. Body &amp; Brain">1. Badan &amp; Otak</a>
         <a href="#sec-saringan" class="nav-emergency" data-en="2. Panic vs Heart (999)">2. Panik lwn Jantung (999)</a>
-        <a href="#sec-pencetus" data-en="3. Caffeine &amp; Myths">3. Kafein &amp; Mitos</a>
-        <a href="#sec-cbt" data-en="4. CBT &amp; Exposure Lab">4. Makmal CBT</a>
-        <a href="#sec-ubat" data-en="5. Meds &amp; Guidelines">5. Ubat &amp; Garis Panduan</a>
-        <a href="#sec-analogi" data-en="6. Analogies">6. Analogi</a>
-        <a href="#sec-kuiz" data-en="7. Quiz &amp; Help">7. Kuiz &amp; Rujukan</a>
+        <a href="#sec-pencetus" data-en="3. Caffeine &amp; Traps">3. Kafein &amp; Perangkap</a>
+        <a href="#sec-kognitif" data-en="4. 60s Cards &amp; Audit">4. Kad 60s &amp; Audit</a>
+        <a href="#sec-cbt" data-en="5. Exposure Lab">5. Makmal Pendedahan</a>
+        <a href="#sec-ubat" data-en="6. Meds &amp; Guidelines">6. Ubat &amp; Garis Panduan</a>
+        <a href="#sec-analogi" data-en="7. Family &amp; Analogies">7. Keluarga &amp; Analogi</a>
+        <a href="#sec-kuiz" data-en="8. Quiz &amp; Help">8. Kuiz &amp; Rujukan</a>
       </nav>
 
       <div class="top-actions">
@@ -53,6 +54,9 @@
       <div class="quick-sos-links">
         <button type="button" class="btn-sos-primary" data-open-quickhelp="step1" data-en="🆘 Calm Me Now (4-2-6)">
           🆘 Tenangkan Saya Sekarang (4-2-6)
+        </button>
+        <button type="button" class="chip-btn" data-open-quickhelp="cards" data-en="🃏 60s Pocket Coping Cards">
+          🃏 Kad Taktikal 60s (5 Situasi)
         </button>
         <button type="button" class="chip-btn" data-open-quickhelp="step2" data-en="🖐️ 5-4-3-2-1 &amp; Cold Reflex">
           🖐️ Pembumian 5-4-3-2-1 &amp; Pek Sejuk
@@ -105,6 +109,7 @@
 
       <div class="qh-tabs" role="tablist">
         <button type="button" class="qh-tab-btn active" data-qh-tab="step1" data-en="1. Accept &amp; 4-2-6 Breath">1. 'Accept' &amp; Nafas 4-2-6</button>
+        <button type="button" class="qh-tab-btn" data-qh-tab="cards" data-en="🃏 60s Pocket Scripts (5)">🃏 5 Kad Taktikal 60s</button>
         <button type="button" class="qh-tab-btn" data-qh-tab="step2" data-en="2. 5-4-3-2-1 &amp; Dive Reflex">2. 5-4-3-2-1 &amp; Pek Sejuk</button>
         <button type="button" class="qh-tab-btn" data-qh-tab="step3" data-en="3. 30s Medical Red Flags">3. Saringan 999 (30s)</button>
         <button type="button" class="qh-tab-btn" data-qh-tab="step4" data-en="4. Helping Someone Else">4. Bantu Orang Lain</button>
@@ -124,8 +129,11 @@
               <li data-en="&lt;strong&gt;Follow the 4-2-6 Belly Breather beside this box:&lt;/strong&gt; Making your exhale longer (6s) than your inhale (4s) stimulates your &lt;strong&gt;vagus nerve&lt;/strong&gt; and restores blood CO₂ so tingling and dizziness fade."><strong>Ikut bulatan Nafas Perut 4-2-6 di sebelah:</strong> Hembusan lebih panjang (6 saat) merangsang <strong>saraf vagus</strong> dan memulihkan keseimbangan CO₂ supaya rasa kebas dan melayang beransur hilang.</li>
             </ol>
             <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;">
-              <button type="button" class="btn-primary" data-qh-goto="step2" data-en="Next: 5-4-3-2-1 Sensory Grounding ➡️">
-                Seterusnya: Pembumian Deria 5-4-3-2-1 ➡️
+              <button type="button" class="btn-primary" data-qh-goto="cards" data-en="🃏 Open 60s Pocket Scripts (5 Scenarios)">
+                🃏 Buka 5 Kad Taktikal 60s
+              </button>
+              <button type="button" class="btn-secondary" data-qh-goto="step2" data-en="Next: 5-4-3-2-1 Grounding ➡️">
+                Pembumian 5-4-3-2-1 ➡️
               </button>
               <button type="button" class="btn-secondary" data-qh-goto="step3" data-en="🚨 Unsure if Heart / First Attack?">
                 🚨 Kali Pertama / Sakit Dada? Semak Sini
@@ -155,6 +163,17 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- PANE CARDS: 5 TACTICAL 60-SECOND POCKET SCRIPTS (HOT COGNITION) -->
+      <div data-qh-pane="cards" hidden>
+        <div class="alert-banner alert-warn" style="margin-bottom:12px;">
+          <span data-en="🔥 &lt;strong&gt;Hot Cognition Protocol (&gt;130 bpm):&lt;/strong&gt; When adrenaline floods the brain, logical cortex capacity drops &gt;50%. Do &lt;strong&gt;NOT&lt;/strong&gt; analyze long worksheets now! &lt;strong&gt;1.&lt;/strong&gt; Externalize (read this pre-written fact script), &lt;strong&gt;2.&lt;/strong&gt; Read &lt;strong&gt;MAX 2 TIMES&lt;/strong&gt; (never chant like a safety crutch), &lt;strong&gt;3.&lt;/strong&gt; Stay safely in place for 10–15 mins until the wave drops.">
+            🔥 <strong>Protokol Fasa Panas (Hot Cognition &gt;130 bpm):</strong> Semasa kemuncak panik, fungsi korteks logik merosot &gt;50%. <strong>JANGAN</strong> cuba berdebat panjang atau isi borang sekarang! <strong>1.</strong> Baca fakta siap tulis di bawah, <strong>2.</strong> Baca <strong>MAKSIMUM 2 KALI SAHAJA</strong> (elak jadi tongkat mantera), <strong>3.</strong> Kekal di lokasi selamat selama 10–15 minit sehingga gelombang surut sendiri.
+          </span>
+        </div>
+        <div id="sosCopingTabs" class="preset-row"></div>
+        <div id="sosCopingStage" class="coping-card-stage"></div>
       </div>
 
       <!-- PANE 2: 5-4-3-2-1 SENSORY GROUNDING & MAMMALIAN DIVE REFLEX -->
@@ -330,8 +349,9 @@
           <button type="button" class="btn-sos-primary" data-open-quickhelp="step1" style="padding:10px 18px; font-size:0.9rem;" data-en="🆘 Having a Panic Attack Now?">
             🆘 Sedang Diserang Panik Sekarang?
           </button>
-          <a href="#sec-saringan" class="btn-primary" data-en="🩺 13-Symptom &amp; Cardiac Check">🩺 Semak 13 Simptom &amp; Jantung</a>
-          <a href="#sec-cbt" class="btn-secondary" data-en="🧠 CBT Exposure Lab">🧠 Makmal Latihan CBT</a>
+          <a href="#sec-kognitif" class="btn-primary" data-en="🃏 60s Cards &amp; Thought Audit">🃏 Kad Taktikal 60s &amp; Audit Bukti</a>
+          <a href="#sec-saringan" class="btn-secondary" data-en="🩺 13-Symptom &amp; Cardiac Check">🩺 Semak 13 Simptom &amp; Jantung</a>
+          <a href="#sec-cbt" class="btn-secondary" data-en="🧠 Inhibitory Exposure Lab">🧠 Makmal Pendedahan CBT</a>
         </div>
       </div>
 
@@ -358,10 +378,10 @@
         <div>
           <div class="mastery-bar-head">
             <span data-en="Playbook Exploration Progress">Kemajuan Penerokaan Playbook</span>
-            <strong id="masteryProgressPct">13%</strong>
+            <strong id="masteryProgressPct">11%</strong>
           </div>
           <div class="progress-track">
-            <div id="masteryProgressFill" class="progress-fill" style="width:13%;"></div>
+            <div id="masteryProgressFill" class="progress-fill" style="width:11%;"></div>
           </div>
         </div>
       </div>
@@ -563,28 +583,215 @@
       </div>
     </section>
 
-    <!-- ======== BAB 4: ENJIN PEMULIHAN CBT & MAKMAL PENDEDAHAN ======== -->
+    <!-- ======== BAB 4: PENSTRUKTURAN SEMULA KOGNITIF (HOT vs COLD COGNITION & THOUGHT RECORD) ======== -->
+    <section id="sec-kognitif" class="section-block">
+      <div class="section-head">
+        <div class="section-num" data-en="Chapter 4 • Panic-Specific Cognitive Restructuring (Clark • Barlow &amp; Craske)">
+          Bab 4 • Penstrukturan Semula Kognitif Khusus Panik (Hot lwn Cold Cognition &amp; Audit Bukti)
+        </div>
+        <h2 data-en="60-Second Pocket Scripts (During Surge) &amp; 10-Step Thought Audit (After Surge)">
+          5 Kad Taktikal 60 Saat (Semasa Serangan) &amp; Borang Audit Bukti 10 Langkah (Selepas Reda)
+        </h2>
+        <p data-en="Generic 'positive thinking' fails during panic because adrenaline temporarily shuts down >50% of logical cortex capacity. Clinical CBT separates action into Two Phases: short externalized truth cards during the surge, and forensic evidence auditing 15–60 minutes after.">
+          Ayat positif kosong ("jangan fikir bukan-bukan") gagal semasa panik kerana adrenalin menurunkan fungsi korteks logik melebihi 50%. Protokol klinikal CBT membahagikan tindakan kepada <strong>Dua Fasa Berbeza</strong> supaya pesakit tidak terperangkap berdebat dengan amigdala sewaktu nadi memuncak.
+        </p>
+      </div>
+
+      <!-- Hot vs Cold Cognition Phase Comparison -->
+      <div class="phase-compare-grid">
+        <div class="phase-box-hot">
+          <span class="pill-badge pill-warn" data-en="🔥 Phase 1: Hot Cognition (During Peak Surge >130 bpm)">🔥 Fasa 1: Hot Cognition (Semasa Kemuncak &gt;130 bpm)</span>
+          <h3 style="margin:8px 0 6px;" data-en="Do NOT Fill Forms Mid-Attack — Use a 60s Pocket Script!">JANGAN Isi Borang Panjang — Guna Kad Taktikal 60 Saat!</h3>
+          <ul style="margin:0; padding-left:18px; font-size:0.85rem; color:var(--text-secondary); display:grid; gap:6px;">
+            <li data-en="&lt;strong&gt;1. Externalize:&lt;/strong&gt; Open your pre-saved script on your phone/wallet—don't rely on memory."><strong>1. Eksternalisasi:</strong> Buka skrip fakta siap tulis di telefon atau dompet—jangan cuba mereka ayat sendiri.</li>
+            <li data-en="&lt;strong&gt;2. Max 2x Read Limit:&lt;/strong&gt; Read slowly at most &lt;strong&gt;twice&lt;/strong&gt;. Repeating it 20 times turns the card into a fear-maintaining &lt;em&gt;safety crutch&lt;/em&gt;!"><strong>2. Had Baca Maksimum 2 Kali:</strong> Baca perlahan cukup <strong>2 kali sahaja</strong>. Mengulang berpuluh kali menjadikannya <em>tongkat keselamatan palsu</em>!</li>
+            <li data-en="&lt;strong&gt;3. Stay 10–15 Mins:&lt;/strong&gt; Soften shoulders and stay where you are so your brain records real proof of safety."><strong>3. Kekal 10–15 Minit:</strong> Kendurkan bahu dan kekal di lokasi supaya otak merakam bukti sebenar anda selamat.</li>
+          </ul>
+        </div>
+
+        <div class="phase-box-cold">
+          <span class="pill-badge pill-info" data-en="🧊 Phase 2: Cold Cognition (15–60 Mins After Wave Subsides)">🧊 Fasa 2: Cold Cognition (15–60 Minit Selepas Reda)</span>
+          <h3 style="margin:8px 0 6px;" data-en="Forensic Evidence Audit — Disconfirm the Catastrophe!">Audit Bukti Forensik — Patahkan Ramalan Bencana Amigdala!</h3>
+          <ul style="margin:0; padding-left:18px; font-size:0.85rem; color:var(--text-secondary); display:grid; gap:6px;">
+            <li data-en="&lt;strong&gt;Name the Exact Catastrophe:&lt;/strong&gt; Not vague 'scared', but exact ('I predicted a fatal stroke in 3 minutes at 90% belief')."><strong>Tulis Ramalan Spesifik:</strong> Bukan sekadar "rasa takut", tetapi tepat (cth: <em>"Yakin 90% akan pitam/mati strok dalam 3 minit"</em>).</li>
+            <li data-en="&lt;strong&gt;Reject Emotional Reasoning:&lt;/strong&gt; 'Because my chest felt weird' is an emotion, NOT medical proof."><strong>Tolak Bukti Emosi:</strong> Alasan <em>"sebab dada rasa lain macam"</em> ialah emosi panik, BUKAN bukti perubatan objektif.</li>
+            <li data-en="&lt;strong&gt;Check Base-Rate &amp; Drop Crutches:&lt;/strong&gt; Compare prediction vs. 100% survival track record until belief drops &lt;strong&gt;&lt;15%&lt;/strong&gt;."><strong>Semak Rekod Sejarah &amp; Tongkat:</strong> Bandingkan ramalan dengan rekod 100% selamat sehingga keyakinan bencana turun <strong>&lt;15%</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 5 Tactical 60-Second Pocket Scripts -->
+      <div class="panel-card" style="margin-bottom:18px;">
+        <h3 data-en="🃏 5 Tactical 60-Second Pocket Scripts (With 2x Read Guardrail)">
+          🃏 5 Kad Taktikal Poket 60 Saat Mengikut Situasi (Dengan Pengawal Had Baca 2x)
+        </h3>
+        <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Pick a real-world scenario below, practice the 2-read discipline, or copy your most frequent script to your phone's pinned notes:">
+          Pilih situasi sebenar di bawah, amalkan disiplin maksimum 2 kali bacaan, atau salin skrip ke aplikasi Nota (Pinned Notes) telefon anda:
+        </p>
+        <div id="pageCopingTabs" class="preset-row"></div>
+        <div id="pageCopingStage" class="coping-card-stage"></div>
+      </div>
+
+      <!-- 4 Panic Misinterpretation Clusters + Amygdala Base-Rate Survival Calculator -->
+      <div class="two-col" style="margin-bottom:18px;">
+        <div class="panel-card">
+          <h3 data-en="🔍 4 Classic Panic Misinterpretations &amp; Socratic Reality Checks">
+            🔍 4 Kluster Salah Tafsir Bencana &amp; Soalan Sokratik
+          </h3>
+          <div id="crClustersGrid" class="socratic-grid" style="margin-top:10px;"></div>
+        </div>
+
+        <div class="panel-card" style="display:flex; flex-direction:column; justify-content:space-between; gap:12px;">
+          <div>
+            <h3 data-en="📊 Amygdala Base-Rate &amp; Survival Score Calculator">
+              📊 Kalkulator Rekod Sejarah &amp; Kadar Ralat Amigdala
+            </h3>
+            <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 12px;" data-en="Test your brain's catastrophe prediction accuracy against your real-life historical track record:">
+              Uji ketepatan ramalan "nak mati/pengsan" otak anda berbanding rekod sejarah sebenar yang telah anda lalui:
+            </p>
+            <div class="two-col" style="gap:10px; margin-bottom:12px;">
+              <div class="form-group" style="margin:0;">
+                <label class="field-title" for="baseRatePastInput" data-en="Past Panic Episodes Experienced:">Jumlah Episod Panik Pernah Dialami:</label>
+                <input type="number" id="baseRatePastInput" class="form-input" min="1" max="5000" value="25" />
+              </div>
+              <div class="form-group" style="margin:0;">
+                <label class="field-title" for="baseRateActualInput" data-en="Times Predicted Disaster Actually Happened:">Berapa Kali Bencana Ramalan Benar-Benar Berlaku:</label>
+                <input type="number" id="baseRateActualInput" class="form-input" min="0" max="5000" value="0" />
+              </div>
+            </div>
+            <div id="baseRateVerdict" class="alert-banner alert-safe"></div>
+          </div>
+
+          <div class="reasoning-box" style="font-size:0.83rem;">
+            <strong data-en="💡 Why This Number Breaks Panic:">💡 Kenapa Angka Ini Mematahkan Panik:</strong>
+            <span data-en=" If a smoke alarm screamed 'FIRE!' 25 times in a row with zero actual fires, you wouldn't jump out the window on alarm #26—you would recognize a hypersensitive sensor!">
+              Jika penggera asap menjerit "API!" 25 kali berturut-turut tanpa satu pun kebakaran sebenar, anda tidak akan terjun tingkap pada bunyi ke-26—anda tahu sensornya yang terlalu sensitif!
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive 10-Step Post-Attack Panic Thought Record Builder -->
+      <div class="panel-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px;">
+          <div>
+            <span class="pill-badge pill-info" data-en="🧊 Use 15–60 Minutes AFTER Surge Settles">🧊 Isi 15–60 Minit SELEPAS Gelombang Reda</span>
+            <h3 style="margin:6px 0 2px;" data-en="📝 Interactive 10-Step Panic Thought Record (Forensic Audit)">
+              📝 Borang Interaktif Audit Bukti 10 Langkah (Panic Thought Record)
+            </h3>
+          </div>
+          <button type="button" id="trLoadSampleBtn" class="btn-secondary" data-en="⚡ Load Worked Example (Traffic Jam)">
+            ⚡ Muat Contoh Kerja Penuh (Jem Jalan Raya)
+          </button>
+        </div>
+
+        <div class="two-col" style="margin-bottom:12px;">
+          <div>
+            <div class="form-group">
+              <label class="field-title" for="trLoc" data-en="1. Date, Time &amp; Location:">1. Tarikh, Masa &amp; Lokasi Kejadian:</label>
+              <input type="text" id="trLoc" class="form-input" placeholder="Cth: Isnin 5:45 ptg — Dalam kereta jem..." data-en-placeholder="e.g., Mon 5:45 PM — Stuck in traffic..." />
+            </div>
+            <div class="form-group">
+              <label class="field-title" for="trVuln" data-en="2. Pre-Attack Vulnerability Factors (Caffeine, Sleep, Stress):">2. Faktor Kerentanan Fizikal Sebelum Serangan (Kopi, Tidur, Lapar):</label>
+              <input type="text" id="trVuln" class="form-input" placeholder="Cth: Tidur 4.5 jam, kopi ais pekat, lewat makan..." data-en-placeholder="e.g., 4.5h sleep, strong iced coffee, skipped lunch..." />
+            </div>
+            <div class="form-group">
+              <label class="field-title" for="trTrigger" data-en="3. Earliest Internal Body Sensation (Initial Spark):">3. Sensasi Fizikal Pertama Disedari (Percikan Awal):</label>
+              <input type="text" id="trTrigger" class="form-input" placeholder="Cth: Satu degupan jantung kuat &amp; jari mula kebas..." data-en-placeholder="e.g., One strong heartbeat + tingling fingers..." />
+            </div>
+            <div class="form-group">
+              <label class="field-title" for="trCatastrophe" data-en="4. Specific Catastrophe Prediction:">4. Ramalan Bencana Spesifik Otak Ketika Itu:</label>
+              <input type="text" id="trCatastrophe" class="form-input" placeholder="Cth: Jantung aku nak berhenti / pengsan atas stereng dalam 2 minit!" data-en-placeholder="e.g., I'll have a heart attack / pass out at the wheel in 2 mins!" />
+            </div>
+            <div class="two-col" style="gap:10px; margin-bottom:10px;">
+              <div>
+                <label class="field-title" for="trInitBelief" data-en="5a. Peak Catastrophe Belief:">5a. Keyakinan Bencana Awal:</label>
+                <div class="slider-inline">
+                  <input type="range" id="trInitBelief" min="0" max="100" value="85" />
+                  <strong id="trInitBeliefVal" style="color:var(--accent-amber); min-width:44px;">85%</strong>
+                </div>
+              </div>
+              <div>
+                <label class="field-title" for="trInitSuds" data-en="5b. Peak Fear (SUDS 0–10):">5b. Ketakutan Puncak (SUDS):</label>
+                <div class="slider-inline">
+                  <input type="range" id="trInitSuds" min="0" max="10" value="8" />
+                  <strong id="trInitSudsVal" style="color:var(--accent-amber); min-width:44px;">8/10</strong>
+                </div>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="field-title" for="trSafety" data-en="6. Safety Crutches Used (To Drop Next Time!):">6. Tingkah Laku Keselamatan / Tongkat Dibuat (Untuk Dibuang Lepas Ini):</label>
+              <input type="text" id="trSafety" class="form-input" placeholder="Cth: Tengok jam pintar 8 kali, kuatkan aircond maksimum..." data-en-placeholder="e.g., Checked smartwatch 8x, blasted AC, gripped wheel..." />
+            </div>
+          </div>
+
+          <div>
+            <div class="form-group">
+              <label class="field-title" for="trEvidence" data-en="7. Objective Medical &amp; Base-Rate Evidence Against Catastrophe:">7. Bukti Perubatan Objektif &amp; Rekod Sejarah Menyangkal Bencana:</label>
+              <textarea id="trEvidence" class="form-input" rows="2" placeholder="Cth: ECG normal bulan lepas; sudah 25 kali rasa sama tapi 0 kali serangan jantung..." data-en-placeholder="e.g., Normal ECG last month; survived 25 identical surges with 0 cardiac events..."></textarea>
+              <div id="trEmotionWarn" class="alert-banner alert-warn" hidden style="margin-top:6px; padding:8px 11px; font-size:0.79rem;">
+                <span data-en="⚠️ &lt;strong&gt;Emotional Reasoning Alert:&lt;/strong&gt; Phrases like 'it just felt weird/different' are adrenaline feelings—replace with objective medical facts &amp; survival count!">
+                  ⚠️ <strong>Amaran Bukti Emosi:</strong> Ungkapan seperti <em>"rasa lain macam / tak sedap hati"</em> ialah perasaan cemas, bukan bukti perubatan! Gantikan dengan fakta objektif &amp; rekod selamat.
+                </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="field-title" for="trPhysio" data-en="8. Benign Physiological Explanation:">8. Penjelasan Fisiologi Sebenar (Biologi Jinak):</label>
+              <input type="text" id="trPhysio" class="form-input" placeholder="Cth: Lonjakan adrenalin + kafein + hipokapnia CO₂ nafas laju..." data-en-placeholder="e.g., Adrenaline + caffeine + mild CO₂ drop from fast breathing..." />
+            </div>
+            <div class="form-group">
+              <label class="field-title" for="trOutcome" data-en="9. Actual Outcome After 15–20 Minutes:">9. Hasil Sebenar Selepas 15–20 Minit:</label>
+              <input type="text" id="trOutcome" class="form-input" placeholder="Cth: Nadi turun sendiri, sampai rumah dengan selamat tanpa pitam." data-en-placeholder="e.g., Heart rate settled naturally, arrived home safely without fainting." />
+            </div>
+            <div class="two-col" style="gap:10px; margin-bottom:12px;">
+              <div>
+                <label class="field-title" for="trFinalBelief" data-en="10a. Re-Rated Belief (Target &lt;15%):">10a. Keyakinan Bencana Kini (&lt;15%):</label>
+                <div class="slider-inline">
+                  <input type="range" id="trFinalBelief" min="0" max="100" value="10" />
+                  <strong id="trFinalBeliefVal" style="color:var(--accent-emerald); min-width:78px;">10% ✓ (&lt;15%)</strong>
+                </div>
+              </div>
+              <div>
+                <label class="field-title" for="trFinalSuds" data-en="10b. Current SUDS (0–10):">10b. SUDS Semasa (0–10):</label>
+                <div class="slider-inline">
+                  <input type="range" id="trFinalSuds" min="0" max="10" value="2" />
+                  <strong id="trFinalSudsVal" style="color:var(--accent-emerald); min-width:44px;">2/10</strong>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
+              <button type="button" id="trSaveBtn" class="btn-primary" data-en="💾 Save Audit Log">💾 Simpan Rekod Audit</button>
+              <button type="button" id="trCopyBtn" class="btn-secondary" data-en="📋 Copy Clean Text for Phone / Therapist">📋 Salin Teks Bersih Ke Nota / Terapis</button>
+            </div>
+            <div id="trSavedHistoryList" style="display:grid; gap:6px;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== BAB 5: ENJIN PEMULIHAN CBT & PENDEDAHAN INTEROSEPTIF (BARLOW & CRASKE) ======== -->
     <section id="sec-cbt" class="section-block">
       <div class="section-head">
-        <div class="section-num" data-en="Chapter 4 • Gold-Standard Long-Term Recovery (Panic-Focused CBT &amp; B4DT)">
-          Bab 4 • Rawatan Jangka Panjang Terbaik Berasaskan Bukti (CBT &amp; Latihan Pendedahan)
+        <div class="section-num" data-en="Chapter 5 • Panic Control Treatment &amp; Inhibitory Learning Lab (Barlow &amp; Craske • B4DT)">
+          Bab 5 • Terapi Kawalan Panik (Barlow &amp; Craske) &amp; Makmal Pendedahan Inhibitory Learning
         </div>
-        <h2 data-en="Retrain Your Amygdala: Interoceptive Lab &amp; Graded Fear Ladder Builder">
-          Latih Semula Amigdala: Makmal Pendedahan Interoseptif &amp; Tangga Ketakutan
+        <h2 data-en="9 Interoceptive Provocation Labs, Anti-Crutch Rules &amp; In Vivo Fear Ladder">
+          9 Latihan Provokasi Interoseptif, Prinsip Tanpa Tongkat &amp; Tangga Ketakutan Sebenar
         </h2>
-        <p data-en="Cognitive Behavioral Therapy (CBT) has the strongest long-term durability because it teaches your brain through lived experience—not just words—that bodily sensations and avoided places are safe.">
-          Terapi Tingkah Laku Kognitif (CBT) terbukti memiliki kesan pemulihan paling kekal selepas tamat rawatan kerana ia melatih otak melalui bukti pengalaman sebenar bahawa sensasi fizikal dan situasi luar adalah selamat.
+        <p data-en="Modern exposure science (Michelle Craske's Inhibitory Learning model) proves recovery isn't just waiting for fear to drop—it's intentionally testing your feared sensation WITHOUT safety crutches so your prefrontal cortex writes a brand-new safety memory!">
+          Sains pendedahan moden (<em>Inhibitory Learning</em> oleh Michelle Craske &amp; David Barlow) membuktikan pemulihan kekal berlaku apabila kita mencetuskan sensasi yang ditakuti secara terkawal <strong>tanpa sebarang tongkat keselamatan</strong> sehingga korteks otak menulis memori baharu bahawa sensasi itu 100% selamat.
         </p>
       </div>
 
       <div class="alert-banner alert-warn" style="margin-bottom:18px;">
-        <span data-en="🩺 &lt;strong&gt;Medical Clearance First:&lt;/strong&gt; Interoceptive exercises intentionally trigger mild physical sensations (heart rate, dizziness). Only practice physical provocation exercises after a doctor has cleared cardiac, asthma, or pregnancy conditions.">
-          🩺 <strong>Saringan Kesihatan Dahulu:</strong> Latihan pendedahan interoseptif mencetuskan sensasi fizikal ringan secara sengaja. Pastikan anda telah mendapat pengesahan doktor jika menghidap penyakit jantung, asma tidak terkawal, atau sedang hamil.
+        <span data-en="🩺 &lt;strong&gt;Medical Screening &amp; Critical Rule:&lt;/strong&gt; Only practice physical provocation after medical clearance (avoid specific exercises in uncontrolled asthma, cardiac arrhythmia, severe hypertension, glaucoma, epilepsy, cervical disc injury, or complicated pregnancy). &lt;strong&gt;CRITICAL:&lt;/strong&gt; Emergency 4-2-6 breathing is for unexpected attacks—&lt;strong&gt;NEVER use 4-2-6 during planned exposure exercises&lt;/strong&gt;, or your brain will credit the breathing trick instead of learning the sensation itself is safe!">
+          🩺 <strong>Saringan Kesihatan &amp; Peraturan Emas:</strong> Pastikan saringan doktor dibuat dahulu (semak kontraindikasi khusus setiap latihan bagi asma akut, aritmia jantung, darah tinggi tidak terkawal, glaukoma, epilepsi, sakit tulang leher, atau kehamilan berisiko). <strong>AMAT PENTING:</strong> Nafas 4-2-6 hanyalah untuk serangan mengejut—<strong>JANGAN guna nafas 4-2-6 semasa sesi latihan pendedahan terancang</strong> supaya otak belajar sensasi itu selamat tanpa tongkat!
         </span>
       </div>
 
       <div class="two-col" style="margin-bottom:18px;">
-        <!-- Left: Escape vs Stay Curve + CBT Formats -->
+        <!-- Left: Escape vs Stay Curve + CBT Formats + Graduation Rules -->
         <div class="panel-card">
           <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
             <h3 style="margin:0;" data-en="📉 Why Staying Beats Fleeing">📉 Kenapa Kekal &amp; Hadapi Lebih Mujarab Daripada Lari</h3>
@@ -598,20 +805,29 @@
             <canvas id="cbtCurveCanvas" width="520" height="225"></canvas>
           </div>
 
+          <div class="reasoning-box" style="margin-bottom:12px; font-size:0.83rem;">
+            <strong data-en="🎓 Daily Dose &amp; 3-Day Graduation Rule (Barlow &amp; Craske):">🎓 Dos Latihan Harian &amp; Kriteria Lulus 3 Hari Berturut-Turut:</strong>
+            <ul style="margin:6px 0 0; padding-left:18px; color:var(--text-secondary); display:grid; gap:4px;">
+              <li data-en="&lt;strong&gt;Daily Dose:&lt;/strong&gt; Pick 1–2 exercises that best mimic your panic (SUDS ≥4/10), repeat &lt;strong&gt;3–5 rounds&lt;/strong&gt; (60s rest between rounds) in varied rooms/postures."><strong>Dos Harian:</strong> Pilih 1–2 latihan paling mirip panik anda (SUDS ≥4/10), ulang <strong>3–5 pusingan berturut-turut</strong> (rehat 60s antara pusingan) di pelbagai bilik/postur.</li>
+              <li data-en="&lt;strong&gt;3-Day Graduation:&lt;/strong&gt; Move up only when for &lt;strong&gt;3 consecutive days&lt;/strong&gt; peak SUDS stays &lt;strong&gt;0–2/10&lt;/strong&gt;, catastrophe belief is &lt;strong&gt;0%&lt;/strong&gt;, with &lt;strong&gt;0 safety crutches&lt;/strong&gt;."><strong>Kriteria Lulus (3 Hari Berturut-Turut):</strong> SUDS puncak kekal <strong>0–2/10</strong>, keyakinan bencana <strong>0%</strong>, dan <strong>0 safety behaviors</strong>.</li>
+              <li data-en="&lt;strong&gt;Hybrid In Vivo Bridge:&lt;/strong&gt; Combine sensation + place (e.g., walk briskly up stairs to raise heart rate &lt;em&gt;right before&lt;/em&gt; entering a supermarket or elevator!)."><strong>Jambatan Hibrid (In Vivo):</strong> Gabungkan sensasi + lokasi sebenar (cth: naik tangga laju supaya nadi naik <em>sebelum</em> masuk lif atau beratur di pasar raya!).</li>
+            </ul>
+          </div>
+
           <h4 style="margin:0 0 8px; font-size:0.92rem;" data-en="📚 Evidence Across CBT Formats (Papola et al. 2023 &amp; B4DT 2025)">
             📚 Bukti Format Penyampaian CBT (Papola et al. 2023 &amp; B4DT 2025)
           </h4>
           <div id="cbtFormatsGrid" style="display:grid; gap:8px;"></div>
         </div>
 
-        <!-- Right: Interactive Interoceptive Timer + Fear Ladder -->
+        <!-- Right: Interactive 9-Exercise Interoceptive Lab + Fear Ladder -->
         <div class="panel-card">
-          <h3 data-en="⏱️ Interactive Interoceptive Exposure Lab">⏱️ Makmal Latihan Pendedahan Interoseptif</h3>
-          <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Choose a safe exercise to teach your brain that bodily sensations fade naturally without catastrophe:">
-            Pilih satu latihan terkawal untuk membuktikan kepada otak bahawa sensasi badan hilang sendiri tanpa bencana:
+          <h3 data-en="⏱️ Interactive 9-Exercise Interoceptive Exposure Menu">⏱️ Menu Interaktif 9 Latihan Pendedahan Interoseptif</h3>
+          <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Select a clinical provocation below to inspect its medical contraindications, written hypothesis, timer, and +15s courage bonus:">
+            Pilih satu latihan provokasi di bawah untuk menyemak kontraindikasi kesihatan, hipotesis ujian, pemasa pusingan, dan cabaran +15 saat:
           </p>
 
-          <div id="interoPresetButtons" class="preset-row"></div>
+          <div id="interoPresetButtons" class="ie-menu-grid"></div>
           <div id="interoActiveDetail" class="reasoning-box" style="margin-bottom:16px;"></div>
 
           <h3 data-en="🪜 Build Your Personal Graded Fear Ladder (SUDS 0–100)">🪜 Bina Tangga Ketakutan Berperingkat Anda (SUDS 0–100)</h3>
@@ -653,13 +869,21 @@
           </div>
         </div>
       </div>
+
+      <!-- 4 Common Inhibitory Learning Mistakes -->
+      <div class="panel-card">
+        <h3 style="margin:0 0 10px;" data-en="🚫 4 Critical Exposure Mistakes That Block Brain Recovery">
+          🚫 4 Kesilapan Kritikal Semasa Latihan Pendedahan (Yang Menghalang Otak Sembuh)
+        </h3>
+        <div id="ieMistakesGrid" class="socratic-grid"></div>
+      </div>
     </section>
 
-    <!-- ======== BAB 5: FARMAKOTERAPI & POPULASI KHAS ======== -->
+    <!-- ======== BAB 6: FARMAKOTERAPI & POPULASI KHAS ======== -->
     <section id="sec-ubat" class="section-block">
       <div class="section-head">
-        <div class="section-num" data-en="Chapter 5 • Stepped Pharmacotherapy &amp; Special Populations (WFSBP 2023 • NICE CG113 • Cochrane 2023)">
-          Bab 5 • Panduan Ubat Berperingkat &amp; Populasi Khas (WFSBP 2023 • NICE CG113 • Cochrane 2023)
+        <div class="section-num" data-en="Chapter 6 • Stepped Pharmacotherapy &amp; Special Populations (WFSBP 2023 • NICE CG113 • Cochrane 2023)">
+          Bab 6 • Panduan Ubat Berperingkat &amp; Populasi Khas (WFSBP 2023 • NICE CG113 • Cochrane 2023)
         </div>
         <h2 data-en="Medication Decision Navigator, Benzodiazepine Guardrails &amp; Emerging Science">
           Peta Keputusan Ubat-Ubatan, Prinsip Benzodiazepin &amp; Inovasi Terkini
@@ -728,39 +952,48 @@
       </div>
     </section>
 
-    <!-- ======== BAB 6: 3 ANALOGI VISUAL MUDAH FAHAM ======== -->
+    <!-- ======== BAB 7: PANDUAN AHLI KELUARGA, ORANG AWAM & 3 ANALOGI VISUAL ======== -->
     <section id="sec-analogi" class="section-block">
       <div class="section-head">
-        <div class="section-num" data-en="Chapter 6 • Friendly Visual Analogies (For Patients, Families &amp; Educators)">
-          Bab 6 • Sudut Analogi Mudah Hadam (Untuk Diri Sendiri, Keluarga &amp; Edukator)
+        <div class="section-num" data-en="Chapter 7 • Practical Guide for Families, Spouses, Coworkers &amp; Visual Analogies">
+          Bab 7 • Panduan Praktikal Ahli Keluarga, Pasangan, Rakan Sekerja &amp; 3 Analogi Visual
         </div>
-        <h2 data-en="3 Everyday Metaphors That Explain Panic in 15 Seconds">
-          3 Analogi Harian Supaya Sesiapa Pun Faham Dalam 15 Saat
+        <h2 data-en="How Loved Ones &amp; the Public Can Help Effectively —Without Feeding Panic">
+          Cara Ahli Keluarga &amp; Orang Awam Membantu Dengan Bijak — Tanpa Menguatkan Kitaran Panik
         </h2>
-        <p data-en="Share these three analogies with loved ones so they understand what you feel without judgment.">
-          Kongsikan tiga analogi ringkas ini bersama pasangan, ibu bapa, atau rakan supaya mereka memahami keadaan anda dengan penuh empati.
+        <p data-en="Good intentions (like rushing a patient out of every supermarket or repeating 'Are you okay?!' ten times) can accidentally train their amygdala that the world is dangerous. Use these 3 clinical pillars and 3 everyday analogies together:">
+          Niat baik yang kurang tepat (seperti terus menarik pesakit lari keluar dari pasar raya atau bertanya <em>"Awak okey tak?!"</em> sepuluh kali) secara tidak sengaja melatih amigdala mereka bahawa situasi itu berbahaya. Gunakan <strong>3 tonggak sokongan keluarga</strong> dan <strong>3 analogi harian</strong> di bawah:
         </p>
       </div>
+
+      <h3 style="margin:0 0 10px;" data-en="🤝 3 Pillars for Spouses, Parents, Coworkers &amp; Bystanders">
+        🤝 3 Tonggak Panduan Untuk Pasangan, Ibu Bapa, Rakan Sekerja &amp; Orang Awam
+      </h3>
+      <div id="familyGuideGrid" class="three-col" style="margin-bottom:20px;"></div>
+
+      <h3 style="margin:0 0 10px;" data-en="💡 3 Everyday Metaphors That Explain Panic in 15 Seconds">
+        💡 3 Analogi Harian Supaya Sesiapa Pun Faham Dalam 15 Saat
+      </h3>
       <div id="analogiesGrid" class="three-col"></div>
     </section>
 
-    <!-- ======== BAB 7: KUIZ 5 SENARIO & RUJUKAN SAHIH / KKM ======== -->
+    <!-- ======== BAB 8: KUIZ 7 SENARIO & RUJUKAN SAHIH / KKM ======== -->
     <section id="sec-kuiz" class="section-block">
       <div class="section-head" style="display:flex; justify-content:space-between; align-items:flex-end; gap:14px; flex-wrap:wrap;">
         <div>
-          <div class="section-num" data-en="Chapter 7 • Interactive Knowledge Check &amp; Trusted Helplines">
-            Bab 7 • Uji Kefahaman Interaktif &amp; Saluran Rujukan Rasmi Sahih
+          <div class="section-num" data-en="Chapter 8 • Interactive Knowledge Check &amp; Trusted Helplines">
+            Bab 8 • Uji Kefahaman Interaktif &amp; Saluran Rujukan Rasmi Sahih
           </div>
-          <h2 data-en="5 Real-World Panic &amp; Triage Scenarios">
-            Kuiz Interaktif: 5 Situasi Sebenar Serangan Panik &amp; Saringan Kecemasan
+          <h2 data-en="7 Real-World Panic, Triage &amp; CBT Scenarios">
+            Kuiz Interaktif: 7 Situasi Sebenar Serangan Panik, Saringan 999 &amp; Disiplin CBT
           </h2>
-          <p data-en="Test your ability to spot cardiac red flags, physiological facts, safe bystander first-aid, and recovery principles.">
-            Uji kefahaman anda membezakan fakta fisiologi, tanda merah jantung (999), cara membantu orang lain, dan prinsip pemulihan CBT/SSRI.
+          <p data-en="Test your mastery of cardiac red flags, Hot vs. Cold Cognition, the 2x coping-card limit, Inhibitory Learning rules, and safe bystander first-aid.">
+            Uji penguasaan anda membezakan tanda merah jantung (999), Hot lwn Cold Cognition, had baca kad 2 kali, pantang larang latihan interoseptif, dan bantuan orang awam.
           </p>
         </div>
         <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
           <span id="quizScoreDisplay" class="pill-badge pill-info" style="font-size:0.85rem; padding:7px 14px;">
-            Skor Kefahaman: 0 / 5
+            Skor Kefahaman: 0 / 7
           </span>
           <button type="button" id="quizResetBtn" class="btn-secondary" data-en="🔄 Reset Quiz">🔄 Cuba Semula Kuiz</button>
         </div>
@@ -782,10 +1015,9 @@
           </p>
         </div>
         <div class="ref-card">
-          <span class="pill-badge pill-info" data-en="Diagnostic Manuals">Manual Diagnostik Dunia</span>
-          <p style="margin:8px 0 0;" data-en="&lt;strong&gt;DSM-5-TR (APA, 2022):&lt;/strong&gt; Official 13-symptom Panic Attack Specifier (&ge;4 symptoms) &amp; Panic Disorder criteria.&lt;br/&gt;&lt;strong&gt;WHO ICD-11 CDDR (2022–2024):&lt;/strong&gt; Panic Attack (<code>MB23.H</code>) &amp; Panic Disorder (<code>6B01</code>).">
-            <strong>DSM-5-TR (APA, 2022):</strong> Kriteria rasmi <em>Panic Attack Specifier</em> (&ge;4 daripada 13 simptom) &amp; <em>Panic Disorder</em>.<br/>
-            <strong>WHO ICD-11 CDDR (2022–2024):</strong> Kod rasmi serangan panik (<code>MB23.H</code>) &amp; kecelaruan panik (<code>6B01</code>).
+          <span class="pill-badge pill-info" data-en="Diagnostic &amp; CBT Manuals">Manual Diagnostik &amp; Protokol CBT</span>
+          <p style="margin:8px 0 0;" data-en="&lt;strong&gt;DSM-5-TR (APA, 2022)&lt;/strong&gt; &amp; &lt;strong&gt;WHO ICD-11 (MB23.H / 6B01)&lt;/strong&gt; • &lt;strong&gt;Barlow &amp; Craske:&lt;/strong&gt; &lt;em&gt;Mastery of Your Anxiety and Panic (MAP-5 / PCT)&lt;/em&gt; • &lt;strong&gt;Craske et al. (2014/2022):&lt;/strong&gt; Inhibitory Learning • &lt;strong&gt;David M. Clark (1986):&lt;/strong&gt; Cognitive Model.">
+            <strong>DSM-5-TR (APA, 2022)</strong> &amp; <strong>WHO ICD-11 (<code>MB23.H</code> / <code>6B01</code>)</strong> • <strong>Barlow &amp; Craske:</strong> <em>Panic Control Treatment (MAP-5)</em> • <strong>Michelle Craske:</strong> <em>Inhibitory Learning</em> • <strong>David M. Clark:</strong> Model Kognitif Panik.
           </p>
         </div>
         <div class="ref-card">

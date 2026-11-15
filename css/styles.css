@@ -986,12 +986,101 @@ body.light-theme .canvas-frame {
   color: var(--text-muted);
 }
 
+/* ======================= COPING CARDS, THOUGHT RECORD & IE LAB ======================= */
+.coping-card-stage {
+  background: linear-gradient(145deg, var(--bg-card), var(--bg-elevated));
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.coping-script-quote {
+  font-size: clamp(1rem, 1.3vw, 1.14rem);
+  line-height: 1.72;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border-left: 4px solid var(--accent-teal);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  margin: 12px 0;
+}
+
+.phase-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.phase-box-hot {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-left: 4px solid var(--accent-amber);
+  border-radius: var(--radius-md);
+  padding: 15px 17px;
+}
+
+.phase-box-cold {
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-left: 4px solid var(--accent-cyan);
+  border-radius: var(--radius-md);
+  padding: 15px 17px;
+}
+
+.socratic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 10px;
+}
+
+.ie-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.ie-card-btn {
+  text-align: left;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  transition: border-color 0.15s, background 0.15s, transform 0.12s;
+}
+
+.ie-card-btn:hover,
+.ie-card-btn.active {
+  border-color: var(--accent-teal);
+  background: var(--bg-elevated);
+}
+
+.slider-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slider-inline input[type="range"] {
+  flex: 1;
+  accent-color: var(--accent-teal);
+}
+
 /* ======================= RESPONSIVE ======================= */
 @media (max-width: 960px) {
   .hero,
   .two-col,
   .three-col,
-  .first-aid-grid {
+  .first-aid-grid,
+  .phase-compare-grid {
     grid-template-columns: 1fr;
   }
 }

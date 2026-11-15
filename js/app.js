@@ -26,7 +26,7 @@
   };
 
   function updateMasteryBar() {
-    const total = 8; // sos, wave, neuro, dsm, caffeine, cbt, pharm, quiz
+    const total = 9; // sos, wave, neuro, dsm, caffeine, cr, cbt, pharm, quiz
     const pct = Math.min(100, Math.round((exploredSet.size / total) * 100));
     const fill = document.getElementById("masteryProgressFill");
     const pctLbl = document.getElementById("masteryProgressPct");
@@ -725,26 +725,330 @@
   }
 
   // --------------------------------------------------------------------------
-  // CHAPTER 4: CBT INTEROCEPTIVE TIMER, FEAR LADDER & DELIVERY FORMATS
+  // CHAPTER 4: COGNITIVE RESTRUCTURING, 5 COPING CARDS, BASE-RATE & THOUGHT RECORD
+  // --------------------------------------------------------------------------
+  function initCopingCardsAndThoughtRecord() {
+    let activeCardId = "traffic";
+    const readCounts = { traffic: 0, highway: 0, crowd: 0, enclosed: 0, nocturnal: 0 };
+
+    function renderCopingWidget(tabsId, stageId) {
+      const tabsEl = document.getElementById(tabsId);
+      const stageEl = document.getElementById(stageId);
+      if (!tabsEl || !stageEl) return;
+
+      const cards = window.getPanicData().copingCards;
+      const cur = cards.find((c) => c.id === activeCardId) || cards[0];
+      const reads = readCounts[cur.id] || 0;
+
+      tabsEl.innerHTML = cards
+        .map(
+          (c) => `<button type="button" class="chip-btn ${c.id === cur.id ? "active" : ""}" data-coping-pick="${c.id}">
+            ${c.icon} ${c.shortLabel}
+          </button>`
+        )
+        .join("");
+
+      tabsEl.querySelectorAll("[data-coping-pick]").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          activeCardId = btn.getAttribute("data-coping-pick");
+          renderAllCopingWidgets();
+          if (window.markModuleExplored) window.markModuleExplored("cr");
+        });
+      });
+
+      const overLimit = reads >= 2;
+      stageEl.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+          <strong style="font-size:0.98rem;">${cur.icon} ${cur.title}</strong>
+          <span class="pill-badge ${overLimit ? "pill-warn" : "pill-safe"}">
+            ${isEn() ? `Read Count: ${reads} / 2 Max` : `Kiraan Baca: ${reads} / 2 Maksimum`}
+          </span>
+        </div>
+        <div class="coping-script-quote">"${cur.script}"</div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+          <button type="button" class="btn-primary" data-mark-read="${cur.id}">
+            ${
+              overLimit
+                ? isEn() ? "✅ 2/2 Reads Done — Now Stay & Act!" : "✅ Cukup 2x Baca — Kekal & Teruskan Urusan!"
+                : isEn() ? `✓ Mark Read (${reads}/2)` : `✓ Tandakan Sudah Baca (${reads}/2)`
+            }
+          </button>
+          <button type="button" class="btn-secondary" data-copy-card="${cur.id}">
+            ${isEn() ? "📋 Pin / Copy to Phone Notes" : "📋 Salin Ke Nota Telefon"}
+          </button>
+          ${
+            reads > 0
+              ? `<button type="button" class="chip-btn" data-reset-read="${cur.id}">${isEn() ? "Reset Counter" : "Reset Kiraan"}</button>`
+              : ""
+          }
+        </div>
+        ${
+          overLimit
+            ? `<div class="alert-banner alert-warn" style="margin-top:10px;">
+                ${
+                  isEn()
+                    ? "🛡️ <strong>Anti-Crutch Discipline:</strong> You have read this script twice! Stop repeating it like an emergency mantra—now soften your shoulders, stay in place (or keep driving steadily), and let your brain witness that you survive on your own. <strong>Endurance = 100% victory!</strong>"
+                    : "🛡️ <strong>Disiplin Lapangan (Elak Jadi Tongkat):</strong> Anda sudah membacanya 2 kali! Berhenti mengulang kad seperti mantra kecemasan—sekarang kendurkan bahu, kekal di lokasi (atau teruskan memandu), dan biarkan otak melihat bukti anda selamat. <strong>Berjaya bertahan = Menang 100%!</strong>"
+                }
+              </div>`
+            : ""
+        }
+      `;
+
+      stageEl.querySelector("[data-mark-read]")?.addEventListener("click", function () {
+        readCounts[cur.id] = Math.min(3, (readCounts[cur.id] || 0) + 1);
+        renderAllCopingWidgets();
+        if (window.markModuleExplored) window.markModuleExplored("cr");
+      });
+
+      stageEl.querySelector("[data-reset-read]")?.addEventListener("click", function () {
+        readCounts[cur.id] = 0;
+        renderAllCopingWidgets();
+      });
+
+      stageEl.querySelector("[data-copy-card]")?.addEventListener("click", function (ev) {
+        const btn = ev.currentTarget;
+        navigator.clipboard?.writeText(`${cur.title}\n\n${cur.script}`);
+        btn.textContent = isEn() ? "✅ Copied for Phone Notes!" : "✅ Disalin Untuk Nota Telefon!";
+        setTimeout(() => renderAllCopingWidgets(), 2000);
+      });
+    }
+
+    function renderAllCopingWidgets() {
+      renderCopingWidget("sosCopingTabs", "sosCopingStage");
+      renderCopingWidget("pageCopingTabs", "pageCopingStage");
+    }
+
+    // 4 Misinterpretation Clusters
+    function renderCrClusters() {
+      const grid = document.getElementById("crClustersGrid");
+      if (!grid) return;
+      const list = window.getPanicData().crClusters;
+      grid.innerHTML = list
+        .map(
+          (c) => `<div class="myth-card">
+            <strong style="font-size:0.93rem; color:var(--accent-teal);">${c.title}</strong>
+            <div style="font-size:0.82rem; color:#f87171; font-weight:600;">${c.distortion}</div>
+            <div style="font-size:0.84rem; color:var(--text-secondary);">${c.reality}</div>
+            <div style="font-size:0.8rem; color:var(--accent-cyan); padding-top:4px; border-top:1px solid var(--border-subtle);">${c.socratic}</div>
+          </div>`
+        )
+        .join("");
+    }
+
+    // Amygdala Base-Rate Calculator
+    function updateBaseRateCalc() {
+      const pastEl = document.getElementById("baseRatePastInput");
+      const actEl = document.getElementById("baseRateActualInput");
+      const outEl = document.getElementById("baseRateVerdict");
+      if (!pastEl || !actEl || !outEl) return;
+
+      const past = Math.max(1, parseInt(pastEl.value || "20", 10) || 20);
+      const actual = Math.max(0, Math.min(past, parseInt(actEl.value || "0", 10) || 0));
+      const falseRate = Math.round(((past - actual) / past) * 100);
+
+      outEl.className = actual === 0 ? "alert-banner alert-safe" : "alert-banner alert-warn";
+      outEl.innerHTML =
+        actual === 0
+          ? isEn()
+            ? `🏆 <strong>Historical Base-Rate Proof:</strong> Out of <strong>${past}</strong> terrifying episodes where your amygdala screamed "catastrophe!", you survived <strong>${past} / ${past} (100%)</strong> safely. Your amygdala's catastrophe prediction has a <strong>${falseRate}% False-Alarm Error Rate</strong>!`
+            : `🏆 <strong>Bukti Kadar Ralat Sejarah:</strong> Daripada <strong>${past}</strong> serangan lalu di mana amigdala menjerit "bencana maut!", anda selamat <strong>${past} / ${past} kali (100%)</strong>. Ramalan bencana amigdala anda tersasar sebanyak <strong>${falseRate}%</strong>!`
+          : isEn()
+            ? `🩺 <strong>Medical Note:</strong> Always ensure any true medical events (${actual} noted) are evaluated by a physician (ECG/blood workup) so you know which sensations are benign adrenaline.`
+            : `🩺 <strong>Nota Klinikal:</strong> Pastikan sebarang insiden perubatan sebenar (${actual} direkodkan) telah disemak doktor supaya anda dapat mengasingkan sensasi panik jinak dengan yakin.`;
+    }
+
+    ["baseRatePastInput", "baseRateActualInput"].forEach((id) => {
+      document.getElementById(id)?.addEventListener("input", updateBaseRateCalc);
+    });
+
+    // 10-Step Post-Attack Panic Thought Record
+    let savedRecords = JSON.parse(localStorage.getItem("paniclab_thought_records") || "[]");
+
+    function syncTrSliders() {
+      const ib = document.getElementById("trInitBelief")?.value || "85";
+      const isuds = document.getElementById("trInitSuds")?.value || "8";
+      const fb = document.getElementById("trFinalBelief")?.value || "10";
+      const fsuds = document.getElementById("trFinalSuds")?.value || "2";
+
+      const ibLbl = document.getElementById("trInitBeliefVal");
+      const isLbl = document.getElementById("trInitSudsVal");
+      const fbLbl = document.getElementById("trFinalBeliefVal");
+      const fsLbl = document.getElementById("trFinalSudsVal");
+      if (ibLbl) ibLbl.textContent = ib + "%";
+      if (isLbl) isLbl.textContent = isuds + "/10";
+      if (fbLbl) {
+        fbLbl.textContent = fb + "%" + (Number(fb) <= 15 ? " ✓ (<15%)" : "");
+      }
+      if (fsLbl) fsLbl.textContent = fsuds + "/10";
+    }
+
+    ["trInitBelief", "trInitSuds", "trFinalBelief", "trFinalSuds"].forEach((id) => {
+      document.getElementById(id)?.addEventListener("input", syncTrSliders);
+    });
+
+    // Emotional reasoning detector on Evidence input
+    document.getElementById("trEvidence")?.addEventListener("input", function (ev) {
+      const val = ev.target.value.toLowerCase();
+      const warnEl = document.getElementById("trEmotionWarn");
+      if (!warnEl) return;
+      const emotionalTriggers = ["lain macam", "tak sedap hati", "rasa macam", "feels different", "gut feeling", "just feel"];
+      const hit = emotionalTriggers.some((w) => val.includes(w));
+      warnEl.hidden = !hit;
+    });
+
+    document.getElementById("trLoadSampleBtn")?.addEventListener("click", function () {
+      const s = window.getPanicData().thoughtRecordSample;
+      const setVal = (id, v) => {
+        const el = document.getElementById(id);
+        if (el) el.value = v;
+      };
+      setVal("trLoc", s.loc);
+      setVal("trVuln", s.vuln);
+      setVal("trTrigger", s.trigger);
+      setVal("trCatastrophe", s.catastrophe);
+      setVal("trInitBelief", s.initBelief);
+      setVal("trInitSuds", s.initSuds);
+      setVal("trSafety", s.safety);
+      setVal("trEvidence", s.evidence);
+      setVal("trPhysio", s.physio);
+      setVal("trOutcome", s.outcome);
+      setVal("trFinalBelief", s.finalBelief);
+      setVal("trFinalSuds", s.finalSuds);
+      syncTrSliders();
+      if (window.markModuleExplored) window.markModuleExplored("cr");
+    });
+
+    function buildTrPlaintext() {
+      const g = (id) => document.getElementById(id)?.value.trim() || "-";
+      if (isEn()) {
+        return [
+          "PANIC THOUGHT RECORD (POST-ATTACK COLD-COGNITION AUDIT)",
+          `1. Date, Time & Location: ${g("trLoc")}`,
+          `2. Pre-Attack Physical Vulnerability: ${g("trVuln")}`,
+          `3. Earliest Internal Body Sensation: ${g("trTrigger")}`,
+          `4. Specific Catastrophe Prediction: ${g("trCatastrophe")}`,
+          `5. Peak Scores: Catastrophe Belief ${g("trInitBelief")}% | Peak SUDS ${g("trInitSuds")}/10`,
+          `6. Safety Behaviors Used (to drop next time): ${g("trSafety")}`,
+          `7. Objective Medical & Base-Rate Evidence: ${g("trEvidence")}`,
+          `8. Benign Physiological Explanation: ${g("trPhysio")}`,
+          `9. Actual Outcome After 15–20 Mins: ${g("trOutcome")}`,
+          `10. Re-Rated Scores: Catastrophe Belief ${g("trFinalBelief")}% (Target <15%) | Current SUDS ${g("trFinalSuds")}/10`
+        ].join("\n");
+      }
+      return [
+        "REKOD AUDIT KOGNITIF PANIK (PANIC THOUGHT RECORD)",
+        `1. Tarikh, Masa & Lokasi: ${g("trLoc")}`,
+        `2. Faktor Kerentanan Fizikal Sebelum Serangan: ${g("trVuln")}`,
+        `3. Sensasi Fizikal Pertama (Pencetus Awal): ${g("trTrigger")}`,
+        `4. Ramalan Bencana Spesifik: ${g("trCatastrophe")}`,
+        `5. Skor Awal Kemuncak: Keyakinan Bencana ${g("trInitBelief")}% | SUDS ${g("trInitSuds")}/10`,
+        `6. Tingkah Laku Keselamatan (Safety Behaviors): ${g("trSafety")}`,
+        `7. Bukti Perubatan Objektif & Rekod Sejarah: ${g("trEvidence")}`,
+        `8. Penjelasan Fisiologi Sebenar (Biologi Jinak): ${g("trPhysio")}`,
+        `9. Hasil Sebenar Selepas 15–20 Minit: ${g("trOutcome")}`,
+        `10. Skor Penilaian Semula: Keyakinan Bencana ${g("trFinalBelief")}% (Sasaran <15%) | SUDS Semasa ${g("trFinalSuds")}/10`
+      ].join("\n");
+    }
+
+    document.getElementById("trCopyBtn")?.addEventListener("click", function (ev) {
+      const btn = ev.currentTarget;
+      navigator.clipboard?.writeText(buildTrPlaintext());
+      const orig = btn.textContent;
+      btn.textContent = isEn() ? "✅ Plaintext Audit Copied!" : "✅ Templat Teks Berjaya Disalin!";
+      setTimeout(() => {
+        btn.textContent = orig;
+      }, 2200);
+      if (window.markModuleExplored) window.markModuleExplored("cr");
+    });
+
+    function renderSavedTrLogs() {
+      const box = document.getElementById("trSavedHistoryList");
+      if (!box) return;
+      if (!savedRecords.length) {
+        box.innerHTML = `<small style="color:var(--text-muted);">${isEn() ? "No saved post-attack audits yet. Load the example or save your own audit above." : "Belum ada rekod audit disimpan. Klik 'Muat Contoh Kerja Penuh' atau simpan audit anda di atas."}</small>`;
+        return;
+      }
+      box.innerHTML = savedRecords
+        .slice(0, 5)
+        .map(
+          (r) => `<div class="stat-box" style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+            <div>
+              <strong style="font-size:0.84rem;">${r.loc}</strong><br/>
+              <small style="color:var(--text-muted);">${r.catastrophe}</small>
+            </div>
+            <span class="pill-badge pill-safe">${r.initBelief}% → ${r.finalBelief}% • SUDS ${r.initSuds}→${r.finalSuds}</span>
+          </div>`
+        )
+        .join("");
+    }
+
+    document.getElementById("trSaveBtn")?.addEventListener("click", function () {
+      const loc = document.getElementById("trLoc")?.value.trim() || new Date().toLocaleString();
+      const cat = document.getElementById("trCatastrophe")?.value.trim() || (isEn() ? "Catastrophe disconfirmed" : "Ramalan bencana disangkal");
+      savedRecords.unshift({
+        id: Date.now(),
+        loc: loc,
+        catastrophe: cat,
+        initBelief: document.getElementById("trInitBelief")?.value || "85",
+        finalBelief: document.getElementById("trFinalBelief")?.value || "10",
+        initSuds: document.getElementById("trInitSuds")?.value || "8",
+        finalSuds: document.getElementById("trFinalSuds")?.value || "2"
+      });
+      try {
+        localStorage.setItem("paniclab_thought_records", JSON.stringify(savedRecords.slice(0, 15)));
+      } catch (_) {}
+      renderSavedTrLogs();
+      if (window.markModuleExplored) window.markModuleExplored("cr");
+    });
+
+    langCallbacks.push(function () {
+      renderAllCopingWidgets();
+      renderCrClusters();
+      updateBaseRateCalc();
+      syncTrSliders();
+      renderSavedTrLogs();
+    });
+
+    renderAllCopingWidgets();
+    renderCrClusters();
+    updateBaseRateCalc();
+    syncTrSliders();
+    renderSavedTrLogs();
+  }
+
+  // --------------------------------------------------------------------------
+  // CHAPTER 5: CBT INHIBITORY LEARNING IE LAB (8+2 MENU), FEAR LADDER & FORMATS
   // --------------------------------------------------------------------------
   function initCbtEngine() {
     let activeInteroIdx = 0;
     let interoTimer = null;
+    let interoMode = "idle"; // 'trial' | 'rest' | 'idle'
     let interoSecLeft = 60;
+    let currentRound = 1;
 
     function renderInteroLab() {
       const listEl = document.getElementById("interoPresetButtons");
       const cardEl = document.getElementById("interoActiveDetail");
+      const mistakesEl = document.getElementById("ieMistakesGrid");
       if (!listEl || !cardEl) return;
 
-      const labs = window.getPanicData().interoceptiveLabs;
+      const d = window.getPanicData();
+      const labs = d.interoceptiveLabs;
       const cur = labs[activeInteroIdx] || labs[0];
-      if (!interoTimer) interoSecLeft = cur.duration;
+      if (interoMode === "idle") interoSecLeft = cur.duration;
 
       listEl.innerHTML = labs
         .map(
-          (l, i) => `<button type="button" class="chip-btn ${i === activeInteroIdx ? "active" : ""}" data-intero-idx="${i}">
-            ${l.title} (${l.duration}s)
+          (l, i) => `<button type="button" class="ie-card-btn ${i === activeInteroIdx ? "active" : ""}" data-intero-idx="${i}">
+            <div>
+              <strong style="font-size:0.84rem; display:block; color:var(--text-primary);">${l.title}</strong>
+              <span style="font-size:0.75rem; color:var(--text-muted);">${l.sensation}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:4px; width:100%; flex-wrap:wrap;">
+              <span class="pill-badge pill-info">${l.duration}s</span>
+              <small style="font-size:0.7rem; color:var(--accent-amber); font-weight:600;">${l.contra}</small>
+            </div>
           </button>`
         )
         .join("");
@@ -753,6 +1057,8 @@
         btn.addEventListener("click", function () {
           clearInterval(interoTimer);
           interoTimer = null;
+          interoMode = "idle";
+          currentRound = 1;
           activeInteroIdx = parseInt(btn.getAttribute("data-intero-idx"), 10) || 0;
           renderInteroLab();
           if (window.markModuleExplored) window.markModuleExplored("cbt");
@@ -762,42 +1068,89 @@
       cardEl.innerHTML = `
         <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
           <strong style="font-size:0.98rem;">🎯 ${cur.title}</strong>
-          <span class="pill-badge pill-info" id="interoCountdownBadge">${interoSecLeft}s</span>
+          <div style="display:flex; gap:6px; align-items:center;">
+            <span class="pill-badge pill-safe">${isEn() ? `Round ${currentRound} / 5` : `Pusingan ${currentRound} / 5`}</span>
+            <span class="pill-badge ${interoMode === "rest" ? "pill-warn" : "pill-info"}" id="interoCountdownBadge">
+              ${interoMode === "rest" ? (isEn() ? "Rest " : "Rehat ") : ""}${interoSecLeft}s
+            </span>
+          </div>
         </div>
-        <p style="margin:6px 0; font-size:0.85rem; color:var(--text-secondary);">
-          <strong>${isEn() ? "Target Sensation:" : "Sensasi Sasaran:"}</strong> ${cur.sensation}<br/>
-          <strong>${isEn() ? "Brain Lesson:" : "Pengajaran Otak:"}</strong> ${cur.disconfirms}
+        <p style="margin:8px 0; font-size:0.84rem; color:var(--text-secondary); display:grid; gap:4px;">
+          <span><strong>${isEn() ? "Method:" : "Kaedah:"}</strong> ${cur.method}</span>
+          <span style="color:var(--accent-amber);"><strong>⚠️ ${cur.contra}</strong></span>
+          <span><strong>${isEn() ? "Written Hypothesis to Test:" : "Hipotesis Bencana Diuji:"}</strong> <em>"${cur.hypothesis}"</em></span>
+          <span><strong>${isEn() ? "Inhibitory Learning Proof:" : "Bukti Inhibitory Learning:"}</strong> ${cur.disconfirms}</span>
         </p>
+        <div class="alert-banner alert-warn" style="margin:8px 0; padding:9px 12px; font-size:0.8rem;">
+          ${
+            isEn()
+              ? "🚫 <strong>Zero Safety Crutches During Trial:</strong> Do NOT use 4-2-6 breathing, smartwatch checks, water, or fans during this exercise—observe sensations openly!"
+              : "🚫 <strong>Tanpa Tongkat Semasa Berlatih:</strong> JANGAN buat nafas 4-2-6, jangan tengok jam pintar, dan jangan buka kipas semasa sesi latihan ini!"
+          }
+        </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
           <button type="button" class="btn-primary" id="startInteroTimerBtn">
-            ${interoTimer ? (isEn() ? "⏹️ Stop Exercise" : "⏹️ Henti Latihan") : (isEn() ? `▶️ Start ${cur.duration}s Safe Trial` : `▶️ Mula Latihan ${cur.duration}s`)}
+            ${
+              interoMode === "trial"
+                ? isEn() ? "⏹️ Stop Trial" : "⏹️ Henti Pusingan"
+                : isEn() ? `▶️ Start ${cur.duration}s Provocation` : `▶️ Mula Provokasi ${cur.duration}s`
+            }
           </button>
-          <button type="button" class="btn-secondary" id="sendToLadderBtn">
-            ${isEn() ? "➕ Add to Fear Ladder" : "➕ Masuk Tangga Ketakutan"}
+          <button type="button" class="btn-secondary" id="interoPlus15Btn">
+            ${isEn() ? "🔥 +15s Courage Bonus" : "🔥 +15s Cabaran Berani"}
+          </button>
+          <button type="button" class="btn-secondary" id="interoRest60Btn">
+            ${isEn() ? "⏳ 60s Rest (Next Round)" : "⏳ Rehat 60s (Ulang 3–5x)"}
+          </button>
+          <button type="button" class="chip-btn" id="sendToLadderBtn">
+            ${isEn() ? "➕ Add to Ladder" : "➕ Masuk Tangga"}
           </button>
         </div>
       `;
 
-      document.getElementById("startInteroTimerBtn")?.addEventListener("click", function () {
-        if (interoTimer) {
-          clearInterval(interoTimer);
-          interoTimer = null;
-          renderInteroLab();
-          return;
-        }
-        interoSecLeft = cur.duration;
+      function runCountdown(seconds, modeName) {
+        clearInterval(interoTimer);
+        interoMode = modeName;
+        interoSecLeft = seconds;
+        renderInteroLab();
         interoTimer = setInterval(function () {
           interoSecLeft--;
           const b = document.getElementById("interoCountdownBadge");
-          if (b) b.textContent = interoSecLeft + "s";
+          if (b) b.textContent = (interoMode === "rest" ? (isEn() ? "Rest " : "Rehat ") : "") + interoSecLeft + "s";
           if (interoSecLeft <= 0) {
             clearInterval(interoTimer);
             interoTimer = null;
+            if (interoMode === "rest") currentRound = Math.min(5, currentRound + 1);
+            interoMode = "idle";
             if (window.playPanicGentleTone) window.playPanicGentleTone(528, 360);
             renderInteroLab();
           }
         }, 1000);
-        renderInteroLab();
+      }
+
+      document.getElementById("startInteroTimerBtn")?.addEventListener("click", function () {
+        if (interoMode !== "idle") {
+          clearInterval(interoTimer);
+          interoTimer = null;
+          interoMode = "idle";
+          renderInteroLab();
+          return;
+        }
+        runCountdown(cur.duration, "trial");
+      });
+
+      document.getElementById("interoPlus15Btn")?.addEventListener("click", function () {
+        if (interoMode === "trial") {
+          interoSecLeft += 15;
+          const b = document.getElementById("interoCountdownBadge");
+          if (b) b.textContent = interoSecLeft + "s";
+        } else {
+          runCountdown(cur.duration + 15, "trial");
+        }
+      });
+
+      document.getElementById("interoRest60Btn")?.addEventListener("click", function () {
+        runCountdown(60, "rest");
       });
 
       document.getElementById("sendToLadderBtn")?.addEventListener("click", function () {
@@ -806,17 +1159,28 @@
         const sudsInput = document.getElementById("ladderSudsInput");
         if (taskInput) taskInput.value = cur.title;
         if (safetyInput) {
-          safetyInput.value = isEn() ? "No pulse checking / sitting down early" : "Tanpa semak jam pintar / berhenti awal";
+          safetyInput.value = isEn() ? "No 4-2-6 breathing / no pulse check" : "Tanpa nafas 4-2-6 / tanpa jam pintar";
         }
         if (sudsInput) sudsInput.value = cur.sudsDefault;
       });
+
+      if (mistakesEl && d.ieMistakes) {
+        mistakesEl.innerHTML = d.ieMistakes
+          .map(
+            (m) => `<div class="myth-card">
+              <strong style="font-size:0.86rem; color:var(--accent-amber);">⚠️ ${m.title}</strong>
+              <div style="font-size:0.81rem; color:var(--text-secondary);">${m.desc}</div>
+            </div>`
+          )
+          .join("");
+      }
     }
 
     // Graded Fear Ladder State
     let ladderSteps = JSON.parse(
       localStorage.getItem("paniclab_ladder") ||
         JSON.stringify([
-          { id: 1, task: "Naik lif seorang diri 3 tingkat / Ride elevator 3 floors alone", safety: "Tanpa genggam telefon / No phone clutching", baseSuds: 45, done: true, postSuds: 15 },
+          { id: 1, task: "Naik tangga laju sebelum masuk lif 3 tingkat / Brisk stairs + elevator", safety: "Tanpa genggam telefon / No phone clutching", baseSuds: 45, done: true, postSuds: 15 },
           { id: 2, task: "Beratur di pasar raya waktu puncak / Supermarket checkout queue", safety: "Tanpa botol air & duduk tepi pintu / No exit-hovering", baseSuds: 70, done: false, postSuds: 30 }
         ])
     );
@@ -927,7 +1291,7 @@
   }
 
   // --------------------------------------------------------------------------
-  // CHAPTER 5: STEPPED PHARMACOTHERAPY NAVIGATOR
+  // CHAPTER 6: STEPPED PHARMACOTHERAPY NAVIGATOR
   // --------------------------------------------------------------------------
   function initPharmacotherapy() {
     let activeScenId = "ssri_first";
@@ -1015,26 +1379,41 @@
   }
 
   // --------------------------------------------------------------------------
-  // CHAPTER 6 & 7: 3 VISUAL ANALOGIES & 5-SCENARIO CLINICAL QUIZ
+  // CHAPTER 7 & 8: FAMILY GUIDE, 3 VISUAL ANALOGIES & 7-SCENARIO CLINICAL QUIZ
   // --------------------------------------------------------------------------
   function initAnalogiesAndQuiz() {
     const answers = {};
 
-    function renderAnalogies() {
+    function renderAnalogiesAndFamily() {
       const grid = document.getElementById("analogiesGrid");
-      if (!grid) return;
-      const list = window.getPanicData().analogies;
-      grid.innerHTML = list
-        .map(
-          (a) => `<article class="panel-card">
-            <div style="font-size:1.85rem; margin-bottom:6px;">${a.icon}</div>
-            <div style="font-size:0.74rem; font-weight:700; color:var(--accent-teal); text-transform:uppercase; margin-bottom:4px;">${a.tag}</div>
-            <h3 style="margin:0 0 8px;">${a.title}</h3>
-            <p class="layman-only" style="margin:0; font-size:0.88rem; color:var(--text-secondary);">${a.layman}</p>
-            <p class="clinical-only" style="margin:0; font-size:0.88rem; color:var(--text-secondary);">${a.clinical}</p>
-          </article>`
-        )
-        .join("");
+      if (grid) {
+        const list = window.getPanicData().analogies;
+        grid.innerHTML = list
+          .map(
+            (a) => `<article class="panel-card">
+              <div style="font-size:1.85rem; margin-bottom:6px;">${a.icon}</div>
+              <div style="font-size:0.74rem; font-weight:700; color:var(--accent-teal); text-transform:uppercase; margin-bottom:4px;">${a.tag}</div>
+              <h3 style="margin:0 0 8px;">${a.title}</h3>
+              <p class="layman-only" style="margin:0; font-size:0.88rem; color:var(--text-secondary);">${a.layman}</p>
+              <p class="clinical-only" style="margin:0; font-size:0.88rem; color:var(--text-secondary);">${a.clinical}</p>
+            </article>`
+          )
+          .join("");
+      }
+
+      const famGrid = document.getElementById("familyGuideGrid");
+      if (famGrid && window.getPanicData().familyGuide) {
+        famGrid.innerHTML = window.getPanicData().familyGuide
+          .map(
+            (f) => `<article class="panel-card">
+              <div style="font-size:1.75rem; margin-bottom:6px;">${f.icon}</div>
+              <span class="pill-badge pill-info" style="margin-bottom:6px;">${f.tag}</span>
+              <h3 style="margin:4px 0 8px;">${f.title}</h3>
+              <p style="margin:0; font-size:0.87rem; color:var(--text-secondary);">${f.body}</p>
+            </article>`
+          )
+          .join("");
+      }
     }
 
     function renderQuiz() {
@@ -1102,11 +1481,11 @@
     });
 
     langCallbacks.push(function () {
-      renderAnalogies();
+      renderAnalogiesAndFamily();
       renderQuiz();
     });
 
-    renderAnalogies();
+    renderAnalogiesAndFamily();
     renderQuiz();
   }
 
@@ -1120,6 +1499,7 @@
     initQuickSosModal();
     initDsmCheckerAndDiffTable();
     initCaffeineAndMyths();
+    initCopingCardsAndThoughtRecord();
     initCbtEngine();
     initPharmacotherapy();
     initAnalogiesAndQuiz();
