@@ -30,6 +30,9 @@
       </nav>
 
       <div class="top-actions">
+        <button type="button" class="btn-sos-primary" data-open-quickhelp="step1" style="padding:6px 13px; font-size:0.78rem;" data-en="🆘 SOS Now">
+          🆘 SOS Panik
+        </button>
         <div class="segmented-toggle" role="group" aria-label="Language / Bahasa">
           <button type="button" data-lang-switch="ms" class="active" title="Bahasa Melayu">🇲🇾 BM</button>
           <button type="button" data-lang-switch="en" title="English">🇬🇧 EN</button>
@@ -50,34 +53,28 @@
   <div class="quick-sos-bar" role="region" aria-label="Quick Panic First-Aid">
     <div class="quick-sos-inner">
       <div class="quick-sos-label">
-        <span data-en="👋 &lt;strong&gt;Heart racing, breathless, or feeling panicky right now?&lt;/strong&gt; Use 1-tap guided tools:">👋 <strong>Jantung sedang berdebar, sesak nafas, atau rasa cemas sekarang?</strong> Gunakan alat bantuan segera:</span>
+        <span data-en="👋 &lt;strong&gt;Feeling panicky or heart racing right now?&lt;/strong&gt; 1-tap help:">👋 <strong>Sedang berdebar atau rasa cemas sekarang?</strong> Bantuan 1-klik:</span>
       </div>
       <div class="quick-sos-links">
-        <button type="button" class="btn-sos-primary" data-open-quickhelp="step1" data-en="🆘 Calm Me Now (4-2-6)">
-          🆘 Tenangkan Saya Sekarang (4-2-6)
+        <button type="button" class="btn-sos-primary" data-open-quickhelp="step1" data-en="🆘 Calm Me Now (Breather)">
+          🆘 Tenangkan Saya Sekarang
         </button>
-        <button type="button" class="chip-btn" data-open-quickhelp="cards" data-en="🃏 60s Pocket Coping Cards">
-          🃏 Kad Taktikal 60s (5 Situasi)
+        <button type="button" class="chip-btn" data-open-quickhelp="cards" data-en="🃏 60s Coping Cards">
+          🃏 Coping Card 60s
         </button>
-        <button type="button" class="chip-btn" data-open-quickhelp="step2" data-en="🖐️ 5-4-3-2-1 Grounding &amp; Cold Pack">
-          🖐️ Teknik 5-4-3-2-1 (Grounding) &amp; Pek Sejuk
+        <button type="button" class="chip-btn" data-open-quickhelp="step3" data-en="🚨 30s Heart Check (999)">
+          🚨 Semak Jantung (999)
         </button>
-        <button type="button" class="chip-btn" data-open-quickhelp="step3" data-en="🚨 30s Cardiac Check (999)">
-          🚨 Saringan Jantung 30s (999)
-        </button>
-        <button type="button" class="chip-btn" data-open-quickhelp="step4" data-en="🤝 Helping Someone Else">
+        <button type="button" class="chip-btn" data-open-quickhelp="step4" data-en="🤝 Help Someone Else">
           🤝 Bantu Orang Lain
-        </button>
-        <button type="button" class="chip-btn" data-open-quickhelp="step5" data-en="📋 Doctor / MENTARI Note">
-          📋 Nota Untuk Doktor
         </button>
       </div>
     </div>
   </div>
 
-  <!-- ============== FLOATING SOS BUTTON ============== -->
-  <button type="button" class="floating-sos-btn" data-open-quickhelp="step1" data-en="🫁 Panicking Now? Tap Here">
-    🫁 Sedang Panik? Klik Sini
+  <!-- ============== CENTERED ERGONOMIC BOTTOM SOS BAR ============== -->
+  <button type="button" class="floating-sos-btn" data-open-quickhelp="step1" data-en="🆘 Having a Panic Attack? Tap Here">
+    🆘 Sedang Kena Panic Attack? Tekan Sini
   </button>
 
   <!-- ==================== MODAL SOS PERTOLONGAN CEMAS PANIK ==================== -->
@@ -85,76 +82,73 @@
     <div class="qh-modal-card">
       <div class="qh-modal-header">
         <div>
-          <span class="pill-badge pill-safe" data-en="Step-by-Step Acute Panic SOP • Safe &amp; Evidence-Based">SOP Pertolongan Segera Serangan Panik • Selamat &amp; Berasaskan Bukti</span>
-          <h2 id="qhModalTitle" style="margin:6px 0 2px; font-size:1.35rem;" data-en="You Are Safe — Let's Ride Out This Adrenaline Wave Together">Anda Selamat — Mari Redakan Gelombang Adrenalin Ini Bersama</h2>
-          <p style="margin:0; font-size:0.85rem; color:var(--text-muted);" data-en="A panic surge peaks within 10 minutes and ALWAYS comes down on its own. Follow the calm tabs below.">
-            Lonjakan panik memuncak dalam ~10 minit dan PASTI surut dengan sendirinya. Ikuti langkah tenang di bawah.
-          </p>
+          <span class="pill-badge pill-safe" data-en="Safe Emergency Panic Guide • Peaks ≤10m &amp; Always Subsides">Panduan Segera Panic Attack • Memuncak ≤10 Minit &amp; PASTI Surut</span>
+          <h2 id="qhModalTitle" style="margin:5px 0 0; font-size:1.22rem;" data-en="You Are Safe — Follow the Breathing Circle Below">Anda Selamat — Ikut Bulatan Nafas Di Bawah Perlahan-Lahan</h2>
         </div>
         <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
           <div class="segmented-toggle" role="group" aria-label="Modal Language">
             <button type="button" data-lang-switch="ms" class="active">🇲🇾 BM</button>
             <button type="button" data-lang-switch="en">🇬🇧 EN</button>
           </div>
-          <button type="button" data-close-quickhelp class="btn-secondary" style="padding:6px 12px;" data-en="✕ Close">
+          <button type="button" data-close-quickhelp class="btn-secondary" style="padding:7px 14px; font-weight:800;" data-en="✕ Close">
             ✕ Tutup
           </button>
         </div>
       </div>
 
       <div class="qh-tabs" role="tablist">
-        <button type="button" class="qh-tab-btn active" data-qh-tab="step1" data-en="1. Accept &amp; 4-2-6 Breath">1. 'Accept' &amp; Nafas 4-2-6</button>
-        <button type="button" class="qh-tab-btn" data-qh-tab="cards" data-en="🃏 60s Pocket Scripts (5)">🃏 5 Kad Taktikal 60s</button>
-        <button type="button" class="qh-tab-btn" data-qh-tab="step2" data-en="2. 5-4-3-2-1 &amp; Dive Reflex">2. 5-4-3-2-1 &amp; Pek Sejuk</button>
-        <button type="button" class="qh-tab-btn" data-qh-tab="step3" data-en="3. 30s Medical Red Flags">3. Saringan 999 (30s)</button>
-        <button type="button" class="qh-tab-btn" data-qh-tab="step4" data-en="4. Helping Someone Else">4. Bantu Orang Lain</button>
-        <button type="button" class="qh-tab-btn" data-qh-tab="step5" data-en="5. Doctor Summary Note">5. Nota Doktor / MENTARI</button>
+        <button type="button" class="qh-tab-btn active" data-qh-tab="step1" data-en="1. Guided Breath (6-4-2)">1. Panduan Nafas (6-4-2)</button>
+        <button type="button" class="qh-tab-btn" data-qh-tab="cards" data-en="🃏 60s Coping Cards">🃏 Coping Card 60s</button>
+        <button type="button" class="qh-tab-btn" data-qh-tab="step2" data-en="2. 5-4-3-2-1 &amp; Cold Pack">2. 5-4-3-2-1 &amp; Pek Sejuk</button>
+        <button type="button" class="qh-tab-btn" data-qh-tab="step3" data-en="3. 999 Heart Check">3. Semak 999 (30s)</button>
+        <button type="button" class="qh-tab-btn" data-qh-tab="step4" data-en="4. Help Someone Else">4. Bantu Orang Lain</button>
+        <button type="button" class="qh-tab-btn" data-qh-tab="step5" data-en="5. Doctor Note">5. Nota Doktor</button>
       </div>
 
-      <!-- PANE 1: ACCEPT & FLOAT + 4-2-6 DIAPHRAGMATIC BREATHER -->
+      <!-- PANE 1: BREATHING ORB FIRST (ABOVE THE FOLD ON MOBILE!) + 3 ULTRA-SHORT CALM ANCHORS -->
       <div data-qh-pane="step1">
         <div class="first-aid-grid">
-          <div>
-            <div class="alert-banner alert-safe" style="margin-bottom:12px;">
-              <strong data-en="First 60 Seconds — Stop Fighting Your Brain ('Accept &amp; Float'):">60 Saat Pertama — Hentikan Perlawanan Mental ('Accept &amp; Float'):</strong>
-            </div>
-            <ol style="margin:0; padding-left:20px; font-size:0.9rem; display:grid; gap:9px;">
-              <li data-en="&lt;strong&gt;Don't shout 'Stop panicking!' at yourself:&lt;/strong&gt; Fighting increases amygdala threat signals. Say gently: &lt;em&gt;'This is a harmless false alarm of adrenaline. It feels uncomfortable, NOT dangerous.'&lt;/em&gt;"><strong>Jangan paksa otak 'jangan panik!':</strong> Penolakan menguatkan amaran amigdala. Katakan dengan tenang: <em>"Ini cuma penggera palsu adrenalin. Ia tidak selesa, tetapi TIDAK berbahaya."</em></li>
-              <li data-en="&lt;strong&gt;Stay safely where you are (don't flee in terror):&lt;/strong&gt; Drop your shoulders, plant both feet flat on the floor, and soften your jaw. (If driving, pull over safely first.)"><strong>Kekal di tempat selamat (jangan lari tergesa-gesa):</strong> Jatuhkan bahu, letakkan kedua-dua tapak kaki rata di lantai, dan lembutkan rahang. (Jika sedang memandu, berhenti di tempat selamat dahulu.)</li>
-              <li data-en="&lt;strong&gt;Follow the 4-2-6 Belly Breather beside this box:&lt;/strong&gt; Making your exhale longer (6s) than your inhale (4s) stimulates your &lt;strong&gt;vagus nerve&lt;/strong&gt; and restores blood CO₂ so tingling and dizziness fade."><strong>Ikut bulatan Nafas Perut 4-2-6 di sebelah:</strong> Hembusan lebih panjang (6 saat) merangsang <strong>saraf vagus</strong> dan memulihkan keseimbangan CO₂ supaya rasa kebas dan melayang beransur hilang.</li>
-            </ol>
-            <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;">
-              <button type="button" class="btn-primary" data-qh-goto="cards" data-en="🃏 Open 60s Pocket Scripts (5 Scenarios)">
-                🃏 Buka 5 Kad Taktikal 60s
-              </button>
-              <button type="button" class="btn-secondary" data-qh-goto="step2" data-en="Next: 5-4-3-2-1 Grounding ➡️">
-                Teknik 5-4-3-2-1 (Grounding) ➡️
-              </button>
-              <button type="button" class="btn-secondary" data-qh-goto="step3" data-en="🚨 Unsure if Heart / First Attack?">
-                🚨 Kali Pertama / Sakit Dada? Semak Sini
-              </button>
-            </div>
-          </div>
-
           <div class="breathing-box">
-            <small style="text-transform:uppercase; font-weight:800; color:var(--accent-teal);" data-en="Diaphragmatic Vagal Breather (4-2-6)">
-              Pemasa Nafas Diafragma Vagus (4-2-6)
+            <small style="text-transform:uppercase; font-weight:800; color:var(--accent-teal);" data-en="Start By Exhaling Trapped Chest Air (6s → 4s → 2s)">
+              Mulakan Dengan Hembus Udara Dada (6s → 4s → 2s)
             </small>
             <div class="breathing-orb-wrap">
               <div class="breathing-ring-guide" aria-hidden="true"></div>
               <div id="sosBreathingOrb" class="breathing-orb">
-                <span id="sosBreathingSec" style="font-size:1.55rem;">4s</span>
+                <span id="sosBreathingSec" style="font-size:1.65rem;">6s</span>
               </div>
             </div>
-            <div id="sosBreathingPhase" style="font-weight:800; font-size:0.95rem; margin-bottom:4px;">
-              Sedia: 4s Tarik • 2s Tahan • 6s Hembus
+            <div id="sosBreathingPhase" style="font-weight:800; font-size:1rem; margin-bottom:4px;">
+              1. Hembus Perlahan Ikut Mulut (Kosongkan Dada)
             </div>
             <div id="sosCycleCounter" style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px;">
-              Kitaran nafas tenang selesai: 0
+              Kitaran nafas tenang selesai: 0 (Sasaran: 6 kitaran)
             </div>
             <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
-              <button type="button" id="sosBreathToggleBtn" class="btn-primary">▶️ Mula Panduan Nafas 4-2-6</button>
-              <button type="button" id="sosAudioToggleBtn" class="btn-secondary">🔕 Nada Lembut: MATI</button>
+              <button type="button" id="sosBreathToggleBtn" class="btn-primary">⏸️ Jeda Kiraan Nafas</button>
+              <button type="button" id="sosAudioToggleBtn" class="btn-secondary">🔕 Hidupkan Getar &amp; Nada</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="alert-banner alert-safe" style="margin-bottom:10px;">
+              <strong data-en="3 Quick Truths While You Breathe:">3 Perkara Penting Sambil Anda Bernafas:</strong>
+            </div>
+            <ol style="margin:0; padding-left:20px; font-size:0.92rem; display:grid; gap:8px;">
+              <li data-en="&lt;strong&gt;Empty your chest first (6s exhale):&lt;/strong&gt; When panicking, your chest is already over-filled with air. Blow out slowly first so your lungs can relax."><strong>Hembus keluar dahulu (6 saat):</strong> Semasa panik, dada sebenarnya penuh udara terperangkap. Hembus perlahan dahulu supaya dada kembali lega.</li>
+              <li data-en="&lt;strong&gt;Don't fight the feeling:&lt;/strong&gt; Whisper gently: &lt;em&gt;'Uncomfortable, NOT dangerous. Just a false alarm of adrenaline.'&lt;/em&gt;"><strong>Jangan paksa diri lawan rasa ini:</strong> Katakan perlahan: <em>"Cuma adrenalin palsu. Rasa tak selesa, tapi TIDAK bahaya."</em></li>
+              <li data-en="&lt;strong&gt;Drop your shoulders &amp; stay seated:&lt;/strong&gt; Plant both feet flat on the floor (pull over safely first if driving)."><strong>Jatuhkan bahu &amp; kekal duduk tenang:</strong> Jejakkan kedua-dua tapak kaki rata di lantai (berhenti di tepi selamat dahulu jika sedang memandu).</li>
+            </ol>
+            <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;">
+              <button type="button" class="btn-primary" data-qh-goto="cards" data-en="🃏 Read 60s Coping Card">
+                🃏 Baca Coping Card 60s
+              </button>
+              <button type="button" class="btn-secondary" data-qh-goto="step2" data-en="🖐️ 5-4-3-2-1 &amp; Cold Pack ➡️">
+                🖐️ Teknik 5-4-3-2-1 &amp; Pek Sejuk ➡️
+              </button>
+              <button type="button" class="btn-secondary" data-qh-goto="step3" data-en="🚨 First Time / Chest Pain? Check 999">
+                🚨 Kali Pertama / Sakit Dada? Semak 999
+              </button>
             </div>
           </div>
         </div>
@@ -224,9 +218,14 @@
         <div id="sosEmergencyVerdict" class="alert-banner alert-safe"></div>
 
         <div class="alert-banner" style="margin-top:10px;">
-          <span data-en="📞 &lt;strong&gt;Malaysia Official Helplines:&lt;/strong&gt; Medical Emergency: &lt;strong&gt;999&lt;/strong&gt; • KKM Crisis Helpline &lt;strong&gt;Talian HEAL 15555&lt;/strong&gt; (8:00 AM – 12:00 AM daily) • Befrienders KL: &lt;strong&gt;03-7627 2929&lt;/strong&gt; (24h).">
-            📞 <strong>Talian Bantuan Rasmi Malaysia:</strong> Kecemasan Perubatan: <strong>999</strong> • Talian Krisis KKM <strong>HEAL 15555</strong> (8:00 pagi – 12:00 tengah malam setiap hari) • Befrienders KL: <strong>03-7627 2929</strong> (24 jam).
-          </span>
+          <div data-en="📞 &lt;strong&gt;1-Tap Direct Malaysia Helplines:&lt;/strong&gt; Medical Emergency (&lt;strong&gt;999&lt;/strong&gt;) • KKM Crisis Line &lt;strong&gt;HEAL 15555&lt;/strong&gt; (8 AM – 12 AM) • Befrienders KL (24h):">
+            📞 <strong>Dail Terus Talian Bantuan Rasmi Malaysia (1-Klik):</strong> Kecemasan Hospital (<strong>999</strong>) • Talian Krisis KKM <strong>HEAL 15555</strong> (8 pagi – 12 mlm) • Befrienders KL (24 jam):
+          </div>
+          <div class="helpline-call-row">
+            <a href="tel:999" class="btn-sos-primary" data-en="🚑 Call 999 Now">🚑 Panggil 999 Sekarang</a>
+            <a href="tel:15555" class="btn-primary" data-en="📞 Call HEAL 15555 (KKM)">📞 Panggil HEAL 15555 (KKM)</a>
+            <a href="tel:0376272929" class="btn-secondary" data-en="📞 Befrienders 24h (03-7627 2929)">📞 Befrienders 24j (03-7627 2929)</a>
+          </div>
         </div>
       </div>
 
@@ -1045,6 +1044,11 @@
         <p style="margin:8px 0 0; font-size:0.9rem;" data-en="&lt;strong&gt;Medical Emergency:&lt;/strong&gt; &lt;strong&gt;999&lt;/strong&gt; (Hospital Emergency Dept) • &lt;strong&gt;KKM Crisis Line:&lt;/strong&gt; &lt;strong&gt;Talian HEAL 15555&lt;/strong&gt; (8:00 AM – 12:00 AM daily) • &lt;strong&gt;24h Emotional Support:&lt;/strong&gt; Befrienders KL &lt;strong&gt;03-7627 2929&lt;/strong&gt; • &lt;strong&gt;Community Care:&lt;/strong&gt; Klinik Kesihatan, &lt;strong&gt;MENTARI KKM&lt;/strong&gt;, MyHEALTH, MPA &amp; MMHA.">
           <strong>Kecemasan Perubatan:</strong> <strong>999</strong> • <strong>Talian Krisis KKM:</strong> <strong>HEAL 15555</strong> (8:00 pagi – 12:00 tengah malam setiap hari) • <strong>Sokongan Emosi 24 Jam:</strong> Befrienders KL <strong>03-7627 2929</strong> • <strong>Rawatan Komuniti:</strong> Klinik Kesihatan KKM, rangkaian <strong>MENTARI</strong>, MyHEALTH, MPA &amp; MMHA.
         </p>
+        <div class="helpline-call-row">
+          <a href="tel:999" class="btn-sos-primary" data-en="🚑 Call 999 Emergency">🚑 Dail 999 (Kecemasan)</a>
+          <a href="tel:15555" class="btn-primary" data-en="📞 Call KKM HEAL 15555">📞 Dail HEAL 15555 (KKM)</a>
+          <a href="tel:0376272929" class="btn-secondary" data-en="📞 Call Befrienders 24h">📞 Dail Befrienders 24j</a>
+        </div>
       </div>
 
       <details class="clean-disclosure" data-clinical-open>

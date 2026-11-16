@@ -197,14 +197,44 @@
     let breathTimer = null;
     let breathRunning = false;
     let phaseIdx = 0;
-    let secLeft = 4;
+    let secLeft = 6;
     let cyclesDone = 0;
 
+    // Exhale-First (6-4-2): Empties trapped upper-chest hyperinflation immediately!
     const PHASES = [
-      { msLabel: "Tarik Nafas Hidung (Perut Kembang)", enLabel: "Inhale Gently Through Nose", secs: 4, scale: 1.24, freq: 528 },
-      { msLabel: "Tahan Tenang", enLabel: "Hold Softly", secs: 2, scale: 1.24, freq: 440 },
-      { msLabel: "Hembus Perlahan Ikut Mulut", enLabel: "Slow Extended Exhale", secs: 6, scale: 0.76, freq: 396 }
+      {
+        msLabel: "1. Hembus Perlahan Ikut Mulut (Kosongkan Dada)",
+        enLabel: "1. Exhale Slowly Through Mouth (Empty Chest)",
+        secs: 6,
+        scale: 0.74,
+        freq: 396,
+        vib: [55]
+      },
+      {
+        msLabel: "2. Tarik Nafas Hidung Perlahan (Perut Kembang)",
+        enLabel: "2. Inhale Gently Through Nose (Belly Rises)",
+        secs: 4,
+        scale: 1.24,
+        freq: 528,
+        vib: [30, 45, 30]
+      },
+      {
+        msLabel: "3. Tahan Lembut (Jatuhkan Bahu)",
+        enLabel: "3. Hold Softly (Drop Shoulders)",
+        secs: 2,
+        scale: 1.24,
+        freq: 440,
+        vib: [20]
+      }
     ];
+
+    function triggerCue(phaseObj) {
+      if (!window.__panicAudioEnabled) return;
+      if (window.playPanicGentleTone) window.playPanicGentleTone(phaseObj.freq, 280);
+      try {
+        if (navigator.vibrate) navigator.vibrate(phaseObj.vib || [35]);
+      } catch (_) {}
+    }
 
     function updateBreatherDisplay() {
       const orb = document.getElementById("sosBreathingOrb");
@@ -218,12 +248,12 @@
       if (phaseTxt) {
         phaseTxt.textContent = breathRunning
           ? isEn() ? p.enLabel : p.msLabel
-          : isEn() ? "Ready: 4s Inhale • 2s Hold • 6s Exhale" : "Sedia: 4s Tarik • 2s Tahan • 6s Hembus";
+          : isEn() ? "Ready: 6s Exhale • 4s Inhale • 2s Hold" : "Sedia: 6s Hembus • 4s Tarik • 2s Tahan";
       }
       if (countTxt) countTxt.textContent = secLeft + "s";
       if (orb) {
         orb.style.transitionDuration = breathRunning && !window.__panicCalmMode ? "0.95s" : "0.2s";
-        orb.style.transform = breathRunning ? `scale(${p.scale})` : "scale(0.85)";
+        orb.style.transform = breathRunning ? `scale(${p.scale})` : "scale(0.88)";
       }
       if (cycleTxt) {
         cycleTxt.textContent = isEn()
@@ -233,12 +263,12 @@
       if (toggleBtn) {
         toggleBtn.textContent = breathRunning
           ? isEn() ? "⏸️ Pause Breather" : "⏸️ Jeda Kiraan Nafas"
-          : isEn() ? "▶️ Start 4-2-6 Breather" : "▶️ Mula Panduan Nafas 4-2-6";
+          : isEn() ? "▶️ Start Guided Breather" : "▶️ Mula Panduan Nafas";
       }
       if (audioBtn) {
         audioBtn.textContent = window.__panicAudioEnabled
-          ? isEn() ? "🔔 Chime: ON" : "🔔 Nada Lembut: AKTIF"
-          : isEn() ? "🔕 Chime: OFF" : "🔕 Nada Lembut: MATI";
+          ? isEn() ? "📳 Haptic & Chime: ON (Close Eyes OK)" : "📳 Getar & Nada: AKTIF (Boleh Pejam Mata)"
+          : isEn() ? "🔕 Enable Haptic & Chime" : "🔕 Hidupkan Getar & Nada";
       }
     }
 
@@ -246,7 +276,7 @@
       if (breathRunning) return;
       breathRunning = true;
       updateBreatherDisplay();
-      if (window.playPanicGentleTone) window.playPanicGentleTone(PHASES[phaseIdx].freq, 260);
+      triggerCue(PHASES[phaseIdx]);
       clearInterval(breathTimer);
       breathTimer = setInterval(function () {
         secLeft--;
@@ -254,7 +284,7 @@
           phaseIdx = (phaseIdx + 1) % PHASES.length;
           if (phaseIdx === 0) cyclesDone++;
           secLeft = PHASES[phaseIdx].secs;
-          if (window.playPanicGentleTone) window.playPanicGentleTone(PHASES[phaseIdx].freq, 280);
+          triggerCue(PHASES[phaseIdx]);
         }
         updateBreatherDisplay();
       }, 1000);
@@ -278,9 +308,7 @@
     if (audioBtn) {
       audioBtn.addEventListener("click", function () {
         window.__panicAudioEnabled = !window.__panicAudioEnabled;
-        if (window.__panicAudioEnabled && window.playPanicGentleTone) {
-          window.playPanicGentleTone(528, 220);
-        }
+        if (window.__panicAudioEnabled) triggerCue(PHASES[phaseIdx]);
         updateBreatherDisplay();
       });
     }
@@ -302,7 +330,13 @@
         modal.hidden = false;
         openSosTab(targetTab);
         generateDoctorNote();
-        if (targetTab === "step1" && !breathRunning) startBreather();
+        if (targetTab === "step1") {
+          if (!breathRunning) {
+            phaseIdx = 0;
+            secLeft = PHASES[0].secs;
+            startBreather();
+          }
+        }
         if (window.markModuleExplored) window.markModuleExplored("sos");
       });
     });
@@ -314,13 +348,7 @@
       });
     });
 
-    modal.addEventListener("click", function (ev) {
-      if (ev.target === modal) {
-        modal.hidden = true;
-        stopBreather();
-      }
-    });
-
+    // Deliberately do NOT close modal on backdrop click so trembling hands never dismiss SOS accidentally!
     document.addEventListener("keydown", function (ev) {
       if (ev.key === "Escape" && !modal.hidden) {
         modal.hidden = true;
@@ -429,8 +457,8 @@
       } else {
         box.className = "alert-banner alert-danger";
         box.innerHTML = isEn()
-          ? `🚨 <strong>MEDICAL RED FLAG DETECTED (${checked.length} selected):</strong> Do NOT assume this is just panic! Call <strong>999</strong> or go to the nearest Emergency Department immediately for an <strong>ECG, vital signs, and medical rule-out</strong>. Never breathe into a paper bag.`
-          : `🚨 <strong>TANDA AMARAN MERAH DIKESAN (${checked.length} ditanda):</strong> JANGAN anggap ini panik semata-mata! Hubungi <strong>999</strong> atau ke Jabatan Kecemasan Hospital segera untuk saringan <strong>ECG & pemeriksaan doktor</strong>. Jangan guna beg kertas.`;
+          ? `🚨 <strong>MEDICAL RED FLAG DETECTED (${checked.length} selected):</strong> Do NOT assume this is just panic! Seek immediate hospital ECG &amp; medical evaluation (never breathe into a paper bag). <div style="margin-top:8px;"><a href="tel:999" class="btn-sos-primary" style="text-decoration:none;">🚑 Tap to Call 999 Immediately</a></div>`
+          : `🚨 <strong>TANDA AMARAN MERAH DIKESAN (${checked.length} ditanda):</strong> JANGAN anggap ini panik biasa! Dapatkan pemeriksaan ECG &amp; doktor di Jabatan Kecemasan segera (jangan guna beg kertas). <div style="margin-top:8px;"><a href="tel:999" class="btn-sos-primary" style="text-decoration:none;">🚑 Tekan Untuk Dail 999 Sekarang</a></div>`;
       }
     }
 
