@@ -1,0 +1,25 @@
+{
+  "name": "PanicLab — Panduan Interaktif Panic Attack & Panic Disorder",
+  "short_name": "PanicLab",
+  "description": "Panduan interaktif dwibahasa (BM & English) pertolongan segera Panic Attack, saringan 999, Coping Card 60s, dan latihan pemulihan CBT.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07111a",
+  "theme_color": "#0f766e",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "SOS Tenangkan Saya Sekarang",
+      "short_name": "SOS Panik",
+      "description": "Buka terus panduan nafas kecemasan & Coping Card 60s",
+      "url": "/?sos=1"
+    }
+  ]
+}

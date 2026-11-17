@@ -4,6 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PanicLab — Playbook Pintar, Interaktif &amp; Panduan Serangan Panik</title>
+  <meta name="description" content="Panduan interaktif dwibahasa (BM &amp; EN) yang sahih dan menenangkan untuk bantuan segera Panic Attack, saringan jantung 999, Coping Card 60s, dan terapi CBT." />
+  <link rel="canonical" href="https://paniclab.pages.dev/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0f766e" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PanicLab — Panduan Segera &amp; Playbook Interaktif Panic Attack" />
+  <meta property="og:description" content="Bantuan nafas 1-klik, saringan pantas 999, Coping Card 60s, punca Gastrik/GERD &amp; latihan CBT berasaskan bukti perubatan (BM &amp; EN)." />
+  <meta property="og:url" content="https://paniclab.pages.dev/" />
+  <meta property="og:image" content="https://paniclab.pages.dev/og-card.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PanicLab — Panduan Segera &amp; Playbook Interaktif Panic Attack" />
+  <meta name="twitter:description" content="Bantuan nafas 1-klik, saringan pantas 999, Coping Card 60s &amp; latihan CBT (BM &amp; EN)." />
+  <meta name="twitter:image" content="https://paniclab.pages.dev/og-card.svg" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body class="mode-layman">
@@ -38,9 +54,9 @@
           <button type="button" data-lang-switch="en" title="English">🇬🇧 EN</button>
         </div>
         <div class="segmented-toggle" role="group" aria-label="Explanation Mode">
-          <button type="button" data-audience-mode="layman" class="active" data-en="🫂 For Me" title="Untuk Pesakit (Mudah &amp; Tenang)">🫂 Saya</button>
-          <button type="button" data-audience-mode="family" data-en="👨‍👩‍👧 Family" title="Untuk Pasangan, Keluarga &amp; Orang Awam">👨‍👩‍👧 Keluarga</button>
-          <button type="button" data-audience-mode="clinical" data-en="🩺 Clinical" title="Untuk Doktor, Terapis &amp; Rujukan Klinikal">🩺 Klinikal</button>
+          <button type="button" data-audience-mode="layman" class="active" data-en="🫂 For Me" title="Untuk Pesakit (Mudah &amp; Tenang)" data-en-title="For Patients (Calm &amp; Clear)">🫂 Saya</button>
+          <button type="button" data-audience-mode="family" data-en="👨‍👩‍👧 Family" title="Untuk Pasangan, Keluarga &amp; Orang Awam" data-en-title="For Spouses, Family &amp; Public">👨‍👩‍👧 Keluarga</button>
+          <button type="button" data-audience-mode="clinical" data-en="🩺 Clinical" title="Untuk Doktor, Terapis &amp; Rujukan Klinikal" data-en-title="For Doctors, Therapists &amp; Clinical Reference">🩺 Klinikal</button>
         </div>
         <button type="button" id="themeToggleBtn" class="btn-secondary" style="padding:6px 11px; font-size:0.76rem;">
           ☀️ Mod Cerah
@@ -96,22 +112,23 @@
         </div>
       </div>
 
-      <div class="qh-tabs" role="tablist">
-        <button type="button" class="qh-tab-btn active" data-qh-tab="step1" data-en="1. Guided Breath (6-4-2)">1. Panduan Nafas (6-4-2)</button>
-        <button type="button" class="qh-tab-btn" data-qh-tab="cards" data-en="🃏 60s Coping Cards">🃏 Coping Card 60s</button>
-        <button type="button" class="qh-tab-btn" data-qh-tab="step2" data-en="2. 5-4-3-2-1 &amp; Cold Pack">2. 5-4-3-2-1 &amp; Pek Sejuk</button>
-        <button type="button" class="qh-tab-btn" data-qh-tab="step3" data-en="3. 999 Heart Check">3. Semak 999 (30s)</button>
-        <button type="button" class="qh-tab-btn" data-qh-tab="step4" data-en="4. Help Someone Else">4. Bantu Orang Lain</button>
-        <button type="button" class="qh-tab-btn" data-qh-tab="step5" data-en="5. Doctor Note">5. Nota Doktor</button>
+      <div class="qh-tabs" role="tablist" aria-label="SOS First-Aid Steps">
+        <button type="button" role="tab" id="qh-tab-step1" aria-selected="true" aria-controls="qh-pane-step1" class="qh-tab-btn active" data-qh-tab="step1" data-en="1. Guided Breath">1. Panduan Nafas</button>
+        <button type="button" role="tab" id="qh-tab-cards" aria-selected="false" aria-controls="qh-pane-cards" class="qh-tab-btn" data-qh-tab="cards" data-en="🃏 60s Coping Cards">🃏 Coping Card 60s</button>
+        <button type="button" role="tab" id="qh-tab-step2" aria-selected="false" aria-controls="qh-pane-step2" class="qh-tab-btn" data-qh-tab="step2" data-en="2. 5-4-3-2-1 &amp; Cold Pack">2. 5-4-3-2-1 &amp; Pek Sejuk</button>
+        <button type="button" role="tab" id="qh-tab-step3" aria-selected="false" aria-controls="qh-pane-step3" class="qh-tab-btn" data-qh-tab="step3" data-en="3. 999 Heart Check">3. Semak 999 (30s)</button>
+        <button type="button" role="tab" id="qh-tab-step4" aria-selected="false" aria-controls="qh-pane-step4" class="qh-tab-btn" data-qh-tab="step4" data-en="4. Help Someone Else">4. Bantu Orang Lain</button>
+        <button type="button" role="tab" id="qh-tab-step5" aria-selected="false" aria-controls="qh-pane-step5" class="qh-tab-btn" data-qh-tab="step5" data-en="5. Doctor Note">5. Nota Doktor</button>
       </div>
 
       <!-- PANE 1: BREATHING ORB FIRST (ABOVE THE FOLD ON MOBILE!) + 3 ULTRA-SHORT CALM ANCHORS -->
-      <div data-qh-pane="step1">
+      <div id="qh-pane-step1" role="tabpanel" aria-labelledby="qh-tab-step1" data-qh-pane="step1">
         <div class="first-aid-grid">
           <div class="breathing-box">
-            <small style="text-transform:uppercase; font-weight:800; color:var(--accent-teal);" data-en="Start By Exhaling Trapped Chest Air (6s → 4s → 2s)">
+            <small id="sosRhythmSubtitle" style="text-transform:uppercase; font-weight:800; color:var(--accent-teal);" data-en="Start By Exhaling Trapped Chest Air (6s → 4s → 2s)">
               Mulakan Dengan Hembus Udara Dada (6s → 4s → 2s)
             </small>
+            <div id="sosRhythmTabs" class="preset-row" style="justify-content:center; margin:8px 0 4px;" aria-label="Breathing Rhythm Options"></div>
             <div class="breathing-orb-wrap">
               <div class="breathing-ring-guide" aria-hidden="true"></div>
               <div id="sosBreathingOrb" class="breathing-orb">
@@ -122,7 +139,7 @@
               1. Hembus Perlahan Ikut Mulut (Kosongkan Dada)
             </div>
             <div id="sosCycleCounter" style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px;">
-              Kitaran nafas tenang selesai: 0 (Sasaran: 6 kitaran)
+              Kitaran nafas tenang selesai: 0 (Sasaran: 6–10 kitaran)
             </div>
             <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
               <button type="button" id="sosBreathToggleBtn" class="btn-primary">⏸️ Jeda Kiraan Nafas</button>
@@ -135,7 +152,7 @@
               <strong data-en="3 Quick Truths While You Breathe:">3 Perkara Penting Sambil Anda Bernafas:</strong>
             </div>
             <ol style="margin:0; padding-left:20px; font-size:0.92rem; display:grid; gap:8px;">
-              <li data-en="&lt;strong&gt;Empty your chest first (6s exhale):&lt;/strong&gt; When panicking, your chest is already over-filled with air. Blow out slowly first so your lungs can relax."><strong>Hembus keluar dahulu (6 saat):</strong> Semasa panik, dada sebenarnya penuh udara terperangkap. Hembus perlahan dahulu supaya dada kembali lega.</li>
+              <li data-en="&lt;strong&gt;Empty your chest gently (or pick 🌿 Gentle 3-4 if holding breath feels hard):&lt;/strong&gt; When panicking, your chest is over-filled with air. Slowing your exhale lets your lungs relax."><strong>Hembus keluar perlahan (atau pilih 🌿 Lembut 3-4 jika tak selesa tahan nafas):</strong> Semasa panik, dada penuh udara terperangkap. Hembusan perlahan melegakan semula dada.</li>
               <li data-en="&lt;strong&gt;Don't fight the feeling:&lt;/strong&gt; Whisper gently: &lt;em&gt;'Uncomfortable, NOT dangerous. Just a false alarm of adrenaline.'&lt;/em&gt;"><strong>Jangan paksa diri lawan rasa ini:</strong> Katakan perlahan: <em>"Cuma adrenalin palsu. Rasa tak selesa, tapi TIDAK bahaya."</em></li>
               <li data-en="&lt;strong&gt;Drop your shoulders &amp; stay seated:&lt;/strong&gt; Plant both feet flat on the floor (pull over safely first if driving)."><strong>Jatuhkan bahu &amp; kekal duduk tenang:</strong> Jejakkan kedua-dua tapak kaki rata di lantai (berhenti di tepi selamat dahulu jika sedang memandu).</li>
             </ol>
@@ -154,11 +171,11 @@
         </div>
       </div>
 
-      <!-- PANE CARDS: 5 TACTICAL 60-SECOND POCKET SCRIPTS (HOT COGNITION) -->
-      <div data-qh-pane="cards" hidden>
-        <div class="alert-banner alert-warn" style="margin-bottom:12px;">
-          <span data-en="🔥 &lt;strong&gt;Hot Cognition Protocol (&gt;130 bpm):&lt;/strong&gt; When adrenaline floods the brain, logical cortex capacity drops &gt;50%. Do &lt;strong&gt;NOT&lt;/strong&gt; analyze long worksheets now! &lt;strong&gt;1.&lt;/strong&gt; Externalize (read this pre-written fact script), &lt;strong&gt;2.&lt;/strong&gt; Read &lt;strong&gt;MAX 2 TIMES&lt;/strong&gt; (never chant like a safety crutch), &lt;strong&gt;3.&lt;/strong&gt; Stay safely in place for 10–15 mins until the wave drops.">
-            🔥 <strong>Protokol Fasa Panas (Hot Cognition &gt;130 bpm):</strong> Semasa kemuncak panik, fungsi korteks logik merosot &gt;50%. <strong>JANGAN</strong> cuba berdebat panjang atau isi borang sekarang! <strong>1.</strong> Baca fakta siap tulis di bawah, <strong>2.</strong> Baca <strong>MAKSIMUM 2 KALI SAHAJA</strong> (elak jadi tongkat mantera), <strong>3.</strong> Kekal di lokasi selamat selama 10–15 minit sehingga gelombang surut sendiri.
+      <!-- PANE CARDS: 8+1 TACTICAL 60-SECOND POCKET SCRIPTS -->
+      <div id="qh-pane-cards" role="tabpanel" aria-labelledby="qh-tab-cards" data-qh-pane="cards" hidden>
+        <div class="alert-banner alert-safe" style="margin-bottom:12px;">
+          <span data-en="🫂 &lt;strong&gt;Quick Pocket Guide (During Peak Surge):&lt;/strong&gt; Don't force yourself to think hard right now. &lt;strong&gt;1.&lt;/strong&gt; Pick your situation below, &lt;strong&gt;2.&lt;/strong&gt; Read slowly &lt;strong&gt;AT MOST TWICE&lt;/strong&gt; (don't repeat it endlessly), &lt;strong&gt;3.&lt;/strong&gt; Drop your shoulders and stay safely in place for 10–15 mins until the wave settles.">
+            🫂 <strong>Panduan Pantas Semasa Tengah Berdebar:</strong> Jangan paksa otak berfikir panjang sekarang. <strong>1.</strong> Pilih situasi anda di bawah, <strong>2.</strong> Baca perlahan <strong>MAKSIMUM 2 KALI SAHAJA</strong> (jangan ulang berpuluh kali), <strong>3.</strong> Jatuhkan bahu dan kekal di tempat selamat 10–15 minit sehingga gelombang surut sendiri.
           </span>
         </div>
         <div id="sosCopingTabs" class="preset-row"></div>
@@ -166,36 +183,40 @@
       </div>
 
       <!-- PANE 2: 5-4-3-2-1 SENSORY GROUNDING & COLD PACK DIVE REFLEX -->
-      <div data-qh-pane="step2" hidden>
+      <div id="qh-pane-step2" role="tabpanel" aria-labelledby="qh-tab-step2" data-qh-pane="step2" hidden>
         <p style="margin:0 0 8px; font-size:0.9rem;" data-en="Tap each card below as you name items around you—this shifts brain activity out of your &lt;strong&gt;fear alarm&lt;/strong&gt; back to your &lt;strong&gt;calm thinking brain&lt;/strong&gt;:">
           Klik setiap kad di bawah sebaik anda menamakan objek di sekeliling—teknik <strong>Grounding</strong> ini mengalihkan fokus otak daripada penggera cemas kembali ke bahagian berfikir yang tenang:
         </p>
         <div id="sosGroundingGrid" class="grounding-step-grid"></div>
+        <div id="sosGroundingStatus" style="margin-top:8px;"></div>
 
         <div class="reasoning-box" style="margin-top:14px; display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;">
-          <div style="flex:1 1 380px;">
+          <div style="flex:1 1 min(100%, 360px);">
             <strong data-en="🧊 Heart Pounding Very Fast? Cool Your Face for 20s (Dive Reflex):">🧊 Jantung Laju Sangat? Tekap Air / Pek Sejuk Di Muka 20 Saat (Dive Reflex):</strong>
-            <p style="margin:4px 0 0; font-size:0.85rem; color:var(--text-secondary);" data-en="Press a cool pack, cold wet towel, or splash cold water gently across your &lt;strong&gt;cheeks and closed eyes&lt;/strong&gt; for 15–20 seconds. Facial cold sensors automatically trigger your body's natural heart-rate brake!">
-              Tekapkan pek sejuk, tuala basah berais, atau basuh muka dengan air sejuk pada bahagian <strong>pipi dan mata tertutup</strong> selama 15–20 saat. Deria sejuk di muka akan mengaktifkan 'brek semula jadi' untuk memperlahankan degupan jantung!
+            <p style="margin:4px 0 0; font-size:0.85rem; color:var(--text-secondary);" data-en="Sit down first, then press a cool pack, cold wet towel, or splash cool water gently across your &lt;strong&gt;cheeks and closed eyes&lt;/strong&gt; for 15–20 seconds to trigger your body's natural heart-rate brake. &lt;em&gt;(Skip if you have slow heart rate/bradycardia, heart block, or history of fainting).&lt;/em&gt;">
+              Duduk dahulu, kemudian tekapkan pek sejuk, tuala basah sejuk, atau basuh muka perlahan pada bahagian <strong>pipi dan mata tertutup</strong> selama 15–20 saat untuk mengaktifkan 'brek semula jadi' degupan jantung. <em>(Elakkan jika anda mempunyai masalah nadi terlalu perlahan/bradikardia, blok jantung, atau sejarah mudah pitam).</em>
             </p>
+            <div class="dive-progress-wrap" aria-hidden="true">
+              <div id="diveProgressBar" class="dive-progress-bar"></div>
+            </div>
           </div>
           <button type="button" id="diveReflexBtn" class="btn-primary">🧊 Mula Pemasa 20s Pek Sejuk (Dive Reflex)</button>
         </div>
       </div>
 
       <!-- PANE 3: 30-SECOND MEDICAL / 999 RED FLAG CHECK -->
-      <div data-qh-pane="step3" hidden>
+      <div id="qh-pane-step3" role="tabpanel" aria-labelledby="qh-tab-step3" data-qh-pane="step3" hidden>
         <p style="margin:0 0 12px; font-size:0.9rem;" data-en="Tick any box below &lt;strong&gt;IF EXPERIENCED RIGHT NOW&lt;/strong&gt; to verify whether emergency medical care (&lt;strong&gt;999&lt;/strong&gt;) is needed:">
           Tandakan mana-mana kotak di bawah <strong>JIKA DIALAMI SEKARANG</strong> untuk mengesahkan sama ada rawatan kecemasan (<strong>999</strong>) diperlukan segera:
         </p>
         <div class="redflag-grid" style="margin-bottom:14px;">
           <label class="check-tile">
             <input type="checkbox" class="sos-redflag-cb" />
-            <span data-en="&lt;strong&gt;Crushing / squeezing central chest pressure&lt;/strong&gt; radiating to the left arm, jaw, neck, or back"><strong>Sakit dada berat menghimpit di tengah dada</strong> dan menjalar ke lengan kiri, rahang, leher, atau belakang</span>
+            <span data-en="&lt;strong&gt;Crushing / squeezing central chest pressure&lt;/strong&gt; radiating to the left arm, jaw, neck, or back (or with cold clammy sweat &amp; nausea)"><strong>Sakit dada berat menghimpit di tengah dada</strong> dan menjalar ke lengan kiri, rahang, leher, atau belakang (atau disertai peluh sejuk &amp; loya)</span>
           </label>
           <label class="check-tile">
             <input type="checkbox" class="sos-redflag-cb" />
-            <span data-en="&lt;strong&gt;First-ever episode&lt;/strong&gt; of acute chest pain or severe shortness of breath (especially &lt;strong&gt;age &gt;45&lt;/strong&gt;)"><strong>Kali pertama seumur hidup</strong> mengalami sakit dada atau sesak nafas mendadak (terutamanya <strong>umur &gt;45 tahun</strong>)</span>
+            <span data-en="&lt;strong&gt;First-ever episode&lt;/strong&gt; of acute chest pain or severe breathlessness (especially &lt;strong&gt;age &gt;45&lt;/strong&gt;, diabetes, hypertension, pregnancy/postpartum, or family cardiac history)"><strong>Kali pertama seumur hidup</strong> mengalami sakit dada atau sesak nafas mendadak (terutamanya <strong>umur &gt;45</strong>, kencing manis/darah tinggi, hamil/lepas bersalin, atau sejarah jantung keluarga)</span>
           </label>
           <label class="check-tile">
             <input type="checkbox" class="sos-redflag-cb" />
@@ -215,11 +236,11 @@
           </label>
         </div>
 
-        <div id="sosEmergencyVerdict" class="alert-banner alert-safe"></div>
+        <div id="sosEmergencyVerdict" class="alert-banner alert-safe" aria-live="polite"></div>
 
         <div class="alert-banner" style="margin-top:10px;">
-          <div data-en="📞 &lt;strong&gt;1-Tap Direct Malaysia Helplines:&lt;/strong&gt; Medical Emergency (&lt;strong&gt;999&lt;/strong&gt;) • KKM Crisis Line &lt;strong&gt;HEAL 15555&lt;/strong&gt; (8 AM – 12 AM) • Befrienders KL (24h):">
-            📞 <strong>Dail Terus Talian Bantuan Rasmi Malaysia (1-Klik):</strong> Kecemasan Hospital (<strong>999</strong>) • Talian Krisis KKM <strong>HEAL 15555</strong> (8 pagi – 12 mlm) • Befrienders KL (24 jam):
+          <div data-en="📞 &lt;strong&gt;1-Tap Direct Malaysia Helplines:&lt;/strong&gt; Medical Emergency (&lt;strong&gt;999&lt;/strong&gt;) • KKM Crisis Line &lt;strong&gt;HEAL 15555&lt;/strong&gt; (8 AM – 12 AM) • Overnight 12 AM–8 AM: Befrienders KL (24h):">
+            📞 <strong>Dail Terus Talian Bantuan Rasmi Malaysia (1-Klik):</strong> Kecemasan Hospital (<strong>999</strong>) • Talian Krisis KKM <strong>HEAL 15555</strong> (8 pagi – 12 mlm) • Lewat Malam (12 mlm – 8 pagi): Befrienders KL (24 jam):
           </div>
           <div class="helpline-call-row">
             <a href="tel:999" class="btn-sos-primary" data-en="🚑 Call 999 Now">🚑 Panggil 999 Sekarang</a>
@@ -230,13 +251,13 @@
       </div>
 
       <!-- PANE 4: HELPING SOMEONE ELSE (BYSTANDER SOP) -->
-      <div data-qh-pane="step4" hidden>
+      <div id="qh-pane-step4" role="tabpanel" aria-labelledby="qh-tab-step4" data-qh-pane="step4" hidden>
         <div class="two-col">
           <div class="panel-card">
             <h3 style="color:var(--accent-emerald);" data-en="✅ DO THIS (Evidence-Based First Aid)">✅ LAKUKAN INI (SOP Bantuan Selamat)</h3>
             <ul style="margin:0; padding-left:18px; font-size:0.88rem; display:grid; gap:8px; color:var(--text-secondary);">
               <li data-en="&lt;strong&gt;Stay calm beside them:&lt;/strong&gt; Speak slowly using short, clear sentences ('I am right here with you. You are safe.')."><strong>Kekal tenang di sisi mereka:</strong> Bercakap perlahan dengan ayat pendek dan jelas (<em>"Saya ada di sini. Awak selamat."</em>).</li>
-              <li data-en="&lt;strong&gt;Breathe WITH them, not AT them:&lt;/strong&gt; Say 'Watch my shoulders—inhale 1-2-3-4, exhale slowly 1-2-3-4-5-6.'"><strong>Bernafas BERSAMA mereka:</strong> Pandu rentak perlahan—<em>"Ikut kiraan saya: tarik 4 saat, hembus perlahan 6 saat."</em></li>
+              <li data-en="&lt;strong&gt;Breathe WITH them, not AT them:&lt;/strong&gt; Say 'Watch my shoulders—inhale gently 4s, exhale slowly 6s.'"><strong>Bernafas BERSAMA mereka:</strong> Pandu rentak perlahan—<em>"Ikut kiraan saya: tarik perlahan 4 saat, hembus panjang 6 saat."</em></li>
               <li data-en="&lt;strong&gt;Ask permission before touching&lt;/strong&gt; and offer a cold bottle/pack for their cheeks or hands."><strong>Minta izin sebelum menyentuh</strong> dan tawarkan botol sejuk/tuala basah di pipi atau tapak tangan.</li>
             </ul>
           </div>
@@ -252,44 +273,44 @@
       </div>
 
       <!-- PANE 5: DOCTOR / MENTARI VISIT NOTE GENERATOR -->
-      <div data-qh-pane="step5" hidden>
-        <p style="margin:0 0 12px; font-size:0.88rem; color:var(--text-secondary);" data-en="Generate a structured, non-diagnostic &lt;strong&gt;Patient Visit Summary&lt;/strong&gt; to show your GP, Klinik Kesihatan, MENTARI team, or psychiatrist:">
-          Jana <strong>Ringkasan Temu Janji Pesakit</strong> yang tersusun untuk ditunjukkan kepada doktor di Klinik Kesihatan, hospital, MENTARI, atau klinik pakar:
+      <div id="qh-pane-step5" role="tabpanel" aria-labelledby="qh-tab-step5" data-qh-pane="step5" hidden>
+        <p style="margin:0 0 10px; font-size:0.88rem; color:var(--text-secondary);" data-en="Generate a structured, non-diagnostic &lt;strong&gt;Patient Visit Summary&lt;/strong&gt; to show your GP, Klinik Kesihatan (RM1 walk-in for ECG/blood tests &amp; MENTARI referral), or psychiatrist:">
+          Jana <strong>Ringkasan Temu Janji Pesakit</strong> untuk ditunjukkan kepada doktor di <strong>Klinik Kesihatan KKM (RM1 untuk ujian ECG/tiroid/gula darah &amp; surat rujukan ke MENTARI)</strong>, klinik GP, atau hospital:
         </p>
         <div class="two-col">
           <div>
             <div class="form-group">
               <label class="field-title" for="docFreq" data-en="1. How often have episodes happened?">1. Kekerapan episod berlaku?</label>
               <select id="docFreq" class="form-select">
-                <option data-en="First-ever episode">Baru berlaku sekali (kali pertama)</option>
-                <option data-en="2–4 episodes over the past month">2–4 kali dalam tempoh sebulan lepas</option>
-                <option data-en="Weekly or multiple times per week">Setiap minggu / beberapa kali seminggu</option>
-                <option data-en="Occasional episodes over several months">Berulang secara berkala sejak beberapa bulan</option>
+                <option value="first" data-en="First-ever episode">Baru berlaku sekali (kali pertama)</option>
+                <option value="month24" data-en="2–4 episodes over the past month">2–4 kali dalam tempoh sebulan lepas</option>
+                <option value="weekly" data-en="Weekly or multiple times per week">Setiap minggu / beberapa kali seminggu</option>
+                <option value="months" data-en="Occasional episodes over several months">Berulang secara berkala sejak beberapa bulan</option>
               </select>
             </div>
             <div class="form-group">
               <label class="field-title" for="docPeak" data-en="2. How fast does it peak &amp; subside?">2. Berapa cepat memuncak &amp; surut?</label>
               <select id="docPeak" class="form-select">
-                <option data-en="Peaks abruptly within ≤10 mins; settles in 20–30 mins">Memuncak mengejut ≤10 minit; surut dalam 20–30 minit</option>
-                <option data-en="Wakes me abruptly from sleep at night (nocturnal panic)">Mengejutkan saya daripada tidur malam (nocturnal panic)</option>
-                <option data-en="Builds slowly over hours along with daily stress">Meningkat perlahan berjam-jam mengikut stres kerja/harian</option>
+                <option value="peak10" data-en="Peaks abruptly within ≤10 mins; settles in 20–30 mins">Memuncak mengejut ≤10 minit; surut dalam 20–30 minit</option>
+                <option value="nocturnal" data-en="Wakes me abruptly from sleep at night (nocturnal panic)">Mengejutkan saya daripada tidur malam (nocturnal panic)</option>
+                <option value="slow" data-en="Builds slowly over hours along with daily stress">Meningkat perlahan berjam-jam mengikut stres kerja/harian</option>
               </select>
             </div>
             <div class="form-group">
               <label class="field-title" for="docTrigger" data-en="3. When does it usually strike?">3. Bila ia selalunya menyerang?</label>
               <select id="docTrigger" class="form-select">
-                <option data-en="Out of the blue without clear warning (Unexpected)">Secara tiba-tiba tanpa amaran jelas (Unexpected)</option>
-                <option data-en="In crowds, traffic jams, elevators, or supermarkets">Semasa sesak trafik, beratur, lif, atau pasar raya</option>
-                <option data-en="After coffee/caffeine, poor sleep, or cold meds">Selepas minum kopi/kafein, kurang tidur, atau ubat selesema</option>
-                <option data-en="Only before social speeches or specific phobias">Hanya sebelum bercakap di khalayak / fobia tertentu</option>
+                <option value="unexp" data-en="Out of the blue without clear warning (Unexpected)">Secara tiba-tiba tanpa amaran jelas</option>
+                <option value="situational" data-en="In crowds, traffic jams, elevators, mosques, or supermarkets">Semasa sesak trafik, beratur, lif, masjid, atau pasar raya</option>
+                <option value="caff" data-en="After coffee/caffeine, gastric reflux, poor sleep, or cold meds">Selepas minum kopi/kafein, gastrik/angin, kurang tidur, atau ubat selesema</option>
+                <option value="social" data-en="Only before social speeches or specific phobias">Hanya sebelum bercakap di khalayak / fobia tertentu</option>
               </select>
             </div>
             <div class="form-group">
               <label class="field-title" for="docAvoid" data-en="4. Impact over the past ≥1 month:">4. Kesan dalam tempoh ≥1 bulan lepas:</label>
               <select id="docAvoid" class="form-select">
-                <option data-en="Constant worry about next attack + avoiding driving/places">Sentiasa bimbang diserang lagi + mula mengelak memandu/tempat luar</option>
-                <option data-en="Worried about heart/health, frequently checking smartwatch">Risau masalah jantung/kesihatan, kerap semak jam pintar</option>
-                <option data-en="Minimal daily avoidance so far">Masih boleh jalani rutin harian seperti biasa</option>
+                <option value="avoid" data-en="Constant worry about next attack + avoiding driving/places">Sentiasa bimbang diserang lagi + mula mengelak memandu/tempat luar</option>
+                <option value="health" data-en="Worried about heart/health, frequently checking smartwatch">Risau masalah jantung/kesihatan, kerap semak smartwatch</option>
+                <option value="minimal" data-en="Minimal daily avoidance so far">Masih boleh jalani rutin harian seperti biasa</option>
               </select>
             </div>
             <div class="form-group" style="margin-bottom:0;">
@@ -298,14 +319,20 @@
                 type="text"
                 id="docMeds"
                 class="form-input"
-                placeholder="Cth: 2 cawan kopi sehari, tiada asma/darah tinggi..."
-                data-en-placeholder="e.g., 2 coffees/day, no asthma or hypertension..."
+                placeholder="Cth: 2 cawan kopi sehari, ada gastrik/GERD, tiada asma..."
+                data-en-placeholder="e.g., 2 coffees/day, gastric reflux/GERD, no asthma..."
               />
             </div>
           </div>
 
           <div>
-            <label class="field-title" for="docNotePreview" data-en="📄 Ready-to-Share Clinical Visit Summary:">📄 Pratonton Ringkasan Untuk Doktor:</label>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px;">
+              <label class="field-title" for="docNotePreview" style="margin:0;" data-en="📄 Ready-to-Share Clinical Visit Summary:">📄 Pratonton Ringkasan Untuk Doktor:</label>
+              <div class="segmented-toggle" id="docNoteLangToggle" role="group" aria-label="Doctor Note Output Language">
+                <button type="button" data-doc-lang="ms" class="active">🇲🇾 Nota BM</button>
+                <button type="button" data-doc-lang="en" data-en="🇬🇧 English Note">🇬🇧 English (Untuk Doktor)</button>
+              </div>
+            </div>
             <textarea id="docNotePreview" class="doc-note-textarea" readonly></textarea>
             <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">
               <button type="button" id="copyDocNoteBtn" class="btn-primary" style="flex:1;" data-en="📋 Copy Note for Doctor / WhatsApp">
@@ -380,20 +407,20 @@
       <div class="hero-stats-card">
         <div class="stat-mini-grid">
           <div class="stat-box">
-            <div class="stat-num">~13% lwn 1–4%</div>
+            <div class="stat-num" data-en="~13% vs 1–4%">~13% lwn 1–4%</div>
             <div class="stat-label" data-en="Adults with a Panic Attack (~13%) vs Panic Disorder (1.1–4.7%)">Pernah alami Panic Attack (~13%) lwn Panic Disorder (1–4%)</div>
           </div>
           <div class="stat-box">
-            <div class="stat-num">≤ 10 Minit</div>
+            <div class="stat-num" data-en="≤ 10 Mins">≤ 10 Minit</div>
             <div class="stat-label" data-en="Time to peak surge; adrenaline naturally subsides in 20–30m">Masa memuncak; gelombang adrenalin surut dalam 20–30 min</div>
           </div>
           <div class="stat-box">
             <div class="stat-num">72% – 90%</div>
-            <div class="stat-label" data-en="Long-term remission in focused CBT / B4DT exposure studies">Kadar remisi jangka panjang terapi pendedahan CBT / B4DT</div>
+            <div class="stat-label" data-en="Long-term recovery rate in focused CBT / B4DT exposure studies">Kadar pulih jangka panjang terapi pendedahan CBT / B4DT</div>
           </div>
           <div class="stat-box">
             <div class="stat-num">HEAL 15555</div>
-            <div class="stat-label" data-en="KKM National Mental Health Crisis Line (8 AM – 12 AM) • 999 Emergency">Talian Krisis KKM (8 pagi – 12 mlm) • Kecemasan Perubatan: 999</div>
+            <div class="stat-label" data-en="KKM Crisis Line (8 AM – 12 AM) • 24h: Befrienders / 999">Talian Krisis KKM (8 pg – 12 mlm) • 24j: Befrienders / 999</div>
           </div>
         </div>
 
@@ -433,15 +460,15 @@
               ⏸️ Henti Gerakan Graf
             </button>
           </div>
-          <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Click the 4 physiological states below to watch how over-breathing drops blood CO₂ (causing harmless tingling/dizziness) and how 4-2-6 breathing restores balance:">
-            Klik 4 fasa di bawah untuk melihat bagaimana nafas tercungap menurunkan CO₂ darah (punca kebas/melayang) dan bagaimana nafas 4-2-6 memulihkannya:
+          <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Click the 4 physiological states below to watch how over-breathing drops blood CO₂ (causing harmless tingling/dizziness) and how slow exhalation restores balance:">
+            Klik 4 fasa di bawah untuk melihat bagaimana nafas tercungap menurunkan CO₂ darah (punca kebas/melayang) dan bagaimana hembusan nafas perlahan memulihkannya:
           </p>
 
           <div class="preset-row">
             <button type="button" class="chip-btn" data-wave-preset="calm">1. Tenang</button>
             <button type="button" class="chip-btn" data-wave-preset="caffeineLoop">2. Salah Tafsir Clark</button>
             <button type="button" class="chip-btn active" data-wave-preset="hyperventilation">3. Kemuncak Panik</button>
-            <button type="button" class="chip-btn" data-wave-preset="vagalRecovery">4. Pulih 4-2-6</button>
+            <button type="button" class="chip-btn" data-wave-preset="vagalRecovery">4. Pulih Nafas Tenang</button>
           </div>
 
           <div class="canvas-frame">
@@ -458,7 +485,7 @@
               <div id="simCo2Val" style="font-weight:800; color:var(--accent-cyan);">24 mmHg</div>
             </div>
             <div class="stat-box">
-              <small style="color:var(--text-muted);" data-en="Logical Cortex">Brek Korteks</small>
+              <small style="color:var(--text-muted);" data-en="Brain State">Status Otak</small>
               <div id="simPfcVal" style="font-weight:800; color:var(--accent-teal);">Penggera Aktif</div>
             </div>
           </div>
@@ -516,10 +543,10 @@
           *Simptom khusus budaya (seperti telinga berdesing, sakit tengkuk, sakit kepala, menangis tidak terkawal) boleh berlaku tetapi tidak dikira dalam 4 simptom wajib. Sekitar 25%–33% pesakit juga pernah terjaga daripada tidur malam dalam keadaan berdebar (<em>nocturnal panic attack</em>).
         </p>
 
-        <h4 style="margin:0 0 8px; font-size:0.92rem;" data-en="📋 Step 2: Timeline &amp; Medical Exclusion Check (Criteria A, B &amp; C)">
-          📋 Langkah 2: Semak Tempoh Masa &amp; Saringan Perubatan (Kriteria A, B &amp; C)
+        <h4 style="margin:0 0 8px; font-size:0.92rem;" data-en="📋 Step 2: Timeline, Context &amp; Medical Check (Criteria A, B, C &amp; D)">
+          📋 Langkah 2: Semak Tempoh Masa, Konteks &amp; Saringan Doktor (Kriteria A, B, C &amp; D)
         </h4>
-        <div class="three-col" style="margin-bottom:14px;">
+        <div class="symptom-grid" style="margin-bottom:14px;">
           <label class="check-tile">
             <input type="checkbox" id="dsmUnexpectedCb" />
             <span data-en="&lt;strong&gt;Recurrent &amp; Unexpected:&lt;/strong&gt; Happened more than once 'out of the blue' without an obvious trigger"><strong>Berulang &amp; Mengejut:</strong> Berlaku lebih daripada sekali secara tiba-tiba tanpa punca jelas</span>
@@ -529,35 +556,44 @@
             <span data-en="&lt;strong&gt;≥ 1 Month Impact:&lt;/strong&gt; Followed by ≥1 month of fear of future attacks or avoiding places/exercise"><strong>Kesan ≥ 1 Bulan:</strong> Diikuti sebulan kebimbangan takut diserang lagi atau mula mengelak tempat/senaman</span>
           </label>
           <label class="check-tile">
+            <input type="checkbox" id="dsmSpecificPhobiaCb" checked />
+            <span data-en="&lt;strong&gt;Not Single-Cue Only (Criterion D):&lt;/strong&gt; Not triggered &lt;em&gt;only&lt;/em&gt; by one specific phobia (e.g., spiders/heights) or public speaking alone"><strong>Bukan Satu Fobia Khusus Sahaja (Kriteria D):</strong> Bukan tercetus <em>hanya</em> kerana satu fobia spesifik atau berucap di pentas semata-mata</span>
+          </label>
+          <label class="check-tile">
             <input type="checkbox" id="dsmOrganicCb" />
-            <span data-en="&lt;strong&gt;Medical Check Needed:&lt;/strong&gt; First onset after age 45, true fainting/blackout, thyroid/heart risk, or heavy stimulants"><strong>Perlu Saringan Doktor Segera:</strong> Kali pertama selepas umur 45 tahun, pitam sebenar, atau risiko jantung/tiroid</span>
+            <span data-en="&lt;strong&gt;Medical Check Needed (Criterion C):&lt;/strong&gt; First onset after age 45, true fainting/blackout, thyroid/heart risk, or heavy stimulants"><strong>Perlu Saringan Doktor Segera (Kriteria C):</strong> Kali pertama selepas umur 45 tahun, pitam sebenar, atau risiko jantung/tiroid</span>
           </label>
         </div>
 
-        <div id="dsmTriageVerdict" class="alert-banner"></div>
+        <div id="dsmTriageVerdict" class="alert-banner" aria-live="polite"></div>
       </div>
 
       <!-- Differential Comparison Table: Panic vs Anxiety vs Heart Attack (ACS) -->
       <div class="panel-card">
-        <h3 data-en="⚖️ Clinical Comparison Matrix: Panic Attack vs. Generalised Anxiety vs. Heart Attack (ACS)">
-          ⚖️ Jadual Perbandingan Klinikal: Serangan Panik lwn Keresahan (Anxiety) lwn Serangan Jantung (ACS)
+        <h3 data-en="⚖️ Clinical Comparison Matrix: Panic Attack vs. Everyday Anxiety vs. Heart Attack (ACS)">
+          ⚖️ Jadual Perbandingan: Panic Attack lwn Keresahan Biasa (Anxiety) lwn Serangan Jantung (ACS)
         </h3>
         <div class="table-wrap" style="margin-top:10px;">
-          <table class="clinical-table">
+          <table class="clinical-table stack-mobile">
             <thead>
               <tr>
-                <th data-en="Clinical Feature">Ciri Klinikal</th>
-                <th data-en="⚡ Panic Attack">⚡ Serangan Panik</th>
-                <th data-en="💭 Anxiety (Keresahan)">💭 Keresahan Biasa</th>
+                <th data-en="Clinical Feature">Ciri Perbandingan</th>
+                <th data-en="⚡ Panic Attack">⚡ Panic Attack</th>
+                <th data-en="💭 Everyday Anxiety">💭 Keresahan Biasa</th>
                 <th data-en="🚨 Heart Attack (ACS — Call 999)">🚨 Serangan Jantung (ACS — 999)</th>
               </tr>
             </thead>
             <tbody id="diffMatrixBody"></tbody>
           </table>
         </div>
-        <div class="alert-banner alert-warn" style="margin-top:12px;">
-          <span data-en="🔬 &lt;strong&gt;Mandatory Medical Rule-Out Tests:&lt;/strong&gt; Before confirming Panic Disorder, doctors screen for organic look-alikes including &lt;strong&gt;cardiac arrhythmias (SVT)&lt;/strong&gt;, &lt;strong&gt;hyperthyroidism&lt;/strong&gt;, &lt;strong&gt;hypoglycemia&lt;/strong&gt;, &lt;strong&gt;acute asthma&lt;/strong&gt;, &lt;strong&gt;inner-ear vestibular disorders&lt;/strong&gt;, and &lt;strong&gt;pheochromocytoma&lt;/strong&gt;.">
-            🔬 <strong>Saringan Wajib Doktor:</strong> Sebelum mengesahkan Kecelaruan Panik, doktor akan menolak penyakit fizikal yang meniru simptom panik seperti <strong>aritmia jantung (SVT)</strong>, <strong>hipertiroidisme</strong>, <strong>hipoglisemia (kurang gula)</strong>, <strong>asma akut</strong>, <strong>masalah telinga dalam (vestibular)</strong>, dan <strong>feokromositoma</strong>.
+        <div class="alert-banner alert-safe non-clinical" style="margin-top:12px;">
+          <span data-en="🩺 &lt;strong&gt;Basic Clinic Checkup Gives Peace of Mind:&lt;/strong&gt; A quick visit to Klinik Kesihatan or your GP for a basic &lt;strong&gt;ECG, thyroid blood test, blood sugar, and iron/ferritin check&lt;/strong&gt; rules out physical look-alikes—so you can trust 100% that your heart is healthy.">
+            🩺 <strong>Pemeriksaan Asas Klinik Memberi Ketenangan:</strong> Buat pemeriksaan asas di Klinik Kesihatan atau GP (<strong>ujian ECG jantung, darah tiroid, gula darah &amp; zat besi/ferritin</strong>) supaya doktor dapat mengesahkan badan anda sihat dan bukan penyakit fizikal lain.
+          </span>
+        </div>
+        <div class="alert-banner alert-warn clinical-only" style="margin-top:12px;">
+          <span data-en="🔬 &lt;strong&gt;Mandatory Organic Rule-Out Panel:&lt;/strong&gt; Before confirming Panic Disorder (ICD-11 &lt;code&gt;6B01&lt;/code&gt;), rule out &lt;strong&gt;cardiac arrhythmias (SVT/AF)&lt;/strong&gt;, &lt;strong&gt;hyperthyroidism (TSH/fT4)&lt;/strong&gt;, &lt;strong&gt;hypoglycemia&lt;/strong&gt;, &lt;strong&gt;anemia/low ferritin&lt;/strong&gt;, &lt;strong&gt;acute asthma/PE&lt;/strong&gt;, &lt;strong&gt;vestibular neuritis/BPPV&lt;/strong&gt;, &lt;strong&gt;POTS&lt;/strong&gt;, and rare &lt;strong&gt;pheochromocytoma&lt;/strong&gt;.">
+            🔬 <strong>Saringan Wajib Organik (Mod Klinikal):</strong> Sebelum mengesahkan Panic Disorder (ICD-11 <code>6B01</code>), saring <strong>aritmia jantung (SVT/AF)</strong>, <strong>hipertiroidisme (TSH/fT4)</strong>, <strong>hipoglisemia</strong>, <strong>anemia/ferritin rendah</strong>, <strong>asma akut/PE</strong>, <strong>gangguan vestibular/BPPV</strong>, <strong>POTS</strong>, dan <strong>feokromositoma</strong>.
           </span>
         </div>
       </div>
@@ -589,13 +625,14 @@
           <div id="caffeineItemList" class="food-grid" style="margin-bottom:12px;"></div>
 
           <div class="mastery-bar-head">
-            <span data-en="Estimated Daily Stimulant Load:">Anggaran Beban Kafein / Perangsang Hari Ini:</span>
+            <span data-en="Estimated Daily Caffeine Load:">Anggaran Beban Kafein Hari Ini:</span>
             <strong id="caffeineTotalVal" style="color:var(--accent-teal);">205 mg</strong>
           </div>
           <div class="progress-track" style="height:10px; margin-bottom:10px;">
             <div id="caffeineProgressFill" class="progress-fill" style="width:42%;"></div>
           </div>
-          <div id="caffeineAdviceMsg" class="alert-banner alert-warn"></div>
+          <div id="caffeineAdviceMsg" class="alert-banner alert-warn" aria-live="polite"></div>
+          <div id="nonCaffTriggersBox" style="margin-top:12px;"></div>
         </div>
 
         <!-- Myths & Safety Behavior Traps -->
@@ -609,6 +646,18 @@
           <div id="mythsCardsGrid" style="display:grid; gap:10px;"></div>
         </div>
       </div>
+
+      <!-- 4 Most-Asked Malaysian Clinic Questions: Gastrik/GERD, Post-Attack Hangover, 3 AM Nocturnal & Hormonal/POTS -->
+      <div class="panel-card" style="margin-top:18px;">
+        <h3 data-en="🩺 Why Does My Body Feel Like This? 4 Most-Asked Clinic Questions">
+          🩺 Kenapa Badan Rasa Begini? 4 Soalan Paling Kerap Ditanya Di Klinik Malaysia
+        </h3>
+        <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Select any common real-life puzzle below—gastric reflux ('angin naik dada'), post-attack exhaustion, waking up at 3 AM, or pre-period/standing palpitations:">
+          Klik mana-mana isu harian yang paling kerap mengelirukan pesakit—<strong>Gastrik / 'Angin Naik Dada'</strong>, <strong>badan lembik selepas serangan</strong>, <strong>terjaga pukul 3 pagi</strong>, atau <strong>hormon haid / bangun berdiri (POTS)</strong>:
+        </p>
+        <div id="somaticDrawerTabs" class="preset-row"></div>
+        <div id="somaticDrawerStage" class="reasoning-box"></div>
+      </div>
     </section>
 
     <!-- ======== BAB 4: PENSTRUKTURAN SEMULA KOGNITIF (HOT vs COLD COGNITION & THOUGHT RECORD) ======== -->
@@ -617,8 +666,8 @@
         <div class="section-num" data-en="Chapter 4 • Two-Phase Action Plan (During Surge vs. After Surge)">
           Bab 4 • Pelan Tindakan Dua Fasa (Semasa Serangan lwn Selepas Reda)
         </div>
-        <h2 data-en="60-Second Pocket Scripts (During Surge) &amp; Thought Audit (After Surge)">
-          5 Kad Taktikal 60 Saat (Semasa Serangan) &amp; Audit Bukti (Selepas Reda)
+        <h2 data-en="8+1 Pocket Coping Cards (During Surge) &amp; Thought Audit (After Surge)">
+          8+1 Coping Card 60 Saat (Semasa Serangan) &amp; Audit Bukti (Selepas Reda)
         </h2>
       </div>
 
@@ -647,13 +696,13 @@
         </div>
       </div>
 
-      <!-- 5 Tactical 60-Second Pocket Scripts -->
+      <!-- 8+1 Tactical 60-Second Pocket Scripts -->
       <div class="panel-card" style="margin-bottom:18px;">
-        <h3 data-en="🃏 5 Situational 60-Second Coping Cards (With 2x Read Counter)">
-          🃏 5 Coping Card 60 Saat Mengikut Situasi (Dengan Had Baca 2x)
+        <h3 data-en="🃏 8+1 Situational 60-Second Coping Cards (Including Your Personal Card)">
+          🃏 8+1 Coping Card 60 Saat Mengikut Situasi (Termasuk Kad Peribadi Anda)
         </h3>
-        <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Pick a real-world situation below, practice reading at most twice, or copy your script to your phone's Notes app:">
-          Pilih situasi sebenar di bawah, amalkan had baca maksimum 2 kali, atau salin skrip ke aplikasi Notes telefon anda:
+        <p style="font-size:0.84rem; color:var(--text-secondary); margin:0 0 10px;" data-en="Pick a real-world situation below (or write your own under ✍️ My Card), practice reading at most twice, or copy to your phone's Notes app:">
+          Pilih situasi sebenar di bawah (atau bina skrip sendiri pada butang <strong>✍️ Kad Saya</strong>), amalkan had baca maksimum 2 kali, atau salin ke telefon anda:
         </p>
         <div id="pageCopingTabs" class="preset-row"></div>
         <div id="pageCopingStage" class="coping-card-stage"></div>
@@ -686,7 +735,7 @@
                 <input type="number" id="baseRateActualInput" class="form-input" min="0" max="5000" value="0" />
               </div>
             </div>
-            <div id="baseRateVerdict" class="alert-banner alert-safe"></div>
+            <div id="baseRateVerdict" class="alert-banner alert-safe" aria-live="polite"></div>
           </div>
 
           <div class="reasoning-box" style="font-size:0.83rem;">
@@ -701,15 +750,15 @@
       <!-- Interactive 10-Step Post-Attack Panic Thought Record Builder (Collapsible to prevent clutter) -->
       <details id="trDisclosure" class="clean-disclosure" data-clinical-open>
         <summary>
-          <span data-en="📝 Post-Attack 10-Step Thought Audit Form (Use 15–60 Mins After Surge Settles)">
-            📝 Borang Audit Bukti 10 Langkah — Guna 15–60 Minit Selepas Serangan Reda
+          <span data-en="📝 Post-Attack 10-Step Thought Record Form (Use 15–60 Mins After Surge Settles)">
+            📝 Borang Thought Record 10 Langkah — Guna 15–60 Minit Selepas Serangan Reda
           </span>
         </summary>
         <div class="clean-disclosure-body">
           <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px;">
-            <span class="pill-badge pill-info" data-en="🧊 Cold Cognition Audit • Target Belief &lt;15%">🧊 Audit Fasa Tenang • Sasaran Keyakinan &lt;15%</span>
-            <button type="button" id="trLoadSampleBtn" class="btn-secondary" data-en="⚡ Load Worked Example (Traffic Jam)">
-              ⚡ Muat Contoh Kerja Penuh (Jem Jalan Raya)
+            <span class="pill-badge pill-info" data-en="🧊 Calm-Phase Evidence Check • Target Belief &lt;15%">🧊 Semakan Fasa Tenang • Sasaran Keyakinan &lt;15%</span>
+            <button type="button" id="trLoadSampleBtn" class="btn-secondary" data-en="⚡ View Filled Example (Traffic Jam)">
+              ⚡ Lihat Contoh Siap Isi (Jem Jalan Raya)
             </button>
           </div>
 
@@ -720,27 +769,27 @@
               <input type="text" id="trLoc" class="form-input" placeholder="Cth: Isnin 5:45 ptg — Dalam kereta jem..." data-en-placeholder="e.g., Mon 5:45 PM — Stuck in traffic..." />
             </div>
             <div class="form-group">
-              <label class="field-title" for="trVuln" data-en="2. Pre-Attack Vulnerability Factors (Caffeine, Sleep, Stress):">2. Faktor Kerentanan Fizikal Sebelum Serangan (Kopi, Tidur, Lapar):</label>
+              <label class="field-title" for="trVuln" data-en="2. Body State Before Surge (Caffeine, Sleep, Skipped Meal, Stress):">2. Keadaan Badan Sebelum Serangan (Kopi, Kurang Tidur, Lapar/Gastrik):</label>
               <input type="text" id="trVuln" class="form-input" placeholder="Cth: Tidur 4.5 jam, kopi ais pekat, lewat makan..." data-en-placeholder="e.g., 4.5h sleep, strong iced coffee, skipped lunch..." />
             </div>
             <div class="form-group">
-              <label class="field-title" for="trTrigger" data-en="3. Earliest Internal Body Sensation (Initial Spark):">3. Sensasi Fizikal Pertama Disedari (Percikan Awal):</label>
-              <input type="text" id="trTrigger" class="form-input" placeholder="Cth: Satu degupan jantung kuat &amp; jari mula kebas..." data-en-placeholder="e.g., One strong heartbeat + tingling fingers..." />
+              <label class="field-title" for="trTrigger" data-en="3. Earliest Internal Body Sensation (Initial Spark):">3. Sensasi Badan Pertama Disedari (Percikan Awal):</label>
+              <input type="text" id="trTrigger" data-form="1" class="form-input" placeholder="Cth: Satu degupan jantung kuat &amp; jari mula kebas..." data-en-placeholder="e.g., One strong heartbeat + tingling fingers..." />
             </div>
             <div class="form-group">
-              <label class="field-title" for="trCatastrophe" data-en="4. Specific Catastrophe Prediction:">4. Ramalan Bencana Spesifik Otak Ketika Itu:</label>
+              <label class="field-title" for="trCatastrophe" data-en="4. Specific Catastrophe Prediction:">4. Sangkaan Buruk Spesifik Ketika Itu:</label>
               <input type="text" id="trCatastrophe" class="form-input" placeholder="Cth: Jantung aku nak berhenti / pengsan atas stereng dalam 2 minit!" data-en-placeholder="e.g., I'll have a heart attack / pass out at the wheel in 2 mins!" />
             </div>
             <div class="two-col" style="gap:10px; margin-bottom:10px;">
               <div>
-                <label class="field-title" for="trInitBelief" data-en="5a. Peak Catastrophe Belief:">5a. Keyakinan Bencana Awal:</label>
+                <label class="field-title" for="trInitBelief" data-en="5a. Peak Catastrophe Belief:">5a. Keyakinan Sangkaan Awal:</label>
                 <div class="slider-inline">
                   <input type="range" id="trInitBelief" min="0" max="100" value="85" />
                   <strong id="trInitBeliefVal" style="color:var(--accent-amber); min-width:44px;">85%</strong>
                 </div>
               </div>
               <div>
-                <label class="field-title" for="trInitSuds" data-en="5b. Peak Fear (SUDS 0–10):">5b. Ketakutan Puncak (SUDS):</label>
+                <label class="field-title" for="trInitSuds" data-en="5b. Peak Fear (SUDS 0–10):">5b. Tahap Takut Puncak (SUDS):</label>
                 <div class="slider-inline">
                   <input type="range" id="trInitSuds" min="0" max="10" value="8" />
                   <strong id="trInitSudsVal" style="color:var(--accent-amber); min-width:44px;">8/10</strong>
@@ -748,14 +797,14 @@
               </div>
             </div>
             <div class="form-group" style="margin-bottom:0;">
-              <label class="field-title" for="trSafety" data-en="6. Safety Crutches Used (To Drop Next Time!):">6. Tingkah Laku Keselamatan / Tongkat Dibuat (Untuk Dibuang Lepas Ini):</label>
-              <input type="text" id="trSafety" class="form-input" placeholder="Cth: Tengok jam pintar 8 kali, kuatkan aircond maksimum..." data-en-placeholder="e.g., Checked smartwatch 8x, blasted AC, gripped wheel..." />
+              <label class="field-title" for="trSafety" data-en="6. Safety Behaviors Used (To Drop Next Time!):">6. Tabiat Pelindung Palsu / Safety Behaviors (Untuk Ditinggalkan):</label>
+              <input type="text" id="trSafety" class="form-input" placeholder="Cth: Tengok smartwatch 8 kali, kuatkan aircond maksimum..." data-en-placeholder="e.g., Checked smartwatch 8x, blasted AC, gripped wheel..." />
             </div>
           </div>
 
           <div>
             <div class="form-group">
-              <label class="field-title" for="trEvidence" data-en="7. Objective Medical &amp; Base-Rate Evidence Against Catastrophe:">7. Bukti Perubatan Objektif &amp; Rekod Sejarah Menyangkal Bencana:</label>
+              <label class="field-title" for="trEvidence" data-en="7. Real Medical Facts &amp; Past Survival Proof:">7. Bukti Pemeriksaan Doktor &amp; Rekod Selamat Sebelum Ini:</label>
               <textarea id="trEvidence" class="form-input" rows="2" placeholder="Cth: ECG normal bulan lepas; sudah 25 kali rasa sama tapi 0 kali serangan jantung..." data-en-placeholder="e.g., Normal ECG last month; survived 25 identical surges with 0 cardiac events..."></textarea>
               <div id="trEmotionWarn" class="alert-banner alert-warn" hidden style="margin-top:6px; padding:8px 11px; font-size:0.79rem;">
                 <span data-en="⚠️ &lt;strong&gt;Emotional Reasoning Alert:&lt;/strong&gt; Phrases like 'it just felt weird/different' are adrenaline feelings—replace with objective medical facts &amp; survival count!">
@@ -764,8 +813,8 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="field-title" for="trPhysio" data-en="8. Benign Physiological Explanation:">8. Penjelasan Fisiologi Sebenar (Biologi Jinak):</label>
-              <input type="text" id="trPhysio" class="form-input" placeholder="Cth: Lonjakan adrenalin + kafein + hipokapnia CO₂ nafas laju..." data-en-placeholder="e.g., Adrenaline + caffeine + mild CO₂ drop from fast breathing..." />
+              <label class="field-title" for="trPhysio" data-en="8. Real Body Explanation (Harmless Biology):">8. Punca Sebenar Dalam Badan (Tidak Bahaya):</label>
+              <input type="text" id="trPhysio" class="form-input" placeholder="Cth: Lonjakan adrenalin + kafein + CO₂ turun sebab nafas laju..." data-en-placeholder="e.g., Adrenaline + caffeine + mild CO₂ drop from fast breathing..." />
             </div>
             <div class="form-group">
               <label class="field-title" for="trOutcome" data-en="9. Actual Outcome After 15–20 Minutes:">9. Hasil Sebenar Selepas 15–20 Minit:</label>
@@ -813,8 +862,8 @@
       <div id="lensCallout-ch5" class="lens-callout"></div>
 
       <div class="alert-banner alert-warn" style="margin-bottom:18px;">
-        <span data-en="🩺 &lt;strong&gt;Medical Screening &amp; Critical Rule:&lt;/strong&gt; Only practice physical provocation after medical clearance (avoid specific exercises in uncontrolled asthma, cardiac arrhythmia, severe hypertension, glaucoma, epilepsy, cervical disc injury, or complicated pregnancy). &lt;strong&gt;CRITICAL:&lt;/strong&gt; Emergency 4-2-6 breathing is for unexpected attacks—&lt;strong&gt;NEVER use 4-2-6 during planned exposure exercises&lt;/strong&gt;, or your brain will credit the breathing trick instead of learning the sensation itself is safe!">
-          🩺 <strong>Saringan Kesihatan &amp; Peraturan Emas:</strong> Pastikan saringan doktor dibuat dahulu (semak kontraindikasi khusus setiap latihan bagi asma akut, aritmia jantung, darah tinggi tidak terkawal, glaukoma, epilepsi, sakit tulang leher, atau kehamilan berisiko). <strong>AMAT PENTING:</strong> Nafas 4-2-6 hanyalah untuk serangan mengejut—<strong>JANGAN guna nafas 4-2-6 semasa sesi latihan pendedahan terancang</strong> supaya otak belajar sensasi itu selamat tanpa tongkat!
+        <span data-en="🩺 &lt;strong&gt;Health Clearance &amp; Golden Rule:&lt;/strong&gt; Complete a basic medical checkup first (review each exercise's health precautions if you have asthma, heart rhythm issues, uncontrolled blood pressure, glaucoma, epilepsy, neck injury, or pregnancy). &lt;strong&gt;GOLDEN RULE:&lt;/strong&gt; Soothing breathing is for unexpected attacks—&lt;strong&gt;DO NOT use soothing breathing during planned exposure training&lt;/strong&gt;, so your brain learns the body sensation itself is completely safe!">
+          🩺 <strong>Pemeriksaan Doktor &amp; Peraturan Emas:</strong> Pastikan saringan doktor dibuat dahulu (semak pantang larang kesihatan setiap latihan bagi asma, masalah irama jantung, darah tinggi tidak terkawal, glaukoma, epilepsi, sakit leher, atau kehamilan). <strong>PERATURAN EMAS:</strong> Nafas penenang hanyalah untuk serangan mengejut—<strong>JANGAN guna nafas penenang semasa sesi latihan pendedahan terancang</strong> supaya otak belajar sensasi itu selamat dengan sendirinya!
         </span>
       </div>
 
@@ -873,12 +922,12 @@
               type="text"
               id="ladderSafetyInput"
               class="form-input"
-              placeholder="Tongkat dibuang (cth: Tanpa semak nadi)"
-              data-en-placeholder="Safety crutch to drop (e.g., No pulse check)"
+              placeholder="Safety behavior ditinggalkan (cth: Tanpa semak nadi)"
+              data-en-placeholder="Safety behavior to drop (e.g., No pulse check)"
             />
           </div>
           <div style="display:flex; gap:8px; align-items:center; margin-bottom:12px;">
-            <input type="number" id="ladderSudsInput" class="form-input" min="5" max="100" value="60" style="width:95px;" title="SUDS 0-100" />
+            <input type="number" id="ladderSudsInput" class="form-input" min="5" max="100" value="60" style="width:95px;" title="Tahap Takut Awal (SUDS 0–100)" data-en-title="Initial Fear Rating (SUDS 0–100)" aria-label="SUDS 0-100" />
             <button type="button" id="addLadderStepBtn" class="btn-primary" style="flex:1;" data-en="➕ Add Step to Ladder">
               ➕ Tambah Ke Tangga Latihan
             </button>
@@ -888,7 +937,7 @@
             <table class="clinical-table">
               <thead>
                 <tr>
-                  <th data-en="Exposure Step &amp; Dropped Crutch">Langkah Latihan &amp; Tongkat Dibuang</th>
+                  <th data-en="Exposure Step &amp; Dropped Safety Behavior">Langkah Latihan &amp; Tabiat Ditinggalkan</th>
                   <th>SUDS</th>
                   <th data-en="Outcome">Status</th>
                   <th></th>
@@ -946,7 +995,7 @@
             </div>
           </div>
           <div class="table-wrap">
-            <table class="clinical-table">
+            <table class="clinical-table stack-mobile">
               <thead>
                 <tr>
                   <th data-en="Guideline Tier">Tahap</th>
@@ -962,26 +1011,33 @@
       </details>
 
       <!-- Special Populations -->
-      <div class="three-col">
+      <div class="symptom-grid">
         <div class="panel-card">
           <span class="pill-badge pill-info" data-en="Pediatric &amp; Youth">Kanak-Kanak &amp; Remaja</span>
           <h3 style="margin-top:8px;" data-en="Children &amp; Adolescents">Kanak-Kanak &amp; Remaja</h3>
-          <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);" data-en="Youth often show dramatic crying, screaming, or hyperventilation without adult meta-cognitive words like 'fear of going crazy'—expressing panic instead as &lt;strong&gt;school refusal or clinging&lt;/strong&gt;. First-line care combines adapted CBT and SSRIs.">
-            Kanak-kanak jarang mampu meluahkan ayat abstrak seperti "takut jadi gila", sebaliknya menunjukkan tangisan kuat, menjerit, atau <strong>enggan ke sekolah dan berpaut pada ibu bapa</strong>. Rawatan utama ialah gabungan CBT mesra usia dan SSRI.
+          <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);" data-en="Youth often show crying, screaming, or hyperventilation without adult words like 'fear of going crazy'—expressing panic instead as &lt;strong&gt;school refusal or clinging&lt;/strong&gt;. First-line care combines age-adapted CBT and carefully monitored SSRIs.">
+            Kanak-kanak jarang meluahkan ayat abstrak seperti "takut jadi gila", sebaliknya menunjukkan tangisan kuat, menjerit, atau <strong>enggan ke sekolah dan berpaut pada ibu bapa</strong>. Rawatan utama ialah gabungan CBT mesra usia dan SSRI dengan pemantauan rapi doktor.
+          </p>
+        </div>
+        <div class="panel-card">
+          <span class="pill-badge pill-safe" data-en="Pregnancy &amp; Postpartum">Kehamilan &amp; Selepas Bersalin</span>
+          <h3 style="margin-top:8px;" data-en="Perinatal &amp; Breastfeeding Care">Ibu Hamil &amp; Menyusu</h3>
+          <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);" data-en="Hormonal shifts and sleep loss can trigger new panic attacks. &lt;strong&gt;CBT is first-line&lt;/strong&gt;; if medication is needed, &lt;strong&gt;Sertraline&lt;/strong&gt; has the strongest perinatal/lactation safety profile (avoid Paroxetine in 1st trimester &amp; regular benzodiazepines; never stop meds abruptly without your O&amp;G/doctor).">
+            Perubahan hormon dan kurang tidur boleh mencetuskan serangan panik baharu. <strong>CBT ialah pilihan pertama tanpa ubat</strong>; jika ubat diperlukan, <strong>Sertraline</strong> mempunyai rekod keselamatan paling kukuh untuk hamil/menyusu (elakkan Paroxetine awal kehamilan &amp; benzodiazepin kerap; jangan hentikan ubat mengejut tanpa doktor).
           </p>
         </div>
         <div class="panel-card">
           <span class="pill-badge pill-warn" data-en="Older Adults (&gt;65 yrs)">Warga Emas (&gt;65 Tahun)</span>
           <h3 style="margin-top:8px;" data-en="Geriatric Care &amp; Fall Safety">Warga Emas &amp; Risiko Jatuh</h3>
-          <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);" data-en="New panic after age 45–65 warrants thorough medical workup first. Avoid TCAs (cardiac/confusion risk) and chronic benzodiazepines (falls, delirium, cognitive decline). Prefer Sertraline/Escitalopram + paced CBT.">
-            Serangan baharu pada usia emas wajib disaring punca perubatan dahulu. Elakkan ubat TCA (risiko kekeliruan/jantung) dan benzodiazepin berpanjangan (risiko jatuh &amp; gangguan ingatan). Utamakan Sertraline/Escitalopram dan CBT.
+          <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);" data-en="New panic after age 45–65 warrants full medical workup first. Avoid TCAs and regular benzodiazepines (falls, confusion). Prefer Sertraline or age-capped Escitalopram (≤10 mg/day) + paced CBT, and check serum sodium (SIADH).">
+            Serangan baharu pada usia emas wajib disaring punca perubatan dahulu. Elakkan ubat TCA dan benzodiazepin kerap (risiko jatuh &amp; keliru). Utamakan Sertraline atau Escitalopram dos rendah (≤10 mg/hari) + CBT, serta pantau garam darah (natrium).
           </p>
         </div>
         <div class="panel-card">
-          <span class="pill-badge pill-safe" data-en="Work &amp; Driving">Kerjaya &amp; Pemanduan</span>
+          <span class="pill-badge pill-info" data-en="Work &amp; Driving">Kerjaya &amp; Pemanduan</span>
           <h3 style="margin-top:8px;" data-en="Restoring Work &amp; Daily Freedom">Pemulihan Kerja &amp; Kebebasan</h3>
-          <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);" data-en="Up to 60% of societal burden comes from workplace absenteeism and fleeing meetings/commutes. Both panic-focused CBT and PFPP (19–24 sessions, SMD −0.61) significantly restore work ability and driving confidence.">
-            Sehingga 60% beban sosial datang daripada gangguan kerja dan ketakutan memandu/mesyuarat. Terapi CBT mahupun Psikodinamik Berfokus Panik (PFPP, SMD −0.61) terbukti memulihkan keyakinan kerjaya dan mobiliti harian.
+          <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);" data-en="Up to 60% of societal burden comes from workplace absenteeism and avoiding commutes/meetings. Both panic-focused CBT and PFPP (19–24 sessions, SMD −0.61) significantly restore work ability and driving confidence.">
+            Sehingga 60% beban harian berpunca daripada gangguan kerja dan takut memandu/mesyuarat. Terapi CBT mahupun Psikodinamik Berfokus Panik (PFPP) terbukti memulihkan keyakinan kerjaya dan kebebasan bergerak.
           </p>
         </div>
       </div>
@@ -1022,13 +1078,13 @@
           <h2 data-en="7 Real-World Panic, Triage &amp; CBT Scenarios">
             Kuiz Interaktif: 7 Situasi Sebenar Serangan Panik, Saringan 999 &amp; Disiplin CBT
           </h2>
-          <p data-en="Test your mastery of cardiac red flags, Hot vs. Cold Cognition, the 2x coping-card limit, Inhibitory Learning rules, and safe bystander first-aid.">
-            Uji penguasaan anda membezakan tanda merah jantung (999), Hot lwn Cold Cognition, had baca kad 2 kali, pantang larang latihan interoseptif, dan bantuan orang awam.
+          <p data-en="Test your understanding of 999 heart red flags, when to use Coping Cards vs. Thought Records, the 2x read limit, exposure rules, and safe bystander first-aid.">
+            Uji kefahaman anda membezakan tanda kecemasan jantung (999), bila perlu guna Coping Card berbanding Thought Record, had baca 2 kali, peraturan latihan pendedahan, dan cara bantu orang lain.
           </p>
         </div>
         <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
           <span id="quizScoreDisplay" class="pill-badge pill-info" style="font-size:0.85rem; padding:7px 14px;">
-            Skor Kefahaman: 0 / 7
+            Dijawab 0/7 • Skor: 0/7
           </span>
           <button type="button" id="quizResetBtn" class="btn-secondary" data-en="🔄 Reset Quiz">🔄 Cuba Semula Kuiz</button>
         </div>
@@ -1036,13 +1092,17 @@
 
       <div id="lensCallout-ch8" class="lens-callout"></div>
 
+      <div class="progress-track" style="height:6px; margin-bottom:14px;" aria-hidden="true">
+        <div id="quizProgressFill" class="progress-fill" style="width:0%;"></div>
+      </div>
+
       <div id="clinicalQuizContainer" class="quiz-grid" style="margin-bottom:24px;"></div>
 
       <!-- Official KKM Helpline Card (Always Visible) + Collapsible Academic References -->
       <div class="panel-card" style="margin-bottom:12px;">
-        <span class="pill-badge pill-danger" data-en="Official Malaysia Helplines / KKM">Saluran Bantuan Rasmi Malaysia / KKM</span>
-        <p style="margin:8px 0 0; font-size:0.9rem;" data-en="&lt;strong&gt;Medical Emergency:&lt;/strong&gt; &lt;strong&gt;999&lt;/strong&gt; (Hospital Emergency Dept) • &lt;strong&gt;KKM Crisis Line:&lt;/strong&gt; &lt;strong&gt;Talian HEAL 15555&lt;/strong&gt; (8:00 AM – 12:00 AM daily) • &lt;strong&gt;24h Emotional Support:&lt;/strong&gt; Befrienders KL &lt;strong&gt;03-7627 2929&lt;/strong&gt; • &lt;strong&gt;Community Care:&lt;/strong&gt; Klinik Kesihatan, &lt;strong&gt;MENTARI KKM&lt;/strong&gt;, MyHEALTH, MPA &amp; MMHA.">
-          <strong>Kecemasan Perubatan:</strong> <strong>999</strong> • <strong>Talian Krisis KKM:</strong> <strong>HEAL 15555</strong> (8:00 pagi – 12:00 tengah malam setiap hari) • <strong>Sokongan Emosi 24 Jam:</strong> Befrienders KL <strong>03-7627 2929</strong> • <strong>Rawatan Komuniti:</strong> Klinik Kesihatan KKM, rangkaian <strong>MENTARI</strong>, MyHEALTH, MPA &amp; MMHA.
+        <span class="pill-badge pill-danger" data-en="Official Malaysia Helplines &amp; KKM Clinic Pathway">Saluran Bantuan Rasmi Malaysia &amp; Laluan Klinik KKM</span>
+        <p style="margin:8px 0 0; font-size:0.9rem;" data-en="&lt;strong&gt;Medical Emergency:&lt;/strong&gt; &lt;strong&gt;999&lt;/strong&gt; (Hospital Emergency Dept) • &lt;strong&gt;KKM Crisis Line:&lt;/strong&gt; &lt;strong&gt;Talian HEAL 15555&lt;/strong&gt; (8:00 AM – 12:00 AM daily) • &lt;strong&gt;Overnight / 24h Support (12 AM – 8 AM):&lt;/strong&gt; Befrienders KL &lt;strong&gt;03-7627 2929&lt;/strong&gt; or Talian Kasih &lt;strong&gt;15999&lt;/strong&gt; • &lt;strong&gt;Affordable Care Pathway:&lt;/strong&gt; Walk in to any &lt;strong&gt;Klinik Kesihatan KKM (RM1)&lt;/strong&gt; for baseline ECG/thyroid/sugar tests &amp; referral to &lt;strong&gt;MENTARI KKM&lt;/strong&gt; or psychiatry.">
+          <strong>Kecemasan Perubatan:</strong> <strong>999</strong> • <strong>Talian Krisis KKM:</strong> <strong>HEAL 15555</strong> (8:00 pagi – 12:00 tengah malam setiap hari) • <strong>Sokongan Lewat Malam / 24 Jam (12 mlm – 8 pagi):</strong> Befrienders KL <strong>03-7627 2929</strong> atau Talian Kasih <strong>15999</strong> • <strong>Laluan Rawatan Mampu Milik:</strong> Hadir ke <strong>Klinik Kesihatan KKM (RM1)</strong> untuk ujian asas ECG/tiroid/gula darah &amp; surat rujukan ke <strong>MENTARI KKM</strong> atau klinik pakar.
         </p>
         <div class="helpline-call-row">
           <a href="tel:999" class="btn-sos-primary" data-en="🚑 Call 999 Emergency">🚑 Dail 999 (Kecemasan)</a>
@@ -1083,10 +1143,15 @@
     </section>
 
     <footer class="footer">
-      <p data-en="&lt;strong&gt;PanicLab — Resourceful, Interactive &amp; Medically Audited Playbook on Panic Attacks &amp; Panic Disorder&lt;/strong&gt;&lt;br/&gt;&lt;strong&gt;Legal &amp; Medical Disclaimer:&lt;/strong&gt; This interactive playbook provides evidence-based health education, acute grounding support, and clinic visit preparation. It does &lt;strong&gt;not&lt;/strong&gt; provide a medical diagnosis, replace an ECG/blood workup, or prescribe medication. Always consult a registered medical practitioner, or call &lt;strong&gt;999&lt;/strong&gt; immediately for any medical red flags.">
+      <p data-en="&lt;strong&gt;PanicLab — Resourceful, Interactive &amp; Medically Audited Playbook on Panic Attacks &amp; Panic Disorder&lt;/strong&gt;&lt;br/&gt;&lt;strong&gt;Legal &amp; Medical Disclaimer:&lt;/strong&gt; This interactive playbook provides evidence-based health education, acute grounding support, and clinic visit preparation. All personal notes stay locally on your browser (zero server tracking). It does &lt;strong&gt;not&lt;/strong&gt; provide a medical diagnosis, replace an ECG/blood workup, or prescribe medication. Always consult a registered medical practitioner, or call &lt;strong&gt;999&lt;/strong&gt; immediately for any medical red flags.">
         <strong>PanicLab — Playbook Pintar, Visual &amp; Sahih Mengenai Serangan Panik &amp; Kecelaruan Panik</strong><br />
-        <strong>Penafian Perundangan &amp; Perubatan:</strong> Aplikasi ini disediakan khusus untuk tujuan pendidikan kesihatan awam, sokongan penenang kendiri, dan persediaan temu janji klinik. Ia <strong>bukan</strong> alat diagnosis rasmi, tidak menggantikan pemeriksaan fizikal/ECG doktor, dan bukan preskripsi perubatan. Dapatkan pemeriksaan doktor bertauliah atau hubungi <strong>999</strong> segera jika terdapat sebarang tanda bahaya kecemasan.
+        <strong>Penafian Perundangan &amp; Perubatan:</strong> Aplikasi ini disediakan khusus untuk tujuan pendidikan kesihatan awam, sokongan penenang kendiri, dan persediaan temu janji klinik. Semua rekod peribadi anda hanya disimpan di dalam pelayar peranti anda sendiri (tiada data dihantar ke pelayan luar). Ia <strong>bukan</strong> alat diagnosis rasmi, tidak menggantikan pemeriksaan fizikal/ECG doktor, dan bukan preskripsi perubatan. Dapatkan pemeriksaan doktor bertauliah atau hubungi <strong>999</strong> segera jika terdapat sebarang tanda bahaya kecemasan.
       </p>
+      <div style="margin-top:10px;">
+        <button type="button" id="clearLocalDataBtn" class="chip-btn" data-en="🗑️ Clear Saved Browser Data (Shared Device Privacy)">
+          🗑️ Padam Data Simpanan Pelayar (Privasi Peranti Kongsi)
+        </button>
+      </div>
     </footer>
   </main>
 

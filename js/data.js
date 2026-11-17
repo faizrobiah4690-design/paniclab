@@ -5,7 +5,11 @@
 // Klevebrant & Frick (2022) & KKM NCEMH / MENTARI / MyHEALTH
 // ============================================================================
 
-window.currentLang = localStorage.getItem("paniclab_lang") === "en" ? "en" : "ms";
+try {
+  window.currentLang = localStorage.getItem("paniclab_lang") === "en" ? "en" : "ms";
+} catch (_) {
+  window.currentLang = "ms";
+}
 
 window.PANIC_DATA_BY_LANG = {
   // ==========================================================================
@@ -293,12 +297,81 @@ window.PANIC_DATA_BY_LANG = {
     caffeineItems: [
       { id: "kopi_kaw", name: "Kopi O Kaw / Americano Besar", mg: 150 },
       { id: "espresso", name: "1 Shot Espresso / Kopi Tin", mg: 85 },
+      { id: "kopi_3in1", name: "Kopi 3-dalam-1 / Kopi Ais Mamak", mg: 75 },
       { id: "teh_tarik", name: "Teh Tarik / Teh Hitam Pekat", mg: 55 },
       { id: "matcha", name: "Matcha Latte / Teh Hijau", mg: 65 },
       { id: "energy", name: "Minuman Tenaga (Energy Drink)", mg: 160 },
       { id: "preworkout", name: "Serbuk Pre-Workout Gym", mg: 250 },
-      { id: "cola", name: "Minuman Gas Kola (1 Tin)", mg: 35 },
-      { id: "cold_med", name: "Ubat Selesema Hidung Tersumbat (Pseudoephedrine — kesan perangsang)", mg: 120 }
+      { id: "cola", name: "Minuman Gas Kola (1 Tin)", mg: 35 }
+    ],
+
+    nonCaffTriggers: [
+      {
+        id: "pseudoephedrine",
+        name: "💊 Ubat Selesema Hidung Tersumbat (Pseudoephedrine / Phenylephrine)",
+        note: "Merangsang reseptor adrenalin secara terus & boleh mencetuskan jantung laju walaupun 0 mg kopi."
+      },
+      {
+        id: "vape_nicotine",
+        name: "💨 Vape / Rokok Nikotin Tinggi",
+        note: "Nikotin meningkatkan kadar nadi, tekanan darah & mencetuskan rasa gelisah."
+      },
+      {
+        id: "salbutamol",
+        name: "🫁 Inhaler Pelega Asma (Salbutamol / Ventolin)",
+        note: "Penting untuk asma (jangan berhenti!), tetapi maklum bahawa tangan menggigil & nadi laju selepas sedut ialah kesan biasa ubat, bukan panik bahaya."
+      }
+    ],
+
+    somaticClinicDrawer: [
+      {
+        id: "gerd",
+        tabLabel: "🔥 Gastrik / GERD & Angin",
+        badge: "Soalan Klinik #1 Di Malaysia",
+        title: "Kitaran Gastrik / GERD ('Angin Naik Dada') ↔ Panic Attack",
+        layman:
+          "Saluran makan (esofagus), perut, dan jantung berkongsi lebuh raya saraf yang sama iaitu <strong>Saraf Vagus</strong>. Bila asid perut naik atau perut kembung selepas makan lewat/pedas/kopi, saraf vagus menghantar isyarat rasa ketat di dada & tekak berketul (<em>LPR globus</em>)—lalu otak tersalah anggap sebagai sakit jantung dan mencetuskan panik! Sebaliknya, panik pula memerah perut hingga asid makin naik. <strong>Tip Praktikal:</strong> Elak baring 2–3 jam selepas makan, kurangkan makan pedas/kopi ketika perut kosong, tetapi jika sakit dada berat menjalar ke lengan kiri/rahang atau berpeluh sejuk (terutamanya pesakit kencing manis/darah tinggi), tetap semak ECG doktor dahulu.",
+        family:
+          "<strong>Untuk Keluarga:</strong> Ramai pesakit di Malaysia menyebut <em>'angin naik ke dada'</em>. Jangan ketawakan mereka—pedih ulu hati dan kembung memang merangsang saraf vagus hingga terasa sebiji macam sesak nafas. Bantu mereka duduk tegak (jangan baring rata selepas makan) dan hembus nafas perlahan.",
+        clinical:
+          "Crosstalk aferen viseral saraf vagus antara esofagus/gaster dan nukleus traktus solitarius mencetuskan hipersensitiviti viseral & <em>globus pharyngeus</em> (refluks laringofaringeal). Penting: saring iskemia miokardium inferior (yang sering meniru dispepsia/epigastrik pada wanita & pesakit diabetes) melalui ECG 12-lead; setelah sah jinak, elakkan endoskopi berulang yang menjadi <em>reassurance-seeking</em>."
+      },
+      {
+        id: "hangover",
+        tabLabel: "🔋 Lemah Lepas Panik (Hangover)",
+        badge: "1–4 Jam Selepas Reda",
+        title: "Kenapa Kaki Menggigil, Sejuk & Lesu Berjam-Jam Selepas Serangan? ('Adrenaline Hangover')",
+        layman:
+          "Ramai pesakit cemas semula apabila mendapati kaki masih lembik macam agar-agar, badan menggigil sejuk, dan kepala 'blur' walaupun serangan sudah tamat sejam lalu. Ini dipanggil <strong>Adrenaline Hangover</strong>—badan anda baru sahaja berlari pecut maraton secara dalaman! <strong>Checklist Pulih Tenang:</strong> (1) Pakai stoking/baju sejuk nipis, (2) Minum air suam sedikit demi sedikit & makan snek ringan (roti/pisang) untuk ganti tenaga otot, (3) Gerakkan bahu/jalan perlahan di dalam bilik (jangan baring kaku sambil asyik memantau degupan jantung).",
+        family:
+          "<strong>Untuk Keluarga:</strong> Selepas ribut 15 minit reda, pasangan/anak anda akan kelihatan sangat penat, pucat sejuk, atau mengantuk selama beberapa jam. Sediakan selimut nipis & air suam, dan tangguhkan perbincangan berat sehingga mereka cukup rehat.",
+        clinical:
+          "Kesan pasca-katekolamin akibat rangsangan reseptor <strong>beta-2 adrenergik</strong> pada otot rangka (tremor fisiologi pasca-adrenalin), penyusutan glikogen tempatan, serta lantunan parasimpatetik vagal. Pendidikan awal menghalang tafsiran bencana sekunder ('Kenapa aku masih menggigil, adakah serangan kedua nak datang?')."
+      },
+      {
+        id: "nocturnal_diff",
+        tabLabel: "🌙 Terjaga 3 Pagi",
+        badge: "25%–33% Pesakit Panik",
+        title: "Terjaga Mengejut Pukul 2–4 Pagi Dengan Jantung Laju (Nocturnal Panic)",
+        layman:
+          "Terjaga tiba-tiba daripada tidur lena (bukan kerana mimpi ngeri!) dalam keadaan berdebar kencang berlaku apabila sensor CO₂ otak terlalu peka semasa peralihan fasa tidur dalam. Ia <strong>bukan serangan jantung malam</strong>. Duduk bersandar, basuh muka dengan air sejuk 20s, jangan buka Google, dan maklumkan doktor jika anda juga berdengkur kuat/tersedak masa tidur (untuk semak <em>Sleep Apnea</em> atau refluks asid malam).",
+        family:
+          "<strong>Untuk Pasangan:</strong> Jika pasangan tersentak bangun jam 3 pagi dalam ketakutan, buka lampu malap (jangan lampu putih menyilau), duduk di sebelahnya, dan pandu hembusan nafas 6 saat tanpa bertanya banyak soalan.",
+        clinical:
+          "Berlaku semasa peralihan tidur N2→N3 (non-REM) akibat kepekaan kemoreseptor medula terhadap peningkatan fisiologi kecil pCO₂ semasa tidur. Saringan perbezaan wajib merangkumi <em>Obstructive Sleep Apnea (OSA)</em>, refluks asid nokturnal, asma nokturnal, dan <em>paroxysmal nocturnal dyspnea (PND)</em>."
+      },
+      {
+        id: "hormone_pots",
+        tabLabel: "🩸 Hormon, Zat Besi & POTS",
+        badge: "Saringan Penting Wanita & Belia",
+        title: "Kenapa Panik Kerap Muncul Dekat Haid, Lepas Bersalin, Kurang Darah, atau Bila Bangun Berdiri?",
+        layman:
+          "Empat keadaan badan biasa yang sering meniru atau menguatkan simptom panik: <strong>(1) Seminggu sebelum haid (PMDD) / Perimenopaus</strong>—perubahan hormon mempengaruhi saraf penenang otak; <strong>(2) Selepas bersalin</strong>—perubahan tiroid & kurang tidur; <strong>(3) Kurang zat besi (Ferritin rendah)</strong>—buat cepat mengah & berdebar walaupun ujian hemoglobin nampak hampir normal; <strong>(4) Cuaca panas / kurang air / POTS</strong>—nadi naik mendadak bila bangun berdiri cepat. Minta doktor semak ujian darah asas (FBC, Ferritin, Tiroid TSH) supaya punca fizikal turut dirawat!",
+        family:
+          "<strong>Untuk Keluarga:</strong> Jangan anggap ibu lepas bersalin atau wanita pra-haid 'terlalu emosi'—penurunan hormon progesteron/allopregnanolone dan kekurangan zat besi mempunyai kesan biologi nyata ke atas pusat cemas otak.",
+        clinical:
+          "Penurunan mendadak allopregnanolone (modulator alosterik positif GABA-A) pada fasa luteal lewat/pasca-natal menurunkan ambang panik. Saring tiroiditis pasca-partum, feritin serum (&lt;30 ng/mL boleh mencetuskan palpitasi/keletihan), serta <em>Postural Orthostatic Tachycardia Syndrome (POTS)</em> (kenaikan HR ≥30 bpm dalam 10 minit berdiri tanpa hipotensi ortostatik)."
+      }
     ],
 
     mythsAndTraps: [
@@ -314,7 +387,7 @@ window.PANIC_DATA_BY_LANG = {
         badgeClass: "pill-danger",
         title: "Mitos Bernafas Dalam Beg Kertas",
         myth: "Mitos TV/Filem: 'Suruh orang tengah panik bernafas dalam beg kertas.'",
-        truth: "Fakta Perubatan: JANGAN guna beg kertas! Jika punca sebenar sesak nafas itu ialah serangan asma atau jantung, udara kurang oksigen dalam beg kertas amat membahayakan nyawa. Guna nafas 4-2-6."
+        truth: "Fakta Perubatan: JANGAN guna beg kertas! Jika punca sebenar sesak nafas itu ialah serangan asma atau jantung, udara kurang oksigen dalam beg kertas amat membahayakan nyawa. Guna hembusan nafas perlahan 6 saat."
       },
       {
         badge: "Mitos Pengsan",
@@ -336,10 +409,10 @@ window.PANIC_DATA_BY_LANG = {
       {
         id: "straw",
         title: "1. Bernafas Ikut Straw Halus",
-        method: "Bernafas ikut mulut guna straw halus sambil hidung dipicit",
+        method: "Duduk tegak; bernafas ikut mulut guna straw halus sambil hidung dipicit",
         duration: 60,
-        sensation: "Sesak nafas, rasa lemas (air hunger)",
-        contra: "Pantang Larang: Asma, penyakit paru-paru kronik",
+        sensation: "Sesak nafas, rasa tak puas bernafas (air hunger)",
+        contra: "Elakkan jika: Asma, COPD/paru-paru kronik, penyakit jantung, atau sedang hamil",
         hypothesis: "Jika saya bernafas ikut straw 60 saat, saya akan lemas atau pitam (Keyakinan 85%)",
         disconfirms: "Membuktikan rasa sempit nafas tidak menutup saluran udara atau menjatuhkan oksigen darah.",
         sudsDefault: 70
@@ -347,10 +420,10 @@ window.PANIC_DATA_BY_LANG = {
       {
         id: "hypervent",
         title: "2. Nafas Laju Terkawal (30 Nafas/Min)",
-        method: "Tarik & hembus nafas dalam dan laju (~1 nafas setiap 2 saat)",
+        method: "Duduk di kerusi selamat; tarik & hembus nafas laju (~1 nafas setiap 2 saat)",
         duration: 60,
         sensation: "Pening, kebas jari/bibir, rasa macam mimpi",
-        contra: "Pantang Larang: Epilepsi, sedang hamil, asma",
+        contra: "Elakkan jika: Epilepsi/sawan, penyakit jantung/strok, asma, atau sedang hamil",
         hypothesis: "Jika jari kebas dan kepala ringan, saya akan kena strok atau hilang akal (Keyakinan 80%)",
         disconfirms: "Membuktikan kebas & rasa pelik hanyalah kesan sementara kurang gas CO₂ yang surut sendiri.",
         sudsDefault: 75
@@ -358,10 +431,10 @@ window.PANIC_DATA_BY_LANG = {
       {
         id: "spin",
         title: "3. Pusing Kerusi Pejabat (1 Pusingan / 3s)",
-        method: "Duduk selamat di kerusi beroda & berpusing sederhana",
+        method: "Duduk selamat di kerusi beroda jauh dari bucu tajam & berpusing sederhana",
         duration: 60,
         sensation: "Pening berpusing & sedikit loya",
-        contra: "Pantang Larang: Masalah telinga dalam (vestibular) teruk",
+        contra: "Elakkan jika: Vertigo/masalah telinga dalam aktif atau risiko jatuh",
         hypothesis: "Jika kepala berpusing, saya pasti hilang kawalan dan rebah (Keyakinan 75%)",
         disconfirms: "Membuktikan pening berpusing tidak menyebabkan rebah pengsan dan pulih sendiri.",
         sudsDefault: 60
@@ -369,21 +442,21 @@ window.PANIC_DATA_BY_LANG = {
       {
         id: "headshake",
         title: "4. Geleng Kepala Pantas (Mata Terbuka)",
-        method: "Geleng kepala kiri ke kanan secara pantas selama 30 saat",
+        method: "Duduk; geleng kepala kiri ke kanan secara sederhana pantas selama 30 saat",
         duration: 30,
-        sensation: "Kepala ringan melayang & pandangan berbalam",
-        contra: "Pantang Larang: Kecederaan tulang leher / servikal",
-        hypothesis: "Pandangan berbalam bermaksud saya nak pitam sekarang (Keyakinan 70%)",
+        sensation: "Kepala ringan melayang & pandangan kabur sekejap",
+        contra: "Elakkan jika: Sakit/kecederaan tulang leher (servikal) atau vertigo teruk",
+        hypothesis: "Pandangan kabur bermaksud saya nak pitam sekarang (Keyakinan 70%)",
         disconfirms: "Membuktikan kabur fokus sementara adalah reaksi deria biasa tanpa bahaya.",
         sudsDefault: 55
       },
       {
         id: "jog",
-        title: "5. Lari Setempat Laju (Angkat Lutut Tinggi)",
-        method: "Lari setempat secara pantas tanpa henti",
+        title: "5. Lari Setempat Laju (Angkat Lutut)",
+        method: "Lari setempat secara pantas tanpa henti dengan kasut/lantai tidak licin",
         duration: 60,
         sensation: "Jantung berdebar kencang & berpeluh",
-        contra: "Pantang Larang: Penyakit jantung aktif, darah tinggi tidak terkawal",
+        contra: "Elakkan jika: Penyakit jantung/aritmia, darah tinggi tidak terkawal, atau kecederaan sendi",
         hypothesis: "Jantung laju akan mencetuskan serangan jantung mengejut (Keyakinan 85%)",
         disconfirms: "Membuktikan jantung sihat memang direka mengepam laju dengan selamat.",
         sudsDefault: 65
@@ -391,32 +464,32 @@ window.PANIC_DATA_BY_LANG = {
       {
         id: "breathhold",
         title: "6. Tahan Nafas Penuh",
-        method: "Tarik nafas biasa dan tahan sepenuhnya",
+        method: "Duduk; tarik nafas biasa dan tahan selama 30–35 saat",
         duration: 35,
-        sensation: "Dada ketat & refleks cemas tercekik",
-        contra: "Pantang Larang: Penyakit jantung, sedang hamil",
+        sensation: "Dada ketat & refleks cemas",
+        contra: "Elakkan jika: Penyakit jantung, darah tinggi tidak terkawal, glaukoma, atau sedang hamil",
         hypothesis: "Dada ketat bermaksud nafas saya akan terhenti terus (Keyakinan 75%)",
         disconfirms: "Membuktikan refleks pernafasan automatik badan sentiasa mengambil alih dengan selamat.",
         sudsDefault: 65
       },
       {
         id: "muscletension",
-        title: "7. Tegangkan Semua Otot Badan Serentak",
-        method: "Keraskan otot tangan, perut, bahu & kaki serentak",
+        title: "7. Tegangkan Semua Otot Badan",
+        method: "Keraskan otot tangan, perut, bahu & kaki serentak tanpa menahan nafas keterlaluan",
         duration: 60,
-        sensation: "Menggeletar halus & otot dinding dada ketat",
-        contra: "Pantang Larang: Darah tinggi tidak terkawal",
+        sensation: "Menggeletar halus & otot dada rasa ketat",
+        contra: "Elakkan jika: Darah tinggi tidak terkawal, masalah jantung, glaukoma, atau sedang hamil",
         hypothesis: "Badan menggigil bermaksud saya sedang hilang kawalan saraf (Keyakinan 70%)",
-        disconfirms: "Membuktikan menggigil & dada ketat hanyalah keletihan otot rangka yang jinak.",
+        disconfirms: "Membuktikan menggigil & dada ketat hanyalah keletihan otot biasa yang tidak berbahaya.",
         sudsDefault: 55
       },
       {
         id: "stare",
         title: "8. Tenung Cermin / Titik Dinding",
-        method: "Tenung mata sendiri di cermin tanpa alih fokus",
+        method: "Tenung mata sendiri di cermin atau satu titik di dinding selama 90 saat",
         duration: 90,
         sensation: "Rasa pelik macam mimpi (derealization)",
-        contra: "Pantang Larang: Tiada (selamat untuk semua)",
+        contra: "Hati-hati jika: Migrain aura sensitif cahaya, mata kering teruk, atau sejarah trauma berat",
         hypothesis: "Rasa terpisah daripada badan bermaksud saya sedang jadi gila (Keyakinan 80%)",
         disconfirms: "Membuktikan rasa pelik itu cuma mata & fokus penat sementara—bukan tanda gila.",
         sudsDefault: 60
@@ -426,30 +499,30 @@ window.PANIC_DATA_BY_LANG = {
         title: "9. Bonus: Telan Liur 6x / Jaket Tebal",
         method: "Telan air liur pantas 5–6x berturut-turut ATAU pakai jaket tebal tanpa kipas",
         duration: 60,
-        sensation: "Rasa tercekik (globus) atau gelombang kepanasan (hot flashes)",
-        contra: "Pantang Larang: Elak bilik panas melampau jika dehidrasi",
+        sensation: "Rasa benda tersangkut di tekak (globus) atau bahang panas",
+        contra: "Elakkan jika: Dehidrasi, demam, atau masalah menelan perubatan (disfagia)",
         hypothesis: "Tekak sempit akan tertutup rapat / badan panas tanda nak pengsan (Keyakinan 75%)",
-        disconfirms: "Membuktikan otot tekak sekadar penat menelan & kepanasan kulit tidak berbahaya.",
+        disconfirms: "Membuktikan otot tekak sekadar penat menelan & bahang kulit tidak berbahaya.",
         sudsDefault: 60
       }
     ],
 
     ieMistakes: [
       {
-        title: "1. Campur Aduk Nafas 4-2-6 Semasa Sesi Latihan IE",
-        desc: "Nafas 4-2-6 adalah untuk kecemasan tidak dijangka. Semasa sesi latihan IE, JANGAN buat 4-2-6, jangan buka kipas, dan jangan semak jam pintar—supaya otak belajar anda selamat TANPA sebarang tongkat."
+        title: "1. Campur Pernafasan Penenang Semasa Sesi Latihan",
+        desc: "Panduan nafas penenang adalah untuk serangan mengejut di luar jangkaan. Semasa sesi latihan IE terancang, JANGAN guna nafas penenang, kipas, atau smartwatch—supaya otak belajar anda selamat TANPA pelindung palsu."
       },
       {
         title: "2. Berhenti Sebaik Rasa Cemas Memuncak (Saat Ke-15)",
-        desc: "Berhenti awal mengukuhkan ketakutan! Habiskan tempoh penuh (malah lebihkan +15 saat selepas rasa takut muncul) dan ulang 3–5 pusingan."
+        desc: "Berhenti awal mengukuhkan rasa takut! Habiskan tempoh penuh (malah tambah +15 saat selepas cemas muncul) dan ulang 3–5 pusingan."
       },
       {
         title: "3. Makan Ubat Penenang (Alprazolam) Sebelum Berlatih",
-        desc: "Benzodiazepin menumpulkan isyarat saraf semula jadi dan menghalang korteks prefrontal membina memori keselamatan baharu (Inhibitory Learning)."
+        desc: "Benzodiazepin menumpulkan isyarat saraf semula jadi dan menghalang otak menulis memori keselamatan baharu (Inhibitory Learning)."
       },
       {
         title: "4. Hanya Berlatih Ketika Segar Di Bilik Sendiri",
-        desc: "Bila SUDS di rumah turun <2/10, gabungkan terus dengan situasi luar (cth: naik tangga laju sebelum masuk lif, atau minum separuh kopi sebelum beratur di pasar raya)."
+        desc: "Bila rasa takut di rumah turun rendah, gabungkan terus dengan situasi sebenar (cth: naik tangga laju sebelum masuk lif atau beratur di pasar raya)."
       }
     ],
 
@@ -457,42 +530,106 @@ window.PANIC_DATA_BY_LANG = {
       {
         id: "traffic",
         icon: "🚗",
-        shortLabel: "1. Jem / Lampu Isyarat",
-        title: "Kad 1: Memandu Dalam Kesesakan Jalan Raya atau Lampu Isyarat",
+        shortLabel: "1. Jem Jalan Raya",
+        title: "Kad 1: Terperangkap Dalam Jem atau Lampu Isyarat",
+        beats: [
+          "💓 <strong>Apa Berlaku:</strong> Jantung laju & tangan kebas sekarang ialah kesan adrenalin serta cengkaman stereng terlalu kuat—BUKAN tanda nak pitam.",
+          "🛡️ <strong>Kenapa Selamat:</strong> Orang pengsan bila tekanan darah jatuh, sedangkan Panic Attack MENAIKKAN tekanan darah dan menajamkan refleks memandu saya.",
+          "👣 <strong>Buat Sekarang:</strong> Jatuhkan bahu, longgarkan jari pada stereng, hembus nafas perlahan 6 saat, dan teruskan memandu tenang bila lampu hijau."
+        ],
         script:
-          "Jantung berdebar dan tangan kebas sekarang ialah kesan lonjakan adrenalin serta cengkaman stereng terlalu kuat, bukan tanda nak pitam. Pengsan memerlukan kejatuhan tekanan darah secara mendadak, sedangkan serangan panik MENAIKKAN tekanan darah dan menajamkan refleks pemanduan saya. Longgarkan bahu serta jari pada stereng, hembus nafas perlahan 6 saat ikut mulut, fokus pada bumper kereta di hadapan, dan teruskan memandu apabila lampu hijau menyala—gelombang ini pasti surut dalam 10 minit."
+          "Apa Berlaku: Jantung laju & tangan kebas sekarang ialah kesan adrenalin serta cengkaman stereng kuat, bukan nak pitam.\nKenapa Selamat: Pengsan berlaku bila tekanan darah jatuh, sedangkan panik menaikkan tekanan darah.\nBuat Sekarang: Jatuhkan bahu, longgarkan jari pada stereng, hembus perlahan 6 saat, dan teruskan memandu tenang—gelombang ini surut dalam 10 minit."
       },
       {
         id: "highway",
         icon: "🛣️",
-        shortLabel: "2. Lebuh Raya / Jambatan",
-        title: "Kad 2: Memandu di Lebuh Raya atau Jambatan Jauh Dari Susur Keluar",
+        shortLabel: "2. Lebuh Raya",
+        title: "Kad 2: Memandu di Lebuh Raya / Jambatan Jauh Dari Susur Keluar",
+        beats: [
+          "💓 <strong>Apa Berlaku:</strong> Rasa terperangkap & pandangan mengecil (tunnel vision) hanyalah fokus mata semasa siren palsu otak berbunyi.",
+          "🛡️ <strong>Kenapa Selamat:</strong> Tangan dan kaki saya masih 100% berkuasa mengawal stereng serta brek seperti biasa—sama seperti semua rekod selamat saya sebelum ini.",
+          "👣 <strong>Buat Sekarang:</strong> Kekal memandu stabil di lorong kiri tanpa berhenti mengejut di bahu jalan; biarkan adrenalin ini habis dibakar sendiri."
+        ],
         script:
-          "Rasa terperangkap dan pandangan seolah-olah mengecil (tunnel vision) ini hanyalah tindak balas fokus mata apabila amigdala membunyikan penggera palsu, bukannya tanda bakal hilang kawalan kereta. Otot kaki dan tangan saya masih berfungsi penuh mengawal pedal serta stereng seperti biasa, dan rekod serangan lalu membuktikan saya sentiasa memandu dengan selamat. Kekalkan kelajuan stabil di lorong kiri tanpa berhenti mengejut di bahu jalan, dan biarkan adrenalin ini habis dibakar secara semula jadi."
+          "Apa Berlaku: Pandangan mengecil ini hanyalah fokus mata semasa penggera palsu otak berbunyi.\nKenapa Selamat: Tangan & kaki saya masih 100% mengawal stereng dan brek dengan selamat.\nBuat Sekarang: Kekal memandu stabil di lorong kiri tanpa berhenti mengejut di bahu jalan sehingga debaran surut sendiri."
       },
       {
         id: "crowd",
         icon: "🛒",
-        shortLabel: "3. Pasar Raya / Beratur",
-        title: "Kad 3: Tempat Sesak Terbuka & Beratur Panjang (Pasar Raya, Bank, Majlis)",
+        shortLabel: "3. Pasar Raya",
+        title: "Kad 3: Beratur Di Pasar Raya, Bank atau Tempat Terang & Bising",
+        beats: [
+          "💓 <strong>Apa Berlaku:</strong> Kepala rasa melayang di bawah lampu terang ini cuma mata & otak penat dengan bunyi/cahaya sekeliling.",
+          "🛡️ <strong>Kenapa Selamat:</strong> Ini bukan tanda nak rebah atau hilang akal—dan orang sekeliling sibuk dengan urusan sendiri tanpa perasan debaran saya.",
+          "👣 <strong>Buat Sekarang:</strong> Kekal berdiri di barisan (jangan tinggal troli!), jejakkan tapak kaki rata di lantai, dan hembus nafas perlahan 6 saat."
+        ],
         script:
-          "Kepala rasa melayang dan persekitaran nampak asing di bawah lampu terang ini ialah derealisasi sementara akibat rangsangan deria berlebihan, bukannya tanda nak rebah atau hilang akal. Orang sekeliling sibuk dengan urusan masing-masing dan tidak nampak perubahan dalaman badan saya. Kekal berdiri di dalam barisan tanpa meninggalkan troli, jejakkan tapak kaki rapat ke lantai, lepaskan nafas panjang, dan buktikan kepada otak bahawa saya selamat tanpa melarikan diri."
+          "Apa Berlaku: Kepala rasa melayang di bawah lampu terang ini cuma kesan sementara deria penat, bukan nak rebah.\nKenapa Selamat: Orang sekeliling tidak nampak debaran dalaman saya dan saya tidak akan pengsan.\nBuat Sekarang: Kekal dalam barisan tanpa meninggalkan troli, jejakkan kaki di lantai, dan hembus perlahan 6 saat."
+      },
+      {
+        id: "masjid",
+        icon: "🕌",
+        shortLabel: "4. Saf Masjid / Solat",
+        title: "Kad 4: Berada Di Tengah Saf Masjid / Solat Jumaat / Majlis Ilmu",
+        beats: [
+          "💓 <strong>Apa Berlaku:</strong> Rasa hangat, berdebar, atau bergoyang sedikit selepas bangun sujud ialah perubahan aliran darah biasa di ruang ramai orang.",
+          "🛡️ <strong>Kenapa Selamat:</strong> Udara di dalam ruang masjid masih mencukupi dan jantung saya sihat; keluar tergesa-gesa hanya melatih otak takut pada saf.",
+          "👣 <strong>Buat Sekarang:</strong> Kendurkan bahu semasa berdiri/duduk tahiyat, hembus nafas lembut melalui mulut/hidung, dan teruskan solat dengan tenang."
+        ],
+        script:
+          "Apa Berlaku: Rasa hangat atau berdebar semasa di tengah saf / bangun sujud ialah perubahan aliran darah biasa.\nKenapa Selamat: Oksigen ruang ini mencukupi dan badan saya selamat sepenuhnya.\nBuat Sekarang: Kendurkan bahu, bernafas lembut tanpa tergesa-gesa keluar saf, dan habiskan solat dengan tenang."
       },
       {
         id: "enclosed",
         icon: "🛗",
-        shortLabel: "4. Lif / LRT / Saf Masjid",
-        title: "Kad 4: Ruang Sesak Tertutup (Lif, Pengangkutan Awam, Saf Tengah Dewan/Masjid)",
+        shortLabel: "5. Lif / Tren LRT",
+        title: "Kad 5: Ruang Tertutup (Lif, LRT/MRT, Kenderaan Awam)",
+        beats: [
+          "💓 <strong>Apa Berlaku:</strong> Dada rasa sempit sekarang berpunca daripada nafas dada yang terlalu laju—BUKAN kerana lif atau tren ini kehabisan oksigen.",
+          "🛡️ <strong>Kenapa Selamat:</strong> Oksigen darah saya kekal penuh 98%–100% walaupun pintu tertutup dan tekak terasa tegang.",
+          "👣 <strong>Buat Sekarang:</strong> Berhenti menyedut nafas besar secara paksa; hembus keluar perlahan 6 saat dan kekal sehingga sampai ke destinasi."
+        ],
         script:
-          "Sensasi dada ketat dan rasa tidak puas menarik nafas ini ialah air hunger akibat pernafasan dada yang terlalu laju, bukan kerana ruang ini kehabisan oksigen. Paras oksigen darah saya kekal normal antara 98 hingga 100 peratus walaupun tekak terasa sempit. Hentikan cubaan menarik nafas besar secara paksa, hembus udara perlahan-lahan selama 6 saat, kendurkan otot perut, dan kekal di tempat ini sehingga rasa sempit beransur hilang."
+          "Apa Berlaku: Dada rasa sempit berpunca daripada nafas laju, bukan kerana ruang ini tiada oksigen.\nKenapa Selamat: Oksigen darah saya kekal penuh 98-100%.\nBuat Sekarang: Berhenti tarik nafas besar secara paksa, hembus perlahan 6 saat, dan kekal tenang hingga pintu terbuka."
+      },
+      {
+        id: "flight",
+        icon: "✈️",
+        shortLabel: "6. Kapal Terbang",
+        title: "Kad 6: Dalam Kapal Terbang (Semasa Berlepas, Gegaran atau Pintu Ditutup)",
+        beats: [
+          "💓 <strong>Apa Berlaku:</strong> Rasa telinga berdengung, perut ringan semasa pesawat mendaki, dan debaran ialah reaksi deria biasa terhadap perubahan tekanan kabin.",
+          "🛡️ <strong>Kenapa Selamat:</strong> Kabin bertekanan selamat sepenuhnya (paras oksigen normal kabin ialah 93%–96%, jadi JANGAN semak smartwatch!) dan gegaran udara adalah normal bagi pesawat.",
+          "👣 <strong>Buat Sekarang:</strong> Sandarkan belakang badan rapat ke kerusi, hembus nafas panjang 6 saat, atau tekap minuman sejuk pada pipi selama 20 saat."
+        ],
+        script:
+          "Apa Berlaku: Debaran & rasa ringan semasa pesawat berlepas/bergegar ialah reaksi deria biasa.\nKenapa Selamat: Kabin pesawat selamat sepenuhnya (jangan semak bacaan SpO2 smartwatch di udara!).\nBuat Sekarang: Sandar rapat ke kerusi, hembus nafas 6 saat, atau tekap tin/botol sejuk di pipi 20 saat."
+      },
+      {
+        id: "meeting",
+        icon: "💼",
+        shortLabel: "7. Mesyuarat / Exam",
+        title: "Kad 7: Bilik Mesyuarat Senyap, Pembentangan atau Dewan Peperiksaan",
+        beats: [
+          "💓 <strong>Apa Berlaku:</strong> Suara bergetar sedikit, tapak tangan sejuk, dan jantung laju ialah tenaga adrenalin yang sedang menajamkan fokus otak.",
+          "🛡️ <strong>Kenapa Selamat:</strong> Perasaan cemas dalaman terasa 10x lebih besar kepada diri sendiri berbanding apa yang orang lain nampak dari luar.",
+          "👣 <strong>Buat Sekarang:</strong> Tekankan tapak kaki ke lantai bawah meja, bercakap lebih perlahan sedikit daripada biasa, dan teruskan tanpa meminta keluar bilik."
+        ],
+        script:
+          "Apa Berlaku: Jantung laju & tangan sejuk ialah adrenalin biasa, bukan tanda hilang kawalan.\nKenapa Selamat: Orang lain hampir tidak perasan perubahan dalaman badan saya.\nBuat Sekarang: Jejakkan kaki rata di bawah meja, hembus perlahan, dan teruskan mesyuarat/peperiksaan dengan tenang."
       },
       {
         id: "nocturnal",
         icon: "🌙",
-        shortLabel: "5. Terjaga 3 Pagi",
-        title: "Kad 5: Terjaga Mengejut Tengah Malam (Nocturnal Panic Attack)",
+        shortLabel: "8. Terjaga 3 Pagi",
+        title: "Kad 8: Terjaga Mengejut Tengah Malam (Nocturnal Panic)",
+        beats: [
+          "💓 <strong>Apa Berlaku:</strong> Tersentak bangun dengan jantung kencang ialah pelepasan adrenalin palsu semasa otak bertukar fasa tidur—BUKAN serangan jantung malam.",
+          "🛡️ <strong>Kenapa Selamat:</strong> Jantung sihat mampu berdegup laju dengan selamat walaupun ketika badan baru bangun tidur.",
+          "👣 <strong>Buat Sekarang:</strong> Duduk bersandar, basuh muka dengan air sejuk 20 saat, JANGAN tengok smartwatch atau Google simptom, dan baring semula bila nafas tenang."
+        ],
         script:
-          "Tersentak bangun daripada tidur dengan jantung berdegup kencang bukanlah serangan jantung malam, tetapi pelepasan adrenalin palsu semasa otak beralih fasa kitaran tidur. Jantung saya sihat dan mampu mengepam laju seperti sedang bersenam tanpa sebarang bahaya walaupun badan sedang berehat. Duduk bersandar seketika atau basuh muka dengan air sejuk selama 20 saat, JANGAN periksa nadi pada jam pintar atau mencari simptom di Google, dan baring semula sebaik nafas kembali teratur."
+          "Apa Berlaku: Tersentak bangun berdebar ialah kejutan adrenalin palsu semasa tukar fasa tidur.\nKenapa Selamat: Jantung saya sihat dan selamat walaupun berdegup laju ketika rehat.\nBuat Sekarang: Duduk bersandar, basuh muka air sejuk 20s, jangan semak jam pintar/Google, dan tidur semula bila lega."
       }
     ],
 
@@ -630,7 +767,7 @@ window.PANIC_DATA_BY_LANG = {
         title: "2. Serangan Kerap / Teruk atau Komorbid Kemurungan",
         headline: "SSRI (Sertraline / Escitalopram Pilihan Utama) atau Venlafaxine XR ± CBT",
         body: "Antidepresan SSRI (Sertraline, Escitalopram, Citalopram, Fluoxetine, Paroxetine) dan SNRI (Venlafaxine XR) terbukti berkesan tinggi tanpa risiko ketagihan (Cochrane NMA Guaiana et al., 2023). Sertraline & Escitalopram digemari kerana interaksi enzim hati CYP450 rendah dan kurang kesan putus ubat.",
-        guardrail: "PENTING: Mulakan pada dos separuh/rendah! Beritahu pesakit awal-awal bahawa rasa gelisah ringan minggu 1–2 adalah sementara; kesan penuh mengambil masa 2–6 minggu dan perlu diteruskan 6–24 bulan selepas pulih."
+        guardrail: "PENTING: Mulakan pada dos separuh/rendah! Beritahu pesakit awal-awal bahawa rasa gelisah ringan minggu 1–2 adalah sementara (pantau rapat perubahan mood bagi umur <25 tahun). Bagi wanita hamil/merancang kehamilan: utamakan CBT dahulu; elakkan Paroxetine (risiko jantung janin trimester 1) & benzodiazepin—bincang pilihan lebih selamat seperti Sertraline bersama doktor."
       },
       {
         id: "acute_bridge",
@@ -658,7 +795,7 @@ window.PANIC_DATA_BY_LANG = {
         tierLabel: "Barisan Pertama",
         agents: "SSRI (Sertraline, Escitalopram, Citalopram, Fluoxetine, Paroxetine) & SNRI (Venlafaxine XR)",
         evidence: "Cochrane NMA 2023: RR respons akut 0.82 (SSRI) & 0.86 (SNRI) lwn plasebo; profil keselamatan jangka panjang terbaik.",
-        notes: "Mula dos rendah; kesan penuh 2–6 minggu; kekalkan 6–24 bulan. Paroxetine mempunyai kesan putus ubat (withdrawal) lebih ketara jika dihentikan mengejut."
+        notes: "Mula dos rendah; kesan penuh 2–6 minggu; kekalkan 6–24 bulan. Elakkan Paroxetine semasa hamil; hadkan dos maksimum Citalopram (20 mg) / Escitalopram (10 mg) pada warga emas >65 tahun (risiko QTc jantung)."
       },
       {
         tier: "Second-line",
@@ -698,9 +835,9 @@ window.PANIC_DATA_BY_LANG = {
       {
         icon: "🌊",
         tag: "Analogi 2 • Rahsia 'Accept & Float'",
-        title: "Perangkap Jari Buluh & Ombak Laut 10 Minit",
+        title: "Pasir Jerlus & Terapung Mengikut Ombak 10 Minit",
         layman:
-          "Jika anda memakai perangkap jari buluh, makin kuat anda meronta melawan ('Jangan panik!'), makin ketat ia mencengkam. Bila anda <strong>terima dan terapung tenang</strong> mengikut alunan ombak, adrenalin kehabisan bahan bakar sendiri dalam 10–20 minit.",
+          "Jika anda termasuk ke dalam pasir jerlus atau arus laut, makin kuat anda meronta melawan ('Jangan panik!'), makin penat dan tenggelam jadinya. Tetapi bila anda <strong>berhenti meronta dan terapung tenang</strong> mengikut alunan ombak, adrenalin kehabisan bahan bakar sendiri dalam 10–20 minit.",
         family:
           "<strong>Kenapa Jangan Paksa Mereka 'Cepat Tenang!':</strong> Menyuruh pesakit melawan panik serta-merta adalah seperti menyuruh perenang meronta melawan arus—temani mereka terapung perlahan sehingga ombak 10 minit surut.",
         clinical:
@@ -727,7 +864,7 @@ window.PANIC_DATA_BY_LANG = {
         options: [
           "Tanda awal strok ringan (TIA) akibat saluran darah tersumbat",
           "Nafas terlalu laju membuang terlalu banyak gas CO₂, menyebabkan salur darah mengecut sedikit secara sementara",
-          "Tekanan darah menjunam rendah secara merbahaya",
+          "Tekanan darah menjunam rendah secara berbahaya",
           "Kekurangan oksigen teruk di dalam paru-paru"
         ],
         correctIndex: 1,
@@ -1106,12 +1243,81 @@ window.PANIC_DATA_BY_LANG = {
     caffeineItems: [
       { id: "kopi_kaw", name: "Large Americano / Strong Kopi O", mg: 150 },
       { id: "espresso", name: "Single Espresso / Canned Milk Coffee", mg: 85 },
+      { id: "kopi_3in1", name: "3-in-1 Instant Coffee / Iced Milk Coffee", mg: 75 },
       { id: "teh_tarik", name: "Teh Tarik / Strong Black Tea", mg: 55 },
       { id: "matcha", name: "Matcha Latte / Green Tea", mg: 65 },
       { id: "energy", name: "Energy Drink Can", mg: 160 },
       { id: "preworkout", name: "Sports Pre-Workout Scoop", mg: 250 },
-      { id: "cola", name: "Cola Soft Drink (330ml)", mg: 35 },
-      { id: "cold_med", name: "Decongestant Cold Tablet (Pseudoephedrine)*", mg: 120 }
+      { id: "cola", name: "Cola Soft Drink (330ml)", mg: 35 }
+    ],
+
+    nonCaffTriggers: [
+      {
+        id: "pseudoephedrine",
+        name: "💊 Decongestant Cold Tablets (Pseudoephedrine / Phenylephrine)",
+        note: "Directly stimulates adrenergic receptors and can trigger racing heart even with 0 mg caffeine."
+      },
+      {
+        id: "vape_nicotine",
+        name: "💨 High-Nicotine Vape / Cigarettes",
+        note: "Nicotine acutely raises heart rate, blood pressure, and autonomic restlessness."
+      },
+      {
+        id: "salbutamol",
+        name: "🫁 Asthma Rescue Inhaler (Salbutamol / Ventolin)",
+        note: "Essential for asthma (never skip!), but know that shaky hands and fast pulse right after puffing are normal beta-2 medication effects, not dangerous panic."
+      }
+    ],
+
+    somaticClinicDrawer: [
+      {
+        id: "gerd",
+        tabLabel: "🔥 GERD / Acid Reflux",
+        badge: "#1 Clinic Question in Malaysia",
+        title: "The GERD / Gastric Bloating ↔ Panic Attack Vagus Loop",
+        layman:
+          "Your esophagus, stomach, and heart share the exact same nerve highway—the <strong>Vagus Nerve</strong>. When stomach acid or bloating presses upward after spicy/late meals or coffee, the vagus nerve sends chest tightness and a 'throat lump' signal (<em>LPR globus</em>)—which your brain misreads as a heart problem and fires panic! Panic then squeezes the gut further. <strong>Practical Tip:</strong> Stay upright for 2–3 hours after meals and avoid coffee on an empty stomach—while still getting a doctor's ECG if chest pressure radiates to your jaw/arm or comes with cold sweats.",
+        family:
+          "<strong>For Family:</strong> Many patients describe 'trapped wind rising to the chest'. Never dismiss them—acid reflux genuinely irritates the vagus nerve and mimics breathlessness. Help them sit upright and pace slow 6-second exhales.",
+        clinical:
+          "Visceral vagal afferent crosstalk between the distal esophagus and nucleus tractus solitarius drives visceral hypersensitivity and laryngopharyngeal reflux (<em>globus</em>). Rule out inferior myocardial ischemia (which frequently mimics epigastric dyspepsia in women and diabetics) via 12-lead ECG; once cleared, prevent repetitive reassurance endoscopies."
+      },
+      {
+        id: "hangover",
+        tabLabel: "🔋 Post-Panic Hangover",
+        badge: "1–4 Hours After Surge",
+        title: "Why Do My Legs Shake & Feel Exhausted Hours After an Attack? ('Adrenaline Hangover')",
+        layman:
+          "Many people panic a second time because their legs still feel like jelly, they shiver with chills, and feel foggy an hour after the attack ended. This is an <strong>Adrenaline Hangover</strong>—your body just ran an internal sprint! <strong>Recovery Checklist:</strong> (1) Put on warm socks or a light layer, (2) Sip warm water and eat a light snack (toast/banana) to refuel muscle glycogen, (3) Walk gently around the room rather than lying frozen monitoring every heartbeat.",
+        family:
+          "<strong>For Family:</strong> Once the 15-minute storm settles, expect your loved one to look pale, chilly, and deeply sleepy for a couple of hours. Offer a light blanket and water, and save heavy conversations for tomorrow.",
+        clinical:
+          "Driven by skeletal muscle <strong>beta-2 adrenergic</strong> receptor stimulation (post-catecholamine physiological tremor), local glycogen depletion, and parasympathetic vagal rebound. Proactive psychoeducation prevents secondary catastrophic appraisal of residual tremor."
+      },
+      {
+        id: "nocturnal_diff",
+        tabLabel: "🌙 Waking at 3 AM",
+        badge: "Affects 25%–33% of Patients",
+        title: "Jolting Awake Between 2–4 AM With a Racing Heart (Nocturnal Panic)",
+        layman:
+          "Waking abruptly from deep sleep (without a nightmare!) gasping and pounding happens when brain CO₂ sensors overreact to natural breathing shifts between sleep stages. It is <strong>not a midnight heart attack</strong>. Sit propped up, splash cool water on your face for 20s, skip Google, and mention loud snoring or morning dry mouth to your doctor to check for <em>Sleep Apnea</em> or nighttime reflux.",
+        family:
+          "<strong>For Partners:</strong> Turn on a dim warm lamp (not harsh overhead lights), sit calmly beside them, and pace slow 6-second exhales together without firing questions.",
+        clinical:
+          "Occurs during non-REM N2→N3 transitions via heightened medullary chemoreceptor sensitivity to physiological sleep pCO₂ rises. Differential workup should exclude <em>Obstructive Sleep Apnea (OSA)</em>, nocturnal GERD, nocturnal asthma, and <em>paroxysmal nocturnal dyspnea (PND)</em>."
+      },
+      {
+        id: "hormone_pots",
+        tabLabel: "🩸 Hormones, Iron & POTS",
+        badge: "Key Check for Women & Youth",
+        title: "Why Does Panic Flare Before Periods, Postpartum, With Low Iron, or Upon Standing?",
+        layman:
+          "Four common body shifts often mimic or amplify panic: <strong>(1) Late luteal week before periods (PMDD) / Perimenopause</strong>—hormone dips lower your brain's natural calm buffer; <strong>(2) Postpartum</strong>—thyroid shifts & sleep loss; <strong>(3) Low Iron Stores (Ferritin)</strong>—causes palpitations & air hunger even before full anemia shows up; <strong>(4) Heat / Dehydration / POTS</strong>—heart rate jumps sharply when standing up quickly. Ask your GP for basic FBC, Ferritin, and Thyroid (TSH) blood tests!",
+        family:
+          "<strong>For Family:</strong> Never label premenstrual or postpartum panic as 'being overly dramatic'—progesterone/allopregnanolone withdrawal and low iron have direct biological effects on autonomic stability.",
+        clinical:
+          "Abrupt luteal/postpartum withdrawal of allopregnanolone (a potent positive allosteric modulator at extrasynaptic GABA-A receptors) lowers panic thresholds. Screen for postpartum thyroiditis, low serum ferritin (&lt;30 ng/mL), and <em>Postural Orthostatic Tachycardia Syndrome (POTS)</em> (≥30 bpm heart-rate rise within 10 mins of standing without orthostatic hypotension)."
+      }
     ],
 
     mythsAndTraps: [
@@ -1127,7 +1333,7 @@ window.PANIC_DATA_BY_LANG = {
         badgeClass: "pill-danger",
         title: "The Paper Bag Breathing Myth",
         myth: "Movie Myth: 'Always make someone having a panic attack breathe into a paper bag.'",
-        truth: "Medical Fact: AVOID paper bags! Rebreathing lowers oxygen dangerously if the person is actually having an acute asthma attack, pulmonary embolism, or cardiac event. Guide 4-2-6 breathing instead."
+        truth: "Medical Fact: AVOID paper bags! Rebreathing lowers oxygen dangerously if the person is actually having an acute asthma attack, pulmonary embolism, or cardiac event. Pace slow 6-second exhales instead."
       },
       {
         badge: "Fainting Paradox",
@@ -1149,21 +1355,21 @@ window.PANIC_DATA_BY_LANG = {
       {
         id: "straw",
         title: "1. Narrow Straw Breathing",
-        method: "Breathe through a thin straw by mouth with nostrils pinched",
+        method: "Sit upright; breathe through a thin straw by mouth with nostrils pinched",
         duration: 60,
-        sensation: "Shortness of breath, smothering / air hunger",
-        contra: "Contraindication: Asthma, chronic lung disease",
+        sensation: "Shortness of breath, air hunger",
+        contra: "Avoid in: Asthma, COPD/chronic lung disease, cardiac disease, or pregnancy",
         hypothesis: "If I breathe through a straw for 60s, I will suffocate or pass out (85% belief)",
         disconfirms: "Proves restricted-breath sensations neither close the airway nor drop blood oxygen.",
         sudsDefault: 70
       },
       {
         id: "hypervent",
-        title: "2. Intentional Hyperventilation (30/min)",
-        method: "Deep, rapid breaths in and out (~1 breath every 2 seconds)",
+        title: "2. Controlled Fast Breathing (30/min)",
+        method: "Sit safely; take brisk breaths in and out (~1 breath every 2 seconds)",
         duration: 60,
-        sensation: "Lightheadedness, finger/lip tingling, derealization",
-        contra: "Contraindication: Epilepsy, pregnancy, asthma",
+        sensation: "Lightheadedness, finger/lip tingling, unreality",
+        contra: "Avoid in: Epilepsy/seizures, cardiac/cerebrovascular disease, asthma, or pregnancy",
         hypothesis: "If my hands tingle and room feels unreal, I'll have a stroke or go crazy (80% belief)",
         disconfirms: "Proves tingling and unreality are harmless, reversible CO₂ shifts.",
         sudsDefault: 75
@@ -1171,10 +1377,10 @@ window.PANIC_DATA_BY_LANG = {
       {
         id: "spin",
         title: "3. Office Chair Spin (1 rev / 3s)",
-        method: "Sit safely in a swivel chair and spin steadily",
+        method: "Sit safely in a swivel chair clear of sharp edges and spin steadily",
         duration: 60,
         sensation: "Spinning dizziness & mild nausea",
-        contra: "Contraindication: Severe inner-ear / vestibular disorder",
+        contra: "Avoid in: Active inner-ear / vestibular disorder or fall risk",
         hypothesis: "If I feel dizzy, I will lose control and collapse (75% belief)",
         disconfirms: "Proves spinning sensations settle naturally without collapsing.",
         sudsDefault: 60
@@ -1182,10 +1388,10 @@ window.PANIC_DATA_BY_LANG = {
       {
         id: "headshake",
         title: "4. Rapid Head Turn (Eyes Open)",
-        method: "Turn head briskly side-to-side for 30 seconds with eyes open",
+        method: "Seated; turn head smoothly side-to-side for 30 seconds with eyes open",
         duration: 30,
         sensation: "Lightheadedness & brief visual blur",
-        contra: "Contraindication: Cervical spine / neck injury",
+        contra: "Avoid in: Cervical spine / neck injury or severe vertigo",
         hypothesis: "Blurry vision means I am about to faint right now (70% belief)",
         disconfirms: "Proves brief visual lag is harmless vestibular adaptation, never syncope.",
         sudsDefault: 55
@@ -1193,10 +1399,10 @@ window.PANIC_DATA_BY_LANG = {
       {
         id: "jog",
         title: "5. Brisk High-Knee Jog in Place",
-        method: "Lift knees briskly without stopping",
+        method: "Jog briskly in place on non-slip flooring",
         duration: 60,
         sensation: "Pounding heart & warm sweat",
-        contra: "Contraindication: Active cardiac disease, uncontrolled hypertension",
+        contra: "Avoid in: Active cardiac disease/arrhythmia, uncontrolled hypertension, or joint injury",
         hypothesis: "A racing heart will trigger sudden cardiac arrest (85% belief)",
         disconfirms: "Proves a healthy heart is built to pump rapidly and recover safely.",
         sudsDefault: 65
@@ -1204,10 +1410,10 @@ window.PANIC_DATA_BY_LANG = {
       {
         id: "breathhold",
         title: "6. Full Breath Hold",
-        method: "Take a normal breath and hold completely",
+        method: "Seated; take a normal breath and hold for 30–35 seconds",
         duration: 35,
-        sensation: "Chest tightness & choking reflex",
-        contra: "Contraindication: Cardiac disease, pregnancy",
+        sensation: "Chest tightness & air-hunger reflex",
+        contra: "Avoid in: Cardiac disease, uncontrolled hypertension, glaucoma, or pregnancy",
         hypothesis: "Chest tightness means my breathing will stop completely (75% belief)",
         disconfirms: "Proves automatic brainstem respiratory reflexes always resume smoothly.",
         sudsDefault: 65
@@ -1215,42 +1421,42 @@ window.PANIC_DATA_BY_LANG = {
       {
         id: "muscletension",
         title: "7. Full-Body Isometric Tension",
-        method: "Tense arms, abdomen, shoulders & legs simultaneously",
+        method: "Tense arms, abdomen, shoulders & legs without forceful Valsalva straining",
         duration: 60,
         sensation: "Trembling & anterior chest-wall tightness",
-        contra: "Contraindication: Uncontrolled hypertension",
+        contra: "Avoid in: Uncontrolled hypertension, cardiac conditions, glaucoma, or pregnancy",
         hypothesis: "Body trembling means I am losing neurological control (70% belief)",
-        disconfirms: "Proves shaking and chest tightness are benign skeletal muscle fatigue.",
+        disconfirms: "Proves shaking and chest tightness are harmless muscle fatigue.",
         sudsDefault: 55
       },
       {
         id: "stare",
-        title: "8. Unblinking Mirror / Wall Dot Gaze",
-        method: "Stare steadily into your own eyes in a mirror without shifting focus",
+        title: "8. Mirror / Wall Dot Gaze",
+        method: "Stare steadily at your own reflection or a wall dot for 90 seconds",
         duration: 90,
-        sensation: "Depersonalization, unfamiliarity / unreality",
-        contra: "Contraindication: None (safe for everyone)",
+        sensation: "Dream-like detachment / unreality",
+        contra: "Caution in: Photosensitive migraine aura, severe dry/corneal eye disease, or severe trauma dissociation",
         hypothesis: "Feeling detached means I am losing sanity or developing psychosis (80% belief)",
-        disconfirms: "Proves perceptual strangeness is harmless visual adaptation, never psychosis.",
+        disconfirms: "Proves perceptual strangeness is harmless visual fatigue, never psychosis.",
         sudsDefault: 60
       },
       {
         id: "globus_hot",
         title: "9. Bonus: Swallow 6x / Warm Jacket",
-        method: "Swallow dryly 5–6x rapidly OR wear a thick jacket in a fan-off room",
+        method: "Swallow dryly 5–6x rapidly OR wear a warm jacket with the fan off",
         duration: 60,
-        sensation: "Throat lump (globus) or sudden heat waves (hot flashes)",
-        contra: "Contraindication: Avoid extreme heat if dehydrated",
+        sensation: "Throat lump (globus) or sudden heat waves",
+        contra: "Avoid in: Dehydration, fever, or medical swallowing disorder (dysphagia)",
         hypothesis: "My throat is closing shut / heat wave means imminent collapse (75% belief)",
-        disconfirms: "Proves throat muscle fatigue and warmth are benign sensations.",
+        disconfirms: "Proves throat muscle fatigue and skin warmth are harmless sensations.",
         sudsDefault: 60
       }
     ],
 
     ieMistakes: [
       {
-        title: "1. Mixing 4-2-6 Emergency Breathing Into IE Training",
-        desc: "4-2-6 breathing is for unexpected acute surges. During planned IE trials, DO NOT use 4-2-6, fans, water, or smartwatches—so your brain learns you are safe WITHOUT any crutch."
+        title: "1. Mixing Calming Breathing Into Planned IE Training",
+        desc: "Paced breathing is for unexpected acute surges. During planned IE sessions, DO NOT use calming breathing, fans, water, or smartwatches—so your brain learns you are safe WITHOUT any crutch."
       },
       {
         title: "2. Stopping Right as Fear Peaks (at 15 Seconds)",
@@ -1262,7 +1468,7 @@ window.PANIC_DATA_BY_LANG = {
       },
       {
         title: "4. Practicing Only When Rested Alone in Your Bedroom",
-        desc: "Once home SUDS drops <2/10, bridge into real settings (e.g., climb stairs briskly right before taking an elevator, or sip half a coffee before shopping)."
+        desc: "Once home fear drops low, bridge into real settings (e.g., climb stairs briskly right before taking an elevator, or sip half a coffee before shopping)."
       }
     ],
 
@@ -1270,42 +1476,106 @@ window.PANIC_DATA_BY_LANG = {
       {
         id: "traffic",
         icon: "🚗",
-        shortLabel: "1. Traffic / Red Light",
-        title: "Card 1: Driving in Traffic Jams or Stopped at Red Lights",
+        shortLabel: "1. Traffic Jam",
+        title: "Card 1: Stuck in Traffic or Stopped at a Red Light",
+        beats: [
+          "💓 <strong>What's Happening:</strong> My racing heart and tingling hands come from adrenaline and gripping the wheel too tightly—NOT impending fainting.",
+          "🛡️ <strong>Why I'm Safe:</strong> Fainting requires a sudden drop in blood pressure, whereas panic RAISES blood pressure and sharpens my driving reflexes.",
+          "👣 <strong>Do Right Now:</strong> Drop my shoulders, loosen my fingers on the wheel, exhale slowly for 6 seconds, and drive smoothly when the light turns green."
+        ],
         script:
-          "My racing heart and tingling hands right now come from an adrenaline surge and gripping the steering wheel too tightly—NOT impending fainting. Fainting requires a sudden drop in blood pressure, whereas panic RAISES blood pressure and sharpens my reflexes. Drop my shoulders, loosen my grip, exhale slowly for 6 seconds, focus on the bumper ahead, and drive smoothly when the light turns green—this wave will subside within 10 minutes."
+          "What's Happening: Racing heart & tingling hands come from adrenaline and tight wheel grip, not fainting.\nWhy I'm Safe: Fainting requires dropping blood pressure; panic raises blood pressure.\nDo Right Now: Drop shoulders, loosen grip, exhale for 6 seconds, and drive smoothly—this wave fades within 10 minutes."
       },
       {
         id: "highway",
         icon: "🛣️",
         shortLabel: "2. Highway / Bridge",
         title: "Card 2: Driving on a Highway or Bridge Far From an Exit",
+        beats: [
+          "💓 <strong>What's Happening:</strong> Feeling trapped with 'tunnel vision' is simply my eyes narrowing focus during a false brain alarm.",
+          "🛡️ <strong>Why I'm Safe:</strong> My hands and feet still control the steering wheel and pedals at 100% capacity—just like every past drive I survived safely.",
+          "👣 <strong>Do Right Now:</strong> Keep a steady cruising speed in the left lane without swerving onto the shoulder, and let this adrenaline burn off naturally."
+        ],
         script:
-          "Feeling trapped and noticing 'tunnel vision' is simply my eyes narrowing focus during a false amygdala alarm—NOT a sign I will lose control of the car. My hands and feet still control the wheel and pedals at 100% capacity, and every single past episode proves I drive safely through panic. Hold a steady speed in the left/cruising lane without swerving onto the shoulder, and let this adrenaline burn off naturally."
+          "What's Happening: Tunnel vision is just narrowed visual focus during a false brain alarm.\nWhy I'm Safe: My hands and feet still control the wheel and brakes at 100%.\nDo Right Now: Hold steady speed in the left lane without stopping on the shoulder until the surge passes."
       },
       {
         id: "crowd",
         icon: "🛒",
-        shortLabel: "3. Supermarket / Queue",
-        title: "Card 3: Bright Crowded Places & Long Queues (Supermarket, Bank, Event)",
+        shortLabel: "3. Supermarket",
+        title: "Card 3: Bright Crowded Aisles & Long Queues (Mall, Bank, Event)",
+        beats: [
+          "💓 <strong>What's Happening:</strong> Feeling lightheaded under bright fluorescent lights is temporary sensory fatigue—not collapsing or losing my mind.",
+          "🛡️ <strong>Why I'm Safe:</strong> Shoppers around me are focused on their own errands and cannot see my internal adrenaline.",
+          "👣 <strong>Do Right Now:</strong> Stay in line without abandoning my cart, plant both feet flat on the floor, and exhale slowly for 6 seconds."
+        ],
         script:
-          "Feeling lightheaded and seeing the bright aisle look dream-like is temporary derealization from sensory overload—NOT a sign of collapsing or losing my mind. People around me are busy with their own errands and cannot see my internal adrenaline. Stay in line without abandoning my cart, plant both feet flat on the floor, lengthen my exhale, and let my brain witness that I am safe without fleeing."
+          "What's Happening: Lightheadedness under bright lights is temporary sensory fatigue, not collapsing.\nWhy I'm Safe: People around me cannot see my internal pulse and I will not faint.\nDo Right Now: Stay in line with my cart, plant both feet flat, and exhale slowly for 6 seconds."
+      },
+      {
+        id: "masjid",
+        icon: "🕌",
+        shortLabel: "4. Mosque / Prayer Row",
+        title: "Card 4: Middle of Congregation Row (Solat Jumaat / Quiet Service)",
+        beats: [
+          "💓 <strong>What's Happening:</strong> Feeling warm, pounding, or briefly lightheaded when rising from prostration (sujud) is a normal posture blood-flow shift.",
+          "🛡️ <strong>Why I'm Safe:</strong> Plenty of oxygen fills this hall and my heart is healthy; rushing out only trains my brain to fear the prayer row.",
+          "👣 <strong>Do Right Now:</strong> Soften my shoulders while standing or seated, breathe gently without gasping, and complete the prayer calmly."
+        ],
+        script:
+          "What's Happening: Warmth or brief dizziness rising from sujud is a normal posture shift.\nWhy I'm Safe: Oxygen here is plentiful and my heart is completely safe.\nDo Right Now: Soften shoulders, breathe gently without bolting from the row, and finish calmly."
       },
       {
         id: "enclosed",
         icon: "🛗",
-        shortLabel: "4. Lift / Train / Hall",
-        title: "Card 4: Enclosed Spaces (Elevator, Train/Bus, Middle Row of Hall or Mosque)",
+        shortLabel: "5. Lift / Train",
+        title: "Card 5: Enclosed Spaces (Elevator, Train/LRT, Bus)",
+        beats: [
+          "💓 <strong>What's Happening:</strong> Chest tightness comes from fast upper-chest breathing—NOT because this cabin is running out of oxygen.",
+          "🛡️ <strong>Why I'm Safe:</strong> My blood oxygen stays 98%–100% full even when the doors are shut and my throat feels tight.",
+          "👣 <strong>Do Right Now:</strong> Stop forcing huge gulps of air; blow out gently for 6 seconds and stay put until my stop."
+        ],
         script:
-          "Chest tightness and 'air hunger' come from rapid upper-chest breathing—NOT because this room is running out of oxygen. My blood oxygen remains 98% to 100% full even when my throat feels tight. Stop forcing giant gulps of air, exhale gently for 6 seconds, soften my belly muscles, and stay right here until the tightness fades."
+          "What's Happening: Chest tightness comes from fast chest breathing, not low room oxygen.\nWhy I'm Safe: My blood oxygen stays 98-100% full.\nDo Right Now: Stop gulping air, exhale gently for 6 seconds, and ride calmly to my stop."
+      },
+      {
+        id: "flight",
+        icon: "✈️",
+        shortLabel: "6. Airplane Flight",
+        title: "Card 6: Inside an Airplane (Doors Closed, Takeoff, or Turbulence)",
+        beats: [
+          "💓 <strong>What's Happening:</strong> Ear pressure, stomach lightness during climb, and a fast pulse are normal inner-ear sensations in a pressurized cabin.",
+          "🛡️ <strong>Why I'm Safe:</strong> Commercial cabins are completely safe (normal healthy cabin SpO₂ is 93%–96%, so DO NOT check smartwatch SpO₂!) and turbulence is harmless.",
+          "👣 <strong>Do Right Now:</strong> Press my back against the seat, exhale slowly for 6 seconds, or hold a cold drink cup gently against my cheeks for 20s."
+        ],
+        script:
+          "What's Happening: Takeoff lightness & pulse surges are normal inner-ear reactions to cabin climb.\nWhy I'm Safe: Cabin air is completely safe (healthy cabin SpO2 is 93-96%, skip smartwatch checks!).\nDo Right Now: Lean back into the seat, exhale 6 seconds, or press a cool cup to my cheeks for 20s."
+      },
+      {
+        id: "meeting",
+        icon: "💼",
+        shortLabel: "7. Meeting / Exam",
+        title: "Card 7: Quiet Boardroom Meeting, Presentation, or Exam Hall",
+        beats: [
+          "💓 <strong>What's Happening:</strong> Cool hands, a slight voice quiver, and a racing heart are adrenaline sharpening my alertness.",
+          "🛡️ <strong>Why I'm Safe:</strong> Internal adrenaline feels 10x louder inside my own body than anything visible to colleagues or examiners.",
+          "👣 <strong>Do Right Now:</strong> Rest both feet firmly under the desk, speak 15% slower than usual, and stay in my seat until the wave settles."
+        ],
+        script:
+          "What's Happening: Fast pulse & cool hands are normal performance adrenaline, not losing control.\nWhy I'm Safe: Others barely notice what feels loud inside me.\nDo Right Now: Plant feet firmly under the desk, slow my speech slightly, and stay seated calmly."
       },
       {
         id: "nocturnal",
         icon: "🌙",
-        shortLabel: "5. Waking at 3 AM",
-        title: "Card 5: Jolting Awake at Night (Nocturnal Panic Attack)",
+        shortLabel: "8. Waking at 3 AM",
+        title: "Card 8: Jolting Awake at Night (Nocturnal Panic Attack)",
+        beats: [
+          "💓 <strong>What's Happening:</strong> Waking abruptly with a pounding heart is a harmless adrenaline misfire between sleep stages—NOT a midnight heart attack.",
+          "🛡️ <strong>Why I'm Safe:</strong> My healthy heart is built to pump fast safely even while resting in bed.",
+          "👣 <strong>Do Right Now:</strong> Sit propped up, splash cool water on my face for 20s, DO NOT check smartwatch or Google symptoms, and lie back down once calm."
+        ],
         script:
-          "Waking abruptly with a pounding heart is NOT a midnight heart attack—it is a harmless misfire of adrenaline during a non-REM sleep-stage transition. My heart is strong and built to beat fast safely even while resting. Sit propped up or splash cool water on my face for 20 seconds, DO NOT check my smartwatch pulse or Google symptoms, and lie back down once my breathing settles."
+          "What's Happening: Jolting awake pounding is a harmless adrenaline misfire during sleep-stage shifts.\nWhy I'm Safe: My heart is strong and safe even beating fast at rest.\nDo Right Now: Sit propped up, cool my face for 20s, skip smartwatch/Google, and rest once settled."
       }
     ],
 
@@ -1443,7 +1713,7 @@ window.PANIC_DATA_BY_LANG = {
         title: "2. Frequent/Severe Attacks or Comorbid Depression",
         headline: "Start First-Line SSRI (Sertraline / Escitalopram Preferred) or Venlafaxine XR ± CBT",
         body: "SSRIs (Sertraline, Escitalopram, Citalopram, Fluoxetine, Paroxetine) and SNRIs (Venlafaxine XR) deliver strong remission with zero addiction risk (Cochrane NMA Guaiana et al., 2023). Sertraline and Escitalopram offer clean CYP450 profiles and gentler tapering.",
-        guardrail: "CRITICAL: Start at half-dose and titrate slowly! Warn patients upfront about transient week 1–2 activation/jitteriness; full benefit takes 2–6 weeks, and maintenance continues 6–24 months post-remission."
+        guardrail: "CRITICAL: Start at half-dose and titrate slowly! Warn patients upfront about transient week 1–2 activation (monitor mood closely in <25-year-olds). In pregnancy/perinatal care: prioritize CBT first-line; avoid Paroxetine (1st-trimester cardiac teratogenicity) & benzodiazepines—discuss preferred options like Sertraline with a physician."
       },
       {
         id: "acute_bridge",
@@ -1471,7 +1741,7 @@ window.PANIC_DATA_BY_LANG = {
         tierLabel: "First-Line",
         agents: "SSRIs (Sertraline, Escitalopram, Citalopram, Fluoxetine, Paroxetine) & SNRI (Venlafaxine XR)",
         evidence: "Cochrane NMA 2023: Acute response RR 0.82 (SSRIs) & 0.86 (SNRIs) vs placebo; optimal long-term safety.",
-        notes: "Start low, go slow; 2–6 weeks for full effect; maintain 6–24 months. Paroxetine carries stronger CYP2D6 inhibition and discontinuation burden."
+        notes: "Start low, go slow; 2–6 weeks for full effect; maintain 6–24 months. Avoid Paroxetine in pregnancy; observe geriatric QTc max-dose caps for Citalopram (20 mg) & Escitalopram (10 mg) in adults >65."
       },
       {
         tier: "Second-line",

@@ -31,18 +31,38 @@ body.light-theme {
   --bg-surface: #ffffff;
   --bg-card: #ffffff;
   --bg-elevated: #e3f0f4;
-  --border-subtle: rgba(15, 35, 52, 0.12);
-  --border-strong: rgba(13, 148, 136, 0.45);
+  --border-subtle: rgba(15, 35, 52, 0.14);
+  --border-strong: rgba(15, 118, 110, 0.48);
   --text-primary: #0f2230;
-  --text-secondary: #304758;
-  --text-muted: #5c7485;
-  --accent-teal: #0d9488;
-  --accent-cyan: #0284c7;
-  --accent-emerald: #059669;
-  --accent-amber: #d97706;
+  --text-secondary: #283d4c;
+  --text-muted: #4b6374;
+  --accent-teal: #0f766e;
+  --accent-cyan: #0369a1;
+  --accent-emerald: #047857;
+  --accent-amber: #b45309;
   --accent-violet: #6d28d9;
-  --accent-danger: #dc2626;
+  --accent-danger: #b91c1c;
   --shadow-card: 0 10px 26px rgba(15, 35, 52, 0.07);
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+body.modal-open .floating-sos-btn {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 *,
@@ -235,7 +255,7 @@ body.light-theme .nav-links a.nav-emergency {
 }
 
 .segmented-toggle button.active {
-  background: linear-gradient(135deg, #0d9488, #0284c7);
+  background: linear-gradient(135deg, #0f766e, #0369a1);
   color: #ffffff;
 }
 
@@ -300,14 +320,14 @@ body.light-theme .nav-links a.nav-emergency {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #0d9488, #0284c7);
+  background: linear-gradient(135deg, #0f766e, #0369a1);
   color: #ffffff;
-  box-shadow: 0 6px 18px rgba(13, 148, 136, 0.28);
+  box-shadow: 0 6px 18px rgba(15, 118, 110, 0.28);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(13, 148, 136, 0.38);
+  box-shadow: 0 8px 22px rgba(15, 118, 110, 0.38);
 }
 
 .btn-secondary {
@@ -321,12 +341,12 @@ body.light-theme .nav-links a.nav-emergency {
 }
 
 .btn-sos-primary {
-  background: linear-gradient(135deg, #ef4444, #d97706);
+  background: linear-gradient(135deg, #dc2626, #b45309);
   color: #ffffff;
   border-radius: 999px;
   padding: 7px 15px;
   font-size: 0.82rem;
-  box-shadow: 0 5px 16px rgba(239, 68, 68, 0.35);
+  box-shadow: 0 5px 16px rgba(220, 38, 38, 0.35);
 }
 
 .btn-sos-primary:hover {
@@ -362,22 +382,23 @@ body.light-theme .nav-links a.nav-emergency {
   justify-content: center;
   gap: 8px;
   min-height: 48px;
-  background: linear-gradient(135deg, #ef4444, #d97706);
+  background: linear-gradient(135deg, #dc2626, #b45309);
   color: #ffffff;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.52);
   border-radius: 999px;
   padding: 12px 24px;
   font-weight: 800;
   font-size: 0.92rem;
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: 0 12px 30px rgba(239, 68, 68, 0.46), 0 0 0 4px rgba(239, 68, 68, 0.16);
+  box-shadow: 0 12px 30px rgba(220, 38, 38, 0.46), 0 0 0 4px rgba(220, 38, 38, 0.16);
   transition: transform 0.15s ease, box-shadow 0.18s ease;
 }
 
-.floating-sos-btn:hover {
+.floating-sos-btn:hover,
+.floating-sos-btn:active {
   transform: translateX(-50%) translateY(-2px);
-  box-shadow: 0 14px 34px rgba(239, 68, 68, 0.58), 0 0 0 5px rgba(239, 68, 68, 0.22);
+  box-shadow: 0 14px 34px rgba(220, 38, 38, 0.58), 0 0 0 5px rgba(220, 38, 38, 0.22);
 }
 
 .helpline-call-row {
@@ -389,10 +410,6 @@ body.light-theme .nav-links a.nav-emergency {
 
 .helpline-call-row a {
   text-decoration: none;
-}
-
-.floating-sos-btn:hover {
-  transform: translateY(-2px);
 }
 
 /* Badges */
@@ -838,7 +855,7 @@ body.light-theme .canvas-frame {
 }
 
 .qh-tab-btn.active {
-  background: linear-gradient(135deg, #0d9488, #0284c7);
+  background: linear-gradient(135deg, #0f766e, #0369a1);
   color: #ffffff;
   border-color: transparent;
 }
@@ -1246,6 +1263,39 @@ html[lang="en"] details.clean-disclosure[open] > summary::after {
   padding: 18px;
 }
 
+/* 3-Beat Scannable Coping Cards & Somatic Drawer */
+.coping-beat-list {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.coping-beat-item {
+  background: var(--bg-surface);
+  border-left: 4px solid var(--accent-teal);
+  border-radius: var(--radius-sm);
+  padding: 11px 14px;
+  font-size: 0.94rem;
+  line-height: 1.58;
+}
+
+.dive-progress-wrap {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-surface);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 8px;
+  border: 1px solid var(--border-subtle);
+}
+
+.dive-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #06b6d4, #10b981);
+  transition: width 0.95s linear;
+}
+
 /* ======================= RESPONSIVE ======================= */
 @media (max-width: 960px) {
   .hero,
@@ -1270,7 +1320,48 @@ html[lang="en"] details.clean-disclosure[open] > summary::after {
   }
   .qh-modal-card {
     max-height: 95vh;
-    padding: 15px;
+    padding: 14px;
+  }
+  .qh-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow-x: visible;
+    gap: 6px;
+  }
+  .qh-tab-btn {
+    min-height: 42px;
+    font-size: 0.78rem;
+    padding: 6px 8px;
+    white-space: normal;
+    text-align: center;
+  }
+  /* Stack 4-column comparison tables into readable cards on narrow phones so ACS 999 is NEVER clipped off-screen */
+  .clinical-table.stack-mobile thead {
+    display: none;
+  }
+  .clinical-table.stack-mobile,
+  .clinical-table.stack-mobile tbody,
+  .clinical-table.stack-mobile tr,
+  .clinical-table.stack-mobile td {
+    display: block;
+    width: 100%;
+  }
+  .clinical-table.stack-mobile tr {
+    border-bottom: 2px solid var(--border-subtle);
+    padding: 8px 0;
+  }
+  .clinical-table.stack-mobile td {
+    border-bottom: none;
+    padding: 6px 12px;
+  }
+  .clinical-table.stack-mobile td[data-col]::before {
+    content: attr(data-col);
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+    margin-bottom: 2px;
   }
   .floating-sos-btn {
     left: 50%;
@@ -1284,13 +1375,33 @@ html[lang="en"] details.clean-disclosure[open] > summary::after {
 }
 
 @media print {
+  :root,
+  body,
+  body.light-theme {
+    --bg-base: #ffffff !important;
+    --bg-surface: #ffffff !important;
+    --bg-card: #ffffff !important;
+    --bg-elevated: #f8fafc !important;
+    --text-primary: #000000 !important;
+    --text-secondary: #1e293b !important;
+    --text-muted: #475569 !important;
+    --border-subtle: #cbd5e1 !important;
+  }
   .topbar,
   .quick-sos-bar,
-  .floating-sos-btn {
+  .floating-sos-btn,
+  .lens-status-strip,
+  .canvas-frame {
     display: none !important;
   }
   body {
     background: #ffffff !important;
     color: #000000 !important;
+  }
+  .panel-card,
+  .myth-card,
+  tr {
+    break-inside: avoid;
+    box-shadow: none !important;
   }
 }
